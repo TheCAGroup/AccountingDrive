@@ -7,4 +7,5 @@ $period=isset($_COOKIE['period'])?$_COOKIE['period']:"Period Not Selected";
 	  <li><a href="#"><?php echo $company; ?></a></li>
 	  <li><a href="#"><?php echo $period; ?></a></li>
 	</ul>
+	<!--test --->
 </body></html>
