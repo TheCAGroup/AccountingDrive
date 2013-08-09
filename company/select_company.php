@@ -2,15 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Stock Category</title>
-		
-		<!-- Bootstrap core CSS -->
-		<link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.css">
-		<script src="./bootstrap/js/jquery.js"></script>
-		<script src="./bootstrap/js/bootstrap.js"></script>
-		
-		<meta name="author" content="Yamini Bala" />
-		<!-- Date: 2013-08-02 -->
+		<title>Select Company</title>
 	</head>
 	<body>
 		<div class="container">

@@ -1,18 +1,10 @@
 <?php include 'company_breadcrumb.php'; ?>
 <html>
 <head>
-<title>Add a new Company</title>
+<title>Add Company</title>
 	
 <meta charset="utf-8"> 
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 
-<link rel="stylesheet" type="text/css" href="./css/button.css">
-<!--link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.css">
-
-<link rel="stylesheet" href="./bootstrap/css/datepicker.css">
-<script src="./bootstrap/js/jquery.js"></script>
-<script src="./bootstrap/js/bootstrap-datepicker.js"></script>
-<script src="./bootstrap/js/bootstrap.js"></script-->
 <script type="text/javascript" src="./jquery_validation/dist/jquery.validate.js"></script>
 
 <style>body { font-family: Ubuntu, sans-serif; }</style>
