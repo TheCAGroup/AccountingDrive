@@ -1,4 +1,4 @@
-	<?php include 'company_breadcrumb.php'; ?>
+	<?php include 'company/company_breadcrumb.php'; ?>
 	<html>
 	<body>
 		<div>
@@ -19,8 +19,8 @@
 			<div class="span3 sb-fixed">
 		   		<div class="well sidebar-nav">
 					<ul class="nav nav-pills nav-stacked">
-			 		 	<li><a href="#" onclick="gotoselectcompany()">Select Company</a></li>
-			 		 	<li><a href="#" onclick="gotocreatecompany()">Create Company</a></li>
+			 		 	<li><a href="#" onclick="gotoselectcompany();">Select Company</a></li>
+			 		 	<li><a href="#" onclick="gotocreatecompany();">Create Company</a></li>
 			 		 	<li><a href="#">Shut Company</a></li>
 			 		 	<li><a href="#">Company Info</a></li>
 			 		 	<li><a href="#">Features</a></li>

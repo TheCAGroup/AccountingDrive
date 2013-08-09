@@ -8,15 +8,17 @@
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-
+    <!--link href="css/datepicker.css" rel="stylesheet"-->
+    
+    <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
     <!-- Custom styles for this template -->
     <link href="bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
 
-<script type="text/javascript" src="bootstrap/js/jquery.js"></script>
 <script type="text/javascript" src="bootstrap/js/dropdown.js"></script>
-
-
-<script src="config.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/config.js"></script>
 
   </head>
 
@@ -101,13 +103,13 @@
 			<li class="divider"></li>
 		        <li><a href="#">Accounts Book</a></li>
 		        <li><a href="#">Statements of Accounts</a></li>
-			<li class="divider"></li>
+			<li class="divider"> </li>
 			<li><a href="#">Inventory books</a></li>
 		        <li><a href="#">Statements of Inventory</a></li>
-			<li class="divider"></li>
+			<li class="divider"> </li>
 		        <li><a href="#">Cash/Funds Flow</a></li>
 		        <li><a href="#">Receipts and Payments</a></li>
-			<li class="divider"></li>
+			<li class="divider"> </li>
 		        <li><a href="#">List of Accounts</a></li>
 		        <li><a href="#">Exception Reports</a></li>
 		      </ul>
@@ -141,20 +143,6 @@
             $("#maindiv").load("entrypage.php");
         });
 
-       function gotocreatecompany()
-       {
-       		$("#maindiv").load("create_company.php");
-       }
-
-       function gotoselectcompany()
-       {
-       		$("#maindiv").load("select_company.php");
-       }
-       
-       function gotoHomePage()
-       {
-       		$("#maindiv").load("entrypage.php");
-       }
 </script>
 <!-- test --->  
 

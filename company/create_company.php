@@ -1,31 +1,26 @@
 <?php include 'company_breadcrumb.php'; ?>
 <html>
 <head>
-<script src="config.js"></script>
 <title>Add a new Company</title>
 	
 <meta charset="utf-8"> 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
 
+<link rel="stylesheet" type="text/css" href="./css/button.css">
+<!--link rel="stylesheet" type="text/css" href="./bootstrap/css/bootstrap.css">
 
-<link rel="stylesheet" type="text/css" href="xbootstrap/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/button.css">
-<link href="xbootstrap/css/datepicker.css" rel="stylesheet">
-<script src="xbootstrap/js/jquery.js"></script>
-<script src="xbootstrap/js/bootstrap-datepicker.js"></script>
-<script src="xbootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="jquery_validation/dist/jquery.validate.js"></script>
+<link rel="stylesheet" href="./bootstrap/css/datepicker.css">
+<script src="./bootstrap/js/jquery.js"></script>
+<script src="./bootstrap/js/bootstrap-datepicker.js"></script>
+<script src="./bootstrap/js/bootstrap.js"></script-->
+<script type="text/javascript" src="./jquery_validation/dist/jquery.validate.js"></script>
 
 <style>body { font-family: Ubuntu, sans-serif; }</style>
-<!--script src="js/ent_company.js"></script-->
 </head>
 <body>
 	
 <form id="addcompany" class="form-horizontal" method="post"><!--action="trycompanyinsert.php" -->
 <fieldset>
-
-
-
 <div class = "container">
 	<div class="row show-grid">
   		<div class="col-lg-8">
@@ -34,160 +29,158 @@
 		<!-- Form Name -->
 		<legend>Create Company</legend>
 
+  			
 		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="txtname">Name</label>
-		  <div class="controls">
+		<!--div class="control-group">
+		  <label class="col-lg-2 control-label" for="txtname">Name</label>
+		  <div class="col-lg-10">
 		    <input id="txtname" name="txtname" placeholder="Name of the Company" class="input-large" type="text" onblur="checkUniqueCompany();">
 		    
 		  </div>
-		</div>
+		</div-->
 		
+		<div class="form-group">
+    <label for="txtname" class="col-lg-2 control-label">Name</label>
+    <div class="col-lg-4">
+      <input type="text" class="form-control" id="txtname" placeholder="Name">
+    </div>
+  </div>
+  
 		<!-- Textarea -->
-		<div class="control-group">
-		  <label class="control-label" for="txtaddress">Address</label>
-		  <div class="controls">                     
-		    <textarea id="txtaddress" name="txtaddress"></textarea>
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="txtaddress">Address</label>
+		  <div class="col-lg-4">
+		  	<textarea class="form-control" rows="3" id="txtaddress" name="txtaddress"></textarea>                     
 		  </div>
 		</div>
 		
 		<!-- Select Basic -->
-		<div class="control-group">
-		  <label class="control-label" for="cmbstate">State</label>
-		  <div class="controls">
-		    <select id="cmbstate" name="cmbstate" class="input-large">
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="cmbstate">State</label>
+		  <div class="col-lg-4">
+		    <select id="cmbstate" name="cmbstate" class="form-control">
 		      <option>Tamil Nadu</option>
 		    </select>
 		  </div>
 		</div>
 		
 		<!-- Select Basic -->
-		<div class="control-group">
-		  <label class="control-label" for="cmbcountry">Country</label>
-		  <div class="controls">
-		    <select id="cmbcountry" name="cmbcountry" class="input-large">
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="cmbcountry">Country</label>
+		  <div class="col-lg-4">
+		    <select id="cmbcountry" name="cmbcountry" class="form-control">
 		      <option>India</option>
 		    </select>
 		  </div>
 		</div>
 		
 		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="txtpincode">Pincode</label>
-		  <div class="controls">
-		    <input id="txtpincode" name="txtpincode" placeholder="Pincode" class="input-large" type="text">
-		    
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="txtpincode">Pincode</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txtpincode" name="txtpincode" placeholder="Name">
 		  </div>
 		</div>
 		
 		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="txttelephone">Telephone</label>
-		  <div class="controls">
-		    <input id="txttelephone" name="txttelephone" placeholder="Telephone Number" class="input-large" type="text">
-		    
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="txttelephone">Telephone</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txttelephone" name="txttelephone" placeholder="Telephone Number">
 		  </div>
 		</div>
 		
 		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="txtemail">Email</label>
-		  <div class="controls">
-		    <input id="txtemail" name="txtemail" placeholder="email" class="input-large" type="text">
-		    
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="txtemail">Email</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txtemail" name="txtemail" placeholder="email">
 		  </div>
 		</div>
 		
 		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="txtfinancialyear">Financial Year Beginning From</label>
-		  <div class="controls">
-		    <input id="txtfinancialyear" name="txtfinancialyear" placeholder="Financial Start of Year" value="2010-04-01" type="text" class="datepicker" readonly/>
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="txtfinancialyear">Financial Year Beginning From</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" value="01/04/13" data-date-format="dd/mm/yy" id="txtfinancialyear" name="txtfinancialyear" readonly />
+		    <!--input id="txtfinancialyear" name="txtfinancialyear" placeholder="Financial Start of Year" value="2010-04-01" type="text" class="datepicker" readonly/-->
 		  </div>
 		</div>
 		
 		
 		<!-- Select Basic -->
-		<div class="control-group">
-		  <label class="control-label" for="cmbadministrator">Administrator</label>
-		  <div class="controls">
-		    <select id="cmbadministrator" name="cmbadministrator" class="input-large">
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="cmbadministrator">Administrator</label>
+		  <div class="col-lg-4">
+		    <select id="cmbadministrator" name="cmbadministrator" class="form-control">
 		      
 		    </select>
 		  </div>
 		</div>
 		
 		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="txtcurrency">Currency Name</label>
-		  <div class="controls">
-		    <input id="txtcurrency" name="txtcurrency" placeholder="Currency Name" class="input-large" type="text">
-		    
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="txtcurrency">Currency Name</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txtcurrency" name="txtcurrency" placeholder="Currency Name">
 		  </div>
 		</div>
 		
 		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="txtcurrencysymbol">Currency Symbol</label>
-		  <div class="controls">
-		    <input id="txtcurrencysymbol" name="txtcurrencysymbol" placeholder="Currency Symbol" class="input-large" type="text">
-		    
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="txtcurrencysymbol">Currency Symbol</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txtcurrencysymbol" name="txtcurrencysymbol" placeholder="Currency Symbol">
 		  </div>
 		</div>
 		
 		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="txtdecplaces">Decimal Places</label>
-		  <div class="controls">
-		    <input id="txtdecplaces" name="txtdecplaces" type="number" class="input-large">
-		    
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="txtdecplaces">Decimal Places</label>
+		  <div class="col-lg-4">
+		  	<input type="number" class="form-control" id="txtdecplaces" name="txtdecplaces" >
 		  </div>
 		</div>
 		
 		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="txtdecsymbol">Symbol for Decimal</label>
-		  <div class="controls">
-		    <input id="txtdecsymbol" name="txtdecsymbol" type="text" placeholder="eg: Paise" class="input-large">
-		    
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="txtdecsymbol">Symbol for Decimal</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txtdecsymbol" name="txtdecsymbol" placeholder="eg: Paise" >
 		  </div>
 		</div>
 		
 		<!-- Multiple Radios (inline) -->
-		<div class="control-group">
-		  <label class="control-label" for="rdshowinmillioins">Show in Millions</label>
-		  <div class="controls">
-		    <label class="radio inline" for="rdshowinmillioins-0">
-		      <input name="rdshowinmillioins" id="rdshowinmillioins-0" value="True" checked="checked" type="radio">
-		      True
-		    </label>
-		    <label class="radio inline" for="rdshowinmillioins-1">
-		      <input name="rdshowinmillioins" id="rdshowinmillioins-1" value="False" type="radio">
-		      False
-		    </label>
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="rdshowinmillioins">Show in Millions</label>
+		  <div class="col-lg-4">
+		  		<label class="radio-inline">
+			  	<input type="radio" id="rdshowinmillioins-0" name="rdshowinmillioins" value="True" checked="checked"> True
+				</label>
+				<label class="radio-inline">
+  				<input type="radio" id="rdshowinmillioins-1" name="rdshowinmillioins" value="False"> False
+				</label>
 		  </div>
 		</div>
 		
 		<!-- Multiple Radios (inline) -->
-		<div class="control-group">
-		  <label class="control-label" for="rdspacebtwamountandsymbol">Space between Amount &amp; Symbol</label>
-		  <div class="controls">
-		    <label class="radio inline" for="rdspacebtwamountandsymbol-0">
-		      <input name="rdspacebtwamountandsymbol" id="rdspacebtwamountandsymbol-0" value="True" checked="checked" type="radio">
-		      True
-		    </label>
-		    <label class="radio inline" for="rdspacebtwamountandsymbol-1">
-		      <input name="rdspacebtwamountandsymbol" id="rdspacebtwamountandsymbol-1" value="False" type="radio">
-		      False
-		    </label>
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="rdspacebtwamountandsymbol">Space between Amount &amp; Symbol</label>
+		  <div class="col-lg-4">
+		  		<label class="radio-inline">
+			  	<input type="radio" id="rdspacebtwamountandsymbol-0" name="rdspacebtwamountandsymbol" value="True" checked="checked"> True
+				</label>
+				<label class="radio-inline">
+  				<input type="radio" id="rdspacebtwamountandsymbol-1" name="rdspacebtwamountandsymbol" value="False"> False
+				</label>
 		  </div>
 		</div>
 		
 		<!-- Text input-->
-		<div class="control-group">
-		  <label class="control-label" for="txtdecimalplacesforprint">Decimal Places for Printing</label>
-		  <div class="controls">
-		    <input id="txtdecimalplacesforprint" name="txtdecimalplacesforprint" class="input-large" type="number">    
+		<div class="form-group">
+		  <label class="col-lg-2 control-label" for="txtdecimalplacesforprint">Decimal Places for Printing</label>
+		  <div class="col-lg-4">
+		  	<input type="number" class="form-control" id="txtdecimalplacesforprint" name="txtdecimalplacesforprint" >
 		  </div>
 		</div>
 		
@@ -221,6 +214,7 @@
 	  	</div>
 	</div><!--/row-->	
 	<!--/div--> <!--/Well-->
+	</div></form>
 </div> <!--/Container-->
 </fieldset>
 </form>
@@ -232,9 +226,8 @@
 <script type="text/javascript">
 
 //Datepicker
-$('.datepicker').datepicker({
-    format: 'yyyy-mm-dd',
-});
+$('#txtfinancialyear').datepicker();
+
 
 //Form Validation
 /*
@@ -401,12 +394,12 @@ function checkUniqueCompany()
 	var found = false;
 	$.ajax({
 			type: 'GET',
+			async: false, 
 			contentType: 'application/json',
 			url: apiurl+'company.php/companylist',
 			dataType: "json",
 			success: function(data){
 						    $.each(data, function(i, option) {
-						    	alert(option.name);
 						        if(option.name == document.getElementById('txtname').value)
 						        {
 						        	found = true;
