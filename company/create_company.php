@@ -22,15 +22,6 @@
 		<legend>Create Company</legend>
 
   			
-		<!-- Text input-->
-		<!--div class="control-group">
-		  <label class="col-lg-2 control-label" for="txtname">Name</label>
-		  <div class="col-lg-10">
-		    <input id="txtname" name="txtname" placeholder="Name of the Company" class="input-large" type="text" onblur="checkUniqueCompany();">
-		    
-		  </div>
-		</div-->
-		
 		<div class="form-group">
     <label for="txtname" class="col-lg-2 control-label">Name</label>
     <div class="col-lg-4">

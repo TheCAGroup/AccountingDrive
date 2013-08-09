@@ -1,7 +1,0 @@
-Caught exception in fn addcompany in api/company.php on 2013-08-07 13:54:06: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`cadb`.`tbl_company`, CONSTRAINT `fk_tbl_company_1` FOREIGN KEY (`createdby`) REFERENCES `tbl_users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-Caught exception in fn addcompany in api/company.php on 2013-08-07 13:54:56: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`cadb`.`tbl_company`, CONSTRAINT `fk_tbl_company_1` FOREIGN KEY (`createdby`) REFERENCES `tbl_users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
-Caught exception in fn addcompany in api/company.php on 2013-08-07 16:28:23: Undefined variable: _SESSION
-Caught exception in fn addcompany in api/company.php on 2013-08-07 16:29:24: Undefined variable: _SESSION
-Caught exception in fn addcompany in api/company.php on 2013-08-07 16:29:51: Undefined variable: _SESSION
-Caught exception in fn addcompany in api/company.php on 2013-08-07 16:30:32: Undefined variable: _SESSION
-Caught exception in fn addcompany in api/company.php on 2013-08-07 16:31:19: Undefined variable: _SESSION
