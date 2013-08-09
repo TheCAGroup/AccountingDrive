@@ -12,3 +12,8 @@
    {
    		$("#maindiv").load("./entrypage.php");
    }
+   
+function gotocreatestockcategory()
+{
+		$("#maindiv").load("./stockcategory/create_stockcategory.html");
+}
