@@ -15,5 +15,5 @@
    
 function gotocreatestockcategory()
 {
-		$("#maindiv").load("./stockcategory/create_stockcategory.html");
+		$("#maindiv").load("./stockcategory/create_stockcategory.php");
 }
