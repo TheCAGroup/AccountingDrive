@@ -60,7 +60,7 @@
 						//$(function() {
 								    
 								    $.each(data, function(i, option) {
-								        $('#selectbasic').append($('<option/>').attr("value", option.name).text(option.name));
+								        $('#selectbasic').append($('<option/>').attr("value", option.id).text(option.name));
 								    });
 					//				})
 					},
@@ -70,7 +70,10 @@
 			});
 			function setCompany()
 			{
-				document.cookie="companyname =" + document.getElementById('selectbasic').value;
+				var e = document.getElementById("selectbasic");
+				var str = e.options[e.selectedIndex].text;
+				document.cookie="ca_companyname =" + str;
+				document.cookie="ca_companyid =" + document.getElementById('selectbasic').value;
 			}
 		</script>
 	</body>

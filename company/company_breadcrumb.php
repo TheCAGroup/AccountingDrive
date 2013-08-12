@@ -1,6 +1,6 @@
 <?php
-$company=isset($_COOKIE['companyname'])?$_COOKIE['companyname']:"Company Not Selected";
-$period=isset($_COOKIE['period'])?$_COOKIE['period']:"Period Not Selected";
+$company=isset($_COOKIE['ca_companyname'])?$_COOKIE['ca_companyname']:"Company Not Selected";
+$period=isset($_COOKIE['ca_period'])?$_COOKIE['ca_period']:"Period Not Selected";
 ?>
 <html><body>
 <ul class="nav nav-pills">
