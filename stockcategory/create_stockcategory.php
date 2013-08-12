@@ -89,7 +89,7 @@ var q=JSON.stringify
 	$.ajax({
 		type: 'POST',
 		contentType: 'application/json',
-		url: 'http://localhost/ca/api/stock.php/addstock',
+		url: apiurl+'stockcategory.php/addstock',
 		dataType: "json",
 		data:q,
 		success: function(data){
