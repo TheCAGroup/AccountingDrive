@@ -73,7 +73,7 @@
 				var e = document.getElementById("selectbasic");
 				var str = e.options[e.selectedIndex].text;
 				document.cookie="ca_companyname =" + str;
-				document.cookie="ca_companyid =" + document.getElementById('selectbasic').value;
+				document.cookie="ca_companyid =" + e.value;
 			}
 		</script>
 	</body>
