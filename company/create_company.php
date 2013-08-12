@@ -6,6 +6,7 @@
 <meta charset="utf-8"> 
 
 <script type="text/javascript" src="./jquery_validation/dist/jquery.validate.js"></script>
+<link href="css/datepicker.css" rel="stylesheet">
 
 <style>body { font-family: Ubuntu, sans-serif; }</style>
 </head>
@@ -185,7 +186,7 @@
 			<div class="span3 sb-fixed">
 		   		<div class="well sidebar-nav">
 					<ul class="nav nav-pills nav-stacked">
-			 		 	<li><a href="#">Select Company</a></li>
+			 		 	<li><a onclick="gotoselectcompany();">Select Company</a></li>
 			 		 	<li><a href="#">Shut Company</a></li>
 			 		 	<li><a href="#">Company Info</a></li>
 			 		 	<li><a href="#">Features</a></li>
@@ -201,9 +202,6 @@
 </div> <!--/Container-->
 </fieldset>
 </form>
-
-<!--div id="a"><p id="abc" onclick="formSubmit();">Submit</p></div-->
-
 <!-- Javascript placed at the end of the file to make the  page load faster -->
 
 <script type="text/javascript">
@@ -211,35 +209,6 @@
 //Datepicker
 $('#txtfinancialyear').datepicker();
 
-
-//Form Validation
-/*
-$(document).ready(function(){
-			
-			$("#addcompany").validate({
-				rules:{
-					txtname:{
-      					required: true,
-      					minlength: 3
-    			},
-					txtpincode:"number",
-					txttelephone:"number",
-					txtemail:"email",
-				},
-				errorClass: "help-inline"
-				
-			});
-});
-
-jQuery("#addcompany").submit(function() {
-    if($(this).data("valid")) {
-        alert("Valid");
-    }
-    // Rest of your code
-});
-
-$("#addcompany").data("valid", true).aa();
-*/
 
 //Form Validation
 function formSubmit()
