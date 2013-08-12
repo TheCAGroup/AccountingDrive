@@ -1,3 +1,6 @@
+<?php 
+	include 'company_breadcrumb.php'; 
+?>
 <html>
 <head>
 <meta charset="utf-8"> 
@@ -93,7 +96,7 @@ var q=JSON.stringify
 			alert('inserted!');
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			alert('addcompany error: ' + textStatus+errorThrown);
+			alert(generalerror);
 		}
 	});
 }
@@ -102,28 +105,6 @@ function formCancel()
 {
 	$("#maindiv").load("entrypage.php");
 }
-
-//Load Values for the select box  (user list)
-$.ajax({
-		type: 'GET',
-		contentType: 'application/json',
-		url: apiurl+'user.php/userlist',
-		dataType: "json",
-		success: function(data){
-			//alert(data.d);
-			//$(function() {
-					    
-					    $.each(data, function(i, option) {
-					        $('#cmbadministrator').append($('<option/>').attr("value", option.id).text(option.username));
-					    });
-		//				})
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert(generalerror);
-		}
-});
-
-
 </script>
 </body>
 </html>

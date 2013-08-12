@@ -49,7 +49,7 @@ catch (Exception $e)
 
 try
 	{
-	$conn=fn_getConnection();
+	$conn=getConnection();
 	$sql= "insert into tbl_stockcategory(name,alias,companyid,createdby,createdon,modifiedby,modifiedon) values 				(:name,:alias,:companyid,:createdby,CURRENT_TIMESTAMP(),:modifiedby,CURRENT_TIMESTAMP())";
 	$stmt = $conn->prepare($sql);
 	$stmt->bindParam('name',$name);
@@ -102,13 +102,4 @@ $app->delete('/company/:id', function () use ($app) {
 
 $app->run();
 
-function fn_getConnection()
-{
-	$dbhost="localhost";
-	$dbuser="root";
-	$dbpassword="password";
-	$dbname="cadb";
-	$dbh=new PDO("mysql:host=$dbhost;dbname=$dbname",$dbuser,$dbpassword);
-	$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	return $dbh;
-}
+
