@@ -5,7 +5,7 @@
 <body>
 	
 <form id="addcompany" class="form-horizontal" method="post"><!--action="trycompanyinsert.php" -->
-<fieldset>
+ <fieldset>
 <div class = "container">
 	<div class="row show-grid">
   		<div class="col-lg-8">
@@ -38,7 +38,7 @@
 			
 			<!--Cancel Button-->
 			<div id="cancel_btn_container" style="float:right" onclick="formCancel();">
-			    <label id="btn_label">Cancel</label>
+			    <label id="btn_label_cancel">Cancel</label>
 			</div>	
 			</div>
 		</div>
@@ -60,10 +60,12 @@
 	  	</div>
 	</div><!--/row-->	
 	<!--/div--> <!--/Well-->
-	</div></form>
-</div> <!--/Container-->
-</fieldset>
-</form>
+	</div>
+	</fieldset>
+	</form>
+<!--/div---> <!--/Container-->
+
+
 
 <script>
 
@@ -95,6 +97,32 @@ var q=JSON.stringify
 		}
 	});
 }
+
+function formCancel()
+{
+	$("#maindiv").load("entrypage.php");
+}
+
+//Load Values for the select box  (user list)
+$.ajax({
+		type: 'GET',
+		contentType: 'application/json',
+		url: apiurl+'user.php/userlist',
+		dataType: "json",
+		success: function(data){
+			//alert(data.d);
+			//$(function() {
+					    
+					    $.each(data, function(i, option) {
+					        $('#cmbadministrator').append($('<option/>').attr("value", option.id).text(option.username));
+					    });
+		//				})
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert(generalerror);
+		}
+});
+
 
 </script>
 </body>
