@@ -50,7 +50,7 @@ catch (Exception $e)
 try
 	{
 	$conn=getConnection();
-	$sql= "insert into tbl_stockcategory(name,alias,companyid,createdby,createdon,modifiedby,modifiedon) values 				(:name,:alias,:companyid,:createdby,CURRENT_TIMESTAMP(),:modifiedby,CURRENT_TIMESTAMP())";
+	$sql= "insert into tbl_stockcategory(name,alias,companyid,createdby,createdon,modifiedby,modifiedon) values (:name,:alias,:companyid,:createdby,CURRENT_TIMESTAMP(),:modifiedby,CURRENT_TIMESTAMP())";
 	$stmt = $conn->prepare($sql);
 	$stmt->bindParam('name',$name);
 	$stmt->bindParam('alias',$alias);
