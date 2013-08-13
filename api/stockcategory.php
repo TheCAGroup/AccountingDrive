@@ -38,6 +38,7 @@ try{
 	$modifiedby=1;//$_SESSION["modifiedby"];
 	$name=$request["name"];
 	$alias=$request["alias"];
+	$companyid=$request["companyid"];
 	}
 catch (Exception $e) 
 	{

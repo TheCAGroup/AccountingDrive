@@ -18,6 +18,7 @@ function getConnection()
 	$dbh=new PDO("mysql:host=$dbhost;dbname=$dbname",$dbuser,$dbpassword);
 	$dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 	return $dbh;
+ 
 }
 
 ?>

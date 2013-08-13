@@ -76,12 +76,14 @@ function addstockcategory()
 {
 var name=document.getElementById('txtname').value;
 var alias=document.getElementById('txtalias').value;
+var companyid=getCookie("ca_companyid");
 var createdby=1;
 var modifiedby=1;
 var q=JSON.stringify
 	({
 	'name':name,
 	'alias':alias,
+	'companyid':companyid
 	'createdby':createdby,
 	'modifiedby':modifiedby
         });
