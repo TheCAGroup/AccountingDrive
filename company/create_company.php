@@ -11,7 +11,19 @@
 <style>body { font-family: Ubuntu, sans-serif; }</style>
 </head>
 <body>
-	
+<!--CHECK FOR PARAMETERS
+	--NO PARAMS - CREATE
+	--ID - DISPLAY
+	--ID, ISEDIT(TRUE) - EDIT
+-->
+<?php
+$id=-1;
+$isedit=FALSE;
+if(isset($_GET['ID']))
+	$id=$_GET['ID'];
+if(isset($_GET['ISEDIT']))
+	$isedit=$_GET['ISEDIT'];
+?> 	
 <form id="addcompany" class="form-horizontal" method="post"><!--action="trycompanyinsert.php" -->
 <fieldset>
 <div class = "container">
@@ -20,7 +32,14 @@
 			<div class="well">
 
 		<!-- Form Name -->
-		<legend>Create Company</legend>
+		<legend>
+			<?php 
+			if($id>-1)
+				if($isedit) echo 'Edit Company';
+				else echo 'Company Info';
+			else echo'Create Company';
+			?>
+		</legend>
 
   			
 		<div class="form-group">
@@ -170,9 +189,24 @@
 		
 		<div style="width:50%; height:100px; padding-left: 5%;">
 			<!--Submit Button-->
-			<div id="submit_btn_container"style="float:left" onclick="formSubmit();">
-			    <label id="btn_label">Accept</label>
-			</div>
+			<?php 
+			if($id>-1)
+				if($isedit)//Edit company 
+					{
+						echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(true);">
+			    	<label id="btn_label">Update</label>
+				</div>';
+					}
+				else//Display Company Info
+					{//no accept btn
+					}
+			else //Create Company
+				{
+					echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(false);">
+			    	<label id="btn_label">Accept</label>
+				</div>';
+				}
+			?>
 			
 			<!--Cancel Button-->
 			<div id="cancel_btn_container" style="float:right" onclick="formCancel();">
@@ -211,7 +245,7 @@ $('#txtfinancialyear').datepicker();
 
 
 //Form Validation
-function formSubmit()
+function formSubmit(frmedit)
 {
 	
 	$("#addcompany").validate({
@@ -243,59 +277,42 @@ function formSubmit()
 			
 		if ( $("#addcompany").valid())
 		{
-			//alert("Return value: f- add t-no"+checkUniqueCompany());
-			
-			var alreadyexist = checkUniqueCompany();
-			//alert("1. "+alreadyexist);
-			
-			if (alreadyexist == false)
+			if(frmedit)//update
 			{
-				addCompany();
+				updateCompany();
 			}
-			
+			else//create
+			{
+				var alreadyexist = checkUniqueCompany();
+				if (alreadyexist == false)
+				{
+					addCompany();
+				}
+			}
 		}
 }
 function addCompany()
 {
-	var name=document.getElementById('txtname').value;
-	var mailingname=document.getElementById('txtname').value;
-	var address=document.getElementById('txtaddress').value;
-	var country=document.getElementById('cmbcountry').value;
-	var state=document.getElementById('cmbstate').value;
-	var pincode=document.getElementById('txtpincode').value;
-	var telephoneno=document.getElementById('txttelephone').value;
-	var email=document.getElementById('txtemail').value;
-	var currencysymbol=document.getElementById('txtcurrencysymbol').value;
-	var financialyear=document.getElementById('txtfinancialyear').value;
-	var administrator=document.getElementById('cmbadministrator').value;
-	var currencyname=document.getElementById('txtcurrency').value;
-	var decimalplaces=document.getElementById('txtdecplaces').value;
-	var symbolfordecimal=document.getElementById('txtdecsymbol').value;
-	var amountsinmillions=document.getElementById('rdshowinmillioins-0').checked;
-	var spacebtwamountandsymbol=document.getElementById('rdspacebtwamountandsymbol-0').checked;
-	var decimalplacsforprint=document.getElementById('txtdecimalplacesforprint').value;
-	var createdby=1;
-	var modifiedby=1;
 	var q=JSON.stringify({
-		'name':name,
-		'mailingname':mailingname,
-		'address':address,
-		'country':country,
-		'state':state,
-		'pincode':pincode,
-		'telephoneno':telephoneno,
-		'email':email,
-		'currencysymbol':currencysymbol,
-		'financialyear':financialyear,
-		'administrator':administrator,
-		'currencyname':currencyname,
-		'decimalplaces':decimalplaces,
-		'symbolfordecimal':symbolfordecimal,
-		'amountsinmillions':amountsinmillions,
-		'spacebtwamountandsymbol':spacebtwamountandsymbol,
-		'decimalplacsforprint':decimalplacsforprint,
-		'createdby':createdby,
-		'modifiedby':modifiedby
+		'name':$("input#txtname").val(),
+		'mailingname':$("input#txtname").val(),
+		'address':$("#txtaddress").val(),
+		'country':$("#cmbcountry").val(),
+		'state':$("#cmbstate").val(),
+		'pincode':$("input#txtpincode").val(),
+		'telephoneno':$("input#txttelephone").val(),
+		'email':$("input#txtemail").val(),
+		'currencysymbol':$("input#txtcurrencysymbol").val(),
+		'financialyear':$("input#txtfinancialyear").val(),
+		'administrator':$("#cmbadministrator").val(),
+		'currencyname':$("input#txtcurrency").val(),
+		'decimalplaces':$("input#txtdecplaces").val(),
+		'symbolfordecimal':$("input#txtdecsymbol").val(),
+		'amountsinmillions':$("input#rdshowinmillioins-0").val(),
+		'spacebtwamountandsymbol':$("input#rdspacebtwamountandsymbol-0").val(),
+		'decimalplacsforprint':$("input#txtdecimalplacesforprint").val(),
+		'createdby':1,
+		'modifiedby':1
 	        });
 
 	$.ajax({
