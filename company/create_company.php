@@ -5,10 +5,52 @@
 	
 <meta charset="utf-8"> 
 
-<script type="text/javascript" src="./jquery_validation/dist/jquery.validate.js"></script>
-<link href="css/datepicker.css" rel="stylesheet">
+
+<!--link href="css/datepicker.css" rel="stylesheet"-->
 
 <style>body { font-family: Ubuntu, sans-serif; }</style>
+
+<!----TESTING ---->
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="../jquery_validation/dist/jquery.validate.js"></script>
+<!--- END OF TESTING ----->
+
+<script>
+	function displayCompany(id)
+{
+		$.ajax({
+		type: 'GET',
+		contentType: 'application/json',
+		url: apiurl+'company.php/companydetails/'+id,
+		dataType: "json",
+		success: function(data){
+			//alert(data[0].mailingname);
+			
+		$('#txtname').val(data[0].name);
+		$("#txtaddress").val(data[0].address);
+		$("#cmbcountry").val(data[0].country);
+		$("#cmbstate").val(data[0].state);
+		$("#txtpincode").val(data[0].pincode);
+		$("#txttelephone").val(data[0].telephoneno);
+		$("#txtemail").val(data[0].email);
+		$("#txtcurrencysymbol").val(data[0].currencysymbol);
+		$("#txtfinancialyear").val(data[0].financialyear);
+		$("#cmbadministrator").val(data[0].administrator);
+		$("#txtcurrency").val(data[0].currencyname);
+		$("#txtdecplaces").val(data[0].decimalplaces);
+		$("#txtdecsymbol").val(data[0].symbolfordecimal);
+		$("#rdshowinmillioins-0").val(data[0].amountsinmillions);
+		$("#rdspacebtwamountandsymbol-0").val(data[0].spacebtwamountandsymbol);
+		$("#txtdecimalplacesforprint").val(data[0].decimalplacsforprint);
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert('displaycompany error: ' + textStatus+errorThrown);
+		}
+	});
+}	
+</script>
 </head>
 <body>
 <!--CHECK FOR PARAMETERS
@@ -196,6 +238,7 @@ if(isset($_GET['ISEDIT']))
 						echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(true);">
 			    	<label id="btn_label">Update</label>
 				</div>';
+				echo '<script>displayCompany(4);</script>';
 					}
 				else//Display Company Info
 					{//no accept btn
@@ -332,45 +375,7 @@ function addCompany()
 	});
 }
 
-function displayCompany(id)
-{
-		$.ajax({
-		type: 'GET',
-		contentType: 'application/json',
-		url: apiurl+'company.php/displaycompany/'+id,
-		dataType: "json",
-		success: function(data){
-			$('#wineId').val(data.id);
-			alert('Inserted!');
-			//location.reload();
-		},
-		error: function(jqXHR, textStatus, errorThrown){
-			alert('addcompany error: ' + textStatus+errorThrown);
-		}
-	});
-	
-	var q=JSON.stringify({
-		'name':$("input#txtname").val(),
-		'mailingname':$("input#txtname").val(),
-		'address':$("#txtaddress").val(),
-		'country':$("#cmbcountry").val(),
-		'state':$("#cmbstate").val(),
-		'pincode':$("input#txtpincode").val(),
-		'telephoneno':$("input#txttelephone").val(),
-		'email':$("input#txtemail").val(),
-		'currencysymbol':$("input#txtcurrencysymbol").val(),
-		'financialyear':$("input#txtfinancialyear").val(),
-		'administrator':$("#cmbadministrator").val(),
-		'currencyname':$("input#txtcurrency").val(),
-		'decimalplaces':$("input#txtdecplaces").val(),
-		'symbolfordecimal':$("input#txtdecsymbol").val(),
-		'amountsinmillions':$("input#rdshowinmillioins-0").val(),
-		'spacebtwamountandsymbol':$("input#rdspacebtwamountandsymbol-0").val(),
-		'decimalplacsforprint':$("input#txtdecimalplacesforprint").val(),
-		'createdby':1,
-		'modifiedby':1
-	        });
-}
+
 
 function formCancel()
 {

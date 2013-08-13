@@ -23,29 +23,26 @@ $app->get('/companylist', function () use ($app) {
 });
 
  // GET route with parameter
-$app->get('/company/:id', function () use ($app) {
+$app->get('/companydetails/:id', function ($id) use ($app) {
  
-   $request = (array) json_decode($app->request()->getBody());
-   $sql = "select id,name FROM tbl_company";
+   $sql = "select `id`,`name`, `mailingname`, `address`, `country`, `state`, `pincode`, `telephoneno`, `email`, 
+   `currencysymbol`, `financialyear`, `booksbeginning`, `administrator`, `currencyname`, `decimalplaces`, 
+   `symbolfordecimal`, `amountsinmillions`, `spacebtwamountandsymbol`, `decimalplacsforprint`, `createdby`, 
+   `createdon`, `modifiedby`, `modifiedon` from `tbl_company` WHERE id=:id";
     try {
-        $db = getConnection();
-        $stmt = $db->query($sql);
+        $conn = getConnection();
+		$stmt = $conn->prepare($sql);
+		$stmt->bindParam('id',$id);
+    	$stmt->execute();    
         $company = $stmt->fetchAll(PDO::FETCH_OBJ);
         $db = null;
         echo json_encode($company);
     } catch(PDOException $e) {
-        echo '{"error":{"text":'. $e->getMessage() .'}}';
+        logerrors::writelog('companydetails','api/company.php/companydetails/id',$e->getMessage());
+		$app->response()->header('Content-Type', 'application/json');
+		echo json_encode('-1');
+		return;
     }
-   
-   // use $request['id'] to query database based on id and create response...
-   
-   $response['id'] = 1;
-   $response['name'] = "Mike Jones";
-   $response['favoriteColor'] = "blue";
-   $response['favoriteFood'] = "tacos";
-   $app->response()->header('Content-Type', 'application/json');
-   echo json_encode($response);
- 
 });
 
 
