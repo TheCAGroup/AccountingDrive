@@ -76,14 +76,14 @@ function addstockcategory()
 {
 var name=document.getElementById('txtname').value;
 var alias=document.getElementById('txtalias').value;
-var companyid=getCookie("ca_companyid");
+var companyid = readCookie("ca_companyid");
 var createdby=1;
 var modifiedby=1;
 var q=JSON.stringify
 	({
 	'name':name,
 	'alias':alias,
-	'companyid':companyid
+	'companyid':companyid,
 	'createdby':createdby,
 	'modifiedby':modifiedby
         });
@@ -91,7 +91,7 @@ var q=JSON.stringify
 	$.ajax({
 		type: 'POST',
 		contentType: 'application/json',
-		url: apiurl+'stockcategory.php/addstock',
+		url: apiurl+'stockcategory.php/addstockcategory',
 		dataType: "json",
 		data:q,
 		success: function(data){

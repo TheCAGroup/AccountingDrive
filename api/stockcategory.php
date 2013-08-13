@@ -1,5 +1,6 @@
 <?php
 require 'Slim/Slim.php';
+require 'conf.php';
 require 'logerrors.php';
 
 \Slim\Slim::registerAutoloader();
@@ -31,8 +32,10 @@ $app->get('/company/:id', function () use ($app) {
 
 
 // POST route
-$app->post('/addstock', function () use ($app) {
+$app->post('/addstockcategory', function () use ($app) {
+	
 	$request = (array) json_decode($app->request()->getBody());
+	//var_dump($request);
 try{
 	$createdby=1;//$_SESSION["createdby"];
 	$modifiedby=1;//$_SESSION["modifiedby"];
@@ -42,12 +45,11 @@ try{
 	}
 catch (Exception $e) 
 	{
-	logerrors:: writelog('addstock','api/stock.php',$e->getMessage());
+	logerrors:: writelog('addstockcategory','api/stockcategory.php',$e->getMessage());
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode('-1');
 	return;
 	}
-
 try
 	{
 	$conn=getConnection();
@@ -70,7 +72,7 @@ try
 	}
 catch (PDOException $e) 
 	{
-	logerrors::writelog('addstock','api/stock.php',$e->getMessage());
+	logerrors::writelog('addstockcategory','api/stockcategory.php',$e->getMessage().$name.$alias.$companyid.'*');
 	$app->response()->header('Content-Type', 'application/json');
 	echo json_encode('-1');
 	return;
