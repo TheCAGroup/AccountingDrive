@@ -17,7 +17,7 @@
 				<!-- Select Basic -->
 				<div class="input-append">
 				  <label for="selectbasic">Select Company </label>
-				  	<select id="selectbasic" name="selectbasic" class="form-control">
+				  	<select id="selectbasic" name="selectbasic" class="form-control" size="5">
 				    </select>
 				  </div>
 				<br>
