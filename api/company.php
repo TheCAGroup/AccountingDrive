@@ -21,11 +21,21 @@ $app->get('/companylist', function () use ($app) {
     }
  
 });
-/*
+
  // GET route with parameter
 $app->get('/company/:id', function () use ($app) {
  
    $request = (array) json_decode($app->request()->getBody());
+   $sql = "select id,name FROM tbl_company";
+    try {
+        $db = getConnection();
+        $stmt = $db->query($sql);
+        $company = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($company);
+    } catch(PDOException $e) {
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+    }
    
    // use $request['id'] to query database based on id and create response...
    
@@ -37,7 +47,6 @@ $app->get('/company/:id', function () use ($app) {
    echo json_encode($response);
  
 });
-*/
 
 
 // POST route

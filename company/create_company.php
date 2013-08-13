@@ -291,6 +291,7 @@ function formSubmit(frmedit)
 			}
 		}
 }
+
 function addCompany()
 {
 	var q=JSON.stringify({
@@ -331,6 +332,45 @@ function addCompany()
 	});
 }
 
+function displayCompany(id)
+{
+		$.ajax({
+		type: 'GET',
+		contentType: 'application/json',
+		url: apiurl+'company.php/displaycompany/'+id,
+		dataType: "json",
+		success: function(data){
+			$('#wineId').val(data.id);
+			alert('Inserted!');
+			//location.reload();
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert('addcompany error: ' + textStatus+errorThrown);
+		}
+	});
+	
+	var q=JSON.stringify({
+		'name':$("input#txtname").val(),
+		'mailingname':$("input#txtname").val(),
+		'address':$("#txtaddress").val(),
+		'country':$("#cmbcountry").val(),
+		'state':$("#cmbstate").val(),
+		'pincode':$("input#txtpincode").val(),
+		'telephoneno':$("input#txttelephone").val(),
+		'email':$("input#txtemail").val(),
+		'currencysymbol':$("input#txtcurrencysymbol").val(),
+		'financialyear':$("input#txtfinancialyear").val(),
+		'administrator':$("#cmbadministrator").val(),
+		'currencyname':$("input#txtcurrency").val(),
+		'decimalplaces':$("input#txtdecplaces").val(),
+		'symbolfordecimal':$("input#txtdecsymbol").val(),
+		'amountsinmillions':$("input#rdshowinmillioins-0").val(),
+		'spacebtwamountandsymbol':$("input#rdspacebtwamountandsymbol-0").val(),
+		'decimalplacsforprint':$("input#txtdecimalplacesforprint").val(),
+		'createdby':1,
+		'modifiedby':1
+	        });
+}
 
 function formCancel()
 {
