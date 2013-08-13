@@ -22,7 +22,7 @@
 			 		 	<li><a href="#" onclick="gotoselectcompany();">Select Company</a></li>
 			 		 	<li><a href="#" onclick="gotocreatecompany();">Create Company</a></li>
 			 		 	<li><a href="#">Shut Company</a></li>
-			 		 	<li><a href="#">Company Info</a></li>
+			 		 	<li><a href="#" onclick="gotocompanyinfo();">Company Info</a></li>
 			 		 	<li><a href="#">Features</a></li>
 			 		 	<li><a href="#">Configure</a></li>
 					</ul>   

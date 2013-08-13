@@ -23,10 +23,24 @@
 				<br>
 			
 				<!-- Button -->
-				<div class="control-group">
-				  <div class="controls">
-				    <button id="btnsubmit" name="btnsubmit" class="btn btn-info" onclick="setCompany();">Submit</button>
+				<div class="form-group">
+				  <div class="col-lg-2">
+				    <button id="btnselect" name="btnselect" class="btn btn-info" onclick="setCompany();">Select</button>
 				  </div>
+				  
+				  <div class="col-lg-2">
+				    <button id="btninfo" name="btninfo" class="btn btn-info" onclick="setCompany();">Info</button>
+				  </div>
+				  
+				  <div class="col-lg-2" onclick="local_gotoupdatecompany();">
+				    <!--button id="btnedit" name="btnedit" class="btn btn-info" onclick="local_gotoupdatecompany();">Edit</button-->
+				    Edit
+				  </div>
+				  
+				  <div class="col-lg-2">
+				    <button id="btndelete" name="btndelete" class="btn btn-info" onclick="setCompany();">Delete</button>
+				  </div>
+				  
 				</div>
 				
 				</fieldset>
@@ -68,6 +82,11 @@
 						alert(generalerror);
 					}
 			});
+			function local_gotoupdatecompany()
+			{
+				var selcomp=document.getElementById("selectbasic").value;
+				gotoupdatecompany(selcomp);
+			}
 			function setCompany()
 			{
 				var e = document.getElementById("selectbasic");

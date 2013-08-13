@@ -1,24 +1,14 @@
 <?php include 'company_breadcrumb.php'; ?>
 <html>
 <head>
-<title>Add Company</title>
 	
 <meta charset="utf-8"> 
 
 
-<!--link href="css/datepicker.css" rel="stylesheet"-->
-
 <style>body { font-family: Ubuntu, sans-serif; }</style>
 
-<!----TESTING ---->
-<script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/config.js"></script>
-<script type="text/javascript" src="../bootstrap/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="../jquery_validation/dist/jquery.validate.js"></script>
-<!--- END OF TESTING ----->
-
 <script>
-	function displayCompany(id)
+function displayCompany(id)
 {
 		$.ajax({
 		type: 'GET',
@@ -26,29 +16,32 @@
 		url: apiurl+'company.php/companydetails/'+id,
 		dataType: "json",
 		success: function(data){
-			//alert(data[0].mailingname);
-			
-		$('#txtname').val(data[0].name);
-		$("#txtaddress").val(data[0].address);
-		$("#cmbcountry").val(data[0].country);
-		$("#cmbstate").val(data[0].state);
-		$("#txtpincode").val(data[0].pincode);
-		$("#txttelephone").val(data[0].telephoneno);
-		$("#txtemail").val(data[0].email);
-		$("#txtcurrencysymbol").val(data[0].currencysymbol);
-		$("#txtfinancialyear").val(data[0].financialyear);
-		$("#cmbadministrator").val(data[0].administrator);
-		$("#txtcurrency").val(data[0].currencyname);
-		$("#txtdecplaces").val(data[0].decimalplaces);
-		$("#txtdecsymbol").val(data[0].symbolfordecimal);
-		$("#rdshowinmillioins-0").val(data[0].amountsinmillions);
-		$("#rdspacebtwamountandsymbol-0").val(data[0].spacebtwamountandsymbol);
-		$("#txtdecimalplacesforprint").val(data[0].decimalplacsforprint);
+			//alert(JSON.stringify(data));
+		JSONtoform(data[0]);	
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			alert('displaycompany error: ' + textStatus+errorThrown);
 		}
 	});
+}
+function JSONtoform(data)
+{
+		$('#txtname').val(data.name);
+		$("#txtaddress").val(data.address);
+		$("#cmbcountry").val(data.country);
+		$("#cmbstate").val(data.state);
+		$("#txtpincode").val(data.pincode);
+		$("#txttelephone").val(data.telephoneno);
+		$("#txtemail").val(data.email);
+		$("#txtcurrencysymbol").val(data.currencysymbol);
+		$("#txtfinancialyear").val(data.financialyear);
+		$("#cmbadministrator").val(data.administrator);
+		$("#txtcurrency").val(data.currencyname);
+		$("#txtdecplaces").val(data.decimalplaces);
+		$("#txtdecsymbol").val(data.symbolfordecimal);
+		$("#rdshowinmillioins-0").val(data.amountsinmillions);
+		$("#rdspacebtwamountandsymbol-0").val(data.spacebtwamountandsymbol);
+		$("#txtdecimalplacesforprint").val(data.decimalplacsforprint);
 }	
 </script>
 </head>
@@ -85,11 +78,11 @@ if(isset($_GET['ISEDIT']))
 
   			
 		<div class="form-group">
-    <label for="txtname" class="col-lg-2 control-label">Name</label>
-    <div class="col-lg-4">
-      <input type="text" class="form-control" id="txtname" placeholder="Name">
-    </div>
-  </div>
+		    <label for="txtname" class="col-lg-2 control-label">Name</label>
+		    <div class="col-lg-4">
+		      <input type="text" class="form-control" id="txtname" placeholder="Name">
+		   </div>
+		</div>
   
 		<!-- Textarea -->
 		<div class="form-group">
@@ -235,17 +228,17 @@ if(isset($_GET['ISEDIT']))
 			if($id>-1)
 				if($isedit)//Edit company 
 					{
-						echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(true);">
+						echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(true,'.$id.');">
 			    	<label id="btn_label">Update</label>
 				</div>';
-				echo '<script>displayCompany(4);</script>';
+				echo '<script>displayCompany('.$_GET['ID'].');</script>';
 					}
 				else//Display Company Info
 					{//no accept btn
 					}
 			else //Create Company
 				{
-					echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(false);">
+					echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(false,-1);">
 			    	<label id="btn_label">Accept</label>
 				</div>';
 				}
@@ -288,7 +281,7 @@ $('#txtfinancialyear').datepicker();
 
 
 //Form Validation
-function formSubmit(frmedit)
+function formSubmit(frmedit,id)
 {
 	
 	$("#addcompany").validate({
@@ -322,7 +315,7 @@ function formSubmit(frmedit)
 		{
 			if(frmedit)//update
 			{
-				updateCompany();
+				updateCompany(id);
 			}
 			else//create
 			{
@@ -334,12 +327,10 @@ function formSubmit(frmedit)
 			}
 		}
 }
-
-function addCompany()
+function formtoJSON()
 {
 	var q=JSON.stringify({
 		'name':$("input#txtname").val(),
-		'mailingname':$("input#txtname").val(),
 		'address':$("#txtaddress").val(),
 		'country':$("#cmbcountry").val(),
 		'state':$("#cmbstate").val(),
@@ -354,11 +345,33 @@ function addCompany()
 		'symbolfordecimal':$("input#txtdecsymbol").val(),
 		'amountsinmillions':$("input#rdshowinmillioins-0").val(),
 		'spacebtwamountandsymbol':$("input#rdspacebtwamountandsymbol-0").val(),
-		'decimalplacsforprint':$("input#txtdecimalplacesforprint").val(),
-		'createdby':1,
-		'modifiedby':1
+		'decimalplacsforprint':$("input#txtdecimalplacesforprint").val()
 	        });
+	 return q;	
+}
+function updateCompany(id) 
+{
+	var q=formtoJSON();
+	//alert(q);
+	$.ajax({
+		type: 'PUT',
+		contentType: 'application/json',
+		url: apiurl+'company.php/updatecompany/'+id,
+		dataType: "json",
+		data:q,
+		success: function(data){
+			alert('Updated!');
+			//location.reload();
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert('updatecompany error: ' + textStatus+errorThrown);
+		}
+	});  
+}
 
+function addCompany()
+{
+	var q=formtoJSON();
 	$.ajax({
 		type: 'POST',
 		contentType: 'application/json',

@@ -1,4 +1,8 @@
-<html lang="en"><head>
+<?php 
+$_SESSION['ca_userid']=1;
+?>
+<html>
+	<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -9,8 +13,8 @@
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
     <!--link href="css/datepicker.css" rel="stylesheet"-->
-    
     <script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+    <script type="text/javascript" src="jquery_validation/dist/jquery.validate.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
     <!-- Custom styles for this template -->
