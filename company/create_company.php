@@ -8,7 +8,7 @@
 <style>body { font-family: Ubuntu, sans-serif; }</style>
 
 <script>
-function displayCompany(id)
+function displayCompanyInfo(id)
 {
 		$.ajax({
 		type: 'GET',
@@ -23,6 +23,34 @@ function displayCompany(id)
 			alert('displaycompany error: ' + textStatus+errorThrown);
 		}
 	});
+}
+function frm_editCompany(id)
+{
+displayCompanyInfo(id);	
+}
+function frm_companyInfo(id)
+{
+	displayCompanyInfo(id);
+	enabledisableform(true);
+}
+function enabledisableform(isdisable)
+{
+	$("#txtname").attr("disabled", isdisable);
+	$("#txtaddress").attr("disabled", isdisable);
+	$("#cmbcountry").attr("disabled", isdisable);
+	$("#cmbstate").attr("disabled", isdisable);
+	$("#txtpincode").attr("disabled", isdisable);
+	$("#txttelephone").attr("disabled", isdisable);
+	$("#txtemail").attr("disabled", isdisable);
+	$("#txtcurrencysymbol").attr("disabled", isdisable);
+	$("#txtfinancialyear").attr("disabled", isdisable);
+	$("#cmbadministrator").attr("disabled", isdisable);
+	$("#txtcurrency").attr("disabled", isdisable);
+	$("#txtdecplaces").attr("disabled", isdisable);
+	$("#txtdecsymbol").attr("disabled", isdisable);
+	$("#rdshowinmillioins-0").attr("disabled", isdisable);
+	$("#rdspacebtwamountandsymbol-0").attr("disabled", isdisable);
+	$("#txtdecimalplacesforprint").attr("disabled", isdisable);
 }
 function JSONtoform(data)
 {
@@ -231,10 +259,11 @@ if(isset($_GET['ISEDIT']))
 						echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(true,'.$id.');">
 			    	<label id="btn_label">Update</label>
 				</div>';
-				echo '<script>displayCompany('.$_GET['ID'].');</script>';
+				echo '<script>frm_editCompany('.$_GET['ID'].');</script>';
 					}
 				else//Display Company Info
 					{//no accept btn
+					echo '<script>frm_companyInfo('.$_GET['ID'].');</script>';
 					}
 			else //Create Company
 				{
@@ -349,6 +378,8 @@ function formtoJSON()
 	        });
 	 return q;	
 }
+
+
 function updateCompany(id) 
 {
 	var q=formtoJSON();

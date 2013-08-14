@@ -24,12 +24,14 @@
 			
 				<!-- Button -->
 				<div class="form-group">
-				  <div class="col-lg-2">
-				    <button id="btnselect" name="btnselect" class="btn btn-info" onclick="setCompany();">Select</button>
+				  <div class="col-lg-2"  onclick="setCompany();">
+				  	Select
+				    <!--button id="btnselect" name="btnselect" class="btn btn-info"">Select</button-->
 				  </div>
 				  
-				  <div class="col-lg-2">
-				    <button id="btninfo" name="btninfo" class="btn btn-info" onclick="setCompany();">Info</button>
+				  <div class="col-lg-2" onclick="local_gotodisplaycompany();">
+				    <!--button id="btninfo" name="btninfo" class="btn btn-info" onclick="local_gotodisplaycompany();">Info</button-->
+				    Info
 				  </div>
 				  
 				  <div class="col-lg-2" onclick="local_gotoupdatecompany();">
@@ -37,10 +39,29 @@
 				    Edit
 				  </div>
 				  
-				  <div class="col-lg-2">
-				    <button id="btndelete" name="btndelete" class="btn btn-info" onclick="setCompany();">Delete</button>
+				  <div class="col-lg-2"  onclick="local_gotodeletecompany();">
+				  	Delete
+				    <!--button id="btndelete" name="btndelete" class="btn btn-info" onclick="setCompany();">Delete</button-->
 				  </div>
-				  
+				  <!------------------------------------------->
+				  <!-- Button to trigger modal -->
+				<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+				 
+				<!-- Modal -->
+				<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-header">
+				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				    <h3 id="myModalLabel">Delete Company</h3>
+				  </div>
+				  <div class="modal-body">
+				    <p>Do you really want to DELETE the Company?</p>
+				  </div>
+				  <div class="modal-footer">
+				    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+				    <button class="btn btn-primary">Delete</button>
+				  </div>
+				</div>
+				  <!------------------------------------------->
 				</div>
 				
 				</fieldset>
@@ -86,6 +107,16 @@
 			{
 				var selcomp=document.getElementById("selectbasic").value;
 				gotoupdatecompany(selcomp);
+			}
+			function local_gotodeletecompany()
+			{
+				var selcomp=document.getElementById("selectbasic").value;
+				gotodeletecompany(selcomp);
+			}
+			function local_gotodisplaycompany()
+			{
+				var selcomp=document.getElementById("selectbasic").value;
+				gotodisplaycompany(selcomp);
 			}
 			function setCompany()
 			{

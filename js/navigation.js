@@ -10,11 +10,12 @@ function gotoselectcompany()
 
 function gotoupdatecompany(selcomp)
 {
-	//$("#maindiv").load(home+"/company/create_company.php");
 	$("#maindiv").load(home+"/company/create_company.php?ID="+selcomp+"&ISEDIT=TRUE");
-	//alert("Loaded");
 }
-   
+function gotodisplaycompany(selcomp)
+{
+	$("#maindiv").load(home+"/company/create_company.php?ID="+selcomp);
+}   
 function gotoHomePage()
 {
    	$("#maindiv").load(home+"/entrypage.php");
