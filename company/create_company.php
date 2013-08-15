@@ -144,7 +144,7 @@ if(isset($_GET['ISEDIT']))
 		<div class="form-group">
 		  <label class="col-lg-2 control-label" for="txtpincode">Pincode</label>
 		  <div class="col-lg-4">
-		  	<input type="text" class="form-control" id="txtpincode" name="txtpincode" placeholder="Name">
+		  	<input type="text" class="form-control" id="txtpincode" name="txtpincode" placeholder="Pincode">
 		  </div>
 		</div>
 		
@@ -410,8 +410,17 @@ function addCompany()
 		dataType: "json",
 		data:q,
 		success: function(data){
-			alert('Inserted!');
-			//location.reload();
+			
+	        if(JSON.stringify(data) == '"-1"')
+	        {
+	        	alert('Try Again');
+	        }
+	        else
+	        {
+	        	alert('Inserted!');
+	        	$('#addcompany')[0].reset();
+	        }
+						   
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			alert('addcompany error: ' + textStatus+errorThrown);

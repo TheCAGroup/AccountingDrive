@@ -25,7 +25,7 @@ $app->get('/companylist', function () use ($app) {
  // GET route with parameter
 $app->get('/companydetails/:id', function ($id) use ($app) {
  
-   $sql = "select `id`,`name`, `mailingname`, `address`, `country`, `state`, `pincode`, `telephoneno`, `email`, 
+   $sql = "select `id`,`name`, `address`, `country`, `state`, `pincode`, `telephoneno`, `email`, 
    `currencysymbol`, `financialyear`, `administrator`, `currencyname`, `decimalplaces`, 
    `symbolfordecimal`, `amountsinmillions`, `spacebtwamountandsymbol`, `decimalplacsforprint`, `createdby`, 
    `createdon`, `modifiedby`, `modifiedon` from `tbl_company` WHERE id=:id";
@@ -53,7 +53,6 @@ $app->post('/addcompany', function () use ($app) {
 try{
 	
 	$name=$request["name"];
-	$mailingname=$request["mailingname"];
 	$address=$request["address"];
 	$country=$request["country"];
 	$state=$request["state"];
@@ -82,9 +81,9 @@ catch (Exception $e)
 	
 try{
 	
-$sql="INSERT INTO tbl_company(name,mailingname,address,country,state,pincode,telephoneno,email,currencysymbol,financialyear,administrator,
+$sql="INSERT INTO tbl_company(name,address,country,state,pincode,telephoneno,email,currencysymbol,financialyear,administrator,
 currencyname,decimalplaces,symbolfordecimal,amountsinmillions,spacebtwamountandsymbol,decimalplacsforprint,createdby,createdon,modifiedby,
-modifiedon) VALUES(:name,:mailingname,:address,:country,:state,:pincode,:telephoneno,:email,:currencysymbol,:financialyear,
+modifiedon) VALUES(:name,:address,:country,:state,:pincode,:telephoneno,:email,:currencysymbol,:financialyear,
 :administrator,:currencyname,:decimalplaces,:symbolfordecimal,:amountsinmillions,:spacebtwamountandsymbol,
 :decimalplacsforprint,:createdby,CURRENT_TIMESTAMP(),:modifiedby,CURRENT_TIMESTAMP())";
 
@@ -92,7 +91,6 @@ modifiedon) VALUES(:name,:mailingname,:address,:country,:state,:pincode,:telepho
 	$stmt = $conn->prepare($sql);
 
 	$stmt->bindParam('name',$name);
-	$stmt->bindParam('mailingname',$mailingname);
 	$stmt->bindParam('address',$address);
 	$stmt->bindParam('country',$country);
 	$stmt->bindParam('state',$state);

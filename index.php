@@ -17,6 +17,7 @@ $_SESSION['ca_userid']=1;
     <script type="text/javascript" src="jquery_validation/dist/jquery.validate.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap-datepicker.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap-modal.js"></script>
     <!-- Custom styles for this template -->
     <link href="bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
 
