@@ -6,12 +6,21 @@ require 'logerrors.php';
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
-
-
-$app->get('/company', function () use ($app) {
- 
-	// get all artists
- 
+$app->get('/getstock', function () use ($app) 
+{
+ 	$sql = "select id,name FROM tbl_stockcategory";
+    try 
+    {
+        $db = getConnection();
+        $stmt = $db->query($sql);
+        $company = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($company);
+    } 
+    catch(PDOException $e) 
+    		{
+    			echo '{"error":{"text":'. $e->getMessage() .'}}';
+			}
 });
 
  // GET route with parameter
