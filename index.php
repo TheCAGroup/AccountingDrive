@@ -9,7 +9,7 @@ require('api/common_classes.php');
 		<meta name="author" content="">
 
 		<title>Cloud Accounting</title>
-		<!-- test harini-->
+
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<!--link href="css/datepicker.css" rel="stylesheet"-->
