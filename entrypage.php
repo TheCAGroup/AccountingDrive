@@ -1,4 +1,6 @@
-	<?php include 'company/company_breadcrumb.php'; ?>
+	<?php include 'company/company_breadcrumb.php'; 
+	include 'common_classes.php';
+	session_start();?>
 	<html>
 	<body>
 		<div>
@@ -20,9 +22,15 @@
 		   		<div class="well sidebar-nav">
 					<ul class="nav nav-pills nav-stacked">
 			 		 	<li><a href="#" onclick="gotoselectcompany();">Select Company</a></li>
+			 		 	<?php
+			 		 	if($_SESSION["ca_loginuser"]->permissions['company'][0]=='1')
+						{
+			 		 	?>
 			 		 	<li><a href="#" onclick="gotocreatecompany();">Create Company</a></li>
+			 		 	<?php
+						}?>
 			 		 	<li><a href="#">Shut Company</a></li>
-			 		 	<li><a href="#">Company Info</a></li>
+			 		 	<li><a href="#" onclick="gotocompanyinfo();">Company Info</a></li>
 			 		 	<li><a href="#">Features</a></li>
 			 		 	<li><a href="#">Configure</a></li>
 					</ul>   

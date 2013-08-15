@@ -1,17 +1,92 @@
 <?php include 'company_breadcrumb.php'; ?>
 <html>
 <head>
-<title>Add Company</title>
 	
 <meta charset="utf-8"> 
 
-<script type="text/javascript" src="./jquery_validation/dist/jquery.validate.js"></script>
-<link href="css/datepicker.css" rel="stylesheet">
 
 <style>body { font-family: Ubuntu, sans-serif; }</style>
+
+<script>
+function displayCompanyInfo(id)
+{
+		$.ajax({
+		type: 'GET',
+		contentType: 'application/json',
+		url: apiurl+'company.php/companydetails/'+id,
+		dataType: "json",
+		success: function(data){
+			//alert(JSON.stringify(data));
+		JSONtoform(data[0]);	
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert('displaycompany error: ' + textStatus+errorThrown);
+		}
+	});
+}
+function frm_editCompany(id)
+{
+displayCompanyInfo(id);	
+}
+function frm_companyInfo(id)
+{
+	displayCompanyInfo(id);
+	enabledisableform(true);
+}
+function enabledisableform(isdisable)
+{
+	$("#txtname").attr("disabled", isdisable);
+	$("#txtaddress").attr("disabled", isdisable);
+	$("#cmbcountry").attr("disabled", isdisable);
+	$("#cmbstate").attr("disabled", isdisable);
+	$("#txtpincode").attr("disabled", isdisable);
+	$("#txttelephone").attr("disabled", isdisable);
+	$("#txtemail").attr("disabled", isdisable);
+	$("#txtcurrencysymbol").attr("disabled", isdisable);
+	$("#txtfinancialyear").attr("disabled", isdisable);
+	$("#cmbadministrator").attr("disabled", isdisable);
+	$("#txtcurrency").attr("disabled", isdisable);
+	$("#txtdecplaces").attr("disabled", isdisable);
+	$("#txtdecsymbol").attr("disabled", isdisable);
+	$("#rdshowinmillioins-0").attr("disabled", isdisable);
+	$("#rdspacebtwamountandsymbol-0").attr("disabled", isdisable);
+	$("#txtdecimalplacesforprint").attr("disabled", isdisable);
+}
+function JSONtoform(data)
+{
+		$('#txtname').val(data.name);
+		$("#txtaddress").val(data.address);
+		$("#cmbcountry").val(data.country);
+		$("#cmbstate").val(data.state);
+		$("#txtpincode").val(data.pincode);
+		$("#txttelephone").val(data.telephoneno);
+		$("#txtemail").val(data.email);
+		$("#txtcurrencysymbol").val(data.currencysymbol);
+		$("#txtfinancialyear").val(data.financialyear);
+		$("#cmbadministrator").val(data.administrator);
+		$("#txtcurrency").val(data.currencyname);
+		$("#txtdecplaces").val(data.decimalplaces);
+		$("#txtdecsymbol").val(data.symbolfordecimal);
+		$("#rdshowinmillioins-0").val(data.amountsinmillions);
+		$("#rdspacebtwamountandsymbol-0").val(data.spacebtwamountandsymbol);
+		$("#txtdecimalplacesforprint").val(data.decimalplacsforprint);
+}	
+</script>
 </head>
 <body>
-	
+<!--CHECK FOR PARAMETERS
+	--NO PARAMS - CREATE
+	--ID - DISPLAY
+	--ID, ISEDIT(TRUE) - EDIT
+-->
+<?php
+$id=-1;
+$isedit=FALSE;
+if(isset($_GET['ID']))
+	$id=$_GET['ID'];
+if(isset($_GET['ISEDIT']))
+	$isedit=$_GET['ISEDIT'];
+?> 	
 <form id="addcompany" class="form-horizontal" method="post"><!--action="trycompanyinsert.php" -->
 <fieldset>
 <div class = "container">
@@ -20,15 +95,22 @@
 			<div class="well">
 
 		<!-- Form Name -->
-		<legend>Create Company</legend>
+		<legend>
+			<?php 
+			if($id>-1)
+				if($isedit) echo 'Edit Company';
+				else echo 'Company Info';
+			else echo'Create Company';
+			?>
+		</legend>
 
   			
 		<div class="form-group">
-    <label for="txtname" class="col-lg-2 control-label">Name</label>
-    <div class="col-lg-4">
-      <input type="text" class="form-control" id="txtname" placeholder="Name">
-    </div>
-  </div>
+		    <label for="txtname" class="col-lg-2 control-label">Name</label>
+		    <div class="col-lg-4">
+		      <input type="text" class="form-control" id="txtname" placeholder="Name">
+		   </div>
+		</div>
   
 		<!-- Textarea -->
 		<div class="form-group">
@@ -62,7 +144,7 @@
 		<div class="form-group">
 		  <label class="col-lg-2 control-label" for="txtpincode">Pincode</label>
 		  <div class="col-lg-4">
-		  	<input type="text" class="form-control" id="txtpincode" name="txtpincode" placeholder="Name">
+		  	<input type="text" class="form-control" id="txtpincode" name="txtpincode" placeholder="Pincode">
 		  </div>
 		</div>
 		
@@ -170,9 +252,26 @@
 		
 		<div style="width:50%; height:100px; padding-left: 5%;">
 			<!--Submit Button-->
-			<div id="submit_btn_container"style="float:left" onclick="formSubmit();">
-			    <label id="btn_label">Accept</label>
-			</div>
+			<?php 
+			if($id>-1)
+				if($isedit)//Edit company 
+					{
+						echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(true,'.$id.');">
+			    	<label id="btn_label">Update</label>
+				</div>';
+				echo '<script>frm_editCompany('.$_GET['ID'].');</script>';
+					}
+				else//Display Company Info
+					{//no accept btn
+					echo '<script>frm_companyInfo('.$_GET['ID'].');</script>';
+					}
+			else //Create Company
+				{
+					echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(false,-1);">
+			    	<label id="btn_label">Accept</label>
+				</div>';
+				}
+			?>
 			
 			<!--Cancel Button-->
 			<div id="cancel_btn_container" style="float:right" onclick="formCancel();">
@@ -186,7 +285,7 @@
 			<div class="span3 sb-fixed">
 		   		<div class="well sidebar-nav">
 					<ul class="nav nav-pills nav-stacked">
-			 		 	<li><a onclick="gotoselectcompany();">Select Company</a></li>
+			 		 	<li><a href="#" onclick="gotoselectcompany();">Select Company</a></li>
 			 		 	<li><a href="#">Shut Company</a></li>
 			 		 	<li><a href="#">Company Info</a></li>
 			 		 	<li><a href="#">Features</a></li>
@@ -211,7 +310,7 @@ $('#txtfinancialyear').datepicker();
 
 
 //Form Validation
-function formSubmit()
+function formSubmit(frmedit,id)
 {
 	
 	$("#addcompany").validate({
@@ -243,61 +342,67 @@ function formSubmit()
 			
 		if ( $("#addcompany").valid())
 		{
-			//alert("Return value: f- add t-no"+checkUniqueCompany());
-			
-			var alreadyexist = checkUniqueCompany();
-			//alert("1. "+alreadyexist);
-			
-			if (alreadyexist == false)
+			if(frmedit)//update
 			{
-				addCompany();
+				updateCompany(id);
 			}
-			
+			else//create
+			{
+				var alreadyexist = checkUniqueCompany();
+				if (alreadyexist == false)
+				{
+					addCompany();
+				}
+			}
 		}
 }
+function formtoJSON()
+{
+	var q=JSON.stringify({
+		'name':$("input#txtname").val(),
+		'address':$("#txtaddress").val(),
+		'country':$("#cmbcountry").val(),
+		'state':$("#cmbstate").val(),
+		'pincode':$("input#txtpincode").val(),
+		'telephoneno':$("input#txttelephone").val(),
+		'email':$("input#txtemail").val(),
+		'currencysymbol':$("input#txtcurrencysymbol").val(),
+		'financialyear':$("input#txtfinancialyear").val(),
+		'administrator':$("#cmbadministrator").val(),
+		'currencyname':$("input#txtcurrency").val(),
+		'decimalplaces':$("input#txtdecplaces").val(),
+		'symbolfordecimal':$("input#txtdecsymbol").val(),
+		'amountsinmillions':$("input#rdshowinmillioins-0").val(),
+		'spacebtwamountandsymbol':$("input#rdspacebtwamountandsymbol-0").val(),
+		'decimalplacsforprint':$("input#txtdecimalplacesforprint").val()
+	        });
+	 return q;	
+}
+
+
+function updateCompany(id) 
+{
+	var q=formtoJSON();
+	//alert(q);
+	$.ajax({
+		type: 'PUT',
+		contentType: 'application/json',
+		url: apiurl+'company.php/updatecompany/'+id,
+		dataType: "json",
+		data:q,
+		success: function(data){
+			alert('Updated!');
+			//location.reload();
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert('updatecompany error: ' + textStatus+errorThrown);
+		}
+	});  
+}
+
 function addCompany()
 {
-	var name=document.getElementById('txtname').value;
-	var mailingname=document.getElementById('txtname').value;
-	var address=document.getElementById('txtaddress').value;
-	var country=document.getElementById('cmbcountry').value;
-	var state=document.getElementById('cmbstate').value;
-	var pincode=document.getElementById('txtpincode').value;
-	var telephoneno=document.getElementById('txttelephone').value;
-	var email=document.getElementById('txtemail').value;
-	var currencysymbol=document.getElementById('txtcurrencysymbol').value;
-	var financialyear=document.getElementById('txtfinancialyear').value;
-	var administrator=document.getElementById('cmbadministrator').value;
-	var currencyname=document.getElementById('txtcurrency').value;
-	var decimalplaces=document.getElementById('txtdecplaces').value;
-	var symbolfordecimal=document.getElementById('txtdecsymbol').value;
-	var amountsinmillions=document.getElementById('rdshowinmillioins-0').checked;
-	var spacebtwamountandsymbol=document.getElementById('rdspacebtwamountandsymbol-0').checked;
-	var decimalplacsforprint=document.getElementById('txtdecimalplacesforprint').value;
-	var createdby=1;
-	var modifiedby=1;
-	var q=JSON.stringify({
-		'name':name,
-		'mailingname':mailingname,
-		'address':address,
-		'country':country,
-		'state':state,
-		'pincode':pincode,
-		'telephoneno':telephoneno,
-		'email':email,
-		'currencysymbol':currencysymbol,
-		'financialyear':financialyear,
-		'administrator':administrator,
-		'currencyname':currencyname,
-		'decimalplaces':decimalplaces,
-		'symbolfordecimal':symbolfordecimal,
-		'amountsinmillions':amountsinmillions,
-		'spacebtwamountandsymbol':spacebtwamountandsymbol,
-		'decimalplacsforprint':decimalplacsforprint,
-		'createdby':createdby,
-		'modifiedby':modifiedby
-	        });
-
+	var q=formtoJSON();
 	$.ajax({
 		type: 'POST',
 		contentType: 'application/json',
@@ -305,14 +410,24 @@ function addCompany()
 		dataType: "json",
 		data:q,
 		success: function(data){
-			alert('Inserted!');
-			//location.reload();
+			
+	        if(JSON.stringify(data) == '"-1"')
+	        {
+	        	alert('Try Again');
+	        }
+	        else
+	        {
+	        	alert('Inserted!');
+	        	$('#addcompany')[0].reset();
+	        }
+						   
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			alert('addcompany error: ' + textStatus+errorThrown);
 		}
 	});
 }
+
 
 
 function formCancel()

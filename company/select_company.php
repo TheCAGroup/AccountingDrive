@@ -17,16 +17,48 @@
 				<!-- Select Basic -->
 				<div class="input-append">
 				  <label for="selectbasic">Select Company </label>
-				  	<select id="selectbasic" name="selectbasic" class="form-control">
+				  	<select id="selectbasic" name="selectbasic" class="form-control" size="5">
 				    </select>
 				  </div>
 				<br>
 			
 				<!-- Button -->
-				<div class="control-group">
-				  <div class="controls">
-				    <button id="btnsubmit" name="btnsubmit" class="btn btn-info" onclick="setCompany();">Submit</button>
+				<div class="form-group">
+				  <div class="col-lg-2"  onclick="setCompany();">
+				  	Select
+				    <!--button id="btnselect" name="btnselect" class="btn btn-info"">Select</button-->
 				  </div>
+				  
+				  <div class="col-lg-2" onclick="local_gotodisplaycompany();">
+				    <!--button id="btninfo" name="btninfo" class="btn btn-info" onclick="local_gotodisplaycompany();">Info</button-->
+				    Info
+				  </div>
+				  
+				  <div class="col-lg-2" onclick="local_gotoupdatecompany();">
+				    <!--button id="btnedit" name="btnedit" class="btn btn-info" onclick="local_gotoupdatecompany();">Edit</button-->
+				    Edit
+				  </div>
+				  
+				  <div class="col-lg-2"  onclick="local_gotodeletecompany();">
+				  	Delete
+				    <!--button id="btndelete" name="btndelete" class="btn btn-info" onclick="setCompany();">Delete</button-->
+				  </div>
+				  <!------------------------------------------->
+				 
+<div class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+  </div>
+</div>
+				  <!------------------------------------------->
 				</div>
 				
 				</fieldset>
@@ -68,6 +100,21 @@
 						alert(generalerror);
 					}
 			});
+			function local_gotoupdatecompany()
+			{
+				var selcomp=document.getElementById("selectbasic").value;
+				gotoupdatecompany(selcomp);
+			}
+			function local_gotodeletecompany()
+			{
+				var selcomp=document.getElementById("selectbasic").value;
+				gotodeletecompany(selcomp);
+			}
+			function local_gotodisplaycompany()
+			{
+				var selcomp=document.getElementById("selectbasic").value;
+				gotodisplaycompany(selcomp);
+			}
 			function setCompany()
 			{
 				var e = document.getElementById("selectbasic");

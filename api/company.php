@@ -21,23 +21,30 @@ $app->get('/companylist', function () use ($app) {
     }
  
 });
-/*
+
  // GET route with parameter
-$app->get('/company/:id', function () use ($app) {
+$app->get('/companydetails/:id', function ($id) use ($app) {
  
-   $request = (array) json_decode($app->request()->getBody());
-   
-   // use $request['id'] to query database based on id and create response...
-   
-   $response['id'] = 1;
-   $response['name'] = "Mike Jones";
-   $response['favoriteColor'] = "blue";
-   $response['favoriteFood'] = "tacos";
-   $app->response()->header('Content-Type', 'application/json');
-   echo json_encode($response);
- 
+   $sql = "select `id`,`name`, `address`, `country`, `state`, `pincode`, `telephoneno`, `email`, 
+   `currencysymbol`, `financialyear`, `administrator`, `currencyname`, `decimalplaces`, 
+   `symbolfordecimal`, `amountsinmillions`, `spacebtwamountandsymbol`, `decimalplacsforprint`, `createdby`, 
+   `createdon`, `modifiedby`, `modifiedon` from `tbl_company` WHERE id=:id";
+    try {
+        $conn = getConnection();
+		$stmt = $conn->prepare($sql);
+		$stmt->bindParam('id',$id);
+		
+    	$stmt->execute();    
+        $company = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($company);
+    } catch(PDOException $e) {
+        logerrors::writelog('companydetails','api/company.php/companydetails/id',$e->getMessage());
+		$app->response()->header('Content-Type', 'application/json');
+		echo json_encode('-1');
+		return;
+    }
 });
-*/
 
 
 // POST route
@@ -46,7 +53,6 @@ $app->post('/addcompany', function () use ($app) {
 try{
 	
 	$name=$request["name"];
-	$mailingname=$request["mailingname"];
 	$address=$request["address"];
 	$country=$request["country"];
 	$state=$request["state"];
@@ -62,9 +68,6 @@ try{
 	$amountsinmillions=$request["amountsinmillions"];
 	$spacebtwamountandsymbol=$request["spacebtwamountandsymbol"];
 	$decimalplacsforprint=$request["decimalplacsforprint"];
-	$createdby=$request["createdby"];
-	//$createdon=$request["createdon"];
-	$modifiedby=$request["modifiedby"];
 }
 catch (Exception $e) 
 	{
@@ -78,9 +81,9 @@ catch (Exception $e)
 	
 try{
 	
-$sql="INSERT INTO tbl_company(name,mailingname,address,country,state,pincode,telephoneno,email,currencysymbol,financialyear,administrator,
+$sql="INSERT INTO tbl_company(name,address,country,state,pincode,telephoneno,email,currencysymbol,financialyear,administrator,
 currencyname,decimalplaces,symbolfordecimal,amountsinmillions,spacebtwamountandsymbol,decimalplacsforprint,createdby,createdon,modifiedby,
-modifiedon) VALUES(:name,:mailingname,:address,:country,:state,:pincode,:telephoneno,:email,:currencysymbol,:financialyear,
+modifiedon) VALUES(:name,:address,:country,:state,:pincode,:telephoneno,:email,:currencysymbol,:financialyear,
 :administrator,:currencyname,:decimalplaces,:symbolfordecimal,:amountsinmillions,:spacebtwamountandsymbol,
 :decimalplacsforprint,:createdby,CURRENT_TIMESTAMP(),:modifiedby,CURRENT_TIMESTAMP())";
 
@@ -88,7 +91,6 @@ modifiedon) VALUES(:name,:mailingname,:address,:country,:state,:pincode,:telepho
 	$stmt = $conn->prepare($sql);
 
 	$stmt->bindParam('name',$name);
-	$stmt->bindParam('mailingname',$mailingname);
 	$stmt->bindParam('address',$address);
 	$stmt->bindParam('country',$country);
 	$stmt->bindParam('state',$state);
@@ -104,8 +106,8 @@ modifiedon) VALUES(:name,:mailingname,:address,:country,:state,:pincode,:telepho
 	$stmt->bindParam('amountsinmillions',$amountsinmillions);
 	$stmt->bindParam('spacebtwamountandsymbol',$spacebtwamountandsymbol);
 	$stmt->bindParam('decimalplacsforprint',$decimalplacsforprint);
-	$stmt->bindParam('createdby',$createdby);
-	$stmt->bindParam('modifiedby',$modifiedby);
+	$stmt->bindParam('createdby',$_SESSION['ca_userid']);
+	$stmt->bindParam('modifiedby',$_SESSION['ca_userid']);
 	$stmt->execute();
 
 	if($stmt->errorCode() == 0) 
@@ -125,30 +127,112 @@ modifiedon) VALUES(:name,:mailingname,:address,:country,:state,:pincode,:telepho
 	}
 });
 
-/*
-// PUT route
-$app->put('/company/:id', function () use ($app) {
 
+$app->put('/updatecompany/:id', function ($id) use ($app) {
 	$request = (array) json_decode($app->request()->getBody());
-	
-	// use $request['id'] to update database based on id and create response...
-	
+try{
+	$name=$request["name"];
+	$address=$request["address"];
+	$country=$request["country"];
+	$state=$request["state"];
+	$pincode=$request["pincode"];
+	$telephoneno=$request["telephoneno"];
+	$email=$request["email"];
+	$currencysymbol=$request["currencysymbol"];
+	$financialyear=$request["financialyear"];
+	$administrator=$request["administrator"];
+	$currencyname=$request["currencyname"];
+	$decimalplaces=$request["decimalplaces"];
+	$symbolfordecimal=$request["symbolfordecimal"];
+	$amountsinmillions=$request["amountsinmillions"];
+	$spacebtwamountandsymbol=$request["spacebtwamountandsymbol"];
+	$decimalplacsforprint=$request["decimalplacsforprint"];
+}
+catch (Exception $e) 
+	{
+	logerrors::writelog('updatecompany1','api/company.php',$e->getMessage());
 	$app->response()->header('Content-Type', 'application/json');
-	echo json_encode($request);
+	echo json_encode('-1');
+	return;
+	}
+try{
 	
+	$sql="UPDATE tbl_company SET name=:name,address=:address,country=:country,state=:state,
+	pincode=:pincode,telephoneno=:telephoneno,email=:email,currencysymbol=:currencysymbol,
+	financialyear=:financialyear,administrator=:administrator,currencyname=:currencyname,
+	decimalplaces=:decimalplaces,symbolfordecimal=:symbolfordecimal,
+	amountsinmillions=:amountsinmillions,spacebtwamountandsymbol=:spacebtwamountandsymbol,
+	decimalplacsforprint=:decimalplacsforprint,modifiedby=:modifiedby,modifiedon=CURRENT_TIMESTAMP() where id=:id";
+
+	$conn = getConnection();
+	$stmt = $conn->prepare($sql);
+
+	$stmt->bindParam('name',$name);
+	$stmt->bindParam('address',$address);
+	$stmt->bindParam('country',$country);
+	$stmt->bindParam('state',$state);
+	$stmt->bindParam('pincode',$pincode);
+	$stmt->bindParam('telephoneno',$telephoneno);
+	$stmt->bindParam('email',$email);
+	$stmt->bindParam('currencysymbol',$currencysymbol);
+	$stmt->bindParam('financialyear',$financialyear);
+	$stmt->bindParam('administrator',$administrator);
+	$stmt->bindParam('currencyname',$currencyname);
+	$stmt->bindParam('decimalplaces',$decimalplaces);
+	$stmt->bindParam('symbolfordecimal',$symbolfordecimal);
+	$stmt->bindParam('amountsinmillions',$amountsinmillions);
+	$stmt->bindParam('spacebtwamountandsymbol',$spacebtwamountandsymbol);
+	$stmt->bindParam('decimalplacsforprint',$decimalplacsforprint);
+	$stmt->bindParam('modifiedby',$modifiedby);
+	$stmt->bindParam('id',$id);
+	$stmt->execute();
+
+	if($stmt->errorCode() == 0) 
+		{
+		$app->response()->header('Content-Type', 'application/json');
+		echo json_encode($id);
+		return;
+		} 
+	}
+	catch (PDOException $e) 
+	{
+	logerrors::writelog('updatecompany2','api/company.php',$e->getMessage());
+	$app->response()->header('Content-Type', 'application/json');
+	echo json_encode('-1');
+	return;
+	}
 });
 
-// DELETE route
-$app->delete('/company/:id', function () use ($app) {
 
-	$request = (array) json_decode($app->request()->getBody());	
+$app->delete('/deletecompany/:id', function ($id) use ($app) {
+	$request = (array) json_decode($app->request()->getBody());
+
+try{
 	
-	//use $request['id'] to remove database entry based on id...
-	
+	$sql="DELETE FROM tbl_company WHERE id=:id";
+
+	$conn = getConnection();
+	$stmt = $conn->prepare($sql);
+
+	$stmt->bindParam('id',$id);
+	$stmt->execute();
+
+	if($stmt->errorCode() == 0) 
+		{
+		$app->response()->header('Content-Type', 'application/json');
+		echo json_encode($id);
+		return;
+		} 
+	}
+	catch (PDOException $e) 
+	{
+	logerrors::writelog('deletecompany','api/company.php',$e->getMessage());
 	$app->response()->header('Content-Type', 'application/json');
-	echo json_encode($request);
+	echo json_encode('-1');
+	return;
+	}
 });
-*/
+
 
 $app->run();
 ?>
