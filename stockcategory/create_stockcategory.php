@@ -7,6 +7,15 @@
 </head>
 <body>
 	
+<?php
+$id=-1;
+$isedit=FALSE;
+if(isset($_GET['ID']))
+	$id=$_GET['ID'];
+if(isset($_GET['ISEDIT']))
+	$isedit=$_GET['ISEDIT'];
+?>
+	
 <form id="addcompany" class="form-horizontal" method="post"><!--action="trycompanyinsert.php" -->
  <fieldset>
 <div class = "container">
@@ -15,7 +24,13 @@
 			<div class="well">
 
 		<!-- Form Name -->
-		<legend>Stock Categories</legend>
+		<legend>Stock Categories
+			<?php 
+			if($id>-1)
+				if($isedit) echo 'Edit Company';
+				else echo 'Company Info';
+			else echo'Create Company';
+			?></legend>
 
   			
 		<div class="form-group">
