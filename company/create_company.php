@@ -253,6 +253,29 @@ if(isset($_GET['ISEDIT']))
 		</div>
 		
 		
+		<div style="width:85%; height:100px; padding-left: 5%;" align="center">
+			<!--Submit Button-->
+			<?php 
+			if($id>-1)
+				if($isedit)//Edit company 
+					{		
+						echo '<a href="#" class="btn btn-primary btn-small"  onclick="formSubmit(true,'.$id.');">Update</a>';
+						echo '<script>frm_editCompany('.$_GET['ID'].');</script>';
+					}
+				else//Display Company Info
+					{//no accept btn
+						echo '<script>frm_companyInfo('.$_GET['ID'].');</script>';
+					}
+			else //Create Company
+				{
+					echo '<a href="#" class="btn btn-primary btn-small"  onclick="formSubmit(false,-1);">Accept</a>';
+				}
+			?>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<!--Cancel Button-->
+			<a href="#" class="btn btn-info btn-small"  onclick="formCancel();">Cancel</a>
+			</div>
+		</div>
 		</div>
 	 	<div class="col-lg-4">
 

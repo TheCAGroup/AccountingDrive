@@ -5,7 +5,7 @@
 ///////////////////////
     require 'conf.php';
     require 'Slim/Slim.php';
-	require 'common_classes.php';
+	require '../common_classes.php';
 	\Slim\Slim::registerAutoloader();
 
 	$app = new \Slim\Slim();
@@ -22,6 +22,7 @@
         echo '{"error":{"text":'. $e->getMessage() .'}}';
     }
 	});
+	
 	
 	//return userid when given username and password
 	$app->post('/checkuser', function () use ($app) {

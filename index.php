@@ -1,6 +1,16 @@
 <?php
-require('api/common_classes.php');
+require('common_classes.php');
 require('modal.php');
+?>
+<script src="js/config.js"></script>
+<?php
+session_start();
+if(!isset($_SESSION['ca_loginuser']))
+{
+?>
+<script>document.location=home + "/login/userlogin.php";</script>
+<?php
+}
 ?>
 <html>
 	<head>
@@ -13,7 +23,7 @@ require('modal.php');
 
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-		<!--link href="css/datepicker.css" rel="stylesheet"-->
+		<link href="bootstrap/css/datepicker.css" rel="stylesheet">
 		<script type="text/javascript" src="bootstrap/js/jquery.js"></script>
 		<script type="text/javascript" src="jquery_validation/dist/jquery.validate.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
@@ -21,13 +31,11 @@ require('modal.php');
 		<script type="text/javascript" src="bootstrap/js/bootstrap-modal.js"></script>
 		<!-- Custom styles for this template -->
 		<link href="bootstrap/css/sticky-footer-navbar.css" rel="stylesheet">
-
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
-		<link rel="stylesheet" type="text/css" href="./css/button.css">
 
 		<script type="text/javascript" src="bootstrap/js/dropdown.js"></script>
 		<script src="js/navigation.js"></script>
-		<script src="js/config.js"></script>
+		
 		<script type="text/javascript" src="js/cookie.js"></script>
 
 	</head>
@@ -201,20 +209,11 @@ require('modal.php');
 								</ul>
 							</li>
 						</ul>
-						<ul class="nav navbar-nav pull-right">
-							<li class="active">
-								<a href="#"> <?php
-								session_start();
-								$username=$_SESSION["ca_loginuser"]->username;
-								//echo var_dump($_SESSION["ca_loginuser"]);
-								echo $username; 
-								//echo var_dump($_SESSION["ca_loginuser"]->permissions['company'][0]);
-							?> </a>
-							</li>
-						</ul>
+						
 					</div><!--/.nav-collapse -->
 				</div>
 			</div>
+			
 			<!--Container-->
 			<div class="container" id="maindiv">
 
@@ -238,6 +237,8 @@ require('modal.php');
 				$('.dropdown-toggle').dropdown();
 				$("#maindiv").load("entrypage.php");
 			});
+			
+			
 
 		</script>
 		<!-- test --->

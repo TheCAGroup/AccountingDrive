@@ -1,7 +1,7 @@
-
+<?php include '../modal.php'; ?>
 <html>
 <head>
-	    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     <script type="text/javascript" src="../bootstrap/js/jquery.js"></script>
 	<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript" src="../js/config.js"></script>
@@ -48,12 +48,20 @@ var q=JSON.stringify
 		success: function(data){
 			
 			if(JSON.stringify(data) == '-1')
-			alert('Invalid login');
+			{
+				document.getElementById("mtitle").innerHTML="Alert";
+				document.getElementById("mbody").innerHTML="Invalid Login";
+				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+				$('#myModal').modal();
+			}
 			else
 			window.location=home+'/index.php';
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			alert(generalerror);
+			document.getElementById("mtitle").innerHTML="Error";
+			document.getElementById("mbody").innerHTML=generalerror;
+			document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+			$('#myModal').modal();
 		}
 	});
 }
