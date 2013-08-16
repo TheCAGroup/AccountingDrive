@@ -1,5 +1,6 @@
 <?php
 require('api/common_classes.php');
+require('modal.php');
 ?>
 <html>
 	<head>

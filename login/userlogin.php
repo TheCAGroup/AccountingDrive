@@ -7,7 +7,6 @@
 	<script type="text/javascript" src="../js/config.js"></script>
 
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
-<link rel="stylesheet" type="text/css" href="../css/button.css">
 
 </head>
 <body>
@@ -23,9 +22,7 @@
     <input type="password" name="txt_password" id="txt_password" placeholder="Password" class="form-control" />
   </label><br>
   
-   <div id="submit_btn_container"style="float:left" onclick="validatelogin();">
-			    	<label id="btn_label">Login</label>
-				</div>
+  <a href="#" class="btn btn-primary btn-small"  onclick="validatelogin();">Login</a>
   </fieldset>
 	</form>
 	</div>
