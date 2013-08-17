@@ -1,4 +1,6 @@
-<?php include 'company_breadcrumb.php'; ?>
+<?php 
+include 'company_breadcrumb.php';
+?>
 <html>
 <head>
 	
@@ -106,7 +108,7 @@ if(isset($_GET['ISEDIT']))
 
   			
 		<div class="form-group">
-		    <label for="txtname" class="col-lg-2 control-label">Name</label>
+		    <label for="txtname" class="col-lg-4 control-label">Name</label>
 		    <div class="col-lg-4">
 		      <input type="text" class="form-control" id="txtname" placeholder="Name">
 		   </div>
@@ -114,7 +116,7 @@ if(isset($_GET['ISEDIT']))
   
 		<!-- Textarea -->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="txtaddress">Address</label>
+		  <label class="col-lg-4 control-label" for="txtaddress">Address</label>
 		  <div class="col-lg-4">
 		  	<textarea class="form-control" rows="3" id="txtaddress" name="txtaddress"></textarea>                     
 		  </div>
@@ -122,7 +124,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Select Basic -->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="cmbstate">State</label>
+		  <label class="col-lg-4 control-label" for="cmbstate">State</label>
 		  <div class="col-lg-4">
 		    <select id="cmbstate" name="cmbstate" class="form-control">
 		      <option>Tamil Nadu</option>
@@ -132,7 +134,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Select Basic -->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="cmbcountry">Country</label>
+		  <label class="col-lg-4 control-label" for="cmbcountry">Country</label>
 		  <div class="col-lg-4">
 		    <select id="cmbcountry" name="cmbcountry" class="form-control">
 		      <option>India</option>
@@ -142,7 +144,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Text input-->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="txtpincode">Pincode</label>
+		  <label class="col-lg-4 control-label" for="txtpincode">Pincode</label>
 		  <div class="col-lg-4">
 		  	<input type="text" class="form-control" id="txtpincode" name="txtpincode" placeholder="Pincode">
 		  </div>
@@ -150,7 +152,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Text input-->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="txttelephone">Telephone</label>
+		  <label class="col-lg-4 control-label" for="txttelephone">Telephone</label>
 		  <div class="col-lg-4">
 		  	<input type="text" class="form-control" id="txttelephone" name="txttelephone" placeholder="Telephone Number">
 		  </div>
@@ -158,7 +160,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Text input-->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="txtemail">Email</label>
+		  <label class="col-lg-4 control-label" for="txtemail">Email</label>
 		  <div class="col-lg-4">
 		  	<input type="text" class="form-control" id="txtemail" name="txtemail" placeholder="email">
 		  </div>
@@ -166,7 +168,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Text input-->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="txtfinancialyear">Financial Year Beginning From</label>
+		  <label class="col-lg-4 control-label" for="txtfinancialyear">Financial Year Beginning From</label>
 		  <div class="col-lg-4">
 		  	<input type="text" class="form-control" value="01/04/13" data-date-format="dd/mm/yy" id="txtfinancialyear" name="txtfinancialyear" readonly />
 		    <!--input id="txtfinancialyear" name="txtfinancialyear" placeholder="Financial Start of Year" value="2010-04-01" type="text" class="datepicker" readonly/-->
@@ -176,7 +178,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Select Basic -->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="cmbadministrator">Administrator</label>
+		  <label class="col-lg-4 control-label" for="cmbadministrator">Administrator</label>
 		  <div class="col-lg-4">
 		    <select id="cmbadministrator" name="cmbadministrator" class="form-control">
 		      
@@ -186,7 +188,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Text input-->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="txtcurrency">Currency Name</label>
+		  <label class="col-lg-4 control-label" for="txtcurrency">Currency Name</label>
 		  <div class="col-lg-4">
 		  	<input type="text" class="form-control" id="txtcurrency" name="txtcurrency" placeholder="Currency Name">
 		  </div>
@@ -194,7 +196,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Text input-->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="txtcurrencysymbol">Currency Symbol</label>
+		  <label class="col-lg-4 control-label" for="txtcurrencysymbol">Currency Symbol</label>
 		  <div class="col-lg-4">
 		  	<input type="text" class="form-control" id="txtcurrencysymbol" name="txtcurrencysymbol" placeholder="Currency Symbol">
 		  </div>
@@ -202,7 +204,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Text input-->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="txtdecplaces">Decimal Places</label>
+		  <label class="col-lg-4 control-label" for="txtdecplaces">Decimal Places</label>
 		  <div class="col-lg-4">
 		  	<input type="number" class="form-control" id="txtdecplaces" name="txtdecplaces" >
 		  </div>
@@ -210,7 +212,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Text input-->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="txtdecsymbol">Symbol for Decimal</label>
+		  <label class="col-lg-4 control-label" for="txtdecsymbol">Symbol for Decimal</label>
 		  <div class="col-lg-4">
 		  	<input type="text" class="form-control" id="txtdecsymbol" name="txtdecsymbol" placeholder="eg: Paise" >
 		  </div>
@@ -218,7 +220,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Multiple Radios (inline) -->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="rdshowinmillioins">Show in Millions</label>
+		  <label class="col-lg-4 control-label" for="rdshowinmillioins">Show in Millions</label>
 		  <div class="col-lg-4">
 		  		<label class="radio-inline">
 			  	<input type="radio" id="rdshowinmillioins-0" name="rdshowinmillioins" value="True" checked="checked"> True
@@ -231,7 +233,7 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Multiple Radios (inline) -->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="rdspacebtwamountandsymbol">Space between Amount &amp; Symbol</label>
+		  <label class="col-lg-4 control-label" for="rdspacebtwamountandsymbol">Space between Amount &amp; Symbol</label>
 		  <div class="col-lg-4">
 		  		<label class="radio-inline">
 			  	<input type="radio" id="rdspacebtwamountandsymbol-0" name="rdspacebtwamountandsymbol" value="True" checked="checked"> True
@@ -244,39 +246,34 @@ if(isset($_GET['ISEDIT']))
 		
 		<!-- Text input-->
 		<div class="form-group">
-		  <label class="col-lg-2 control-label" for="txtdecimalplacesforprint">Decimal Places for Printing</label>
+		  <label class="col-lg-4 control-label" for="txtdecimalplacesforprint">Decimal Places for Printing</label>
 		  <div class="col-lg-4">
 		  	<input type="number" class="form-control" id="txtdecimalplacesforprint" name="txtdecimalplacesforprint" >
 		  </div>
 		</div>
 		
-		<div style="width:50%; height:100px; padding-left: 5%;">
+		
+		<div style="width:85%; height:100px; padding-left: 5%;" align="center">
 			<!--Submit Button-->
 			<?php 
 			if($id>-1)
 				if($isedit)//Edit company 
-					{
-						echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(true,'.$id.');">
-			    	<label id="btn_label">Update</label>
-				</div>';
-				echo '<script>frm_editCompany('.$_GET['ID'].');</script>';
+					{		
+						echo '<a href="#" class="btn btn-primary btn-small"  onclick="formSubmit(true,'.$id.');">Update</a>';
+						echo '<script>frm_editCompany('.$_GET['ID'].');</script>';
 					}
 				else//Display Company Info
 					{//no accept btn
-					echo '<script>frm_companyInfo('.$_GET['ID'].');</script>';
+						echo '<script>frm_companyInfo('.$_GET['ID'].');</script>';
 					}
 			else //Create Company
 				{
-					echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(false,-1);">
-			    	<label id="btn_label">Accept</label>
-				</div>';
+					echo '<a href="#" class="btn btn-primary btn-small"  onclick="formSubmit(false,-1);">Accept</a>';
 				}
 			?>
-			
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<!--Cancel Button-->
-			<div id="cancel_btn_container" style="float:right" onclick="formCancel();">
-			    <label id="btn_label">Cancel</label>
-			</div>	
+			<a href="#" class="btn btn-info btn-small"  onclick="formCancel();">Cancel</a>
 			</div>
 		</div>
 		</div>
@@ -305,6 +302,13 @@ if(isset($_GET['ISEDIT']))
 
 <script type="text/javascript">
 
+document.getElementById("mtitle").innerHTML="Loading...";
+document.getElementById("mbody").innerHTML="<div class=\"progress progress-striped active\">"+
+        "<div class=\"progress-bar\" style=\"width: 100%;\"> </div>"+
+    "</div>";
+document.getElementById("mfooter").innerHTML="";
+$('#myModal').modal();
+
 //Datepicker
 $('#txtfinancialyear').datepicker();
 
@@ -312,6 +316,8 @@ $('#txtfinancialyear').datepicker();
 //Form Validation
 function formSubmit(frmedit,id)
 {
+	
+	
 	
 	$("#addcompany").validate({
 				rules:{
@@ -351,6 +357,12 @@ function formSubmit(frmedit,id)
 				var alreadyexist = checkUniqueCompany();
 				if (alreadyexist == false)
 				{
+					document.getElementById("mtitle").innerHTML="Inserting Record...";
+					document.getElementById("mbody").innerHTML="<div class=\"progress progress-striped active\">"+
+					        "<div class=\"progress-bar\" style=\"width: 100%;\"> </div>"+
+					    "</div>";
+					document.getElementById("mfooter").innerHTML="";
+					$('#myModal').modal();
 					addCompany();
 				}
 			}
@@ -391,7 +403,10 @@ function updateCompany(id)
 		dataType: "json",
 		data:q,
 		success: function(data){
-			alert('Updated!');
+			document.getElementById("mtitle").innerHTML="Updated Record";
+			document.getElementById("mbody").innerHTML="Company Updated Successfully";
+			document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+			$('#myModal').modal();
 			//location.reload();
 		},
 		error: function(jqXHR, textStatus, errorThrown){
@@ -413,17 +428,28 @@ function addCompany()
 			
 	        if(JSON.stringify(data) == '"-1"')
 	        {
-	        	alert('Try Again');
+	        	document.getElementById("mtitle").innerHTML="Alert";
+				document.getElementById("mbody").innerHTML="Try Again";
+				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
 	        }
 	        else
 	        {
-	        	alert('Inserted!');
+	        	
+	        	document.getElementById("mtitle").innerHTML="Inserted Record";
+				document.getElementById("mbody").innerHTML="Company Added Successfully";
+				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+	        	//$('#myModal').modal('hide');
+	        	//$('#myModal1').modal();
+	        	//alert('Inserted!');
 	        	$('#addcompany')[0].reset();
 	        }
 						   
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			alert('addcompany error: ' + textStatus+errorThrown);
+				document.getElementById("mtitle").innerHTML="Error";
+				document.getElementById("mbody").innerHTML=generalerror;
+				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+			//alert('addcompany error: ' + textStatus+errorThrown);
 		}
 	});
 }
@@ -444,14 +470,19 @@ $.ajax({
 		success: function(data){
 			//alert(data.d);
 			//$(function() {
-					    
+					   
 					    $.each(data, function(i, option) {
 					        $('#cmbadministrator').append($('<option/>').attr("value", option.id).text(option.username));
 					    });
+					     $('#myModal').modal('hide');
 		//				})
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			alert(generalerror);
+			document.getElementById("mtitle").innerHTML="Error";
+			document.getElementById("mbody").innerHTML=generalerror;
+			document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+			$('#myModal').modal();
+			//alert(generalerror);
 		}
 });
 
@@ -470,14 +501,20 @@ function checkUniqueCompany()
 						        if(option.name == document.getElementById('txtname').value)
 						        {
 						        	found = true;
-						        	alert("Company already exist");
+						        	document.getElementById("mtitle").innerHTML="Insert Failed !!!";
+									document.getElementById("mbody").innerHTML="Company Already Exist";
+									document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+									$('#myModal').modal();
 						        	document.getElementById('txtname').value="";
 						        	$('#txtname').focus();
 						        }
 						    });
 			},
 			error: function(jqXHR, textStatus, errorThrown){
-				alert(generalerror);
+				document.getElementById("mtitle").innerHTML="Error";
+				document.getElementById("mbody").innerHTML=generalerror;
+				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+				$('#myModal').modal();
 			}
 		});
 		

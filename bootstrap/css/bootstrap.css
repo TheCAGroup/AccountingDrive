@@ -1384,7 +1384,7 @@ legend {
 label {
   display: inline-block;
   margin-bottom: 5px;
-  font-weight: bold;
+  /*font-weight: bold; Commented by yamini*/
 }
 
 input[type="search"] {

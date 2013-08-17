@@ -1,4 +1,6 @@
-<?php include 'company_breadcrumb.php'; ?>
+<?php 
+
+include 'company_breadcrumb.php'; ?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,42 +25,14 @@
 				<br>
 			
 				<!-- Button -->
-				<div class="form-group">
-				  <div class="col-lg-2"  onclick="setCompany();">
-				  	Select
-				    <!--button id="btnselect" name="btnselect" class="btn btn-info"">Select</button-->
-				  </div>
-				  
-				  <div class="col-lg-2" onclick="local_gotodisplaycompany();">
-				    <!--button id="btninfo" name="btninfo" class="btn btn-info" onclick="local_gotodisplaycompany();">Info</button-->
-				    Info
-				  </div>
-				  
-				  <div class="col-lg-2" onclick="local_gotoupdatecompany();">
-				    <!--button id="btnedit" name="btnedit" class="btn btn-info" onclick="local_gotoupdatecompany();">Edit</button-->
-				    Edit
-				  </div>
-				  
-				  <div class="col-lg-2"  onclick="local_gotodeletecompany();">
-				  	Delete
-				    <!--button id="btndelete" name="btndelete" class="btn btn-info" onclick="setCompany();">Delete</button-->
-				  </div>
-				  <!------------------------------------------->
-				 
-<div class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3>Modal header</h3>
-  </div>
-  <div class="modal-body">
-    <p>One fine body…</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn">Close</a>
-    <a href="#" class="btn btn-primary">Save changes</a>
-  </div>
-</div>
-				  <!------------------------------------------->
+				<div align="center">
+				  	<a href="#" class="btn btn-info btn-small"  onclick="setCompany();">Select</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+				    <a href="#" class="btn btn-info btn-small"  onclick="local_gotodisplaycompany();">Info</a>
+				  	&nbsp;&nbsp;&nbsp;&nbsp;
+				    <a href="#" class="btn btn-info btn-small"  onclick="local_gotoupdatecompany();">Edit</a>
+				  	&nbsp;&nbsp;&nbsp;&nbsp;
+				  	<a href="#" class="btn btn-info btn-small"  onclick="local_gotodeletecompany();">Delete</a>
 				</div>
 				
 				</fieldset>
@@ -97,30 +71,66 @@
 					//				})
 					},
 					error: function(jqXHR, textStatus, errorThrown){
-						alert(generalerror);
+						document.getElementById("mtitle").innerHTML="Error";
+						document.getElementById("mbody").innerHTML=generalerror;
+						document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+						$('#myModal').modal();
 					}
 			});
 			function local_gotoupdatecompany()
 			{
 				var selcomp=document.getElementById("selectbasic").value;
-				gotoupdatecompany(selcomp);
+				
+				if(selcomp == "")
+				{
+					document.getElementById("mtitle").innerHTML="Alert";
+					document.getElementById("mbody").innerHTML="Please select a company to edit";
+					document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+					$('#myModal').modal();
+				}
+				else
+				{
+					gotoupdatecompany(selcomp);
+				} 
+				
 			}
 			function local_gotodeletecompany()
 			{
 				var selcomp=document.getElementById("selectbasic").value;
-				gotodeletecompany(selcomp);
+				if(selcomp == "")
+				{
+					document.getElementById("mtitle").innerHTML="Alert";
+					document.getElementById("mbody").innerHTML="Please select a company to delete";
+					document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+					$('#myModal').modal();
+				}
+				else
+				{
+					gotodeletecompany(selcomp);
+				}
 			}
 			function local_gotodisplaycompany()
 			{
 				var selcomp=document.getElementById("selectbasic").value;
-				gotodisplaycompany(selcomp);
+				if(selcomp == "")
+				{
+					document.getElementById("mtitle").innerHTML="Alert";
+					document.getElementById("mbody").innerHTML="Please select a company to view its details";
+					document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+					$('#myModal').modal();
+				}
+				else
+				{
+					gotodisplaycompany(selcomp);
+				}
 			}
 			function setCompany()
 			{
-				var e = document.getElementById("selectbasic");
+				var e = document.getElementById("selectbasic");				
 				var str = e.options[e.selectedIndex].text;
 				document.cookie="ca_companyname =" + str;
 				document.cookie="ca_companyid =" + e.value;
+				$("#maindiv").load("entrypage.php");
 			}
 		</script>
 	</body>

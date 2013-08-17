@@ -6,7 +6,6 @@
 <meta charset="utf-8"> 
 
 <script type="text/javascript" src="./jquery_validation/dist/jquery.validate.js"></script>
-<link rel="stylesheet" type="text/css" href="./css/button.css">
 
 <style>body { font-family: Ubuntu, sans-serif; }</style>
 </head>

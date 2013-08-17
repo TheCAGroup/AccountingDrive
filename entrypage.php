@@ -1,6 +1,8 @@
-	<?php include 'company/company_breadcrumb.php'; 
+	<?php 
 	include 'common_classes.php';
-	session_start();?>
+	include 'company/company_breadcrumb.php'; 
+	session_start();
+	?>
 	<html>
 	<body>
 		<div>
@@ -17,7 +19,6 @@
       		</div>
   		</div>
 	 	<div class="col-lg-4">
-
 			<div class="span3 sb-fixed">
 		   		<div class="well sidebar-nav">
 					<ul class="nav nav-pills nav-stacked">
