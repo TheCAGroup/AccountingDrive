@@ -1,4 +1,13 @@
-<?php include '../modal.php'; ?>
+<?php 
+session_start();
+session_unset();
+session_destroy();
+if(isset($_COOKIE['ca_companyname']))
+{unset($_COOKIE['ca_companyname']);
+setcookie($_COOKIE['ca_companyname'],"",time()-60*60*24*365);}
+include '../modal.php'; 
+
+?>
 <html>
 <head>
 	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -10,22 +19,28 @@
 
 </head>
 <body>
-	<div class="col-4">
-	<div class="form-group">
-	<form name="frmUser" method="post" action="">
+	<div class="col-5">
+	<form name="frmUser" method="post" class="form-horizontal" action="">
  	 <fieldset>
-    <legend>User Login</legend>
-    	
-    <label>Username</label>
-    <input type="text" name="txt_username" id="txt_username" placeholder="User Name" class="form-control"/>
-    <label>Password</label>
-    <input type="password" name="txt_password" id="txt_password" placeholder="Password" class="form-control" />
-  </label><br>
-  
-  <a href="#" class="btn btn-primary btn-small"  onclick="validatelogin();">Login</a>
+    <legend><center>User Login</center></legend>
+    <div class="form-group">
+    	<label class="col-lg-2">Username</label>
+    	 <div class="col-lg-8">
+    	<input type="text" name="txt_username" id="txt_username" placeholder="User Name" class="form-control"/>
+    	</div>
+    </div>
+    <div class="form-group">	
+    	<label class="col-lg-2">Password</label>
+    	 <div class="col-lg-8">
+    	<input type="password" name="txt_password" id="txt_password" placeholder="Password" class="form-control" />
+  	</div>
+  	</div><br>
+  <div align="center">
+  	<a href="#" class="btn btn-primary btn-small"  onclick="validatelogin();">Login</a>
+  </div>
   </fieldset>
 	</form>
-	</div>
+	
 	</div><!--col-4 -->
 	
 	<script>

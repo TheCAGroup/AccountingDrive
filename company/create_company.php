@@ -3,9 +3,11 @@ include '../breadcrumb.php';
 
 makemodal_progress("modalprogress", "Loading...");
 makemodal_progress("modalprogress_inserting", "Inserting...");
-makemodal_btnclose("modalupdatedrecord", "Updated Record", "Company Updated Successfully");
-makemodal_btnclose("modalinsertedrecord", "Inserted Record", "Company Inserted Successfully");
-//makemodal_btnclose("modalupdatedrecord", "Updated Record", "Company Updated Successfully");
+makemodal_alert("modalupdatedrecord", "Updated Record", "Company Updated Successfully");
+makemodal_alert("modalinsertedrecord", "Inserted Record", "Company Inserted Successfully");
+makemodal_alert("modaltryagain","Alert","Try again");
+makemodal_alert("modalcompanyexists","Insert failed","The company already exists");
+makemodal_alert("modalgeneralerror","Error","<script>generalerror</script>");
 ?>
 <html>
 <head>
@@ -34,7 +36,7 @@ function displayCompanyInfo(id)
 }
 function frm_editCompany(id)
 {
-displayCompanyInfo(id);	
+	displayCompanyInfo(id);	
 }
 function frm_companyInfo(id)
 {
@@ -95,8 +97,7 @@ if(isset($_GET['ID']))
 if(isset($_GET['ISEDIT']))
 	$isedit=$_GET['ISEDIT'];
 ?> 	
-<form id="addcompany" class="form-horizontal" method="post"><!--action="trycompanyinsert.php" -->
-<fieldset>
+
 <div class = "container">
 	<div class="row show-grid">
   		<div class="col-lg-8">
@@ -112,7 +113,9 @@ if(isset($_GET['ISEDIT']))
 			?>
 		</legend>
 
-  			
+  		<form id="addcompany" class="form-horizontal" method="post"><!--action="trycompanyinsert.php" -->
+		<fieldset>
+		
 		<div class="form-group">
 		    <label for="txtname" class="col-lg-4 control-label">Name</label>
 		    <div class="col-lg-4">
@@ -281,6 +284,9 @@ if(isset($_GET['ISEDIT']))
 			<!--Cancel Button-->
 			<a href="#" class="btn btn-info btn-small"  onclick="formCancel();">Cancel</a>
 			</div>
+			
+			</fieldset>
+</form>
 		</div>
 		</div>
 	 	<div class="col-lg-4">
@@ -300,10 +306,9 @@ if(isset($_GET['ISEDIT']))
 	  	</div>
 	</div><!--/row-->	
 	<!--/div--> <!--/Well-->
-	</div></form>
+	</div>
 </div> <!--/Container-->
-</fieldset>
-</form>
+
 <!-- Javascript placed at the end of the file to make the  page load faster -->
 
 <script type="text/javascript">
@@ -435,9 +440,10 @@ function addCompany()
 			
 	        if(JSON.stringify(data) == '"-1"')
 	        {
-	        	document.getElementById("mtitle").innerHTML="Alert";
+	        	/*document.getElementById("mtitle").innerHTML="Alert";
 				document.getElementById("mbody").innerHTML="Try Again";
-				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
+				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";*/
+				$('#modaltryagain').modal();
 	        }
 	        else
 	        {
@@ -446,7 +452,8 @@ function addCompany()
 				document.getElementById("mbody").innerHTML="Company Added Successfully";
 				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
 				*/
-	        	$('#modalinsertedrecord').modal('hide');
+				$('#modalprogress_inserting').modal('hide');
+	        	$('#modalinsertedrecord').modal();
 	        	//$('#myModal1').modal();
 	        	//alert('Inserted!');
 	        	
@@ -455,10 +462,11 @@ function addCompany()
 						   
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-				document.getElementById("mtitle").innerHTML="Error";
+				/*document.getElementById("mtitle").innerHTML="Error";
 				document.getElementById("mbody").innerHTML=generalerror;
 				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-			//alert('addcompany error: ' + textStatus+errorThrown);
+			//alert('addcompany error: ' + textStatus+errorThrown);*/
+			$('#modalgeneralerror').modal();
 		}
 	});
 }
@@ -487,11 +495,12 @@ $.ajax({
 		//				})
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			document.getElementById("mtitle").innerHTML="Error";
+			/*document.getElementById("mtitle").innerHTML="Error";
 			document.getElementById("mbody").innerHTML=generalerror;
 			document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
 			$('#myModal').modal();
-			//alert(generalerror);
+			//alert(generalerror);*/
+			$('#modalgeneralerror').modal();
 		}
 });
 
@@ -510,20 +519,22 @@ function checkUniqueCompany()
 						        if(option.name == document.getElementById('txtname').value)
 						        {
 						        	found = true;
-						        	document.getElementById("mtitle").innerHTML="Insert Failed !!!";
+						        	/*document.getElementById("mtitle").innerHTML="Insert Failed !!!";
 									document.getElementById("mbody").innerHTML="Company Already Exist";
 									document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-									$('#myModal').modal();
+									$('#myModal').modal();*/
+									$('#modalcompanyexists').modal();
 						        	document.getElementById('txtname').value="";
 						        	$('#txtname').focus();
 						        }
 						    });
 			},
 			error: function(jqXHR, textStatus, errorThrown){
-				document.getElementById("mtitle").innerHTML="Error";
+				/*document.getElementById("mtitle").innerHTML="Error";
 				document.getElementById("mbody").innerHTML=generalerror;
 				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-				$('#myModal').modal();
+				$('#myModal').modal();*/
+				$('#modalgeneralerror').modal();
 			}
 		});
 		

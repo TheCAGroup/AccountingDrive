@@ -205,7 +205,7 @@ try{
 
 
 $app->delete('/deletecompany/:id', function ($id) use ($app) {
-	$request = (array) json_decode($app->request()->getBody());
+	//$request = (array) json_decode($app->request()->getBody());
 
 try{
 	

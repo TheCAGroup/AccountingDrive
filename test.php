@@ -9,7 +9,7 @@
 	</head>
 <?php
 require 'newmodal.php';
-makemodal_btnclose('modalid1','modaltitle','modalbody');
+makemodal_alert('modalid1','modaltitle','modalbody');
 ?>
 <script>
 $('#modalid1').modal();

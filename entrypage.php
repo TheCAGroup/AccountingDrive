@@ -29,8 +29,8 @@ include 'breadcrumb.php';
 			 		 	<li><a href="#" onclick="gotocreatecompany();">Create Company</a></li>
 			 		 	<?php
 						}?>
-			 		 	<li><a href="#">Shut Company</a></li>
-			 		 	<li><a href="#" onclick="gotocompanyinfo();">Company Info</a></li>
+			 		 	<li><a href="#">Select Period</a></li>
+			 		 	<li><a href="#" onclick="gotocompanyinfo();">User Profile</a></li>
 			 		 	<li><a href="#">Features</a></li>
 			 		 	<li><a href="#">Configure</a></li>
 					</ul>   

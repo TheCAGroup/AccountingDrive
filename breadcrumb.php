@@ -3,7 +3,7 @@ include 'userauthenticate.php';
 require_once 'newmodal.php';
 $company=isset($_COOKIE['ca_companyname'])?$_COOKIE['ca_companyname']:"Company Not Selected";
 $period=isset($_COOKIE['ca_period'])?$_COOKIE['ca_period']:"Period Not Selected";
-makemodal_btnclose("mymodalid", "Error", "generalerror");
+makemodal_alert("mymodalid", "Error", "generalerror");
 ?>
 <html>
 	<body>
@@ -19,17 +19,7 @@ makemodal_btnclose("mymodalid", "Error", "generalerror");
 <script>
 	function logout()
 			{
-				$.ajax({
-				type: 'GET',
-				contentType: 'application/json',
-				url: apiurl+'user.php/clearsession',
-				success: function(data){
-					document.location=home + "/login/userlogin.php";
-				},
-				error: function(jqXHR, textStatus, errorThrown){
-					$('#mymodalid').modal();
-				}
-			});
+				window.location=home+'/login/userlogin.php';
 			}
 </script>
 	<!--test --->
