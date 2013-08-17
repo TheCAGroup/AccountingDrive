@@ -1,17 +1,9 @@
 <?php
-require('common_classes.php');
+require_once('userauthenticate.php');
 require('modal.php');
 ?>
 <script src="js/config.js"></script>
-<?php
-session_start();
-if(!isset($_SESSION['ca_loginuser']))
-{
-?>
-<script>document.location=home + "/login/userlogin.php";</script>
-<?php
-}
-?>
+
 <html>
 	<head>
 		<meta charset="utf-8">

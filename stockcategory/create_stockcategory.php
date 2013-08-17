@@ -1,5 +1,5 @@
 <?php 
-	include '../company/company_breadcrumb.php'; 
+	include '../breadcrumb.php'; 
 ?>
 <html>
 <head>

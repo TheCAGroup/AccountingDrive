@@ -1,8 +1,6 @@
-	<?php 
-	include 'common_classes.php';
-	include 'company/company_breadcrumb.php'; 
-	session_start();
-	?>
+<?php 
+include 'breadcrumb.php'; 
+?>
 	<html>
 	<body>
 		<div>
@@ -24,7 +22,8 @@
 					<ul class="nav nav-pills nav-stacked">
 			 		 	<li><a href="#" onclick="gotoselectcompany();">Select Company</a></li>
 			 		 	<?php
-			 		 	if($_SESSION["ca_loginuser"]->permissions['company'][0]=='1')
+			 		 	$perm=$_SESSION["ca_permissions"];
+			 		 	if($perm['company'][0]=='1')
 						{
 			 		 	?>
 			 		 	<li><a href="#" onclick="gotocreatecompany();">Create Company</a></li>

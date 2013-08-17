@@ -5,7 +5,7 @@
 ///////////////////////
     require 'conf.php';
     require 'Slim/Slim.php';
-	require '../common_classes.php';
+	
 	\Slim\Slim::registerAutoloader();
 
 	$app = new \Slim\Slim();
@@ -46,14 +46,9 @@
 		{
 			$id=$obj[0]->id;
 			session_start();
-			$loginobject=new UserLoginInfo();
-			$loginobject->userid=$id;
-			$loginobject->username=$name;
-			$loginobject->permissions=retrievepermissions($id);
-			$_SESSION["ca_loginuser"]=$loginobject;
-			//$_SESSION["ca_userid"]=$id;
-			//$_SESSION["ca_username"]=$name;
-			
+			$_SESSION["ca_loginuserid"]=$id;
+			$_SESSION["ca_loginusername"]=$name;
+			$_SESSION["ca_permissions"]=retrievepermissions($id);
 		}	
     } catch(PDOException $e) {
         echo '{"error":{"text":'. $e->getMessage() .'}}';
