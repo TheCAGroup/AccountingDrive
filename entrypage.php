@@ -1,7 +1,5 @@
 <?php 
 include 'breadcrumb.php';
-//udhayha
-//change2
 ?>
 	<html>
 	<body>
