@@ -1,8 +1,9 @@
 <?php
 include 'userauthenticate.php';
+require_once 'newmodal.php';
 $company=isset($_COOKIE['ca_companyname'])?$_COOKIE['ca_companyname']:"Company Not Selected";
 $period=isset($_COOKIE['ca_period'])?$_COOKIE['ca_period']:"Period Not Selected";
-
+makemodal_btnclose("mymodalid", "Error", "generalerror");
 ?>
 <html>
 	<body>
@@ -26,11 +27,7 @@ $period=isset($_COOKIE['ca_period'])?$_COOKIE['ca_period']:"Period Not Selected"
 					document.location=home + "/login/userlogin.php";
 				},
 				error: function(jqXHR, textStatus, errorThrown){
-					document.getElementById("mtitle").innerHTML="Error";
-					document.getElementById("mbody").innerHTML=generalerror;
-					document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-					$('#myModal').modal();
-					//alert(generalerror);
+					$('#mymodalid').modal();
 				}
 			});
 			}

@@ -157,8 +157,7 @@ function formSubmit(frmedit,id)
       					minlength: 3
     			},
 					txtalias:{
-						required: true,
-						number: true
+						required: true
 					},
 					
 				},

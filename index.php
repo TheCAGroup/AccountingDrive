@@ -1,6 +1,5 @@
 <?php
 require_once('userauthenticate.php');
-require('modal.php');
 ?>
 <script src="js/config.js"></script>
 
@@ -29,7 +28,6 @@ require('modal.php');
 		<script src="js/navigation.js"></script>
 		
 		<script type="text/javascript" src="js/cookie.js"></script>
-
 	</head>
 
 	<body>

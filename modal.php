@@ -8,7 +8,7 @@
 	    <div class="modal-body" id="mbody">
 	    </div>
 	    <div class="modal-footer" id="mfooter">
-	    	
+	    	<a id="closemodal" href="https://www.google.com" class="btn btn-primary close" data-dismiss="modal" target="_blank">Launch google.com</a>
 	    </div>
 	  </div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->

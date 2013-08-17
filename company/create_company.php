@@ -1,5 +1,11 @@
 <?php 
 include '../breadcrumb.php';
+
+makemodal_progress("modalprogress", "Loading...");
+makemodal_progress("modalprogress_inserting", "Inserting...");
+makemodal_btnclose("modalupdatedrecord", "Updated Record", "Company Updated Successfully");
+makemodal_btnclose("modalinsertedrecord", "Inserted Record", "Company Inserted Successfully");
+//makemodal_btnclose("modalupdatedrecord", "Updated Record", "Company Updated Successfully");
 ?>
 <html>
 <head>
@@ -301,13 +307,7 @@ if(isset($_GET['ISEDIT']))
 <!-- Javascript placed at the end of the file to make the  page load faster -->
 
 <script type="text/javascript">
-
-document.getElementById("mtitle").innerHTML="Loading...";
-document.getElementById("mbody").innerHTML="<div class=\"progress progress-striped active\">"+
-        "<div class=\"progress-bar\" style=\"width: 100%;\"> </div>"+
-    "</div>";
-document.getElementById("mfooter").innerHTML="";
-$('#myModal').modal();
+$('#modalprogress').modal();
 
 //Datepicker
 $('#txtfinancialyear').datepicker();
@@ -357,12 +357,15 @@ function formSubmit(frmedit,id)
 				var alreadyexist = checkUniqueCompany();
 				if (alreadyexist == false)
 				{
+					/*
 					document.getElementById("mtitle").innerHTML="Inserting Record...";
 					document.getElementById("mbody").innerHTML="<div class=\"progress progress-striped active\">"+
 					        "<div class=\"progress-bar\" style=\"width: 100%;\"> </div>"+
 					    "</div>";
 					document.getElementById("mfooter").innerHTML="";
 					$('#myModal').modal();
+					*/
+					$('#modalprogress_inserting').modal();
 					addCompany();
 				}
 			}
@@ -403,11 +406,14 @@ function updateCompany(id)
 		dataType: "json",
 		data:q,
 		success: function(data){
+			/*
 			document.getElementById("mtitle").innerHTML="Updated Record";
 			document.getElementById("mbody").innerHTML="Company Updated Successfully";
 			document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
 			$('#myModal').modal();
 			//location.reload();
+			*/
+			$('#modalupdatedrecord').modal();
 		},
 		error: function(jqXHR, textStatus, errorThrown){
 			alert('updatecompany error: ' + textStatus+errorThrown);
@@ -417,6 +423,7 @@ function updateCompany(id)
 
 function addCompany()
 {
+	$('#modalinsertedrecord').modal();
 	var q=formtoJSON();
 	$.ajax({
 		type: 'POST',
@@ -434,13 +441,15 @@ function addCompany()
 	        }
 	        else
 	        {
-	        	
+	        /*	
 	        	document.getElementById("mtitle").innerHTML="Inserted Record";
 				document.getElementById("mbody").innerHTML="Company Added Successfully";
 				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-	        	//$('#myModal').modal('hide');
+				*/
+	        	$('#modalinsertedrecord').modal('hide');
 	        	//$('#myModal1').modal();
 	        	//alert('Inserted!');
+	        	
 	        	$('#addcompany')[0].reset();
 	        }
 						   
@@ -474,7 +483,7 @@ $.ajax({
 					    $.each(data, function(i, option) {
 					        $('#cmbadministrator').append($('<option/>').attr("value", option.id).text(option.username));
 					    });
-					     $('#myModal').modal('hide');
+					     $('#modalprogress').modal('hide');
 		//				})
 		},
 		error: function(jqXHR, textStatus, errorThrown){
