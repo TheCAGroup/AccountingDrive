@@ -3,7 +3,45 @@
 ?>
 <html>
 <head>
-<meta charset="utf-8"> 
+<meta charset="utf-8">
+<script>
+function displayStockInfo(id)
+{
+		$.ajax({
+		type: 'GET',
+		contentType: 'application/json',
+		url: apiurl+'stock.php/getstock/'+id,
+		dataType: "json",
+		success: function(data){
+			//alert(JSON.stringify(data));
+		JSONtoform(data[0]);	
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert('displaystock error: ' + textStatus+errorThrown);
+		}
+	});
+}
+function frm_editstock(id)
+{
+displaystockInfo(id);	
+}
+function frm_stockInfo(id)
+{
+	displaystockInfo(id);
+	enabledisableform(true);
+}
+function enabledisableform(isdisable)
+{
+	$("#txtname").attr("disabled", isdisable);
+	$("#txtalias").attr("disabled", isdisable);
+	
+}
+function JSONtoform(data)
+{
+		$('#txtname').val(data.name);
+		$("#txtalias").val(data.alias);
+}	
+</script> 
 </head>
 <body>
 	
@@ -27,9 +65,9 @@ if(isset($_GET['ISEDIT']))
 		<legend>Stock Categories
 			<?php 
 			if($id>-1)
-				if($isedit) echo 'Edit Company';
-				else echo 'Company Info';
-			else echo'Create Company';
+				if($isedit) echo 'Edit Stock';
+				else echo 'Stock Info';
+			else echo'Create Stock';
 			?></legend>
 
   			
@@ -50,9 +88,30 @@ if(isset($_GET['ISEDIT']))
 		
 		<div style="width:50%; height:100px; padding-left: 5%;">
 			<!--Submit Button-->
-			<div id="submit_btn_container"style="float:left" onclick="addstockcategory();">
+			<?php 
+			if($id>-1)
+				if($isedit)//Edit company 
+					{
+						echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(true,'.$id.');">
+			    	<label id="btn_label">Update</label>
+				</div>';
+				echo '<script>frm_editstock('.$_GET['ID'].');</script>';
+					}
+				else//Display Company Info
+					{//no accept btn
+					echo '<script>frm_stockInfo('.$_GET['ID'].');</script>';
+					}
+			else //Create Company
+				{
+					echo '<div id="submit_btn_container"style="float:left" onclick="formSubmit(false,-1);">
+			    	<label id="btn_label">Accept</label>
+				</div>';
+				}
+			?>
+			
+			<!--div id="submit_btn_container"style="float:left" onclick="addstockcategory();">
 			    <label id="btn_label">Accept</label>
-			</div>
+			</div---->
 			
 			<!--Cancel Button-->
 			<div id="cancel_btn_container" style="float:right" onclick="formCancel();">
@@ -86,8 +145,160 @@ if(isset($_GET['ISEDIT']))
 
 
 <script>
+//////////////////////////////////////////////////////////////////////////
+// i dont know how this work
+function formSubmit(frmedit,id)
+{
+	
+	$("#addstockcategory").validate({
+				rules:{
+					txtname:{
+      					required: true,
+      					minlength: 3
+    			},
+					txtalias:{
+						required: true,
+						number: true
+					},
+					
+				},
+				errorClass: "help-inline"
+				
+			});
+			
+			
+		if ( $("#addstockcategory").valid())
+		{
+			if(frmedit)//update
+			{
+				updatestock(id);
+			}
+			else//create
+			{
+				var alreadyexist = checkUniqueCompany();
+				if (alreadyexist == false)
+				{
+					addCompany();
+				}
+			}
+		}
+}
+function formtoJSON()
+{
+	var q=JSON.stringify({
+		'name':$("input#txtname").val(),
+		'address':$("#txtaddress").val(),
+		  });
+	 return q;	
+}
+//////////////////////////////////////////////////////////////
 
-function addstockcategory()
+function updatestock(id) 
+{
+	var q=formtoJSON();
+	//alert(q);
+	$.ajax({
+		type: 'PUT',
+		contentType: 'application/json',
+		url: apiurl+'stock.php/updatestock/'+id,
+		dataType: "json",
+		data:q,
+		success: function(data){
+			alert('Updated!');
+			//location.reload();
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert('updatestock error: ' + textStatus+errorThrown);
+		}
+	});  
+}
+
+function addstockcategories()
+{
+	var q=formtoJSON();
+	$.ajax({
+		type: 'POST',
+		contentType: 'application/json',
+		url: apiurl+'stock.php/addstockcategory',
+		dataType: "json",
+		data:q,
+		success: function(data){
+			
+	        if(JSON.stringify(data) == '"-1"')
+	        {
+	        	alert('Try Again');
+	        }
+	        else
+	        {
+	        	alert('Inserted!');
+	        	$('#addstock')[0].reset();
+	        }
+						   
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert('addstock error: ' + textStatus+errorThrown);
+		}
+	});
+}
+
+
+
+function formCancel()
+{
+	$("#maindiv").load("entrypage.php");
+}
+
+//Load Values for the select box  (user list)
+$.ajax({
+		type: 'GET',
+		contentType: 'application/json',
+		url: apiurl+'user.php/userlist',
+		dataType: "json",
+		success: function(data){
+			//alert(data.d);
+			//$(function() {
+					    
+					    $.each(data, function(i, option) {
+					        $('#cmbadministrator').append($('<option/>').attr("value", option.id).text(option.username));
+					    });
+		//				})
+		},
+		error: function(jqXHR, textStatus, errorThrown){
+			alert(generalerror);
+		}
+});
+
+//Get company list and check if the company name entered is already in the company list 
+function checkUniquestock()
+{	
+	var found = false;
+	$.ajax({
+			type: 'GET',
+			async: false, 
+			contentType: 'application/json',
+			url: apiurl+'stock.php/getstock',
+			dataType: "json",
+			success: function(data){
+						    $.each(data, function(i, option) {
+						        if(option.name == document.getElementById('txtname').value)
+						        {
+						        	found = true;
+						        	alert("stock already exist");
+						        	document.getElementById('txtname').value="";
+						        	$('#txtname').focus();
+						        }
+						    });
+			},
+			error: function(jqXHR, textStatus, errorThrown){
+				alert(generalerror);
+			}
+		});
+		
+		return found;
+}	
+
+
+/*function addstockcategory()
 {
 var name=document.getElementById('txtname').value;
 var alias=document.getElementById('txtalias').value;
@@ -121,7 +332,7 @@ var q=JSON.stringify
 function formCancel()
 {
 	$("#maindiv").load("entrypage.php");
-}
+}*/
 </script>
 </body>
 </html>
