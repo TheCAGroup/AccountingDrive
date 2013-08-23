@@ -25,3 +25,8 @@ function gotocreatestockcategory()
 {
 	$("#maindiv").load(home+"/stockcategory/create_stockcategory.php");
 }
+
+function gotostockjournal()
+{
+	$("#maindiv").load(home+"/voucher/stock_journal.php");
+}

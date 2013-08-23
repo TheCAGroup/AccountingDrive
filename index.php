@@ -72,7 +72,7 @@ require_once('userauthenticate.php');
 										<a href="#">Stock Groups</a>
 									</li>
 									<li>
-										<a onclick="gotocreatestockcategory();">Stock Categories</a>
+										<a href="#" onclick="gotocreatestockcategory();">Stock Categories</a>
 									</li>
 									<li>
 										<a href="#">Stock Items</a>
@@ -124,7 +124,7 @@ require_once('userauthenticate.php');
 										<a href="#">Accounting Vouchers</a>
 									</li>
 									<li>
-										<a href="#">Inventory Vouchers</a>
+										<a href="#" onclick="gotostockjournal();">Inventory Vouchers</a>
 									</li>
 									<li>
 										<a href="#">Order Vouchers</a>
