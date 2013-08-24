@@ -34,7 +34,7 @@ makemodal_alert("modaldeletesuccess","Success","Company successfully deleted");
 			
 				<!-- Button -->
 				<div align="center">
-				  	<a href="#" class="btn btn-success btn-small"  onclick="setCompany();">Select</a>
+				  	<a href="#" class="btn btn-success btn-small"  onclick="local_selectcompany();">Select</a>
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<?php
 			 		 	$perm=$_SESSION["ca_permissions"];
@@ -165,13 +165,27 @@ makemodal_alert("modaldeletesuccess","Success","Company successfully deleted");
 					gotodisplaycompany(selcomp);
 				}
 			}
-			function setCompany()
+			function local_selectcompany()
 			{
-				var e = document.getElementById("selectbasic");				
-				var str = e.options[e.selectedIndex].text;
-				document.cookie="ca_companyname =" + str;
-				document.cookie="ca_companyid =" + e.value;
-				$("#maindiv").load("entrypage.php");
+				
+				var e=document.getElementById("selectbasic");
+				var name=e.options[e.selectedIndex].text;
+				var id = e.value;
+				$.ajax({
+					type: 'GET',
+					url: apiurl+'company.php/selectcompany/'+id+'/'+name,
+					dataType: "json",
+					success: function(data){
+						if(JSON.stringify(data)=='1')
+						{
+						$("#maindiv").load("entrypage.php");
+						}
+					},
+					error: function(jqXHR, textStatus, errorThrown){
+						$('#modalgeneralerror').modal();
+					}
+				});
+				
 			}
 			
 			function deleteCompany()

@@ -1,15 +1,16 @@
 <?php
 include 'userauthenticate.php';
 require_once 'newmodal.php';
-$company=isset($_COOKIE['ca_companyname'])?$_COOKIE['ca_companyname']:"Company Not Selected";
-$period=isset($_COOKIE['ca_period'])?$_COOKIE['ca_period']:"Period Not Selected";
+//$selcompanyid=isset($_SESSION['ca_selcompanyid'])?$_SESSION['ca_selcompanyid']:"Company Not Selected";
+$selcompanyname=isset($_SESSION['ca_selcompanyname'])?$_SESSION['ca_selcompanyname']:"Company Not Selected";
+$period=isset($_SESSION['ca_selperiod'])?$_SESSION['ca_selperiod']:"Period Not Selected";
 makemodal_alert("mymodalid", "Error", "generalerror");
 ?>
 <html>
 	<body>
 		<div style="width: 100%">
 			<ul class="nav nav-pills pull-left">
-			  <li><a href="#"><?php echo $company; ?></a></li>
+			  <li><a href="#"><?php echo $selcompanyname; ?></a></li>
 			  <li><a href="#"><?php echo $period; ?></a></li>
 			</ul>
 			<ul class="nav nav-pills pull-right">

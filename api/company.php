@@ -47,6 +47,23 @@ $app->get('/companydetails/:id', function ($id) use ($app) {
 });
 
 
+ // GET route with parameter
+$app->get('/selectcompany/:id/:name', function ($id,$name) use ($app) {
+     try {
+    	session_start();
+		$_SESSION["ca_selcompanyid"]=$id;
+		$_SESSION["ca_selcompanyname"]=$name;
+    } catch(Exception $e) {
+        logerrors::writelog('selectcompany','api/company.php/selectcompany/id',$e->getMessage());
+		$app->response()->header('Content-Type', 'application/json');
+		echo json_encode(-1);
+		return;
+    }
+    echo json_encode(1);;
+});
+
+
+
 // POST route
 $app->post('/addcompany', function () use ($app) {
 	$request = (array) json_decode($app->request()->getBody());
