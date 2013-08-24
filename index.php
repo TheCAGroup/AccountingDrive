@@ -121,7 +121,7 @@ require_once('userauthenticate.php');
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Transactions <b class="caret"></b></a>
 								<ul class="dropdown-menu">
 									<li>
-										<a href="#">Accounting Vouchers</a>
+										<a onclick="gotovoucherentry();">Accounting Vouchers</a>
 									</li>
 									<li>
 										<a href="#">Inventory Vouchers</a>
