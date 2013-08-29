@@ -94,22 +94,15 @@ makemodal_alert("modaldeletesuccess","Success","Company successfully deleted");
 						url: apiurl+'company.php/companylist',
 						dataType: "json",
 						success: function(data){
-							//alert(data.d);
-							//$(function() {
-									    
-									    $.each(data, function(i, option) {
-									        $('#selectbasic').append($('<option/>').attr("value", option.id).text(option.name));
-									    });
-									    $('#modalprogress').modal('hide');
-						//				})
+							
+						    $.each(data, function(i, option) {
+						        $('#selectbasic').append($('<option/>').attr("value", option.id).text(option.name));
+						    });
+						    $('#modalprogress').modal('hide');
+					
 						},
 						error: function(jqXHR, textStatus, errorThrown){
-							/*
-							document.getElementById("mtitle").innerHTML="Error";
-							document.getElementById("mbody").innerHTML=generalerror;
-							document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-							$('#myModal').modal();
-							*/
+							
 							$('#modalgeneralerror').modal();
 						}
 				});
@@ -121,10 +114,6 @@ makemodal_alert("modaldeletesuccess","Success","Company successfully deleted");
 				
 				if(selcomp == "")
 				{
-					/*document.getElementById("mtitle").innerHTML="Alert";
-					document.getElementById("mbody").innerHTML="Please select a company to edit";
-					document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-					$('#myModal').modal();*/
 					$('#modalupdatecompany').modal();
 				}
 				else
@@ -138,10 +127,6 @@ makemodal_alert("modaldeletesuccess","Success","Company successfully deleted");
 				var selcomp=document.getElementById("selectbasic").value;
 				if(selcomp == "")
 				{
-					/*document.getElementById("mtitle").innerHTML="Alert";
-					document.getElementById("mbody").innerHTML="Please select a company to delete";
-					document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-					$('#myModal').modal();*/
 					$('#modaldeletecompany').modal();
 				}
 				else
@@ -154,10 +139,6 @@ makemodal_alert("modaldeletesuccess","Success","Company successfully deleted");
 				var selcomp=document.getElementById("selectbasic").value;
 				if(selcomp == "")
 				{
-					/*document.getElementById("mtitle").innerHTML="Alert";
-					document.getElementById("mbody").innerHTML="Please select a company to view its details";
-					document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-					$('#myModal').modal();*/
 					$('#modaldisplaycompany').modal();
 				}
 				else
@@ -201,12 +182,7 @@ makemodal_alert("modaldeletesuccess","Success","Company successfully deleted");
 						loadcompany();
 					},
 					error: function(jqXHR, textStatus, errorThrown){
-						/*
-						document.getElementById("mtitle").innerHTML="Error";
-						document.getElementById("mbody").innerHTML=generalerror;
-						document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-						$('#myModal').modal();
-						*/
+						
 						$('#modalgeneralerror').modal();
 					}
 				});

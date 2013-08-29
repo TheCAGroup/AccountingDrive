@@ -286,7 +286,7 @@ if(isset($_GET['ISEDIT']))
 			</div>
 			
 			</fieldset>
-</form>
+		</form>
 		</div>
 		</div>
 	 	<div class="col-lg-4">
@@ -321,9 +321,6 @@ $('#txtfinancialyear').datepicker();
 //Form Validation
 function formSubmit(frmedit,id)
 {
-	
-	
-	
 	$("#addcompany").validate({
 				rules:{
 					txtname:{
@@ -362,14 +359,6 @@ function formSubmit(frmedit,id)
 				var alreadyexist = checkUniqueCompany();
 				if (alreadyexist == false)
 				{
-					/*
-					document.getElementById("mtitle").innerHTML="Inserting Record...";
-					document.getElementById("mbody").innerHTML="<div class=\"progress progress-striped active\">"+
-					        "<div class=\"progress-bar\" style=\"width: 100%;\"> </div>"+
-					    "</div>";
-					document.getElementById("mfooter").innerHTML="";
-					$('#myModal').modal();
-					*/
 					$('#modalprogress_inserting').modal();
 					addCompany();
 				}
@@ -411,13 +400,6 @@ function updateCompany(id)
 		dataType: "json",
 		data:q,
 		success: function(data){
-			/*
-			document.getElementById("mtitle").innerHTML="Updated Record";
-			document.getElementById("mbody").innerHTML="Company Updated Successfully";
-			document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-			$('#myModal').modal();
-			//location.reload();
-			*/
 			$('#modalupdatedrecord').modal();
 		},
 		error: function(jqXHR, textStatus, errorThrown){
@@ -428,7 +410,6 @@ function updateCompany(id)
 
 function addCompany()
 {
-	$('#modalinsertedrecord').modal();
 	var q=formtoJSON();
 	$.ajax({
 		type: 'POST',
@@ -440,32 +421,20 @@ function addCompany()
 			
 	        if(JSON.stringify(data) == '"-1"')
 	        {
-	        	/*document.getElementById("mtitle").innerHTML="Alert";
-				document.getElementById("mbody").innerHTML="Try Again";
-				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";*/
-				$('#modaltryagain').modal();
+	        	$('#modaltryagain').modal();
 	        }
 	        else
 	        {
-	        /*	
-	        	document.getElementById("mtitle").innerHTML="Inserted Record";
-				document.getElementById("mbody").innerHTML="Company Added Successfully";
-				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-				*/
+	        
 				$('#modalprogress_inserting').modal('hide');
 	        	$('#modalinsertedrecord').modal();
-	        	//$('#myModal1').modal();
-	        	//alert('Inserted!');
 	        	
 	        	$('#addcompany')[0].reset();
 	        }
 						   
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-				/*document.getElementById("mtitle").innerHTML="Error";
-				document.getElementById("mbody").innerHTML=generalerror;
-				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-			//alert('addcompany error: ' + textStatus+errorThrown);*/
+			
 			$('#modalgeneralerror').modal();
 		}
 	});
@@ -485,21 +454,14 @@ $.ajax({
 		url: apiurl+'user.php/userlist',
 		dataType: "json",
 		success: function(data){
-			//alert(data.d);
-			//$(function() {
-					   
-					    $.each(data, function(i, option) {
-					        $('#cmbadministrator').append($('<option/>').attr("value", option.id).text(option.username));
-					    });
-					     $('#modalprogress').modal('hide');
-		//				})
+			
+		    $.each(data, function(i, option) {
+		        $('#cmbadministrator').append($('<option/>').attr("value", option.id).text(option.username));
+		    });
+		     $('#modalprogress').modal('hide');
+		
 		},
 		error: function(jqXHR, textStatus, errorThrown){
-			/*document.getElementById("mtitle").innerHTML="Error";
-			document.getElementById("mbody").innerHTML=generalerror;
-			document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-			$('#myModal').modal();
-			//alert(generalerror);*/
 			$('#modalgeneralerror').modal();
 		}
 });
@@ -519,21 +481,13 @@ function checkUniqueCompany()
 						        if(option.name == document.getElementById('txtname').value)
 						        {
 						        	found = true;
-						        	/*document.getElementById("mtitle").innerHTML="Insert Failed !!!";
-									document.getElementById("mbody").innerHTML="Company Already Exist";
-									document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-									$('#myModal').modal();*/
-									$('#modalcompanyexists').modal();
+						        	$('#modalcompanyexists').modal();
 						        	document.getElementById('txtname').value="";
 						        	$('#txtname').focus();
 						        }
 						    });
 			},
 			error: function(jqXHR, textStatus, errorThrown){
-				/*document.getElementById("mtitle").innerHTML="Error";
-				document.getElementById("mbody").innerHTML=generalerror;
-				document.getElementById("mfooter").innerHTML="<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>";
-				$('#myModal').modal();*/
 				$('#modalgeneralerror').modal();
 			}
 		});
