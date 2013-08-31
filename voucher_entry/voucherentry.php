@@ -7,16 +7,23 @@ makemodal_alert("modaltryagain","Alert","Try again");
 makemodal_alert("modalgeneralerror","Error","<script>generalerror</script>");
 ?>
 <html>
-		<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Voucher</title>
+<head>
+	
+<meta charset="utf-8"> 
+
+
+<style>body { font-family: Ubuntu, sans-serif; }</style>
+
+<script>
+
+</script>
 	</head>
 	<body>
 		<div class="container">
 		<div class="row show-grid">
   		<div class="col-lg-8">
 			<div class="well">
-			<form class="form-horizontal" method="post" action="#">
+			<form id="insertvoucher" class="form-horizontal" method="post" action="#">
 				<fieldset>
 				
 				<!-- Form Name -->
@@ -53,22 +60,29 @@ makemodal_alert("modalgeneralerror","Error","<script>generalerror</script>");
 	 	
 		</body>
 		</html>
-		<script>
+<!-- Javascript placed at the end of the file to make the  page load faster -->
+
+<script type="text/javascript">
+$('#modalprogress').modal();
+
 function formtoJSON()
 {
 	var q=JSON.stringify({
-		'date':$("#txt_date").val(),
+		'date':$("input#txt_date").val(),
 		'from':$("input#txt_from").val(),
-		'to':$("#txt_to").val(),
-		'toamount':$("#txt_toamount").val(),
-		'narration':$("input#txt_narration").val(),
-	        });
+		//'to':$("input#txt_to").val(),
+		'toamount':$("input#txt_toamount").val(),
+		'narration':$("#txt_narration").val()
+	    });
 	 return q;	
 }
 
+
 function insertVoucher()
 {
-	//$('#modalinsertedvoucher').modal();
+	//session_start();
+	//alert(SESSION['ca_userid']);
+	$('#modalprogress').modal();
 	var q=formtoJSON();
 	$.ajax({
 		type: 'POST',
@@ -77,7 +91,6 @@ function insertVoucher()
 		dataType: "json",
 		data:q,
 		success: function(data){
-			alert(JSON.stringify(data)); 
 	        if(JSON.stringify(data) == '"-1"')
 	        {
 	        	/*document.getElementById("mtitle").innerHTML="Alert";
@@ -97,7 +110,7 @@ function insertVoucher()
 	        	//$('#myModal1').modal();
 	        	//alert('Inserted!');
 	        	
-	        	//$('#addcompany')[0].reset();
+	        	$('#insertvoucher')[0].reset();
 	        }
 						   
 		},

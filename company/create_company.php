@@ -428,7 +428,6 @@ function updateCompany(id)
 
 function addCompany()
 {
-	$('#modalinsertedrecord').modal();
 	var q=formtoJSON();
 	$.ajax({
 		type: 'POST',

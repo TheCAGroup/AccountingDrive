@@ -123,8 +123,8 @@ modifiedon) VALUES(:name,:address,:country,:state,:pincode,:telephoneno,:email,:
 	$stmt->bindParam('amountsinmillions',$amountsinmillions);
 	$stmt->bindParam('spacebtwamountandsymbol',$spacebtwamountandsymbol);
 	$stmt->bindParam('decimalplacsforprint',$decimalplacsforprint);
-	$stmt->bindParam('createdby',$_SESSION['ca_userid']);
-	$stmt->bindParam('modifiedby',$_SESSION['ca_userid']);
+	$stmt->bindParam('createdby',$_SESSION['ca_loginuserid']);
+	$stmt->bindParam('modifiedby',$_SESSION['ca_loginuserid']);
 	$stmt->execute();
 
 	if($stmt->errorCode() == 0) 
