@@ -1,0 +1,8 @@
+Caught exception in fn insertVoucher in api/voucher.php on 2013-08-24 21:11:30: Undefined variable: _SESSION
+Caught exception in fn insertVoucher in api/voucher.php on 2013-08-24 21:12:08: Undefined index: ca_userid
+Caught exception in fn insertVoucher in api/voucher.php on 2013-08-24 21:13:01: Undefined index: ca_userid
+Caught exception in fn insertVoucher in api/voucher.php on 2013-08-24 21:14:19: Undefined index: ca_userid
+Caught exception in fn insertVoucher in api/voucher.php on 2013-08-24 21:20:15: Undefined index: ca_userid
+Caught exception in fn insertVoucher in api/voucher.php on 2013-08-24 21:20:27: Undefined index: ca_userid
+Caught exception in fn insertVoucher in api/voucher.php on 2013-08-24 21:40:42: Undefined index: ca_userid
+Caught exception in fn insertVoucher_pdo in api/voucher.php on 2013-08-24 21:44:33: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`cadb`.`tbl_accountingvoucher`, CONSTRAINT `fk_accountingvoucher_10` FOREIGN KEY (`fromledgerid`) REFERENCES `tbl_ledger` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION)
