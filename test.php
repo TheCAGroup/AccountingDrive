@@ -1,6 +1,4 @@
-<?php
-//include '../breadcrumb.php';
- ?>
+
 <html>
 	<head>
 		<style>
@@ -12,7 +10,14 @@
 		
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<script type="text/javascript" src="bootstrap/js/jquery.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="bootstrap/js/bootstrap-modal.js"></script>
 		<script type="text/javascript" src="js/config.js"></script>
+		<?php
+include 'breadcrumb.php';
+makemodal_confirm("modalacceptchange","Accept","");
+echo $callbackvalue;
+?>
 		<div class="container">
 		<div class="row show-grid">
   		<div class="col-lg-9">
@@ -85,14 +90,14 @@
 	</div>
 	<script type="text/javascript" src="test.js"></script>
 		<script>
-			function loadcompany()
+			function loadledger()
 			{
 				var res;
 				$.ajax({
 						type: 'GET',
 						contentType: 'application/json',
 						async: false,
-						url: apiurl+'company.php/companylist',
+						url: apiurl+'stockjournal.php/stockitemlist',
 						dataType: "json",
 						success: function(data){
 							res = data;
@@ -103,14 +108,14 @@
 				return res;
 			}
 			
-			var data=loadcompany();
+			var data=loadledger();
 			makeconfobject("Name of Item",50,"list",data,"divlist","","",false);//Company Name
 			makeconfobject("Qty",4,"number","","","Amount=Qty*Rate","Qty=Amount/Rate",true);//Quantity
 			makeconfobject("Units",4,"list",data,"divlist","","",true);//Units
 			makeconfobject("Rate",4,"list",data,"divlist","Amount=Qty*Rate","Rate=Amount/Qty",true);//Rate
 			makeconfobject("Amount",4,"list",data,"divlist","Rate=Amount/Qty","Qty=Amount/Rate",false);//Amount
 			//starthere(confarray);
-			var list=loadcompany();
+			var list=loadledger();
 			starthere(list);
 		</script>
 		
