@@ -27,51 +27,36 @@ $app->post('/addjournalentry', function () use ($app) {
 	
 	
 try{
+	$data=$request[0];
 	
-	$name=$request[0].name;
-	$qty=$request[0].qty;
-	$units=$request[0].units;
-	$rate=$request[0].rate;
-	$amt=$request[0].amt;
+	$vouchertype=1;
+	$name=$data->result[0]->name;
+	$qty=$data->result[0]->qty;
+	$units=$data->result[0]->units;
+	$rate=$data->result[0]->rate;
+	$amt=$data->result[0]->amt;
+	
+	$stockitemid=1;
 	
 }
 catch (Exception $e) 
 	{
-	logerrors::writelog('addcompany','api/company.php',$e->getMessage());
+	logerrors::writelog('addstockjournalentry','api/stockjournal.php',$e->getMessage());
 	$app->response()->header('Content-Type', 'application/json');
-	echo json_encode('-1');
+	echo json_encode('-3');
 	return;
 	}
-	//$modifiedon=$request["modifiedon"];
 	
-	/*
+	
 try{
 	
-$sql="INSERT INTO tbl_company(name,address,country,state,pincode,telephoneno,email,currencysymbol,financialyear,administrator,
-currencyname,decimalplaces,symbolfordecimal,amountsinmillions,spacebtwamountandsymbol,decimalplacsforprint,createdby,createdon,modifiedby,
-modifiedon) VALUES(:name,:address,:country,:state,:pincode,:telephoneno,:email,:currencysymbol,:financialyear,
-:administrator,:currencyname,:decimalplaces,:symbolfordecimal,:amountsinmillions,:spacebtwamountandsymbol,
-:decimalplacsforprint,:createdby,CURRENT_TIMESTAMP(),:modifiedby,CURRENT_TIMESTAMP())";
+$sql="INSERT INTO tbl_inventoryvoucher(vouchertype,createdby,createdon,modifiedby,
+modifiedon) VALUES(:vouchertype,:createdby,CURRENT_TIMESTAMP(),:modifiedby,CURRENT_TIMESTAMP())";
 
 	$conn = getConnection();
 	$stmt = $conn->prepare($sql);
 
-	$stmt->bindParam('name',$name);
-	$stmt->bindParam('address',$address);
-	$stmt->bindParam('country',$country);
-	$stmt->bindParam('state',$state);
-	$stmt->bindParam('pincode',$pincode);
-	$stmt->bindParam('telephoneno',$telephoneno);
-	$stmt->bindParam('email',$email);
-	$stmt->bindParam('currencysymbol',$currencysymbol);
-	$stmt->bindParam('financialyear',$financialyear);
-	$stmt->bindParam('administrator',$administrator);
-	$stmt->bindParam('currencyname',$currencyname);
-	$stmt->bindParam('decimalplaces',$decimalplaces);
-	$stmt->bindParam('symbolfordecimal',$symbolfordecimal);
-	$stmt->bindParam('amountsinmillions',$amountsinmillions);
-	$stmt->bindParam('spacebtwamountandsymbol',$spacebtwamountandsymbol);
-	$stmt->bindParam('decimalplacsforprint',$decimalplacsforprint);
+	$stmt->bindParam('vouchertype',$vouchertype);
 	$stmt->bindParam('createdby',$_SESSION['ca_loginuserid']);
 	$stmt->bindParam('modifiedby',$_SESSION['ca_loginuserid']);
 	$stmt->execute();
@@ -79,22 +64,47 @@ modifiedon) VALUES(:name,:address,:country,:state,:pincode,:telephoneno,:email,:
 	if($stmt->errorCode() == 0) 
 		{
 		$insert_id = $conn->lastInsertId();
-		$app->response()->header('Content-Type', 'application/json');
-		echo json_encode($insert_id);
-		return;
+		try{
+	
+		$sql2="INSERT INTO tbl_inventoryvoucherlist(inventoryvoucherid,inventory,quantity,rate,createdby,createdon,modifiedby,
+		modifiedon) VALUES(:vouchertype,:inventory,:quantity,:rate,:createdby,CURRENT_TIMESTAMP(),:modifiedby,CURRENT_TIMESTAMP())";
+		
+			$conn2 = getConnection();
+			$stmt2 = $conn2->prepare($sql2);
+		
+			$stmt2->bindParam('inventoryvoucherid',$insert_id);
+			$stmt2->bindParam('inventory',$stockitemid);
+			$stmt2->bindParam('quantity',$qty);
+			$stmt2->bindParam('rate',$rate);
+			$stmt2->bindParam('createdby',$_SESSION['ca_loginuserid']);
+			$stmt2->bindParam('modifiedby',$_SESSION['ca_loginuserid']);
+			$stmt2->execute();
+		
+			if($stmt2->errorCode() == 0) 
+				{
+				$insert_id1 = $conn2->lastInsertId();
+				$app->response()->header('Content-Type', 'application/json');
+				echo json_encode($insert_id);
+				return;
+				} 
+			}
+			catch (PDOException $e) 
+			{
+			logerrors::writelog('addstockjournalentry','api/stockjournal.php',$e->getMessage());
+			$app->response()->header('Content-Type', 'application/json');
+			echo json_encode('-1');
+			return;
+			}				
 		} 
 	}
 	catch (PDOException $e) 
 	{
-	logerrors::writelog('addcompany','api/company.php',$e->getMessage());
+	logerrors::writelog('addstockjournalentry','api/stockjournal.php',$e->getMessage());
 	$app->response()->header('Content-Type', 'application/json');
-	echo json_encode('-1');
+	echo json_encode('-2');
 	return;
-	}*/
+	}
 	
-	$app->response()->header('Content-Type', 'application/json');
-		echo json_encode($request);
-		return;
 });
 
 

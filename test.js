@@ -131,14 +131,20 @@ function itemKeydown(tblname,rowno,colno)
 							}
 						}
 						
+						
+						
+						
 						var enddata = [];
 						for (var i=0;i<data.length-4;i=i+5)
 						{
 							enddata.push({"name":data[i].value,"qty":data[i+1].value,"units":data[i+2].value,"rate":data[i+3].value,"amt":data[i+4].value});
 						}
 						
+						var finaldata = [];
+						finaldata.push({"result":enddata});
+						
 						//halfway
-						var a=JSON.stringify(enddata);
+						var a=JSON.stringify(finaldata);
 						//alert(a);
 						//alert(enddata.length);
 						addjournalentry(a);
@@ -499,8 +505,8 @@ function addjournalentry(jdata)
 		data:jdata,
 		success: function(data){
 			
-			
-			alert("Record inserted");
+			//console.log(data);
+			alert(JSON.stringify(data));
 			
 			/*
 	        if(JSON.stringify(data) == '"-1"')

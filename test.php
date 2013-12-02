@@ -14,9 +14,9 @@
 		<script type="text/javascript" src="bootstrap/js/bootstrap-modal.js"></script>
 		<script type="text/javascript" src="js/config.js"></script>
 		<?php
-include 'breadcrumb.php';
+/*include 'breadcrumb.php';
 makemodal_confirm("modalacceptchange","Accept","");
-echo $callbackvalue;
+echo $callbackvalue;*/
 ?>
 		<div class="container">
 		<div class="row show-grid">
