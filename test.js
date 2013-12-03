@@ -3,6 +3,7 @@ var isSelected = false;
 var valuepresent;
 var mylist;
 var flag=0;
+var finalamt = 0;
 
 
 var confarray=new Array();
@@ -22,18 +23,19 @@ function makeconfobject(name,length,coltype,data,divid,fowardformula,backwardfor
 	
 function starthere(inlist)
 {
-createOption(inlist,"");
-mylist=inlist;
-createCell("mysource",1,1);
+	createOption(inlist,"");
+	mylist=inlist;
+	createCell("mysource",1,1);
 }
 
 
-	function createCell(tblname, rowno, colno)
+function createCell(tblname, rowno, colno)
+{
+	var table = document.getElementById(tblname);
+	
+	if(document.getElementById("div"+tblname+"[" + (rowno) + "]["+(colno)+"]") == null)
 	{
-		var table = document.getElementById(tblname);
-		
-		if(document.getElementById("div"+tblname+"[" + (rowno) + "]["+(colno)+"]") == null)
-	{
+		//console.log("Inside if");
 		//NO DIV
 		//check if row exists
 		if(table.rows[rowno] == null)
@@ -243,6 +245,7 @@ function itemKeydown(tblname,rowno,colno)
 		//if(document.getElementById('txtbx').value!="")
 			//z	return;
 			
+		
 		if (tblname == "mydest" && rowno == 1 && colno == 1)
 		{
 			tbToLbl(tblname,rowno,colno);
@@ -363,6 +366,24 @@ function lblToTb(tblname,rowno,colno)
 	{
 		loadSideLink();
 	}
+}
+
+function calcTotal()
+{
+	if((colno==5)&&(tblname == "mysource")&&(window.isSelected == false))
+		{
+			if(action=="+")
+			{
+				var amt = document.getElementById("lbl"+tblname+"["+rowno+"]["+colno+"]").innerText;
+				window.finalamt	= window.finalamt + parseInt(amt);
+				document.getElementById("tblfinalamt").innerText = window.finalamt;
+			}
+			else if (action=="-")
+			{
+				
+			}
+			
+		}
 }
 
 function maketextbox(tblname,rowno,colno)

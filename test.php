@@ -24,42 +24,59 @@ echo $callbackvalue;*/
 		<div class="well">
 		<h4 align="center">Transfer of Materials</h4>
 		
-			<div class="my-class" align="center" style=" border: 1px #0D3349 solid; background: #EFF8FB;  width: 100%; height: 35%; overflow: auto">
-				<div style="border-bottom: 1px #0D3349 dotted; width: 100%">
-					<b>Source (Consumption)</b>
-				</div>
-				<div>
-					<table id="mysource" class="table" style="border: 0px">
-						<thead>
-							<tr style="font-size: 0.875em;border: 0px">
-								<td style="width:65%; min-width:55%;"><b>Name of Item</b></td>
-								<td style="width:10%; min-width:10%;"><b>Qty</b></td>
-								<td style="width:10%; min-width:10%;"><b>Units</b></td>
-								<td style="width:10%; min-width:10%;"><b>Rate</b></td>
-								<td style="width:15%; min-width:15%;"><b>Amount</b></td>
-							</tr>
-						</thead>
-					</table>
-				</div>
-			</div><br>
-			<div class="my-class" align="center" style=" border: 1px #0D3349 solid; background: #EFF8FB; width: 100%; height: 35%; overflow: auto">
-				<div style="border-bottom: 1px #0D3349 dotted;">
-					Destination (Production)
-				</div>
-				<div>
-					<table id="mydest" class="table" style="border: 0px">
-						<thead>
-							<tr style="font-size: 0.875em;border: 0px">
-								<td style="width:65%; min-width:55%;"><b>Name of Item</b></td>
-								<td style="width:10%; min-width:10%;"><b>Qty</b></td>
-								<td style="width:10%; min-width:10%;"><b>Units</b></td>
-								<td style="width:10%; min-width:10%;"><b>Rate</b></td>
-								<td style="width:15%; min-width:15%;"><b>Amount</b></td>
-							</tr>
-						</thead>
-					</table>
-				</div>
+		<div class="my-class" align="center" style=" border: 1px #0D3349 solid; background: #EFF8FB;  width: 100%; height: 35%; overflow: auto">
+			
+			<div style="border-bottom: 1px #0D3349 dotted; width: 100%">
+				<b>Source (Consumption)</b>
 			</div>
+			
+			<div>
+				<table id="mysource" class="table" style="border: 0px">
+					<thead>
+						<tr style="font-size: 0.875em;border: 0px">
+							<td style="width:65%; min-width:55%;"><b>Name of Item</b></td>
+							<td style="width:10%; min-width:10%;"><b>Qty</b></td>
+							<td style="width:10%; min-width:10%;"><b>Units</b></td>
+							<td style="width:10%; min-width:10%;"><b>Rate</b></td>
+							<td style="width:15%; min-width:15%;"><b>Amount</b></td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			
+			<div align="bottom">
+				<table class="table" style="border: 0px">
+					<thead>
+						<tr style="font-size: 0.875em;border: 0px">
+							<td style="width:65%; min-width:55%;"><b></b></td>
+							<td style="width:10%; min-width:10%;" id="tblfinalqty">0 Nos</td>
+							<td style="width:10%; min-width:10%;"><b></b></td>
+							<td style="width:10%; min-width:10%;"><b></b></td>
+							<td style="width:15%; min-width:15%;" id="tblfinalamt">0.00</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div><br>
+		<div class="my-class" align="center" style=" border: 1px #0D3349 solid; background: #EFF8FB; width: 100%; height: 35%; overflow: auto">
+			<div style="border-bottom: 1px #0D3349 dotted;">
+				Destination (Production)
+			</div>
+			<div>
+				<table id="mydest" class="table" style="border: 0px">
+					<thead>
+						<tr style="font-size: 0.875em;border: 0px">
+							<td style="width:65%; min-width:55%;"><b>Name of Item</b></td>
+							<td style="width:10%; min-width:10%;"><b>Qty</b></td>
+							<td style="width:10%; min-width:10%;"><b>Units</b></td>
+							<td style="width:10%; min-width:10%;"><b>Rate</b></td>
+							<td style="width:15%; min-width:15%;"><b>Amount</b></td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+		
 		</div>
 		</div>
 		<div class="col-lg-3">
