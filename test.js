@@ -3,7 +3,12 @@ var isSelected = false;
 var valuepresent;
 var mylist;
 var flag=0;
-var finalamt = 0;
+
+var backspace = "no";
+var identifylastrow = 0;
+var lastrow = 1;
+//var finalamt = 0;
+//var tempvalue = 0;
 
 
 var confarray=new Array();
@@ -227,6 +232,48 @@ function itemKeydown(tblname,rowno,colno)
 			
 		}
 		
+		/*
+		if (colno==5)
+		{
+			console.log("Inside colno 5");
+			if (window.tempvalue!=0)
+			{
+				console.log("Inside subtraction");
+				console.log(window.finalamt);
+				console.log(window.tempvalue);
+				window.finalamt=window.finalamt-window.tempvalue;
+				console.log(window.finalamt);
+				window.tempvalue=0;
+				window.isSelected=false;
+			}
+			calcTotal(tblname,rowno,colno);
+		}*/
+		
+		/*
+		if (colno==5)
+		{
+			$value = $(document.activeElement).val();
+			for (var i=0; i < Things.length; i++) {
+			  Things[i]
+			};
+		}
+		*/
+		//alert(rowno);
+		
+		//Identifies lastrow of a table
+		if((window.identifylastrow == 0)&&(window.backspace!="yes"))
+		{
+			window.lastrow = rowno;
+		}
+		if(window.backspace=="yes")
+		{
+			if(window.lastrow==rowno)
+			{
+				window.backspace="no";
+			}
+		}
+		window.identifylastrow=0;
+		
 	}
 	
 	else if(((event.keyCode == 8) && ($('#txtbx').val().trim().length == 0)) || ((event.keyCode == 8) && (window.isSelected))) // 8 - backspace
@@ -234,7 +281,10 @@ function itemKeydown(tblname,rowno,colno)
 		//alert("Inside prevent default");
 		//if($('#txtbx').val().trim().length<=0)
 		 event.preventDefault();
-		 
+		
+		//Variables uesd to identify lastrow of a table
+		window.identifylastrow=1;
+		window.backspace="yes";
 		//check if first column
 			//if so, check if first row
 				//if so, do nothing
@@ -245,6 +295,12 @@ function itemKeydown(tblname,rowno,colno)
 		//if(document.getElementById('txtbx').value!="")
 			//z	return;
 			
+			/*
+		if (colno==5)
+		{
+			calcTotal(tblname,rowno,colno);
+		}*/
+		
 		
 		if (tblname == "mydest" && rowno == 1 && colno == 1)
 		{
@@ -278,7 +334,7 @@ function itemKeydown(tblname,rowno,colno)
 		$('#selectbasic').prop("selectedIndex",0);
 		
 	}
-	else if (event.keyCode == 35)
+	else if (event.keyCode == 35)// # is pressed - check
 	{
 		window.isSelected = false;
 	}
@@ -367,24 +423,27 @@ function lblToTb(tblname,rowno,colno)
 		loadSideLink();
 	}
 }
-
-function calcTotal()
+/*
+function calcTotal(tblname,rowno,colno)
 {
-	if((colno==5)&&(tblname == "mysource")&&(window.isSelected == false))
+	console.log("Inside calctotal");
+	if((colno==5)&&(tblname == "mysource"))
 		{
-			if(action=="+")
+			if((window.isSelected == false))
 			{
+				console.log("Inside addition");
 				var amt = document.getElementById("lbl"+tblname+"["+rowno+"]["+colno+"]").innerText;
 				window.finalamt	= window.finalamt + parseInt(amt);
 				document.getElementById("tblfinalamt").innerText = window.finalamt;
 			}
-			else if (action=="-")
+			else if ((window.isSelected == true))
 			{
-				
+				console.log("Inside temp storage");
+				window.tempvalue=parseInt($(document.activeElement).val());
 			}
 			
 		}
-}
+}*/
 
 function maketextbox(tblname,rowno,colno)
 { 
