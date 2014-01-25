@@ -1212,7 +1212,7 @@ th {
   padding: 8px;
   line-height: 1.428571429;
   vertical-align: top;
-  border-top: 1px solid #dddddd;
+  /*border-top: 1px solid #dddddd; Commented by yamini*/
 }
 
 .table thead > tr > th {
