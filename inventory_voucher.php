@@ -52,24 +52,24 @@ echo $callbackvalue;*/
 		<div class="well">
 		<h4 align="center">Transfer of Materials</h4>
 		
-		<div class="my-class" style=" border: 1px #0D3349 solid; background: #EFF8FB;  width: 100%; height: 35%;">
+		<!--div class="my-class" style=" border: 1px #0D3349 solid; background: #EFF8FB;  width: 100%; height: 35%;">
 			<table width="100%; height:100%">
-				<tr height="5%";>
-					<td colspan="7"><center><b>Source(Consumption)</b></center></td>
+				<tr>
+					<td height="5%" colspan="7"><center><b>Source(Consumption)</b></center></td>
 				</tr>
 				
-				<tr height="5%" style="font-size: 0.875em;border: 0px">
-					<td style="border-bottom: 1px #0D3349 dotted;" class="tab_col_5"></td>
-					<td style="border-bottom: 1px #0D3349 dotted;" class="tab_col_50"><b>Name of Item</b></td>
-					<td style="border-bottom: 1px #0D3349 dotted;" class="tab_col_7"><b>Qty</b></td>
-					<td style="border-bottom: 1px #0D3349 dotted;" class="tab_col_10"><b>Units</b></td>
-					<td style="border-bottom: 1px #0D3349 dotted;" class="tab_col_7"><b>Rate</b></td>
-					<td style="border-bottom: 1px #0D3349 dotted;" class="tab_col_10"><b>Amount</b></td>
-					<td style="border-bottom: 1px #0D3349 dotted;" class="tab_col_10"></td>
+				<tr style="font-size: 0.875em;border: 0px;">
+					<td height="5%" style="border-bottom: 1px #0D3349 dotted;" class="tab_col_5"></td>
+					<td height="5%" style="border-bottom: 1px #0D3349 dotted;" class="tab_col_50"><b>Name of Item</b></td>
+					<td height="5%" style="border-bottom: 1px #0D3349 dotted;" class="tab_col_7"><b>Qty</b></td>
+					<td height="5%" style="border-bottom: 1px #0D3349 dotted;" class="tab_col_10"><b>Units</b></td>
+					<td height="5%" style="border-bottom: 1px #0D3349 dotted;" class="tab_col_7"><b>Rate</b></td>
+					<td height="5%" style="border-bottom: 1px #0D3349 dotted;" class="tab_col_10"><b>Amount</b></td>
+					<td height="5%" style="border-bottom: 1px #0D3349 dotted;" class="tab_col_10"></td>
 				</tr>
 				
-				<tr height="60%">
-					<td colspan="7">
+				<tr>
+					<td height="70%" colspan="7">
 					<div style="overflow: auto;">
 						<table id="mysource" class="table" style="border: 0px">
 							
@@ -79,26 +79,22 @@ echo $callbackvalue;*/
 				</tr>
 				
 				<tr>
-					<td><a href="#" onclick="addRow('mysource')" class="btn btn-default-sm"> + Add Row</a></td>
-					<td><a href="#" onclick="deleteSelectedRows('mysource')" class="btn btn-default-sm"> X Delete Rows</a></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td><a href="#" onclick="endList('mysource')" class="btn btn-default-sm"> End List</a></td>	
+					<td height="10%"><a href="#" onclick="addRow('mysource')" class="btn btn-default-sm"> + Add Row</a></td>
+					<td height="10%"><a href="#" onclick="deleteSelectedRows('mysource')" class="btn btn-default-sm"> X Delete Rows</a></td>
+					<td height="10%"></td>
+					<td height="10%"></td>
+					<td height="10%"></td>
+					<td height="10%"></td>
+					<td height="10%"><a href="#" onclick="endList('mysource')" class="btn btn-default-sm"> End List</a></td>	
 					
 				</tr>
 			</table>
-		</div>
+		</div-->
 		
 		
 		<div class="my-class" style=" border: 1px #0D3349 solid; background: #EFF8FB;  width: 100%; height: 35%;">
 			
-			
-			
-			
-			
-			<div style="width: 100%; height:20%">
+			<div style="width: 100%;float:left; height:20%">
 				<b><center>Source (Consumption)</center></b>
 				<table style="width:100%;">
 					<thead>
@@ -115,13 +111,13 @@ echo $callbackvalue;*/
 				</table>
 			</div>
 			
-			<div style="overflow: auto;height:60%; margin-top: 10px;">
+			<div style="overflow: auto;float:left;height:60%; width:100%; margin-top: 10px;">
 				<table id="mysource" class="table" style="border: 0px">
 					
 				</table>
 			</div>
 			
-			<div style="height:20%; margin-bottom: 5px;">
+			<div style="height:20%;float:left; margin-bottom: 5px; width:100%;">
 				<a href="#" onclick="addRow('mysource')" class="btn btn-default-sm"> + Add Row</a>
 				<a href="#" onclick="deleteSelectedRows('mysource')" class="btn btn-default-sm"> X Delete Rows</a>
 				<a href="#" onclick="endList('mysource')" class="btn btn-default-sm"> End List</a>
@@ -175,16 +171,40 @@ echo $callbackvalue;*/
 		</div>
 		
 	</div>
-	<script type="text/javascript" src="test.js"></script>
+	<!--script type="text/javascript" src="test.js"></script-->
 		<script>
 		
+			var temp_txt_name;
+			var temp_txt_qty;
+			var temp_txt_units;
+			var temp_txt_rate;
+			var temp_txt_amt;
+			
 			addRow("mysource");
 			
 			function addRow(tableID) {
 	
 				var table = document.getElementById(tableID);
-	
 				var rowCount = table.rows.length;
+				
+				
+				//alert(rowCount);	
+				if (rowCount>0)
+				{
+					if(document.getElementsByName("name")[rowCount-1].value!=undefined)
+					{
+						if((document.getElementsByName("name")[rowCount-1].value!="") || (document.getElementsByName("amt")[rowCount-1].value!=""))
+						{ 
+							tbToLbl(tableID,rowCount,"new");
+						}
+						else
+						{
+							alert("Please Fill the current row");
+							return;
+						}
+					}
+				}
+				
 				var row = table.insertRow(rowCount);
 	
 				var cell1 = row.insertCell(0);
@@ -239,6 +259,92 @@ echo $callbackvalue;*/
 				cell7.className="tab_col_10";
 			}
 			
+			function endList(tableID)
+			{
+				var table = document.getElementById(tableID);
+				var rowCount = table.rows.length;
+				
+				if ((document.getElementsByName("name")[rowCount-1].value!="") && (document.getElementsByName("amt")[rowCount-1].value!=""))
+				{
+					tbToLbl(tableID,rowCount,"new");
+				}
+				else
+				{
+					deleteRow(tableID,rowCount);
+				}
+				
+			}
+			
+			function tbToLbl(tableID,rowID,action)
+			{
+				var table = document.getElementById(tableID);
+				
+				var txt_name = document.getElementsByName('name')[rowID-1].value;
+				var txt_qty = document.getElementsByName('qty')[rowID-1].value;
+				var txt_units = document.getElementsByName('units')[rowID-1].value;
+				var txt_rate = document.getElementsByName('rate')[rowID-1].value;
+				var txt_amt = document.getElementsByName('amt')[rowID-1].value;
+				
+				
+				if ((action == "new") || (action == "edit"))
+				{
+					table.rows[rowID-1].cells[1].innerHTML="<label name='name'><font size=2>"+txt_name+"</font></label>";
+					table.rows[rowID-1].cells[2].innerHTML="<label name='qty'><font size=2>"+txt_qty+"</font></label>";
+					table.rows[rowID-1].cells[3].innerHTML="<label name='units'><font size=2>"+txt_units+"</font></label>";
+					table.rows[rowID-1].cells[4].innerHTML="<label name='rate'><font size=2>"+txt_rate+"</font></label>";
+					table.rows[rowID-1].cells[5].innerHTML="<label name='amt'><font size=2>"+txt_amt+"</font></label>";
+					table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/edit.png' height='20px' width='20px' onclick='editRow(\""+tableID+"\",\""+rowID+"\")' alt='Edit' title='Edit Row'>";
+				}
+				else if(action == "cancel")
+				{
+					table.rows[rowID-1].cells[1].innerHTML="<label name='name'><font size=2>"+temp_txt_name+"</font></label>";
+					table.rows[rowID-1].cells[2].innerHTML="<label name='qty'><font size=2>"+temp_txt_qty+"</font></label>";
+					table.rows[rowID-1].cells[3].innerHTML="<label name='units'><font size=2>"+temp_txt_units+"</font></label>";
+					table.rows[rowID-1].cells[4].innerHTML="<label name='rate'><font size=2>"+temp_txt_rate+"</font></label>";
+					table.rows[rowID-1].cells[5].innerHTML="<label name='amt'><font size=2>"+temp_txt_amt+"</font></label>";
+					table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/edit.png' height='20px' width='20px' onclick='editRow(\""+tableID+"\",\""+rowID+"\")' alt='Edit' title='Edit Row'>";
+				}
+				else
+				{
+					alert("invalid option");
+				}
+			}
+			
+			function lblToTb(tableID,rowID)
+			{
+				//alert(tableID);
+				var table = document.getElementById(tableID);
+				
+				var txt_name = document.getElementsByName('name')[rowID-1].innerText;
+				var txt_qty = document.getElementsByName('qty')[rowID-1].innerText;
+				var txt_units = document.getElementsByName('units')[rowID-1].innerText;
+				var txt_rate = document.getElementsByName('rate')[rowID-1].innerText;
+				var txt_amt = document.getElementsByName('amt')[rowID-1].innerText;
+				//alert(txt_name);
+				table.rows[rowID-1].cells[1].innerHTML="<input type='text' name='name' class='form-control' value='"+txt_name+"'/>";
+				table.rows[rowID-1].cells[2].innerHTML="<input type='text' name='qty' class='form-control' value='"+txt_qty+"'/>";
+				table.rows[rowID-1].cells[3].innerHTML="<input type='text' name='units' class='form-control' value='"+txt_units+"'/>";
+				table.rows[rowID-1].cells[4].innerHTML="<input type='text' name='rate' class='form-control' value='"+txt_rate+"'/>";
+				table.rows[rowID-1].cells[5].innerHTML="<input type='text' name='amt' class='form-control' value='"+txt_amt+"'/>";
+				table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/tick.png' height='20px' width='20px' onclick='tbToLbl(\""+tableID+"\",\""+rowID+"\",\"edit\")' alt='Done Editing' title='Done Editing'>&nbsp<input type='image' src='img/cross.png' height='20px' width='20px' onclick='tbToLbl(\""+tableID+"\",\""+rowID+"\",\"cancel\")' alt='Done Editing' title='Done Editing'>";
+			}
+			
+			function editRow(tableID,rowID)
+			{
+				var table = document.getElementById(tableID);
+				var rowCount = table.rows.length;
+				
+				endList(tableID);
+				
+				temp_txt_name = document.getElementsByName('name')[rowID-1].innerText;
+				temp_txt_qty = document.getElementsByName('qty')[rowID-1].innerText;
+				temp_txt_units = document.getElementsByName('units')[rowID-1].innerText;
+				temp_txt_rate = document.getElementsByName('rate')[rowID-1].innerText;
+				temp_txt_amt = document.getElementsByName('amt')[rowID-1].innerText;
+			
+				lblToTb(tableID,rowID);	
+			}
+			
 			function deleteRow(tableID,rowID)
 			{
 				var table = document.getElementById(tableID);
@@ -266,7 +372,7 @@ echo $callbackvalue;*/
 				}
 			}
 			
-		
+		/*
 			function loadledger()
 			{
 				var res;
@@ -294,6 +400,7 @@ echo $callbackvalue;*/
 			//starthere(confarray);
 			var list=loadledger();
 			starthere(list);
+		*/
 		</script>
 		
 	</body>
