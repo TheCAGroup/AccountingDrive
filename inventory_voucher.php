@@ -179,7 +179,10 @@ echo $callbackvalue;*/
 			var temp_txt_units;
 			var temp_txt_rate;
 			var temp_txt_amt;
-			
+                        
+                        var edit_rowID;
+			var edit_flag = false;
+                        
 			addRow("mysource");
 			
 			function addRow(tableID) {
@@ -257,23 +260,29 @@ echo $callbackvalue;*/
 				
 				var cell7 = row.insertCell(6);
 				cell7.className="tab_col_10";
+                                
+                                edit_flag = true;
+                           	window.edit_rowID = undefined;
+
 			}
 			
 			function endList(tableID)
 			{
 				var table = document.getElementById(tableID);
 				var rowCount = table.rows.length;
-				
-				if ((document.getElementsByName("name")[rowCount-1].value!="") && (document.getElementsByName("amt")[rowCount-1].value!=""))
-				{
-					tbToLbl(tableID,rowCount,"new");
-				}
-				else
-				{
-					deleteRow(tableID,rowCount);
-				}
-				
-			}
+				if(document.getElementsByName("name")[rowCount-1].value != undefined)
+                                {
+                                    if ((document.getElementsByName("name")[rowCount-1].value!="") && (document.getElementsByName("amt")[rowCount-1].value!=""))
+                                    {
+                                            tbToLbl(tableID,rowCount,"new");
+                                    }
+                                    else
+                                    {
+                                            deleteRow(tableID,rowCount);
+                                    }
+                                    window.edit_rowID = "";
+                                }
+                        }
 			
 			function tbToLbl(tableID,rowID,action)
 			{
@@ -284,7 +293,7 @@ echo $callbackvalue;*/
 				var txt_units = document.getElementsByName('units')[rowID-1].value;
 				var txt_rate = document.getElementsByName('rate')[rowID-1].value;
 				var txt_amt = document.getElementsByName('amt')[rowID-1].value;
-				
+				//alert(txt_name);
 				
 				if ((action == "new") || (action == "edit"))
 				{
@@ -326,15 +335,53 @@ echo $callbackvalue;*/
 				table.rows[rowID-1].cells[3].innerHTML="<input type='text' name='units' class='form-control' value='"+txt_units+"'/>";
 				table.rows[rowID-1].cells[4].innerHTML="<input type='text' name='rate' class='form-control' value='"+txt_rate+"'/>";
 				table.rows[rowID-1].cells[5].innerHTML="<input type='text' name='amt' class='form-control' value='"+txt_amt+"'/>";
-				table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/tick.png' height='20px' width='20px' onclick='tbToLbl(\""+tableID+"\",\""+rowID+"\",\"edit\")' alt='Done Editing' title='Done Editing'>&nbsp<input type='image' src='img/cross.png' height='20px' width='20px' onclick='tbToLbl(\""+tableID+"\",\""+rowID+"\",\"cancel\")' alt='Done Editing' title='Done Editing'>";
+				table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/tick.png' height='20px' width='20px' onclick='doneEdit(\""+tableID+"\",\""+rowID+"\")' alt='Done Editing' title='Done Editing'>&nbsp<input type='image' src='img/cross.png' height='20px' width='20px' onclick='cancelEdit(\""+tableID+"\",\""+rowID+"\")' alt='Cancel Editing' title='Cancel Editing'>";
 			}
+                        
+                        function doneEdit(tableID,rowID)
+                        {
+                            edit_flag = false;
+                            tbToLbl(tableID,rowID,"edit");
+                        }
+                        
+                        function cancelEdit(tableID,rowID)
+                        {
+                            edit_flag = false;
+                            tbToLbl(tableID,rowID,"cancel");
+                        }
 			
 			function editRow(tableID,rowID)
 			{
+                                alert("edit rowid "+window.edit_rowID);
+                                if((window.edit_rowID == undefined))
+                                {
+                                    endList(tableID);
+                                    edit_flag = true;
+                                }
+                                else if(window.edit_rowID == "")
+                                {
+                                    //Do nothing
+                                }
+                                else if(window.edit_rowID == rowID)
+                                {
+                                    //Do nothing
+                                }
+                                else
+                                {
+                                    alert(edit_flag);
+                                    if (edit_flag == true)
+                                    {
+                                        alert("inside else");
+                                        tbToLbl(tableID,window.edit_rowID,"edit");
+                                    }
+                                    edit_flag = true;
+                                }
+                            
+                                window.edit_rowID = rowID;
 				var table = document.getElementById(tableID);
 				var rowCount = table.rows.length;
 				
-				endList(tableID);
+				//endList(tableID);
 				
 				temp_txt_name = document.getElementsByName('name')[rowID-1].innerText;
 				temp_txt_qty = document.getElementsByName('qty')[rowID-1].innerText;
