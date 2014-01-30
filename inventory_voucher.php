@@ -118,10 +118,12 @@ echo $callbackvalue;*/
 			</div>
 			
 			<div style="height:20%;float:left; margin-bottom: 5px; width:100%;">
-				<a href="#" onclick="addRow('mysource')" class="btn btn-default-sm"> + Add Row</a>
-				<a href="#" onclick="deleteSelectedRows('mysource')" class="btn btn-default-sm"> X Delete Rows</a>
-				<a href="#" onclick="endList('mysource')" class="btn btn-default-sm"> End List</a>
-			</div>
+				<a href="#" onclick="addRow('mysource')" class="btn btn-primary btn-sm"> + Add Row</a>
+				<a href="#" onclick="deleteSelectedRows('mysource')" class="btn btn-primary btn-sm"> X Delete Rows</a>
+				<a href="#" onclick="endList('mysource')" class="btn btn-primary btn-sm"> End List</a>
+                                <span id="mysourcefinal_qty" class="badge badge-info">0</span>
+                                <span id="mysourcefinal_amt" class="badge badge-info">0.00</span>
+                        </div>
 		</div><br>
 		
 		<div class="my-class" align="center" style=" border: 1px #0D3349 solid; background: #EFF8FB; width: 100%; height: 35%; overflow: auto">
@@ -183,6 +185,7 @@ echo $callbackvalue;*/
                         var edit_rowID;
 			var edit_flag = false;
                         
+                        
 			addRow("mysource");
 			
 			function addRow(tableID) {
@@ -194,9 +197,9 @@ echo $callbackvalue;*/
 				//alert(rowCount);	
 				if (rowCount>0)
 				{
-					if(document.getElementsByName("name")[rowCount-1].value!=undefined)
+					if(document.getElementsByName(tableID +"name")[rowCount-1].value!=undefined)
 					{
-						if((document.getElementsByName("name")[rowCount-1].value!="") || (document.getElementsByName("amt")[rowCount-1].value!=""))
+						if((document.getElementsByName(tableID +"name")[rowCount-1].value!="") || (document.getElementsByName(tableID +"amt")[rowCount-1].value!=""))
 						{ 
 							tbToLbl(tableID,rowCount,"new");
 						}
@@ -214,7 +217,7 @@ echo $callbackvalue;*/
 				cell1.className="tab_col_5";
 				var element1 = document.createElement("input");
 				element1.type = "checkbox";
-				element1.name="chkbox[]";
+				element1.name=tableID +"chkbox[]";
 				element1.className="form-control";
 				cell1.appendChild(element1);
 	
@@ -222,7 +225,7 @@ echo $callbackvalue;*/
 				cell2.className="tab_col_50";
 				var element2 = document.createElement("input");
 				element2.type = "text";
-				element2.name="name";
+				element2.name=tableID +"name";
 				element2.className="form-control";
 				cell2.appendChild(element2);
 	
@@ -230,7 +233,7 @@ echo $callbackvalue;*/
 				cell3.className="tab_col_7";
 				var element3 = document.createElement("input");
 				element3.type = "text";
-				element3.name = "qty";
+				element3.name = tableID +"qty";
 				element3.className="form-control";
 				cell3.appendChild(element3);
 				
@@ -238,7 +241,7 @@ echo $callbackvalue;*/
 				cell4.className="tab_col_10";
 				var element4 = document.createElement("input");
 				element4.type = "text";
-				element4.name = "units";
+				element4.name = tableID +"units";
 				element4.className="form-control";
 				cell4.appendChild(element4);
 	
@@ -246,7 +249,7 @@ echo $callbackvalue;*/
 				cell5.className="tab_col_7";
 				var element5 = document.createElement("input");
 				element5.type = "text";
-				element5.name = "rate";
+				element5.name = tableID +"rate";
 				element5.className="form-control";
 				cell5.appendChild(element5);	
 			
@@ -254,7 +257,7 @@ echo $callbackvalue;*/
 				cell6.className="tab_col_10";
 				var element6 = document.createElement("input");
 				element6.type = "text";
-				element6.name = "amt";
+				element6.name = tableID +"amt";
 				element6.className="form-control";
 				cell6.appendChild(element6);
 				
@@ -265,22 +268,53 @@ echo $callbackvalue;*/
                            	window.edit_rowID = undefined;
 
 			}
+                        
+                        function calcTotal(tableID)
+                        {
+                            var final_qty=0;
+                            var final_amt=0;
+                            
+                            var qty = document.getElementsByName(tableID +"qty");
+                            var amt = document.getElementsByName(tableID +"amt");
+                            
+                            alert(qty.length);
+                            alert(amt.length);
+                            
+                            for(var i=0 ; i<qty.length ; i++)
+                            {
+                                final_qty = final_qty + parseInt(qty[i].innerText);
+                            }
+                            
+                            for(var i=0 ; i<amt.length ; i++)
+                            {
+                                final_amt = final_amt + parseInt(amt[i].innerText);
+                            }
+                            
+                            document.getElementById(tableID +"final_qty").innerText = final_qty;
+                            document.getElementById(tableID +"final_amt").innerText = final_amt;
+                            
+                        }
 			
 			function endList(tableID)
 			{
+                            //alert("inside endlist");
 				var table = document.getElementById(tableID);
 				var rowCount = table.rows.length;
-				if(document.getElementsByName("name")[rowCount-1].value != undefined)
+				if(document.getElementsByName(tableID+"name")[rowCount-1].value !== undefined)
                                 {
-                                    if ((document.getElementsByName("name")[rowCount-1].value!="") && (document.getElementsByName("amt")[rowCount-1].value!=""))
+                                    //alert("inside if 1");
+                                    if ((document.getElementsByName(tableID +"name")[rowCount-1].value!=="") && (document.getElementsByName(tableID +"amt")[rowCount-1].value!==""))
                                     {
+                                        //alert("inside if 2");
                                             tbToLbl(tableID,rowCount,"new");
                                     }
                                     else
                                     {
+                                        //alert("inside else");
                                             deleteRow(tableID,rowCount);
                                     }
                                     window.edit_rowID = "";
+                                    calcTotal(tableID);
                                 }
                         }
 			
@@ -288,29 +322,29 @@ echo $callbackvalue;*/
 			{
 				var table = document.getElementById(tableID);
 				
-				var txt_name = document.getElementsByName('name')[rowID-1].value;
-				var txt_qty = document.getElementsByName('qty')[rowID-1].value;
-				var txt_units = document.getElementsByName('units')[rowID-1].value;
-				var txt_rate = document.getElementsByName('rate')[rowID-1].value;
-				var txt_amt = document.getElementsByName('amt')[rowID-1].value;
+				var txt_name = document.getElementsByName(tableID +'name')[rowID-1].value;
+				var txt_qty = document.getElementsByName(tableID +'qty')[rowID-1].value;
+				var txt_units = document.getElementsByName(tableID +'units')[rowID-1].value;
+				var txt_rate = document.getElementsByName(tableID +'rate')[rowID-1].value;
+				var txt_amt = document.getElementsByName(tableID +'amt')[rowID-1].value;
 				//alert(txt_name);
 				
 				if ((action == "new") || (action == "edit"))
 				{
-					table.rows[rowID-1].cells[1].innerHTML="<label name='name'><font size=2>"+txt_name+"</font></label>";
-					table.rows[rowID-1].cells[2].innerHTML="<label name='qty'><font size=2>"+txt_qty+"</font></label>";
-					table.rows[rowID-1].cells[3].innerHTML="<label name='units'><font size=2>"+txt_units+"</font></label>";
-					table.rows[rowID-1].cells[4].innerHTML="<label name='rate'><font size=2>"+txt_rate+"</font></label>";
-					table.rows[rowID-1].cells[5].innerHTML="<label name='amt'><font size=2>"+txt_amt+"</font></label>";
+					table.rows[rowID-1].cells[1].innerHTML="<label name='"+tableID+"name'><font size=2>"+txt_name+"</font></label>";
+					table.rows[rowID-1].cells[2].innerHTML="<label name='"+tableID+"qty'><font size=2>"+txt_qty+"</font></label>";
+					table.rows[rowID-1].cells[3].innerHTML="<label name='"+tableID+"units'><font size=2>"+txt_units+"</font></label>";
+					table.rows[rowID-1].cells[4].innerHTML="<label name='"+tableID+"rate'><font size=2>"+txt_rate+"</font></label>";
+					table.rows[rowID-1].cells[5].innerHTML="<label name='"+tableID+"amt'><font size=2>"+txt_amt+"</font></label>";
 					table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/edit.png' height='20px' width='20px' onclick='editRow(\""+tableID+"\",\""+rowID+"\")' alt='Edit' title='Edit Row'>";
 				}
 				else if(action == "cancel")
 				{
-					table.rows[rowID-1].cells[1].innerHTML="<label name='name'><font size=2>"+temp_txt_name+"</font></label>";
-					table.rows[rowID-1].cells[2].innerHTML="<label name='qty'><font size=2>"+temp_txt_qty+"</font></label>";
-					table.rows[rowID-1].cells[3].innerHTML="<label name='units'><font size=2>"+temp_txt_units+"</font></label>";
-					table.rows[rowID-1].cells[4].innerHTML="<label name='rate'><font size=2>"+temp_txt_rate+"</font></label>";
-					table.rows[rowID-1].cells[5].innerHTML="<label name='amt'><font size=2>"+temp_txt_amt+"</font></label>";
+					table.rows[rowID-1].cells[1].innerHTML="<label name='"+tableID+"name'><font size=2>"+temp_txt_name+"</font></label>";
+					table.rows[rowID-1].cells[2].innerHTML="<label name='"+tableID+"qty'><font size=2>"+temp_txt_qty+"</font></label>";
+					table.rows[rowID-1].cells[3].innerHTML="<label name='"+tableID+"units'><font size=2>"+temp_txt_units+"</font></label>";
+					table.rows[rowID-1].cells[4].innerHTML="<label name='"+tableID+"rate'><font size=2>"+temp_txt_rate+"</font></label>";
+					table.rows[rowID-1].cells[5].innerHTML="<label name='"+tableID+"amt'><font size=2>"+temp_txt_amt+"</font></label>";
 					table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/edit.png' height='20px' width='20px' onclick='editRow(\""+tableID+"\",\""+rowID+"\")' alt='Edit' title='Edit Row'>";
 				}
 				else
@@ -324,17 +358,17 @@ echo $callbackvalue;*/
 				//alert(tableID);
 				var table = document.getElementById(tableID);
 				
-				var txt_name = document.getElementsByName('name')[rowID-1].innerText;
-				var txt_qty = document.getElementsByName('qty')[rowID-1].innerText;
-				var txt_units = document.getElementsByName('units')[rowID-1].innerText;
-				var txt_rate = document.getElementsByName('rate')[rowID-1].innerText;
-				var txt_amt = document.getElementsByName('amt')[rowID-1].innerText;
+				var txt_name = document.getElementsByName(tableID+'name')[rowID-1].innerText;
+				var txt_qty = document.getElementsByName(tableID+'qty')[rowID-1].innerText;
+				var txt_units = document.getElementsByName(tableID+'units')[rowID-1].innerText;
+				var txt_rate = document.getElementsByName(tableID+'rate')[rowID-1].innerText;
+				var txt_amt = document.getElementsByName(tableID+'amt')[rowID-1].innerText;
 				//alert(txt_name);
-				table.rows[rowID-1].cells[1].innerHTML="<input type='text' name='name' class='form-control' value='"+txt_name+"'/>";
-				table.rows[rowID-1].cells[2].innerHTML="<input type='text' name='qty' class='form-control' value='"+txt_qty+"'/>";
-				table.rows[rowID-1].cells[3].innerHTML="<input type='text' name='units' class='form-control' value='"+txt_units+"'/>";
-				table.rows[rowID-1].cells[4].innerHTML="<input type='text' name='rate' class='form-control' value='"+txt_rate+"'/>";
-				table.rows[rowID-1].cells[5].innerHTML="<input type='text' name='amt' class='form-control' value='"+txt_amt+"'/>";
+				table.rows[rowID-1].cells[1].innerHTML="<input type='text' name="+tableID+"'name' class='form-control' value='"+txt_name+"'/>";
+				table.rows[rowID-1].cells[2].innerHTML="<input type='text' name="+tableID+"'qty' class='form-control' value='"+txt_qty+"'/>";
+				table.rows[rowID-1].cells[3].innerHTML="<input type='text' name="+tableID+"'units' class='form-control' value='"+txt_units+"'/>";
+				table.rows[rowID-1].cells[4].innerHTML="<input type='text' name="+tableID+"'rate' class='form-control' value='"+txt_rate+"'/>";
+				table.rows[rowID-1].cells[5].innerHTML="<input type='text' name="+tableID+"'amt' class='form-control' value='"+txt_amt+"'/>";
 				table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/tick.png' height='20px' width='20px' onclick='doneEdit(\""+tableID+"\",\""+rowID+"\")' alt='Done Editing' title='Done Editing'>&nbsp<input type='image' src='img/cross.png' height='20px' width='20px' onclick='cancelEdit(\""+tableID+"\",\""+rowID+"\")' alt='Cancel Editing' title='Cancel Editing'>";
 			}
                         
@@ -383,11 +417,11 @@ echo $callbackvalue;*/
 				
 				//endList(tableID);
 				
-				temp_txt_name = document.getElementsByName('name')[rowID-1].innerText;
-				temp_txt_qty = document.getElementsByName('qty')[rowID-1].innerText;
-				temp_txt_units = document.getElementsByName('units')[rowID-1].innerText;
-				temp_txt_rate = document.getElementsByName('rate')[rowID-1].innerText;
-				temp_txt_amt = document.getElementsByName('amt')[rowID-1].innerText;
+				temp_txt_name = document.getElementsByName(tableID+'name')[rowID-1].innerText;
+				temp_txt_qty = document.getElementsByName(tableID+'qty')[rowID-1].innerText;
+				temp_txt_units = document.getElementsByName(tableID+'units')[rowID-1].innerText;
+				temp_txt_rate = document.getElementsByName(tableID+'rate')[rowID-1].innerText;
+				temp_txt_amt = document.getElementsByName(tableID+'amt')[rowID-1].innerText;
 			
 				lblToTb(tableID,rowID);	
 			}
