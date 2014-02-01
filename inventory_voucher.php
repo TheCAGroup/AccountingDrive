@@ -53,7 +53,7 @@ echo $callbackvalue;*/
 		<h4 align="center">Transfer of Materials</h4>
 		
 		<!--div class="my-class" style=" border: 1px #0D3349 solid; background: #EFF8FB;  width: 100%; height: 35%;">
-			<table width="100%; height:100%">
+			<table width="100%" height="100%" border="1">
 				<tr>
 					<td height="5%" colspan="7"><center><b>Source(Consumption)</b></center></td>
 				</tr>
@@ -70,7 +70,7 @@ echo $callbackvalue;*/
 				
 				<tr>
 					<td height="70%" colspan="7">
-					<div style="overflow: auto;">
+					<div style="overflow: auto;height:'70%'">
 						<table id="mysource" class="table" style="border: 0px">
 							
 						</table>
@@ -118,12 +118,34 @@ echo $callbackvalue;*/
 			</div>
 			
 			<div style="height:20%;float:left; margin-bottom: 5px; width:100%;">
-				<a href="#" onclick="addRow('mysource')" class="btn btn-primary btn-sm"> + Add Row</a>
-				<a href="#" onclick="deleteSelectedRows('mysource')" class="btn btn-primary btn-sm"> X Delete Rows</a>
-				<a href="#" onclick="endList('mysource')" class="btn btn-primary btn-sm"> End List</a>
-                                <span id="mysourcefinal_qty" class="badge badge-info">0</span>
-                                <span id="mysourcefinal_amt" class="badge badge-info">0.00</span>
-                        </div>
+                            <table style="width:100%;">
+                                <thead>
+                                    <tr style="font-size: 0.875em;border: 0px">
+                                        <td class="tab_col_5"></td>
+                                        <td align="center" class="tab_col_50">
+                                            <table style="width:70%">
+                                                <tr>
+                                                    <td><a href="#" onclick="addRow('mysource')" class="btn btn-primary btn-sm"> + Add Row</a></td>
+                                                    <td><a href="#" onclick="deleteSelectedRows('mysource')" class="btn btn-primary btn-sm"> X Delete Rows</a></td>
+                                                    <td><a href="#" onclick="endListAndDisplayTotal('mysource')" class="btn btn-primary btn-sm"> End List</a></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td align="center" class="tab_col_7">
+                                            <span id="mysourcefinal_qty" class="badge badge-info">0</span>
+                                        </td>
+                                        <td class="tab_col_10"></td>
+                                        <td class="tab_col_7"></td>
+                                        <td align="center" class="tab_col_10">
+                                            <span id="mysourcefinal_amt" class="badge badge-info">0.00</span>
+                                        </td>
+                                        <td class="tab_col_10"></td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            
+                            
+                        </div>  
 		</div><br>
 		
 		<div class="my-class" align="center" style=" border: 1px #0D3349 solid; background: #EFF8FB; width: 100%; height: 35%; overflow: auto">
@@ -182,7 +204,7 @@ echo $callbackvalue;*/
 			var temp_txt_rate;
 			var temp_txt_amt;
                         
-                        var edit_rowID;
+                        var current_rowID;
 			var edit_flag = false;
                         
                         
@@ -265,7 +287,7 @@ echo $callbackvalue;*/
 				cell7.className="tab_col_10";
                                 
                                 edit_flag = true;
-                           	window.edit_rowID = undefined;
+                           	window.current_rowID = rowCount + 1;
 
 			}
                         
@@ -277,8 +299,8 @@ echo $callbackvalue;*/
                             var qty = document.getElementsByName(tableID +"qty");
                             var amt = document.getElementsByName(tableID +"amt");
                             
-                            alert(qty.length);
-                            alert(amt.length);
+                            //alert(qty.length);
+                            //alert(amt.length);
                             
                             for(var i=0 ; i<qty.length ; i++)
                             {
@@ -287,7 +309,7 @@ echo $callbackvalue;*/
                             
                             for(var i=0 ; i<amt.length ; i++)
                             {
-                                final_amt = final_amt + parseInt(amt[i].innerText);
+                                final_amt = final_amt + parseFloat(amt[i].innerText);
                             }
                             
                             document.getElementById(tableID +"final_qty").innerText = final_qty;
@@ -295,31 +317,41 @@ echo $callbackvalue;*/
                             
                         }
 			
-			function endList(tableID)
+			function endList(tableID,rowID)
 			{
                             //alert("inside endlist");
 				var table = document.getElementById(tableID);
-				var rowCount = table.rows.length;
-				if(document.getElementsByName(tableID+"name")[rowCount-1].value !== undefined)
+				//var rowCount = table.rows.length;
+				if(document.getElementsByName(tableID+"name")[rowID-1].value !== undefined)
                                 {
                                     //alert("inside if 1");
-                                    if ((document.getElementsByName(tableID +"name")[rowCount-1].value!=="") && (document.getElementsByName(tableID +"amt")[rowCount-1].value!==""))
+                                    if ((document.getElementsByName(tableID +"name")[rowID-1].value!=="") && (document.getElementsByName(tableID +"amt")[rowID-1].value!==""))
                                     {
-                                        //alert("inside if 2");
-                                            tbToLbl(tableID,rowCount,"new");
+                                        //  alert("inside if 2");
+                                            tbToLbl(tableID,rowID,"new");
                                     }
                                     else
                                     {
-                                        //alert("inside else");
-                                            deleteRow(tableID,rowCount);
+                              //            alert("inside else");
+                                            deleteRow(tableID,rowID);
                                     }
-                                    window.edit_rowID = "";
-                                    calcTotal(tableID);
+                                    window.current_rowID = "";
+                                    window.edit_flag = false;
                                 }
+                        }
+                        
+                        function endListAndDisplayTotal(tableID)
+                        {
+                            //alert("edit flag ---- "+window.edit_flag);
+                            //alert("edit rowID ---- "+window.current_rowID);
+                            if (edit_flag ==true)
+                                endList(tableID,window.current_rowID);
+                            calcTotal(tableID);
                         }
 			
 			function tbToLbl(tableID,rowID,action)
 			{
+                            //alert("inside tbtolbl fn");
 				var table = document.getElementById(tableID);
 				
 				var txt_name = document.getElementsByName(tableID +'name')[rowID-1].value;
@@ -327,7 +359,7 @@ echo $callbackvalue;*/
 				var txt_units = document.getElementsByName(tableID +'units')[rowID-1].value;
 				var txt_rate = document.getElementsByName(tableID +'rate')[rowID-1].value;
 				var txt_amt = document.getElementsByName(tableID +'amt')[rowID-1].value;
-				//alert(txt_name);
+			//	alert(txt_name);
 				
 				if ((action == "new") || (action == "edit"))
 				{
@@ -337,7 +369,10 @@ echo $callbackvalue;*/
 					table.rows[rowID-1].cells[4].innerHTML="<label name='"+tableID+"rate'><font size=2>"+txt_rate+"</font></label>";
 					table.rows[rowID-1].cells[5].innerHTML="<label name='"+tableID+"amt'><font size=2>"+txt_amt+"</font></label>";
 					table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/edit.png' height='20px' width='20px' onclick='editRow(\""+tableID+"\",\""+rowID+"\")' alt='Edit' title='Edit Row'>";
-				}
+                                        window.edit_flag = false;
+                                        window.current_rowID = "";
+                                        calcTotal(tableID);
+                                }
 				else if(action == "cancel")
 				{
 					table.rows[rowID-1].cells[1].innerHTML="<label name='"+tableID+"name'><font size=2>"+temp_txt_name+"</font></label>";
@@ -346,7 +381,9 @@ echo $callbackvalue;*/
 					table.rows[rowID-1].cells[4].innerHTML="<label name='"+tableID+"rate'><font size=2>"+temp_txt_rate+"</font></label>";
 					table.rows[rowID-1].cells[5].innerHTML="<label name='"+tableID+"amt'><font size=2>"+temp_txt_amt+"</font></label>";
 					table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/edit.png' height='20px' width='20px' onclick='editRow(\""+tableID+"\",\""+rowID+"\")' alt='Edit' title='Edit Row'>";
-				}
+                                        window.edit_flag = false;
+                                        window.current_rowID = "";
+                                }
 				else
 				{
 					alert("invalid option");
@@ -364,54 +401,60 @@ echo $callbackvalue;*/
 				var txt_rate = document.getElementsByName(tableID+'rate')[rowID-1].innerText;
 				var txt_amt = document.getElementsByName(tableID+'amt')[rowID-1].innerText;
 				//alert(txt_name);
-				table.rows[rowID-1].cells[1].innerHTML="<input type='text' name="+tableID+"'name' class='form-control' value='"+txt_name+"'/>";
-				table.rows[rowID-1].cells[2].innerHTML="<input type='text' name="+tableID+"'qty' class='form-control' value='"+txt_qty+"'/>";
-				table.rows[rowID-1].cells[3].innerHTML="<input type='text' name="+tableID+"'units' class='form-control' value='"+txt_units+"'/>";
-				table.rows[rowID-1].cells[4].innerHTML="<input type='text' name="+tableID+"'rate' class='form-control' value='"+txt_rate+"'/>";
-				table.rows[rowID-1].cells[5].innerHTML="<input type='text' name="+tableID+"'amt' class='form-control' value='"+txt_amt+"'/>";
+				table.rows[rowID-1].cells[1].innerHTML="<input type='text' name='"+tableID+"name' class='form-control' value='"+txt_name+"'/>";
+				table.rows[rowID-1].cells[2].innerHTML="<input type='text' name='"+tableID+"qty' class='form-control' value='"+txt_qty+"'/>";
+				table.rows[rowID-1].cells[3].innerHTML="<input type='text' name='"+tableID+"units' class='form-control' value='"+txt_units+"'/>";
+				table.rows[rowID-1].cells[4].innerHTML="<input type='text' name='"+tableID+"rate' class='form-control' value='"+txt_rate+"'/>";
+				table.rows[rowID-1].cells[5].innerHTML="<input type='text' name='"+tableID+"amt' class='form-control' value='"+txt_amt+"'/>";
 				table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/tick.png' height='20px' width='20px' onclick='doneEdit(\""+tableID+"\",\""+rowID+"\")' alt='Done Editing' title='Done Editing'>&nbsp<input type='image' src='img/cross.png' height='20px' width='20px' onclick='cancelEdit(\""+tableID+"\",\""+rowID+"\")' alt='Cancel Editing' title='Cancel Editing'>";
-			}
+                                window.edit_flag = true;
+                                window.current_rowID = rowID;
+                        }
                         
                         function doneEdit(tableID,rowID)
                         {
-                            edit_flag = false;
+                            window.edit_flag = false;
                             tbToLbl(tableID,rowID,"edit");
                         }
                         
                         function cancelEdit(tableID,rowID)
                         {
-                            edit_flag = false;
+                            window.edit_flag = false;
                             tbToLbl(tableID,rowID,"cancel");
                         }
 			
 			function editRow(tableID,rowID)
 			{
-                                alert("edit rowid "+window.edit_rowID);
-                                if((window.edit_rowID == undefined))
+                                //alert("edit rowid "+window.current_rowID);
+                                var table = document.getElementById(tableID);
+                                var rowCount = table.rows.length;
+                                
+                                if((window.current_rowID == rowCount))
                                 {
                                     endList(tableID);
-                                    edit_flag = true;
+                                    window.edit_flag = true;
                                 }
-                                else if(window.edit_rowID == "")
+                                else if(window.current_rowID == "")
                                 {
                                     //Do nothing
                                 }
-                                else if(window.edit_rowID == rowID)
+                                else if(window.current_rowID == rowID)
                                 {
                                     //Do nothing
                                 }
                                 else
                                 {
-                                    alert(edit_flag);
-                                    if (edit_flag == true)
+                                    //alert('inside else - flag val'+window.edit_flag);
+                                    if (window.edit_flag == true)
                                     {
-                                        alert("inside else");
-                                        tbToLbl(tableID,window.edit_rowID,"edit");
+                                        //alert("inside else - if");
+                                        //alert(window.current_rowID);
+                                        tbToLbl(tableID,window.current_rowID,"edit");
                                     }
-                                    edit_flag = true;
+                                    window.edit_flag = true;
                                 }
                             
-                                window.edit_rowID = rowID;
+                                window.current_rowID = rowID;
 				var table = document.getElementById(tableID);
 				var rowCount = table.rows.length;
 				
@@ -440,7 +483,7 @@ echo $callbackvalue;*/
 				for(var i=0; i<rowCount; i++) {
 					var row = table.rows[i];
 					var chkbox = row.cells[0].childNodes[0];
-					if(null != chkbox && true == chkbox.checked) {
+					if(null !== chkbox && true === chkbox.checked) {
 						table.deleteRow(i);
 						rowCount--;
 						i--;

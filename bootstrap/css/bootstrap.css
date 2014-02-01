@@ -2009,8 +2009,8 @@ fieldset[disabled] .btn-link:focus {
 
 .btn-sm,
 .btn-xs {
-  padding: 5px 10px;
-  font-size: 12px;
+  padding: 1px 5px; /*old value : 5px -10px - changed by yamini on 1-2-2014*/
+  font-size: 11px;   /*old value : 12px - changed by yamini on 1-2-2014*/
   line-height: 1.5;
   border-radius: 3px;
 }
