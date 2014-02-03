@@ -211,7 +211,7 @@ echo $callbackvalue;*/
 			addRow("mysource");
 			
 			function addRow(tableID) {
-                                console.log(tableID);
+                                //console.log(tableID);
 				var table = document.getElementById(tableID);
 				var rowCount = table.rows.length;
 				
@@ -256,7 +256,7 @@ echo $callbackvalue;*/
 				var element3 = document.createElement("input");
 				element3.type = "text";
 				element3.name = tableID +"qty";
-                                //element3.setAttribute('onkeydown','isNumberKey(event)');
+                                element3.setAttribute('onkeypress','return validate(event,this,"int")');
 				element3.className="form-control";
 				cell3.appendChild(element3);
 				
@@ -273,6 +273,7 @@ echo $callbackvalue;*/
 				var element5 = document.createElement("input");
 				element5.type = "text";
 				element5.name = tableID +"rate";
+                                element5.setAttribute('onkeypress','return validate(event,this,"dec")');
 				element5.className="form-control";
 				cell5.appendChild(element5);	
 			
@@ -281,6 +282,7 @@ echo $callbackvalue;*/
 				var element6 = document.createElement("input");
 				element6.type = "text";
 				element6.name = tableID +"amt";
+                                element6.setAttribute('onkeypress','return validate(event,this,"dec")');
 				element6.className="form-control";
 				cell6.appendChild(element6);
 				
