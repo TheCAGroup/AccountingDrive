@@ -411,12 +411,12 @@ echo $callbackvalue;*/
 				var txt_units = document.getElementsByName(tableID+'units')[rowID-1].innerText;
 				var txt_rate = document.getElementsByName(tableID+'rate')[rowID-1].innerText;
 				var txt_amt = document.getElementsByName(tableID+'amt')[rowID-1].innerText;
-				//alert(txt_name);// onkeypress='isNumberKey(event,this);'
+				//alert(txt_name);
 				table.rows[rowID-1].cells[1].innerHTML="<input type='text' name='"+tableID+"name' class='form-control' value='"+txt_name+"'/>";
-				table.rows[rowID-1].cells[2].innerHTML="<input type='text' name='"+tableID+"qty' class='form-control' value='"+txt_qty+"'/>";
+				table.rows[rowID-1].cells[2].innerHTML="<input type='text' name='"+tableID+"qty' onkeypress='return validate(event,this,\"int\");' class='form-control' value='"+txt_qty+"'/>";
 				table.rows[rowID-1].cells[3].innerHTML="<input type='text' name='"+tableID+"units' class='form-control' value='"+txt_units+"'/>";
-				table.rows[rowID-1].cells[4].innerHTML="<input type='text' name='"+tableID+"rate' class='form-control' value='"+txt_rate+"'/>";
-				table.rows[rowID-1].cells[5].innerHTML="<input type='text' name='"+tableID+"amt' class='form-control' value='"+txt_amt+"'/>";
+				table.rows[rowID-1].cells[4].innerHTML="<input type='text' name='"+tableID+"rate' onkeypress='return validate(event,this,\"dec\");' class='form-control' value='"+txt_rate+"'/>";
+				table.rows[rowID-1].cells[5].innerHTML="<input type='text' name='"+tableID+"amt' onkeypress='return validate(event,this,\"dec\");' class='form-control' value='"+txt_amt+"'/>";
 				table.rows[rowID-1].cells[6].innerHTML="<input type='image' src='img/tick.png' height='20px' width='20px' onclick='doneEdit(\""+tableID+"\",\""+rowID+"\")' alt='Done Editing' title='Done Editing'>&nbsp<input type='image' src='img/cross.png' height='20px' width='20px' onclick='cancelEdit(\""+tableID+"\",\""+rowID+"\")' alt='Cancel Editing' title='Cancel Editing'>";
                                 window.edit_flag = true;
                                 window.current_rowID = rowID;
@@ -511,23 +511,39 @@ echo $callbackvalue;*/
 					alert(e);
 				}
 			}
-                        /*
-                        function isNumberKey(evt,thisobj)
+                        
+                        function validate(evt,thisobj,validation)
                         {
                            var charCode = (evt.which) ? evt.which : event.keyCode;
-                           if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46)
-                                event.preventDefault();
-                           else
-                           {
-                               //Prevent from entering more than one '.'
-                               if (thisobj.value.concat(evt.which).indexOf('.') !== -1)
+                           
+                           /*
+                            * dec - Numbers and .
+                            * int - Only numbers
+                            */
+                           
+                               if (validation === "dec")
                                {
-                               
-                                   if (charCode === 46)
-                                      event.preventDefault();
-                               }
-                           }
-                        }*/
+                                    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46)
+                                         return false;
+                                    else
+                                    {
+                                         //Prevent from entering more than one '.'
+                                         if (thisobj.value.concat(evt.which).indexOf('.') !== -1)
+                                         {
+                                             if (charCode === 46)
+                                                return false;
+                                         }
+                                         return true;
+                                    }
+                                }
+                                else if(validation === "int")
+                                {
+                                    if (charCode > 31 && (charCode < 48 || charCode > 57))
+                                         return false;
+                                    else
+                                        return true;
+                                }
+                        }
 			
 		/*
 			function loadledger()
