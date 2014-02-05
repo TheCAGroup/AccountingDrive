@@ -38,7 +38,7 @@
 			}
 		</style>
 	</head>
-        <body style="height:100%;">
+        <body>
 		
 		
 		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -53,8 +53,8 @@ makemodal_confirm("modalacceptchange","Accept","");
 echo $callbackvalue;*/
 ?>
 		<div class="container">
-		<div class="row show-grid" style="height: 96%;">
-  		<div class="col-lg-10" style="height: 100%;">
+		<div class="row show-grid">
+  		<div class="col-lg-10">
 		<!--div class="well" style="height: 100%;"-->
 		<h4 align="center">Transfer of Materials</h4>
                 <br>
@@ -196,7 +196,7 @@ echo $callbackvalue;*/
 		<div class="col-lg-2">
 
 			<!--div class="span3 sb-fixed"-->
-		   		<!--div class="well"-->
+                        <div class="well" style="margin-top:10px;border: 1px solid #5C95A9; background-color: #E9F2F5">
 		   			<div id="divlist" style="height: 80%;overflow: auto"> 
 		   				
 		   			
@@ -211,7 +211,7 @@ echo $callbackvalue;*/
 			 		 	<li><a href="#">Material In</a></li>
 					</ul-->
 					<!--/div-->   
-				<!--/div-->
+				</div>
 			</div>
 <br style="clear:both" />
 	  	</div>
