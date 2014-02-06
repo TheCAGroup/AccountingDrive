@@ -60,7 +60,7 @@ echo $callbackvalue;*/
                 <br>
 		
 		
-		<div style=" width: 100%; height: 35%;">
+		<div style=" width: 100%; height: 30%;">
 			
 			<div style="width: 100%;float:left; height:20%;">
                             
@@ -118,9 +118,9 @@ echo $callbackvalue;*/
                             
                             
                         </div>  
-		</div><br>
+		</div>
 		
-		<div style=" width: 100%; height: 35%;">
+		<div style=" width: 100%; height: 30%;">
 			
 			<div style="width: 100%;float:left; height:20%;">
                             
@@ -178,18 +178,23 @@ echo $callbackvalue;*/
                             
                             
                         </div>  
-                   
-                    <div style="background-color:#5C95A9; color: #FFFFFF; width:100%; float:left; height:25px; padding-left: 1%; margin-top: 20px;">
-                        <!--Narration-->
-                        <b>Narration :</b> 
-                    </div>
-                    <input type="text" class="form-control" name="narration" style=" margin-bottom: 10px; border: 1px solid #5C95A9;">
                     
+		</div>
+                
+                <div style="margin-top: 15px;">
+                    <div style="float:left;width:40%">
+                        <div style="background-color:#5C95A9; color: #FFFFFF; width:100%; height:25px; padding-left: 1%;">
+                            <!--Narration-->
+                            <b>Narration :</b> 
+                        </div>
+                        <input type="text" class="form-control" name="narration" style=" margin-bottom: 10px; border: 1px solid #5C95A9;">
+                    </div>
+
                     <div style="float:right;">
                         <a href="#" onclick="" class="btn btn-success btn-small">Accept</a>&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="#" onclick="" class="btn btn-info btn-small">Cancel</a>
                     </div>
-		</div>
+                </div>
 		
 		<!--/div-->
 		</div>
@@ -213,11 +218,8 @@ echo $callbackvalue;*/
 					<!--/div-->   
 				</div>
 			</div>
-<br style="clear:both" />
 	  	</div>
-	  	<br style="clear:both" />
 		</div>
-		<br style="clear:both" />
 	</div>
 	<!--script type="text/javascript" src="test.js"></script-->
 		<script>
@@ -283,8 +285,9 @@ echo $callbackvalue;*/
 				var element4 = document.createElement("input");
 				element4.type = "text";
 				element4.name = tableID +"qty";
-                                element4.setAttribute('onkeypress','return validate(event,this,"int")');
-				element4.className="form-control";
+                                //element4.setAttribute('onkeypress','return validate(event,this,"int")');
+				element4.setAttribute('onkeydown','return calcAndValidate(event,this,"'+tableID+'","'+ rowCount+1 +'","qty")');
+                                element4.className="form-control";
 				cell4.appendChild(element4);
 				
 				var cell5 = row.insertCell(4);
@@ -300,7 +303,8 @@ echo $callbackvalue;*/
 				var element6 = document.createElement("input");
 				element6.type = "text";
 				element6.name = tableID +"rate";
-                                element6.setAttribute('onkeypress','return validate(event,this,"dec")');
+                                //element6.setAttribute('onkeypress','return validate(event,this,"dec")');
+                                element6.setAttribute('onkeydown','return calcAndValidate(event,this,"'+tableID+'","'+ rowCount+1 +'","rate")');
 				element6.className="form-control";
 				cell6.appendChild(element6);	
 			
@@ -309,7 +313,8 @@ echo $callbackvalue;*/
 				var element7 = document.createElement("input");
 				element7.type = "text";
 				element7.name = tableID +"amt";
-                                element7.setAttribute('onkeypress','return validate(event,this,"dec")');
+                                //element7.setAttribute('onkeypress','return validate(event,this,"dec")');
+                                element7.setAttribute('onkeydown','return calcAndValidate(event,this,"'+tableID+'","'+ rowCount+1 +'","amt")');
 				element7.className="form-control";
 				cell7.appendChild(element7);
 				
@@ -322,6 +327,98 @@ echo $callbackvalue;*/
                           
 
 			}
+                        
+                        function calcAndValidate(evt,thisobj,tableID,rowID,column)
+                        {
+                            var charCode = (evt.which) ? evt.which : event.keyCode;
+                            
+                            var keyPressed = String.fromCharCode(charCode);
+                            if ((column === "rate") || (column === "amt"))
+                                var returnVal = validate(event,thisobj,"dec");
+                            else if (column === "qty")
+                                var returnVal = validate(event,thisobj,"int");
+                            
+                            console.log(returnVal);
+                            if(returnVal === true)
+                            {
+                                if(column === "rate")
+                                {
+                                    //backspace pressed
+                                    if(charCode === 8)
+                                    {
+                                        //slice the last character
+                                        var rate = thisobj.value.slice(0,-1);
+                                        
+                                    }
+                                    else
+                                    {
+                                        var rate = thisobj.value.concat(keyPressed);
+                                    }
+                                    
+                                    var qty = document.getElementsByName(tableID+"qty")[rowID-1].value;
+                                    var amt = document.getElementsByName(tableID+"amt")[rowID-1].value;
+                                    
+                                    //alert(qty+","+parseFloat(rate)+","+amt);
+                                    
+                                    if (qty!=="")
+                                    {
+                                        if (rate==="")
+                                            document.getElementsByName(tableID+"amt")[rowID-1].value="";
+                                        else
+                                            document.getElementsByName(tableID+"amt")[rowID-1].value = parseFloat(qty) * parseFloat(rate);
+                                    }
+                                    else
+                                    {
+                                        document.getElementsByName(tableID+"amt")[rowID-1].value = parseFloat(rate);
+                                    }
+                                }
+                                else if(column === "amt")
+                                {
+                                    //backspace pressed
+                                    if(charCode === 8)
+                                    {
+                                        //slice the last character
+                                        var amt = thisobj.value.slice(0,-1);
+                                    }
+                                    else
+                                        var amt = thisobj.value.concat(keyPressed);
+                                    var qty = document.getElementsByName(tableID+"qty")[rowID-1].value;
+                                    if (qty!=="")
+                                    {
+                                        if (amt==="")
+                                            document.getElementsByName(tableID+"rate")[rowID-1].value = "";
+                                        else
+                                            document.getElementsByName(tableID+"rate")[rowID-1].value = parseFloat(amt) / parseFloat(qty);
+                                    }
+                                    
+                                }
+                                else if((column === "qty"))
+                                {
+                                    //backspace pressed
+                                    if(charCode === 8)
+                                    {
+                                        //slice the last character
+                                        var qty = thisobj.value.slice(0,-1);
+                                    }
+                                    else
+                                        var qty = thisobj.value.concat(keyPressed);
+                                    var rate = document.getElementsByName(tableID+"rate")[rowID-1].value;
+                                    var amt = document.getElementsByName(tableID+"amt")[rowID-1].value;
+                                    //working 112 123 function keys
+                                    if ((rate === "") && (amt !== ""))
+                                    {
+                                        document.getElementsByName(tableID+"rate")[rowID-1].value = parseFloat(amt) / parseFloat(qty);
+                                    }
+                                    else if ((rate !== "") && (amt === ""))
+                                    {
+                                        document.getElementsByName(tableID+"amt")[rowID-1].value = parseFloat(rate) * parseFloat(qty);
+                                    }
+                                    
+                                    
+                                }
+                            }
+                            return returnVal;
+                        }
                         
                         function createSelectBox(tableID,elementName,selectedValue)
                         {
@@ -601,17 +698,19 @@ echo $callbackvalue;*/
                             * dec - Numbers and .
                             * int - Only numbers
                             */
-                           
+                           console.log(charCode);
                                if (validation === "dec")
                                {
-                                    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 46)
+                                    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 190)
                                          return false;
                                     else
                                     {
+                                        
+                                         //console.log(thisobj.value.concat(evt.which).indexOf('.'));
                                          //Prevent from entering more than one '.'
                                          if (thisobj.value.concat(evt.which).indexOf('.') !== -1)
                                          {
-                                             if (charCode === 46)
+                                             if (charCode === 190)
                                                 return false;
                                          }
                                          return true;
