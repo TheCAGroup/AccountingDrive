@@ -114,9 +114,7 @@ echo $callbackvalue;*/
                                         <td class="tab_col_10"></td>
                                     </tr>
                                 </thead>
-                            </table>
-                            
-                            
+                            </table>    
                         </div>  
 		</div>
 		
@@ -338,7 +336,7 @@ echo $callbackvalue;*/
                             else if (column === "qty")
                                 var returnVal = validate(event,thisobj,"int");
                             
-                            console.log(returnVal);
+                            //console.log(returnVal);
                             if(returnVal === true)
                             {
                                 if(column === "rate")
@@ -360,17 +358,22 @@ echo $callbackvalue;*/
                                     
                                     //alert(qty+","+parseFloat(rate)+","+amt);
                                     
-                                    if (qty!=="")
-                                    {
-                                        if (rate==="")
-                                            document.getElementsByName(tableID+"amt")[rowID-1].value="";
-                                        else
+                                     if (rate !== "")
+                                     {
+                                        if (qty!=="")
+                                        {
                                             document.getElementsByName(tableID+"amt")[rowID-1].value = parseFloat(qty) * parseFloat(rate);
-                                    }
-                                    else
-                                    {
-                                        document.getElementsByName(tableID+"amt")[rowID-1].value = parseFloat(rate);
-                                    }
+                                        }/*
+                                        else
+                                        {
+                                            document.getElementsByName(tableID+"amt")[rowID-1].value = parseFloat(rate);
+                                        }*/
+                                     }
+                                     else
+                                         document.getElementsByName(tableID+"amt")[rowID-1].value="";
+                                    
+                                    
+                                    
                                 }
                                 else if(column === "amt")
                                 {
@@ -382,6 +385,7 @@ echo $callbackvalue;*/
                                     }
                                     else
                                         var amt = thisobj.value.concat(keyPressed);
+                                    
                                     var qty = document.getElementsByName(tableID+"qty")[rowID-1].value;
                                     if (qty!=="")
                                     {
@@ -402,19 +406,14 @@ echo $callbackvalue;*/
                                     }
                                     else
                                         var qty = thisobj.value.concat(keyPressed);
+                                    
                                     var rate = document.getElementsByName(tableID+"rate")[rowID-1].value;
                                     var amt = document.getElementsByName(tableID+"amt")[rowID-1].value;
-                                    //working 112 123 function keys
-                                    if ((rate === "") && (amt !== ""))
-                                    {
-                                        document.getElementsByName(tableID+"rate")[rowID-1].value = parseFloat(amt) / parseFloat(qty);
-                                    }
-                                    else if ((rate !== "") && (amt === ""))
+                                    
+                                    if (rate!=="")
                                     {
                                         document.getElementsByName(tableID+"amt")[rowID-1].value = parseFloat(rate) * parseFloat(qty);
                                     }
-                                    
-                                    
                                 }
                             }
                             return returnVal;
@@ -576,7 +575,9 @@ echo $callbackvalue;*/
 				var txt_rate = document.getElementsByName(tableID+'rate')[rowID-1].innerText;
 				var txt_amt = document.getElementsByName(tableID+'amt')[rowID-1].innerText;
 				//alert(txt_name);
-                                table.rows[rowID-1].cells[0].innerHTML= "";
+                                
+                                table.rows[rowID-1].cells[1].innerHTML= "";
+                                table.rows[rowID-1].cells[2].innerHTML= "";
 				table.rows[rowID-1].cells[1].appendChild(createSelectBox(tableID,"name",txt_name));
                                 table.rows[rowID-1].cells[2].appendChild(createSelectBox(tableID,"godown",txt_godown));
 				table.rows[rowID-1].cells[3].innerHTML="<input type='text' name='"+tableID+"qty' onkeypress='return validate(event,this,\"int\");' class='form-control' value='"+txt_qty+"'/>";
@@ -698,10 +699,10 @@ echo $callbackvalue;*/
                             * dec - Numbers and .
                             * int - Only numbers
                             */
-                           console.log(charCode);
+                          // console.log(charCode);
                                if (validation === "dec")
                                {
-                                    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 190)
+                                    if (charCode > 31 && (charCode < 48 || charCode > 57) && charCode !== 190 && (charCode<112 || charCode>123))
                                          return false;
                                     else
                                     {
@@ -724,36 +725,7 @@ echo $callbackvalue;*/
                                         return true;
                                 }
                         }
-			
-		/*
-			function loadledger()
-			{
-				var res;
-				$.ajax({
-						type: 'GET',
-						contentType: 'application/json',
-						async: false,
-						url: apiurl+'stockjournal.php/stockitemlist',
-						dataType: "json",
-						success: function(data){
-							res = data;
-						},
-						error: function(jqXHR, textStatus, errorThrown){
-						}
-				});
-				return res;
-			}
-			
-			var data=loadledger();
-			makeconfobject("Name of Item",50,"list",data,"divlist","","",false);//Company Name
-			makeconfobject("Qty",4,"number","","","Amount=Qty*Rate","Qty=Amount/Rate",true);//Quantity
-			makeconfobject("Units",4,"list",data,"divlist","","",true);//Units
-			makeconfobject("Rate",4,"list",data,"divlist","Amount=Qty*Rate","Rate=Amount/Qty",true);//Rate
-			makeconfobject("Amount",4,"list",data,"divlist","Rate=Amount/Qty","Qty=Amount/Rate",false);//Amount
-			//starthere(confarray);
-			var list=loadledger();
-			starthere(list);
-		*/
+                        
 		</script>
 		
 	</body>

@@ -1,5 +1,5 @@
 <?php
-include 'userauthenticate.php';
+//include 'userauthenticate.php';
 require_once 'newmodal.php';
 //$selcompanyid=isset($_SESSION['ca_selcompanyid'])?$_SESSION['ca_selcompanyid']:"Company Not Selected";
 $selcompanyname=isset($_SESSION['ca_selcompanyname'])?$_SESSION['ca_selcompanyname']:"Company Not Selected";

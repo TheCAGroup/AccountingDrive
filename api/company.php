@@ -59,7 +59,7 @@ $app->get('/selectcompany/:id/:name', function ($id,$name) use ($app) {
 		echo json_encode(-1);
 		return;
     }
-    echo json_encode(1);;
+    echo json_encode(1);
 });
 
 

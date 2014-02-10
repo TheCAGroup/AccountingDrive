@@ -1,14 +1,3 @@
-<?php 
-include '../breadcrumb.php';
-
-makemodal_progress("modalprogress", "Loading...");
-makemodal_progress("modalprogress_inserting", "Inserting...");
-makemodal_alert("modalupdatedrecord", "Updated Record", "Company Updated Successfully");
-makemodal_alert("modalinsertedrecord", "Inserted Record", "Company Inserted Successfully");
-makemodal_alert("modaltryagain","Alert","Try again");
-makemodal_alert("modalcompanyexists","Insert failed","The company already exists");
-makemodal_alert("modalgeneralerror","Error","<script>generalerror</script>");
-?>
 <html>
 <head>
 	
@@ -89,14 +78,15 @@ function JSONtoform(data)
 	--ID - DISPLAY
 	--ID, ISEDIT(TRUE) - EDIT
 -->
-<?php
+<!--
+php code -> js
 $id=-1;
 $isedit=FALSE;
 if(isset($_GET['ID']))
 	$id=$_GET['ID'];
 if(isset($_GET['ISEDIT']))
 	$isedit=$_GET['ISEDIT'];
-?> 	
+--> 	
 
 <div class = "container">
 	<div class="row show-grid">
@@ -105,12 +95,12 @@ if(isset($_GET['ISEDIT']))
 
 		<!-- Form Name -->
 		<legend>
-			<?php 
+<!-- php->js
 			if($id>-1)
 				if($isedit) echo 'Edit Company';
 				else echo 'Company Info';
 			else echo'Create Company';
-			?>
+-->
 		</legend>
 
   		<form id="addcompany" class="form-horizontal" method="post"><!--action="trycompanyinsert.php" -->

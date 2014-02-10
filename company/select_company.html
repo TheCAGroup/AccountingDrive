@@ -1,0 +1,179 @@
+<html lang="en">
+    <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+            <title>Select Company</title>
+    </head>
+    <body>
+            <div class="container">
+            <div class="row show-grid">
+            <div class="col-lg-8">
+                    <div class="well">
+                    <form class="form-horizontal" method="post" action="#">
+                            <fieldset>
+
+                            <!-- Form Name -->
+                            <legend>Select Company</legend>
+                            <!-- Select Basic -->
+                            <div class="input-append">
+                              <label for="selectbasic">Select Company </label>
+                                    <select id="selectbasic" name="selectbasic" class="form-control" size="5">
+                                </select>
+                              </div>
+                            <br>
+
+                            <!-- Button -->
+                            <div align="center">
+                                <a href="#" class="btn btn-success btn-small"  onclick="local_selectcompany();">Select</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#" class="btn btn-primary btn-small"  onclick="local_gotodisplaycompany();">Info</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#" class="btn btn-primary btn-small"  onclick="local_gotoupdatecompany();">Edit</a>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#" class="btn btn-primary btn-small"  onclick="local_gotodeletecompany();">Delete</a>
+                                    
+                            </div>
+
+                            </fieldset>
+                    </form>
+            </div>
+            </div>
+            <!--div class="col-lg-4">
+                    <div class="span3 sb-fixed">
+                            <div class="well sidebar-nav">
+                                    <ul class="nav nav-pills nav-stacked">
+                                            <li><a href="#" onclick="gotocreatecompany();">Create Company</a></li>
+                                            <li><a href="#">Shut Company</a></li>
+                                            <li><a href="#">Company Info</a></li>
+                                            <li><a href="#">Features</a></li>
+                                            <li><a href="#">Configure</a></li>
+                                    </ul>   
+                            </div>
+                    </div>
+            </div-->
+            </div>
+            </div>
+            <!-- test yamini -->
+            
+            <script type="text/javascript" src="./dynamic_modal.js"></script>
+            <script>
+            
+            loadcompany();
+            makeModalAlert("modalalert", "Success", "data received");
+            makeModalProgress("modalprogress", "Loading...")
+            makeModalConfirm("modalconfirmdelete", "Confirm Delete", "Are you sure you want to delete ?", 'test();')
+            
+            
+            $('#modalprogress').modal();
+            
+            function test()
+            {
+                console.log("yes clicked");
+                $('#modalconfirmdelete').modal('hide');
+            }
+            
+                    function loadcompany()
+                    {
+                            $.ajax({
+                                            type: 'GET',
+                                            url: 'http://accountingdrive.zapto.org/company',
+                                            dataType: "jsonp",
+                                            async: true,
+                                            success: function(data){
+                                                $.each(data, function(i, option) {
+                                                    $('#selectbasic').append($('<option/>').attr("value", option._id).text(option.name));
+                                                });
+                                                $('#modalprogress').modal('hide');
+                                                $('#modalconfirmdelete').modal();
+                                                
+                                    
+                                            },
+                                            error: function(jqXHR, textStatus, errorThrown){
+
+                                      //              $('#modalgeneralerror').modal();
+                                            }
+                            });
+                    }	
+
+
+                    function local_gotoupdatecompany()
+                    {
+                            var selcomp=document.getElementById("selectbasic").value;
+
+                            if(selcomp == "")
+                            {
+                                    //$('#modalupdatecompany').modal();
+                            }
+                            else
+                            {
+                                    gotoupdatecompany(selcomp);
+                            } 
+
+                    }
+                    function local_gotodeletecompany()
+                    {
+                            var selcomp=document.getElementById("selectbasic").value;
+                            if(selcomp == "")
+                            {
+                                    //$('#modaldeletecompany').modal();
+                            }
+                            else
+                            {
+                                    //$('#modaldeleteconfirm').modal();
+                            }
+                    }
+                    function local_gotodisplaycompany()
+                    {
+                            var selcomp=document.getElementById("selectbasic").value;
+                            if(selcomp == "")
+                            {
+                                    //$('#modaldisplaycompany').modal();
+                            }
+                            else
+                            {
+                                    gotodisplaycompany(selcomp);
+                            }
+                    }
+                    function local_selectcompany()
+                    {
+
+                            var e=document.getElementById("selectbasic");
+                            var name=e.options[e.selectedIndex].text;
+                            var id = e.value;
+                            $.ajax({
+                                    type: 'GET',
+                                    url: apiurl+'company.php/selectcompany/'+id+'/'+name,
+                                    dataType: "json",
+                                    success: function(data){
+                                            if(JSON.stringify(data)=='1')
+                                            {
+                                            $("#maindiv").load("entrypage.php");
+                                            }
+                                    },
+                                    error: function(jqXHR, textStatus, errorThrown){
+                                            //$('#modalgeneralerror').modal();
+                                    }
+                            });
+
+                    }
+
+                    function deleteCompany()
+                    {
+                            var id = document.getElementById('selectbasic').value;
+                            $.ajax({
+                                    type: 'DELETE',
+                                    url: apiurl+'company.php/deletecompany/'+id,
+                                    dataType: "json",
+                                    success: function(data){
+                                           // $('#modaldeletesuccess').modal();
+                                             document.getElementById('selectbasic').options.length = 0;
+                                            loadcompany();
+                                    },
+                                    error: function(jqXHR, textStatus, errorThrown){
+
+                                           // $('#modalgeneralerror').modal();
+                                    }
+                            });
+                    }
+            </script>
+    </body>
+</html>

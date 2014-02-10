@@ -1,9 +1,3 @@
-<?php
-require_once('userauthenticate.php');
-//TEST UPDATE123
-?>
-<script src="js/config.js"></script>
-
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -11,8 +5,10 @@ require_once('userauthenticate.php');
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>Cloud Accounting</title>
-
+		<title>Accounting Drive</title>
+                <!--Root Configuration-->   
+                <script src="js/config.js"></script>
+                
 		<!-- Bootstrap core CSS -->
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="bootstrap/css/datepicker.css" rel="stylesheet">
@@ -44,7 +40,7 @@ require_once('userauthenticate.php');
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#" onclick="gotoHomePage();">Cloud Accounting</a>
+					<a class="navbar-brand" href="#" onclick="gotoHomePage();">Accounting Drive</a>
 					<div class="nav-collapse collapse">
 						<ul class="nav navbar-nav">
 							<li class="dropdown">
@@ -205,6 +201,8 @@ require_once('userauthenticate.php');
 				</div>
 			</div>
 			
+                        
+                        <!-- Include info-bar here-->
 			<!--Container-->
 			<div class="container" id="maindiv">
 
@@ -216,7 +214,7 @@ require_once('userauthenticate.php');
 		<div id="footer">
 			<div class="container">
 				<p class="text-muted credit">
-					Copyright © Cloud Solutions Pvt. Ltd.
+					Powered by Arasan Engineering Works
 				</p>
 			</div>
 		</div>
@@ -226,7 +224,7 @@ require_once('userauthenticate.php');
 		<script type="text/javascript">
 			$(document).ready(function() {
 				$('.dropdown-toggle').dropdown();
-				$("#maindiv").load("entrypage.php");
+				$("#maindiv").load("entrypage.html");
 			});
 			
 			
