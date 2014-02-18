@@ -1,0 +1,42 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>   
+</head>
+<body>
+Email<input type="text" name="email" id="email"><br></input>
+Password<input type="password" name="password" id="password"><br></input>
+<input type="radio" name="selection" value="company">Company<br></input>
+<input type="radio" name="selection" value="user">User<br></input>
+Number<input type="text" name="nos" id="nos"><br></input>
+Price<input type="text" name="price" id="price"><br></input>
+<input type="button" value="submit" onclick="save()"></input>
+<script>
+var sockjs_url = 'http://192.168.5.136:9999/trial';
+var sockjs = new SockJS(sockjs_url);
+sockjs.onopen    = function()  {console.log('[*] open'+sockjs.protocol);
+                               sockjs.send({"TRIAL SEND":"ddd"});
+                               };
+sockjs.onmessage = function(e)  {
+				console.log('[.] message', e.data);
+				};
+sockjs.onclose   = function()  {console.log('[*] close');};
+
+           
+  
+function save()
+{
+console.log("in save method");
+var email=$("#email").val();
+var password=$("#password").val();
+var registerfor = $("input[type='radio']:checked").val();
+console.log(registerfor);
+var price=$("#price").val();
+var number=$("#nos").val();
+var expiry=' Wed Feb 12 2017 11:57:59 GMT+0530 (IST)';
+sockjs.send(JSON.stringify({"action":"insertlicense","args": {"email":email,"password":password,"registerfor":registerfor,"price":price,"number":number,"expireson":expiry}}));
+console.log('data sent');
+}
+</script>
+</body>
+</html>

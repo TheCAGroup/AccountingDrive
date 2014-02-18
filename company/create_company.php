@@ -52,7 +52,70 @@ function enabledisableform(isdisable)
 	$("#txtdecimalplacesforprint").attr("disabled", isdisable);
 }
 function JSONtoform(data)
-{
+{<!-- Multiple Radios (inline) -->
+                                    <div class="form-group">
+                                      <label class="col-lg-4 control-label" for="rdaffectgp">Does it affect Gross Profits ?</label>
+                                      <div class="col-lg-4">
+                                                    <label class="radio-inline">
+                                                    <input type="radio" id="rdaffectgp-0" name="rdaffectgp" value="yes" checked="checked"> Yes
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                    <input type="radio" id="rdaffectgp-1" name="rdaffectgp" value="no"> No
+                                                    </label>
+                                      </div>
+                                    </div>
+                                    
+                                    <!-- Multiple Radios (inline) -->
+                                    <div class="form-group">
+                                      <label class="col-lg-4 control-label" for="rdsubledger">Group behaves like a sub-ledger ?</label>
+                                      <div class="col-lg-4">
+                                                    <label class="radio-inline">
+                                                    <input type="radio" id="rdsubledger-0" name="rdsubledger" value="yes" checked="checked"> Yes
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                    <input type="radio" id="rdsubledger-1" name="rdsubledger" value="no"> No
+                                                    </label>
+                                      </div>
+                                    </div>
+                                    
+                                    <!-- Multiple Radios (inline) -->
+                                    <div class="form-group">
+                                      <label class="col-lg-4 control-label" for="rdsubledger">Nett Debit/Credit balances for reporting</label>
+                                      <div class="col-lg-4">
+                                                    <label class="radio-inline">
+                                                    <input type="radio" id="rdsubledger-0" name="rdsubledger" value="yes" checked="checked"> Yes
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                    <input type="radio" id="rdsubledger-1" name="rdsubledger" value="no"> No
+                                                    </label>
+                                      </div>
+                                    </div>
+                                    
+                                    
+                                    <!-- Multiple Radios (inline) -->
+                                    <div class="form-group">
+                                        <label class="col-lg-4 control-label" for="rdsubledger">Used for Calculation (eg. Taxes, Discounts)<br><i>(for Sales Invoice Entry)</i></label>
+                                      <div class="col-lg-4">
+                                                    <label class="radio-inline">
+                                                    <input type="radio" id="rdsubledger-0" name="rdsubledger" value="yes" checked="checked"> Yes
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                    <input type="radio" id="rdsubledger-1" name="rdsubledger" value="no"> No
+                                                    </label>
+                                      </div>
+                                    </div>
+                                    
+                                    <!-- Multiple Radios (inline) -->
+                                    <div class="form-group">
+                                      <label class="col-lg-4 control-label" for="rdsubledger">Group behaves like a sub-ledger ?</label>
+                                      <div class="col-lg-4">
+                                                    <input type="radio" id="rdsubledger-0" name="rdsubledger" value="yes" checked="checked"> Yes
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                    <input type="radio" id="rdsubledger-1" name="rdsubledger" value="no"> No
+                                                    </label>
+                                      </div>
+                                    </div>
 		$('#txtname').val(data.name);
 		$("#txtaddress").val(data.address);
 		$("#cmbcountry").val(data.country);
@@ -281,7 +344,7 @@ if(isset($_GET['ISEDIT']))
 		</div>
 	 	<div class="col-lg-4">
 
-			<div class="span3 sb-fixed">
+			<div class="span3"> 
 		   		<div class="well sidebar-nav">
 					<ul class="nav nav-pills nav-stacked">
 			 		 	<li><a href="#" onclick="gotoselectcompany();">Select Company</a></li>

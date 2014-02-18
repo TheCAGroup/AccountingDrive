@@ -1707,7 +1707,7 @@ textarea.input-sm {
 
 @media (min-width: 768px) {
   .form-horizontal .control-label {
-    text-align: right;
+    text-align: left; /*Changed from right to left*/
   }
 }
 

@@ -53,7 +53,7 @@ makemodal_confirm("modalacceptchange","Accept","");
 echo $callbackvalue;*/
 ?>
 		<div class="container">
-		<div class="row show-grid">
+		<div class="row">
   		<div class="col-lg-10">
 		<!--div class="well" style="height: 100%;"-->
 		<h4 align="center">Transfer of Materials</h4>
@@ -221,6 +221,10 @@ echo $callbackvalue;*/
 	</div>
 	<!--script type="text/javascript" src="test.js"></script-->
 		<script>
+                    
+                    if (top.location !== location) {
+    top.location.href = document.location.href ;
+  }
 		
 			var temp_txt_name;
                         var temp_txt_godown;

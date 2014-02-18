@@ -1,0 +1,85 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>   
+</head>
+<body>
+<table id="company">
+</table>
+<table id="user">
+</table>
+<script>
+var sockjs_url = 'http://192.168.5.136:9999/trial';
+var sockjs = new SockJS(sockjs_url);
+sockjs.onopen    = function()  {console.log('[*] open'+sockjs.protocol);
+                               sockjs.send({"TRIAL SEND":"ddd"});
+				license();
+                               };
+sockjs.onmessage = function(e)  {
+				console.log('[.] message', e.data);
+try{
+message=JSON.parse(e.data);
+console.log("action"+message.action);
+switch(message.action)
+	{
+	case "resp_getuserlicense":
+		var details=message.msgob.license;
+		console.log('data'+JSON.stringify(details.companylicense));
+		var tblhd=$("<th>S.No</th><th>License</th><th>Company</th><th>Expires On</th>");
+		$("#company").html(tblhd);
+		for(var i=1;i<=details.companylicense.length;i++)
+			{
+			var tbl=$("<tr><td>"+i+"</td><td>"+details.companylicense[i].license+"</td><td>"+details.companylicense[i].company+"</td><td>"+details.companylicense[i].expiry+"</td></tr>");
+			$("#company").append(tbl);
+			}
+		var tblhd=$("<th>S.No</th><th>License</th><th>User Email</th><th>BoughtOn</th><th>Expires On</th><th></th><th></th>");
+		$("#user").html(tblhd);
+		console.log("length"+details.userlicense.length);
+		for(var i=0;i<details.userlicense.length;i++)
+			{
+			console.log("user"+details.userlicense[i]._id);
+			var tbl=$("<tr><td>"+i+"</td><td>"+details.userlicense[i]._id+"</td><td id='usernm_"+details.userlicense[i]._id+"'>email</td><td>"+details.userlicense[i].boughton+"</td><td>expiry</td><td><button id='edit_"+details.userlicense[i]._id+"' name='edit' onclick='edit(this.id)'>Edit</button></td><td><button id='ok_"+details.userlicense[i]._id+"' name='ok' onclick='ok(this.id)'>OK</button></td></tr>");
+
+			console.log("before appendd");
+			$("#user").append(tbl);
+			$("#ok_"+details.userlicense[i]._id).hide();
+			}
+		
+		break;
+	default:
+		break;
+	}
+}
+catch(e)
+{
+}
+				};
+sockjs.onclose   = function()  {console.log('[*] close');};
+
+function edit(tempid)
+{
+var userid= tempid.split("_").pop();
+$("#usernm_"+userid).html("<input type='text' name='name' id='name_'"+userid+"></input>");
+$("#ok_"+userid).show();
+}
+
+function ok(tempid)
+{
+var userid= tempid.split("_").pop();
+var name= $("#name_"+userid).val();
+sockjs.send(JSON.stringify({"action":"updateuser","args": {"userid":userid,"name":name}}));
+$("#usernm_"+userid).html(name);
+$("#ok_"+userid).hide();
+}
+
+
+function license()
+{
+var userid='52fc75d2dfcd00580c6464c6';
+sockjs.send(JSON.stringify({"action":"getuserlicense","args": {"userid":userid}}));
+}
+
+
+</script>
+</body>
+</html>

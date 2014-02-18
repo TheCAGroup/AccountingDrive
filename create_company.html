@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+    <title>Accounting Drive - Create Company</title>
+<style>body { font-family: Ubuntu, sans-serif; }</style>
+
+</head>
+<body>
+
+
+<div class = "container">
+	<div class="row show-grid">
+  		<div class="col-lg-8">
+			<div class="well">
+
+		<!-- Form Name -->
+                <b>Create Company</b>
+
+  		<form id="addcompany" class="form-horizontal" method="post">
+		<fieldset>
+		
+		<div class="form-group">
+		    <label for="txtname" class="col-lg-4 control-label">Name</label>
+		    <div class="col-lg-4">
+		      <input type="text" class="form-control" id="txtname" placeholder="Name">
+		   </div>
+		</div>
+  
+		<!-- Textarea -->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="txtaddress">Address</label>
+		  <div class="col-lg-4">
+		  	<textarea class="form-control" rows="3" id="txtaddress" name="txtaddress"></textarea>                     
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="cmbstate">State</label>
+		  <div class="col-lg-4">
+		    <select id="cmbstate" name="cmbstate" class="form-control">
+		      <option>Tamil Nadu</option>
+		    </select>
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="cmbcountry">Country</label>
+		  <div class="col-lg-4">
+		    <select id="cmbcountry" name="cmbcountry" class="form-control">
+		      <option>India</option>
+		    </select>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="txtpincode">Pincode</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txtpincode" name="txtpincode" placeholder="Pincode">
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="txttelephone">Telephone</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txttelephone" name="txttelephone" placeholder="Telephone Number">
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="txtemail">Email</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txtemail" name="txtemail" placeholder="email">
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="txtfinancialyear">Financial Year Beginning From</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" value="01/04/13" data-date-format="dd/mm/yy" id="txtfinancialyear" name="txtfinancialyear" readonly />
+		    <!--input id="txtfinancialyear" name="txtfinancialyear" placeholder="Financial Start of Year" value="2010-04-01" type="text" class="datepicker" readonly/-->
+		  </div>
+		</div>
+		
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="cmbadministrator">Administrator</label>
+		  <div class="col-lg-4">
+		    <select id="cmbadministrator" name="cmbadministrator" class="form-control">
+		      
+		    </select>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="txtcurrency">Currency Name</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txtcurrency" name="txtcurrency" placeholder="Currency Name">
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="txtcurrencysymbol">Currency Symbol</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txtcurrencysymbol" name="txtcurrencysymbol" placeholder="Currency Symbol">
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="txtdecplaces">Decimal Places</label>
+		  <div class="col-lg-4">
+		  	<input type="number" class="form-control" id="txtdecplaces" name="txtdecplaces" >
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="txtdecsymbol">Symbol for Decimal</label>
+		  <div class="col-lg-4">
+		  	<input type="text" class="form-control" id="txtdecsymbol" name="txtdecsymbol" placeholder="eg: Paise" >
+		  </div>
+		</div>
+		
+		<!-- Multiple Radios (inline) -->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="rdshowinmillioins">Show in Millions</label>
+		  <div class="col-lg-4">
+		  		<label class="radio-inline">
+			  	<input type="radio" id="rdshowinmillioins-0" name="rdshowinmillioins" value="True" checked="checked"> True
+				</label>
+				<label class="radio-inline">
+  				<input type="radio" id="rdshowinmillioins-1" name="rdshowinmillioins" value="False"> False
+				</label>
+		  </div>
+		</div>
+		
+		<!-- Multiple Radios (inline) -->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="rdspacebtwamountandsymbol">Space between Amount &amp; Symbol</label>
+		  <div class="col-lg-4">
+		  		<label class="radio-inline">
+			  	<input type="radio" id="rdspacebtwamountandsymbol-0" name="rdspacebtwamountandsymbol" value="True" checked="checked"> True
+				</label>
+				<label class="radio-inline">
+  				<input type="radio" id="rdspacebtwamountandsymbol-1" name="rdspacebtwamountandsymbol" value="False"> False
+				</label>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-4 control-label" for="txtdecimalplacesforprint">Decimal Places for Printing</label>
+		  <div class="col-lg-4">
+		  	<input type="number" class="form-control" id="txtdecimalplacesforprint" name="txtdecimalplacesforprint" >
+		  </div>
+		</div>
+		
+		
+		<div style="width:85%; height:100px; padding-left: 5%;" align="center">
+			<!--Submit Button-->
+			<a href="#" class="btn btn-primary btn-small"  onclick="formSubmit();">Accept</a>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<!--Cancel Button-->
+			<a href="#" class="btn btn-info btn-small"  onclick="">Cancel</a>
+			</div>
+			
+			</fieldset>
+		</form>
+		</div>
+		</div>
+	 	<div class="col-lg-4">
+
+			<div class="span3"> 
+		   		<div class="well sidebar-nav">
+					<ul class="nav nav-pills nav-stacked">
+			 		 	<li><a href="#" onclick="gotoselectcompany();">Select Company</a></li>
+			 		 	<li><a href="#">Shut Company</a></li>
+			 		 	<li><a href="#">Company Info</a></li>
+			 		 	<li><a href="#">Features</a></li>
+			 		 	<li><a href="#">Configure</a></li>
+					</ul>   
+				</div>
+			</div>
+
+	  	</div>
+	</div><!--/row-->	
+	<!--/div--> <!--/Well-->
+	</div>
+ <!--/Container-->
+
+<!-- Javascript placed at the end of the file to make the  page load faster -->
+
+<script type="text/javascript">
+
+//Datepicker
+$('#txtfinancialyear').datepicker();
+
+
+//Form Validation
+function formSubmit()
+{
+	$("#addcompany").validate({
+				rules:{
+					txtname:{
+      					required: true,
+      					minlength: 3
+    			},
+					txtpincode:{
+						required: true,
+						number: true
+					},
+					txttelephone:{
+						required: true,
+						number: true
+					},
+					txtemail:"email",
+					txtaddress:"required",
+					txtcurrencysymbol:"required",
+					txtcurrency:"required",
+					txtdecplaces:"required",
+					txtdecsymbol:"required",
+					txtdecimalplacesforprint:"required",
+				},
+				errorClass: "help-inline"
+				
+			});
+			
+			
+		if ( $("#addcompany").valid())
+		{
+			//Check if company already exists before adding
+		}
+}
+function formtoJSON()
+{
+	var q=JSON.stringify({
+		'name':$("input#txtname").val(),
+		'address':$("#txtaddress").val(),
+		'country':$("#cmbcountry").val(),
+		'state':$("#cmbstate").val(),
+		'pincode':$("input#txtpincode").val(),
+		'telephoneno':$("input#txttelephone").val(),
+		'email':$("input#txtemail").val(),
+		'currencysymbol':$("input#txtcurrencysymbol").val(),
+		'financialyear':$("input#txtfinancialyear").val(),
+		'administrator':$("#cmbadministrator").val(),
+		'currencyname':$("input#txtcurrency").val(),
+		'decimalplaces':$("input#txtdecplaces").val(),
+		'symbolfordecimal':$("input#txtdecsymbol").val(),
+		'amountsinmillions':$("input#rdshowinmillioins-0").val(),
+		'spacebtwamountandsymbol':$("input#rdspacebtwamountandsymbol-0").val(),
+		'decimalplacsforprint':$("input#txtdecimalplacesforprint").val()
+	        });
+	 return q;	
+}
+
+</script>
+</body>
+</html>
