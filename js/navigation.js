@@ -3,15 +3,11 @@ function gotogroups()
    	$("#maindiv").load(home+"/Masters/Groups/group.html");
 }
 
-function openCreateSingleGroupDialog()
+function openCreateGroupDialog()
 {
-        $("#modaldiv").load(home+"/Masters/Groups/create_single_group.html");
+        $("#modaldiv").load(home+"/Masters/Groups/create_group.html");
 }
 
-function openCreateMultipleGroupDialog()
-{
-        $("#modaldiv").load(home+"/Masters/Groups/create_multiple_group.html");
-}
 function gotocreatecompany()
 {
    	$("#maindiv").load(home+"/create_company.html");
