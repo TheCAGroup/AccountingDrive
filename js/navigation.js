@@ -1,3 +1,8 @@
+function openLicenseCreationDialog()
+{
+        $("#modaldiv").load(home+"/License/create_license.html");
+}
+
 function gotogroups()
 {
    	$("#maindiv").load(home+"/Masters/Groups/group.html");
@@ -7,6 +12,8 @@ function openCreateGroupDialog()
 {
         $("#modaldiv").load(home+"/Masters/Groups/create_group.html");
 }
+
+
 
 function gotocreatecompany()
 {
@@ -28,7 +35,7 @@ function gotodisplaycompany(selcomp)
 }   
 function gotoHomePage()
 {
-   	$("#maindiv").load(home+"/entrypage.html");
+   	$("#maindiv").load(home+"/License/license.html");
 }
    
 function gotocreatestockcategory()

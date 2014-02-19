@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div id="createLicense" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 80%;"> 
+        <div class="modal-content"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 30px">×</button>
+               <h3 class="modal-title" id="mtitle" style="font-weight: bold">License Creation</h3>
+           </div>
+
+            <!--Modal body-->
+           <div class="modal-body" id="mbody" style="max-height: 60%;min-height: 1px;overflow: auto">
+
+                <form id="licenseform" class="form-horizontal" method="post">
+                <fieldset>
+                
+                <br>
+                   
+                <!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-5 control-label" for="txtemail">User Email Address</label>
+		  <div class="col-lg-5">
+		  	<input type="text" class="form-control" id="txtemail" name="txtemail" placeholder="email">
+		  </div>
+		</div>
+                
+                <!-- Multiple Radios (inline) -->
+		<div class="form-group">
+		  <label class="col-lg-5 control-label" for="rdtype">Register For</label>
+		  <div class="col-lg-5">
+		  		<label class="radio-inline">
+			  	<input type="radio" id="rdtype-0" name="rdtype" value="company" checked="checked"> Company
+				</label>
+				<label class="radio-inline">
+  				<input type="radio" id="rdtype-1" name="rdtype" value="user"> User
+				</label>
+		  </div>
+		</div>
+                
+                <!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-5 control-label" for="txtnumber">Number</label>
+		  <div class="col-lg-5">
+		  	<input type="number" class="form-control" id="txtnumber" name="txtnumber" />
+		  </div>
+		</div>
+                
+                
+                <!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-5 control-label" for="txtprice">Price</label>
+		  <div class="col-lg-5">
+		  	<input type="number" class="form-control" id="txtprice" name="txtprice" >
+		  </div>
+		</div>
+                
+                
+                <!-- Text input-->
+		<div class="form-group">
+		  <label class="col-lg-5 control-label" for="txtexpiry">Expires On</label>
+		  <div class="col-lg-5">
+                      <input type="text" class="form-control" data-date-format="dd-mm-yy" data-date-viewmode="years" id="txtexpiry" name="txtexpiry" />
+		  </div>
+		</div>
+                
+                </fieldset>
+                </form>
+             </div> 
+
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter"> 
+                <a href="#" id="btncreate" onclick="validate();" class="btn btn-primary btn-small">Save</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="btncancel">Cancel</button> 
+
+           </div> 
+       </div> 
+   </div>
+
+</div>
+        
+<script>
+    $('#createLicense').modal();
+    //Date picker autoclose and setStartDate not working
+    $('#txtexpiry').datepicker();
+
+    function validate()
+    {
+        $("#licenseform").validate({
+            rules:{
+                    txtnumber:{
+                            required: true,
+                            number: true
+                    },
+                    txtprice:{
+                            required: true,
+                            number: true
+                    },
+                    txtemail:{
+                            required: true,
+                            email: true
+                    },
+                    txtexpiry:{
+                            required: true,
+                    },
+            },
+            errorClass: "help-inline"
+
+        });
+
+        if ( $("#licenseform").valid())
+        {
+
+            var email = $("#txtemail").val();
+            var registerfor = $("input:radio[name='rdtype']:checked").val();
+            var price = $("#txtprice").val();
+            var number = $("#txtnumber").val();
+            var expirydate = $("#txtexpiry").val();
+
+            sockjs.send(JSON.stringify({"action":"insertlicense","args": {"email":email,"registerfor":registerfor,"price":price,"number":number,"expireson":expirydate}}));
+            
+
+        }
+
+    }
+
+</script>
+

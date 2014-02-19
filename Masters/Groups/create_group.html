@@ -10,12 +10,12 @@ and open the template in the editor.
         <div class="modal-content"> 
            <!--Modal header-->
            <div class="modal-header"> 
-               <button type="button" class="close" data-dismiss="modal">×</button>
-               <h4 class="modal-title" id="mtitle">Group Creation</h4>
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 30px">×</button>
+               <h3 class="modal-title" id="mtitle" style="font-weight: bold">Group Creation</h3>
            </div>
 
             <!--Modal body-->
-           <div class="modal-body" id="mbody" style="max-height: 60%;overflow: auto">
+           <div class="modal-body" id="mbody" style="max-height: 60%;min-height: 1px;overflow: auto">
                 <form id="groupCreationForm" class="form-horizontal" method="post">
                     <fieldset>
 
@@ -50,7 +50,7 @@ and open the template in the editor.
                         <hr>
                        
                         <div class="form-group">
-                          <label class="col-lg-4 control-label" for="cmbnature">Nature of Group :</label>
+                          <label class="col-lg-3 control-label" for="cmbnature">Nature of Group :</label>
                           <div class="col-lg-2">
                               <select id="cmbnature" name="cmbnature" class="form-control">
                                 <option>Assets</option>
@@ -60,7 +60,7 @@ and open the template in the editor.
                             </select>
                           </div>
                           
-                          <label class="col-lg-4 control-label" for="rdaffectgp">Does it affect Gross Profits ?</label>
+                          <label class="col-lg-3 control-label" for="rdaffectgp">Does it affect Gross Profits ?</label>
                           <div class="col-lg-2">
                                         <label class="radio-inline">
                                         <input type="radio" id="rdaffectgp-0" name="rdaffectgp" value="yes" checked="checked"> Yes
@@ -75,7 +75,7 @@ and open the template in the editor.
                         
                         <!-- Multiple Radios (inline) -->
                         <div class="form-group">
-                          <label class="col-lg-4 control-label" for="rdsubledger">Group behaves like a sub-ledger ?</label>
+                          <label class="col-lg-3 control-label" for="rdsubledger">Group behaves like a sub-ledger ?</label>
                           <div class="col-lg-2">
                                         <label class="radio-inline">
                                         <input type="radio" id="rdsubledger-0" name="rdsubledger" value="yes"> Yes
@@ -85,7 +85,7 @@ and open the template in the editor.
                                         </label>
                           </div>
                           
-                          <label class="col-lg-4 control-label" for="rdreporting">Nett Debit/Credit balances for reporting ?</label>
+                          <label class="col-lg-3 control-label" for="rdreporting">Nett Debit/Credit balances for reporting ?</label>
                           <div class="col-lg-2">
                                         <label class="radio-inline">
                                         <input type="radio" id="rdreporting-0" name="rdreporting" value="yes"> Yes
@@ -102,7 +102,7 @@ and open the template in the editor.
 
                         <!-- Multiple Radios (inline) -->
                         <div class="form-group">
-                            <label class="col-lg-4 control-label" for="rdcalculation">Used for Calculation (eg. Taxes, Discounts) :<br><i>(for Sales Invoice Entry)</i></label>
+                            <label class="col-lg-3 control-label" for="rdcalculation">Used for Calculation <br>(eg. Taxes, Discounts) :<br><i>(for Sales Invoice Entry)</i></label>
                           <div class="col-lg-2">
                                         <label class="radio-inline">
                                         <input type="radio" id="rdcalculation-0" name="rdcalculation" value="yes"> Yes
@@ -112,7 +112,7 @@ and open the template in the editor.
                                         </label>
                           </div>
                             
-                          <label class="col-lg-4 control-label" for="cmballocation">Method to allocate when used in Purchase Invoice :</label>
+                          <label class="col-lg-3 control-label" for="cmballocation">Method to allocate when used in Purchase Invoice :</label>
                           <div class="col-lg-2">
                               <select id="cmballocation" name="cmballocation" class="form-control">
                                   <option>Not applicable</option>
@@ -132,8 +132,8 @@ and open the template in the editor.
 
             <!--Modal footer-->
            <div class="modal-footer" id="mfooter"> 
-                <button id="btnsave" style="align:left" onclick="validate(this.id);" type="submit" class="btn btn-primary btn-small">Save and Exit</button>
-                <button id="btncreate" onclick="validate(this.id);" type="button" class="btn btn-info btn-small">Save and Create New</button>
+                <button type="button" id="btnsave" style="align:left" onclick="validate(this.id);" class="btn btn-primary btn-small">Save and Exit</button>
+                <button type="button" id="btncreate" onclick="validate(this.id);" class="btn btn-info btn-small">Save and Create New</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" id="btncancel">Cancel</button> 
 
            </div> 
@@ -144,6 +144,7 @@ and open the template in the editor.
 
 <script>
     $('#createGroup').modal();
+    $('#txtname').focus();
 
     function additionalDetails()
     {
