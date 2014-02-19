@@ -13,8 +13,6 @@ function openCreateGroupDialog()
         $("#modaldiv").load(home+"/Masters/Groups/create_group.html");
 }
 
-
-
 function gotocreatecompany()
 {
    	$("#maindiv").load(home+"/create_company.html");
