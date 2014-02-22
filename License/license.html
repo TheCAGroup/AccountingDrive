@@ -1,14 +1,120 @@
 <html>
+    <head>
+        <style>
+            
+            .header
+            {
+		background-color:#D1E1E4;
+	    }
+            
+            .subheader{
+                padding-right:20px; 
+                padding-left: 20px; 
+                padding-top: 10px; 
+                height: 80px; 
+                background-color: #F2F7F8;
+            }
+        </style>
+    <!--Include this for data-load to work-->
+    <script src="metro-bootstrap/js/docs.js"></script>
+    <!-- Include this for the Dropdown menus to work-->
+    <script src="metro-bootstrap/js/load-metro.js"></script>
+    </head>
 <body>
 <div>
     
-    <div align="right" style="padding-right:20px; padding-left: 20px; padding-top: 5px; height: 80px; background-color: #F2F7F8">
-        <div style="float: left"><h3>License</h3></div>
-        <div style="float: right; padding-top: 15px;"><button type="button" id="btnsave" onclick="openLicenseCreationDialog()" class="btn btn-primary btn-small">Create New</button></div>
+    <header class='header' data-load="header.html"></header>
+    <div style="overflow:auto;max-height: 80%">
+    <div class="subheader">
+        <div class="place-left"><h3>License</h3></div>
+        <div class="place-right" style=" padding-top: 15px;">
+            <button type="button" id="btnsave" onclick="openLicenseCreationDialog()" class="primary">Create New</button>
+        </div>
     </div>
+    
+    <div style=" margin-left: 2%; margin-right: 2%;">
+        <h4>Company List</h4>
+        <div class="example">
+            <table id="lisdiv" class="table hovered display dataTable">
+                <thead><tr><th>S.No</th><th>Company</th><th>Expires On</th></tr></thead>
+            </table>
+        </div><br>
+        <h4>User List</h4>
+        <div class="example">
+            <table id="userdiv" class="table hovered display dataTable">
+                <thead><tr><th>S.No</th><th>User Email</th><th>BoughtOn</th><th>Expires On</th><th>Action</th></tr></thead>
+            </table>
+        </div>
+        
+        
+    </div>
+    </div>
+    <script>
+    sockjs.onmessage = function(e) {
+                     
+        try{
+        message=JSON.parse(e.data);
+        console.log("action"+message.action);
+        switch(message.action)
+                {
+                case "resp_getuserlicense":
+                        var details=message.msgob.license;
+        //                console.log('data'+JSON.stringify(details.companylicense));
+                        
+                        //var tblhd=$("<thead><tr><th>S.No</th><th>License</th><th>Company</th><th>Expires On</th></tr><thead>");
+                        //$("#lisdiv").html(tblhd);
+                        for(var i=1;i<=details.companylicense.length;i++)
+                        {
+                            var tbl=$("<tr><td>"+i+"</td><td>"+details.companylicense[i].company+"</td><td>"+details.companylicense[i].expiry+"</td></tr>");
+                            $("#lisdiv").append(tbl);
+                        }
+                        
+                        //var tblhd=$("<tr><th>S.No</th><th>License</th><th>User Email</th><th>BoughtOn</th><th>Expires On</th><th></th><th>Action</th></tr>");
+                        //$("#userdiv").html(tblhd);
+          //              console.log("length"+details.userlicense.length);
+                        for(var i=0;i<details.userlicense.length;i++)
+                        {
+            //                console.log("user"+details.userlicense[i]._id);
+                            var tbl=$("<tr><td>"+i+"</td><td id='usernm_"+details.userlicense[i]._id+"'>email</td><td>"+details.userlicense[i].boughton+"</td><td>expiry</td>\n\
+                                <td>\n\
+                                <div class='button-dropdown'>\n\
+                                    <button class='dropdown-toggle default'>Click Me</button>\n\
+                                    <ul class='dropdown-menu' data-role='dropdown'>\n\
+                                        <li><a href='#'>Edit</a></li>\n\
+                                        <li><a href='#'>Delete</a></li>\n\
+                                    </ul>\n\
+                                </div>\n\
+                                </td></tr>");
+
+              //              console.log("before appendd");
+                            $("#userdiv").append(tbl);
+                            $("#ok_"+details.userlicense[i]._id).hide();
+                        }
+                        $(".dataTable").dataTable();
+                        break;
+                default:
+                        break;
+                }
+            }
+            catch(e)
+            {
+            }
+        }
+
+        function license()
+        {
+        var userid='52fc75d2dfcd00580c6464c6';
+        sockjs.send(JSON.stringify({"action":"getuserlicense","args": {"userid":userid}}));
+        }
+
+        license();
+
+    </script>
     
     <!--Dummy div to load modal-->
     <div id="modaldiv"></div>
 </div>
+    
+    
 </body>	
 </html>

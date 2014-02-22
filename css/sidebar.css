@@ -55,11 +55,6 @@ and open the template in the editor.
 	list-style-type: none;
 }
 /*links*/
-
-#accordian ul ul li{
-    padding: 0 5px;
-}
-
 #accordian ul ul li a {
 	color: whitesmoke;
 	text-decoration: none;
