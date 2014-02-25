@@ -7,6 +7,10 @@
 
 	<!--Root Configuration-->   
     <script src="js/config.js"></script>
+    
+    <!--link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet"-->
+
 
     <link href="metro-bootstrap/css/metro-bootstrap.css" rel="stylesheet">
     <link href="metro-bootstrap/css/metro-bootstrap-responsive.css" rel="stylesheet">
@@ -20,6 +24,7 @@
     <script src="metro-bootstrap/js/jquery/jquery.dataTables.js"></script>
     <script src="metro-bootstrap/js/prettify/prettify.js"></script>
     <script src="metro-bootstrap/js/metro/metro-dropdown.js"></script>
+    <script type="text/javascript" src="jquery_validation/dist/jquery.validate.js"></script>
 
     <!-- Metro UI CSS JavaScript plugins -->
     <script src="metro-bootstrap/js/load-metro.js"></script>
@@ -28,30 +33,36 @@
     <script src="metro-bootstrap/js/docs.js"></script>
     <script src="metro-bootstrap/js/github.info.js"></script>
 	
+    <!--Bootstrap Modal-->
+    <script type="text/javascript" src="bootstrap/js/bootstrap-modal.js"></script>
+    <link href="bootstrap/css/bootstrap-modal.css" rel="stylesheet">
+    
     <!--Custom JS-->
     <script src="js/navigation.js"></script>
     <script type="text/javascript" src="js/dynamic_modal.js"></script>
 
-    <!--Bootstrap Modal-->
-    <!--script type="text/javascript" src="bootstrap/js/bootstrap-modal.js"></script-->
+    
 
 
     <!--Socket-->
     <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
     <script>
-            var sockjs_url = 'http://115.241.90.204:9999/trial';
+            var sockjs_url = 'http://122.164.117.111:9999/trial';
             var sockjs = new SockJS(sockjs_url);
-            sockjs.onopen    = function()  {console.log('[*] open'+sockjs.protocol);
-                                            //sockjs.send({"TRIAL SEND":"ddd"});
-                                            $("#maindiv").load("License/license.html");
-                                      };
+            sockjs.onopen    = function()  {
+                console.log('[*] open'+sockjs.protocol);
+                //sockjs.send({"TRIAL SEND":"ddd"});
+                $("#maindiv").load("License/license.html");
+            };
             /*
             sockjs.onmessage = function(e) {
                                     var msgob=JSON.parse(e) || {};
                                     console.log('[.] message', msgob.status);
 
                                                                             };*/
-            sockjs.onclose   = function()  {console.log('[*] close');};
+            sockjs.onclose   = function()  {
+                console.log('[*] close');
+            };
     </script>
    
 </head>

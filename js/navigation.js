@@ -13,9 +13,9 @@ function openCreateGroupDialog()
         $("#modaldiv").load(home+"/Masters/Groups/create_group.html");
 }
 
-function gotocreatecompany()
+function openCreateCompanyDialog()
 {
-   	$("#maindiv").load(home+"/create_company.html");
+   	$("#modaldiv").load(home+"/company/create_company.html");
 }
 
 function gotoselectcompany()

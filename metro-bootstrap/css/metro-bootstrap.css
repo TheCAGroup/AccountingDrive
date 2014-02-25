@@ -2483,6 +2483,7 @@ a {
 .metro label {
   display: block;
   margin: 5px 0;
+  letter-spacing: 0.1rem; /*Added by yamini*/
 }
 .metro .input-control.checkbox,
 .metro .input-control.radio,

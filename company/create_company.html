@@ -4,184 +4,179 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
-<head>
-    <title>Accounting Drive - Create Company</title>
-</head>
-<body>
 
+<div id="createCompany" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 80%;"> 
+        <div class="modal-content" style="padding-left:3%;"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <label class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Company Creation</label>
+           </div>
 
-<div class = "container">
+            <!--Modal body-->
+            <div class="modal-body" align="left" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 60%;min-height: 1px;overflow: auto">
+                
+  		<form id="addcompany">
+		
+		
+                    <div class="span12">
+                        <fieldset>
+                            <label><b>Company Details</b></label>
+                        <div class="span4">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtname" name="txtname" type="text" placeholder="Company Name">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                        
+                        <div class="span4" style="margin-left:2%">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtalias" name="txtalias" type="text" placeholder="Alias">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>  
+                            
+                        <div class="span4" style="margin-left:2%">
+                            <div class="input-control text" id="datepicker" data-format="dd-mm-yyyy">
+                                <input type="text" id="txtfinancialyear" name="txtfinancialyear" placeholder="Financial Year From">
+                                <button type="button" class="btn-date"></button>
+                            </div>
+                        </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                        <label><b>Mailing & Contact Details</b></label>
+                        <div class="input-control text" data-role="input-control">
+                            <input id="txtaddress" name="txtaddress" type="text" placeholder="Street">
+                            <button class="btn-clear" tabindex="-1"></button>
+                        </div>
+                        
+                        <div class="span3">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtcity" name="txtcity" type="text" placeholder="City">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                        
+                        <div class="span3" style="margin-left:2%">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtpincode" name="txtpincode" type="text" placeholder="Pincode">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="span6" style="margin-left:2%">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txttelephone" name="txttelephone" type="text" placeholder="Telephone">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="span3">
+                            <div class="input-control select">
+                                <select id="cmbstate" name="cmbstate" >
+                                    <option value="">Select State</option>
+                                    <option>Tamil Nadu</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="span3" style="margin-left:2%">
+                            <div class="input-control select">
+                                <select id="cmbcountry" name="cmbcountry" >
+                                    <option value="">Select Country</option>
+                                    <option>India</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="span6" style="margin-left:2%">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtemail" name="txtemail" type="text" placeholder="E-mail">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <label><b>Currency Information</b></label>
+                            <div class="span6">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtcurrency" name="txtcurrency" type="text" placeholder="Formal Name">
+                                    <button class="btn-clear" tabindex="-1"></button>
+                                </div>
+                            </div>
 
-  		<form id="addcompany" class="form-horizontal" method="post">
-		<fieldset>
-		
-		<div class="form-group">
-		    <label for="txtname" class="col-lg-1 control-label">Name</label>
-		    <div class="col-lg-4">
-		      <input type="text" class="form-control" id="txtname" placeholder="Company Name">
-		   </div>
-		</div>
-  
-		<!-- Textarea -->
-		<div class="form-group">
-		  <label class="col-lg-1 control-label" for="txtaddress">Address</label>
-		  <div class="col-lg-4">
-                      <textarea class="form-control" rows="3" id="txtaddress" placeholder="Street" name="txtaddress"></textarea>                     
-		  </div>
-                  
-                  
-		  <div class="col-lg-4">
-		    <select id="cmbstate" name="cmbstate" class="form-control">
-		      <option>Tamil Nadu</option>
-		    </select>
-		  </div>
-                  
-		</div>
-		
-		
-		
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-lg-1 control-label" for="txtpincode"></label>
-		  <div class="col-lg-4">
-		  	<input type="text" class="form-control" id="txtpincode" name="txtpincode" placeholder="Pincode">
-		  </div>
-                  
-                  <div class="col-lg-4">
-		    <select id="cmbcountry" name="cmbcountry" class="form-control">
-		      <option>India</option>
-		    </select>
-		  </div>
-		</div>
-		
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-lg-1 control-label" for="txttelephone">Telephone</label>
-		  <div class="col-lg-4">
-		  	<input type="text" class="form-control" id="txttelephone" name="txttelephone" placeholder="Telephone Number">
-		  </div>
-                  
-                  <label class="col-lg-1 control-label" for="txtemail">Email</label>
-		  <div class="col-lg-4">
-		  	<input type="text" class="form-control" id="txtemail" name="txtemail" placeholder="email">
-		  </div>
-		</div>
-		
-		<!-- Text input-->
-		<div class="form-group">
-		  
-		</div>
-		
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-lg-4 control-label" for="txtfinancialyear">Financial Year Beginning From</label>
-		  <div class="col-lg-4">
-		  	<input type="text" class="form-control" value="01/04/13" data-date-format="dd/mm/yy" id="txtfinancialyear" name="txtfinancialyear" readonly />
-		    <!--input id="txtfinancialyear" name="txtfinancialyear" placeholder="Financial Start of Year" value="2010-04-01" type="text" class="datepicker" readonly/-->
-		  </div>
-		</div>
-		
-		
-		<!-- Select Basic -->
-		<div class="form-group">
-		  <label class="col-lg-4 control-label" for="cmbadministrator">Administrator</label>
-		  <div class="col-lg-4">
-		    <select id="cmbadministrator" name="cmbadministrator" class="form-control">
-		      
-		    </select>
-		  </div>
-		</div>
-		
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-lg-4 control-label" for="txtcurrency">Currency Name</label>
-		  <div class="col-lg-4">
-		  	<input type="text" class="form-control" id="txtcurrency" name="txtcurrency" placeholder="Currency Name">
-		  </div>
-		</div>
-		
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-lg-4 control-label" for="txtcurrencysymbol">Currency Symbol</label>
-		  <div class="col-lg-4">
-		  	<input type="text" class="form-control" id="txtcurrencysymbol" name="txtcurrencysymbol" placeholder="Currency Symbol">
-		  </div>
-		</div>
-		
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-lg-4 control-label" for="txtdecplaces">Decimal Places</label>
-		  <div class="col-lg-4">
-		  	<input type="number" class="form-control" id="txtdecplaces" name="txtdecplaces" >
-		  </div>
-		</div>
-		
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-lg-4 control-label" for="txtdecsymbol">Symbol for Decimal</label>
-		  <div class="col-lg-4">
-		  	<input type="text" class="form-control" id="txtdecsymbol" name="txtdecsymbol" placeholder="eg: Paise" >
-		  </div>
-		</div>
-		
-		<!-- Multiple Radios (inline) -->
-		<div class="form-group">
-		  <label class="col-lg-4 control-label" for="rdshowinmillioins">Show in Millions</label>
-		  <div class="col-lg-4">
-		  		<label class="radio-inline">
-			  	<input type="radio" id="rdshowinmillioins-0" name="rdshowinmillioins" value="True" checked="checked"> True
-				</label>
-				<label class="radio-inline">
-  				<input type="radio" id="rdshowinmillioins-1" name="rdshowinmillioins" value="False"> False
-				</label>
-		  </div>
-		</div>
-		
-		<!-- Multiple Radios (inline) -->
-		<div class="form-group">
-		  <label class="col-lg-4 control-label" for="rdspacebtwamountandsymbol">Space between Amount &amp; Symbol</label>
-		  <div class="col-lg-4">
-		  		<label class="radio-inline">
-			  	<input type="radio" id="rdspacebtwamountandsymbol-0" name="rdspacebtwamountandsymbol" value="True" checked="checked"> True
-				</label>
-				<label class="radio-inline">
-  				<input type="radio" id="rdspacebtwamountandsymbol-1" name="rdspacebtwamountandsymbol" value="False"> False
-				</label>
-		  </div>
-		</div>
-		
-		<!-- Text input-->
-		<div class="form-group">
-		  <label class="col-lg-4 control-label" for="txtdecimalplacesforprint">Decimal Places for Printing</label>
-		  <div class="col-lg-4">
-		  	<input type="number" class="form-control" id="txtdecimalplacesforprint" name="txtdecimalplacesforprint" >
-		  </div>
-		</div>
-		
-		
-		<div style="width:85%; height:100px; padding-left: 5%;" align="center">
-			<!--Submit Button-->
-			<a href="#" class="btn btn-primary btn-small"  onclick="formSubmit();">Accept</a>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<!--Cancel Button-->
-			<a href="#" class="btn btn-info btn-small"  onclick="">Cancel</a>
-			</div>
-			
-			</fieldset>
+                            <div class="span6" style="margin-left:2%">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtcurrencysymbol" name="txtcurrencysymbol" type="text" placeholder="Currency Symbol">
+                                    <button class="btn-clear" tabindex="-1"></button>
+                                </div>
+                            </div>
+                            
+                            <div class="span6">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtdecplaces" name="txtdecplaces" type="number" placeholder="No. of Decimal Places">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="span6" style="margin-left:2%">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtdecsymbol" name="txtdecsymbol" type="text" placeholder="Symbol for Decimal Portion">
+                                    <button class="btn-clear" tabindex="-1"></button>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                
+                                <label class="span3" style="margin-top: 1.5rem">Show in Millions : </label>
+                                
+                                <div class="span9">
+                                <div class="input-control radio margin10">
+                                    <label>
+                                        <input name="rdshowinmillions" type="radio" value="true"/>
+                                        <span class="check"></span>
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="input-control radio margin10 ">
+                                    <label>
+                                        <input name="rdshowinmillions" type="radio" value="false" checked />
+                                        <span class="check"></span>
+                                        No
+                                    </label>
+                                </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>			
 		</form>
-		
-	</div>
- <!--/Container-->
+            </div> 
+
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter"> 
+                <button type="button" class="primary" id="btncreate">Save</button>
+                <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
+
+           </div> 
+       </div> 
+   </div>
+
+</div>
 
 <!-- Javascript placed at the end of the file to make the  page load faster -->
 
 <script type="text/javascript">
-
+$('#createCompany').modal();
 //Datepicker
-$('#txtfinancialyear').datepicker();
+$('#datepicker').datepicker();
 
-
+/*
 //Form Validation
 function formSubmit()
 {
@@ -238,8 +233,7 @@ function formtoJSON()
 		'decimalplacsforprint':$("input#txtdecimalplacesforprint").val()
 	        });
 	 return q;	
-}
+}*/
 
 </script>
-</body>
-</html>
+

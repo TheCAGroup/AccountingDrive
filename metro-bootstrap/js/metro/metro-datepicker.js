@@ -56,7 +56,7 @@
 
             $('html').on('click', function(e){
                 $(".calendar-dropdown").hide();
-            })
+            });
         },
 
         _createCalendar: function(to, curDate){

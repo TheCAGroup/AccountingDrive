@@ -24,32 +24,91 @@
 <div>
     
     <header class='header' data-load="header.html"></header>
-    <div style="overflow:auto;max-height: 80%">
+    <div style="overflow:scroll" data-role="scrollbox" data-scroll="vertical | horizontal | both">
     <div class="subheader">
         <div class="place-left"><h3>License</h3></div>
         <div class="place-right" style=" padding-top: 15px;">
-            <button type="button" id="btnsave" onclick="openLicenseCreationDialog()" class="primary">Create New</button>
+            <button type="button" id="btncreatenew" onclick="openLicenseCreationDialog()" class="primary">Create New</button>
         </div>
     </div>
     
     <div style=" margin-left: 2%; margin-right: 2%;">
-        <h4>Company List</h4>
-        <div class="example">
+        <h4>User List</h4>
+        <!--div class="example">
             <table id="lisdiv" class="table hovered display dataTable">
                 <thead><tr><th>S.No</th><th>Company</th><th>Expires On</th></tr></thead>
             </table>
-        </div><br>
+        </div-->
+          
+        <div class="example">
+            <table id="userlist" class="table hovered dataTable">
+                <thead>
+                    <tr>
+                        <th class="text-left">S.No</th>
+                        <th class="text-left">E-mail</th>
+                        <th class="text-left">User Email</th>
+                        <th class="text-left">Price</th>
+                        <th class="text-left">Bought On</th>
+                        <th class="text-left">Expires On</th>
+                        <th class="text-left">Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        
+        <!--br>
         <h4>User List</h4>
         <div class="example">
             <table id="userdiv" class="table hovered display dataTable">
                 <thead><tr><th>S.No</th><th>User Email</th><th>BoughtOn</th><th>Expires On</th><th>Action</th></tr></thead>
             </table>
-        </div>
+        </div-->
         
         
     </div>
     </div>
     <script>
+        
+     /*   
+        $("#btncreatenew").on('click', function(){
+    $.Dialog({
+        overlay: true,
+        shadow: true,
+        flat: true,
+        icon: '<img src="images/excel2013icon.png">',
+        title: 'Flat window',
+        content: '',
+        padding: 10,
+        onShow: function(_dialog){
+            var content = '' +
+                '<label>Login</label>' +
+                '<div style="overflow:auto" class="input-control text"><input type="text" name="login">'+
+                '<button class="btn-clear"></button></div> ' +
+                '<label>Password</label>' +
+                '<div class="input-control password">'+
+                '<input type="password" name="password">'+
+                '<button class="btn-reveal"></button></div> ' +
+                '<div class="input-control checkbox">'+
+                '<label><input type="checkbox" name="c1" checked/>'+
+                '<span class="check"></span>Check me out</label></div>'+
+                '<div class="input-control text" data-role="datepicker" data-date="2013-11-14" data-format="dddd, mmmm d, yyyy" data-effect="fade">'+
+                '    <input type="text">'+
+                '    <button class="btn-date"></button>'+
+               ' </div>'+
+                '<div class="form-actions">' +
+                '<button class="button primary">Login to...</button> '+
+                '<button class="button" type="button" onclick="$.Dialog.close()">Cancel</button> '+
+                '</div>'+
+                '';
+ 
+            $.Dialog.title("User login");
+            $.Dialog.content(content);
+            $.Metro.initInputs();
+        }
+    });
+});
+        */
+        
     sockjs.onmessage = function(e) {
                      
         try{
@@ -57,22 +116,81 @@
         console.log("action"+message.action);
         switch(message.action)
                 {
-                case "resp_getuserlicense":
-                        var details=message.msgob.license;
-        //                console.log('data'+JSON.stringify(details.companylicense));
+                case "resp_su_getuserlicense":
                         
+                        console.log('data'+JSON.stringify(message.msg));
+                        var details=message.msg;
+                        console.log(details);
+                        var count=0;
+                        for(var i=0;i<details.length;i++)
+                        {
+                            
+                            //if(details[i].length===1)
+                            //{
+                            //console.log(details[i].email);
+                            for(var j=0;j<details[i].userlicense.length;j++)
+                            { 
+                                count++;
+                                var boughton=new Date(details[i].userlicense[j].boughton).format('dd-mm-yyyy');
+                                var expireson=new Date(details[i].userlicense[j].expireson).format('dd-mm-yyyy');
+                                
+                                
+                                var tbl=$("<tr><td>"+count+"</td>\n\
+                                \n\
+                                <td>"+details[i].email+"</td>\n\
+                                \n\
+                                <td>"+details[i].userlicense[j].useremail+"</td>\n\
+                                \n\
+                                <td>"+details[i].userlicense[j].price+"</td>\n\
+                                \n\
+                                <td>"+boughton+"</td>\n\
+                                \n\
+                                <td>"+expireson+"</td>\n\
+                                \n\
+                                <td>\n\
+                                    <div class='button-dropdown'>\n\
+                                        <button class='dropdown-toggle default'>Click Me</button>\n\
+                                        <ul class='dropdown-menu' data-role='dropdown'>\n\
+                                            <li><a href='#'>Edit</a></li>\n\
+                                            <li><a href='#'>Delete</a></li>\n\
+                                        </ul>\n\
+                                    </div>\n\
+                                    </td></tr>");
+                                $("#userlist").append(tbl);
+                            }
+                            /*
+                            else
+                            {
+                                for(var i=1;i<details[i].length;i++)
+                                {
+                                    console.log(details[i].email);
+                                    var tbl=$("<tr><td>"+i+"</td><td>"+details[i].email+"</td>\n\
+                                    <td>\n\
+                                        <div class='button-dropdown'>\n\
+                                            <button class='dropdown-toggle default'>Click Me</button>\n\
+                                            <ul class='dropdown-menu' data-role='dropdown'>\n\
+                                                <li><a href='#'>Edit</a></li>\n\
+                                                <li><a href='#'>Delete</a></li>\n\
+                                            </ul>\n\
+                                        </div>\n\
+                                        </td></tr>");
+                                    $("#lisdiv").append(tbl);
+                                }
+                            }*/
+                        }
                         //var tblhd=$("<thead><tr><th>S.No</th><th>License</th><th>Company</th><th>Expires On</th></tr><thead>");
                         //$("#lisdiv").html(tblhd);
+                        /*
                         for(var i=1;i<=details.companylicense.length;i++)
                         {
                             var tbl=$("<tr><td>"+i+"</td><td>"+details.companylicense[i].company+"</td><td>"+details.companylicense[i].expiry+"</td></tr>");
                             $("#lisdiv").append(tbl);
-                        }
+                        }*/
                         
                         //var tblhd=$("<tr><th>S.No</th><th>License</th><th>User Email</th><th>BoughtOn</th><th>Expires On</th><th></th><th>Action</th></tr>");
                         //$("#userdiv").html(tblhd);
           //              console.log("length"+details.userlicense.length);
-                        for(var i=0;i<details.userlicense.length;i++)
+                       /* for(var i=0;i<details.userlicense.length;i++)
                         {
             //                console.log("user"+details.userlicense[i]._id);
                             var tbl=$("<tr><td>"+i+"</td><td id='usernm_"+details.userlicense[i]._id+"'>email</td><td>"+details.userlicense[i].boughton+"</td><td>expiry</td>\n\
@@ -89,7 +207,7 @@
               //              console.log("before appendd");
                             $("#userdiv").append(tbl);
                             $("#ok_"+details.userlicense[i]._id).hide();
-                        }
+                        }*/
                         $(".dataTable").dataTable();
                         break;
                 default:
@@ -99,15 +217,17 @@
             catch(e)
             {
             }
-        }
+        };
 
         function license()
         {
-        var userid='52fc75d2dfcd00580c6464c6';
-        sockjs.send(JSON.stringify({"action":"getuserlicense","args": {"userid":userid}}));
+        var userid='53078ed2aa4bb71e304c46b1';
+        sockjs.send(JSON.stringify({"action":"su_getuserlicense","args": {"superuserid":userid}}));
         }
 
         license();
+        
+      
 
     </script>
     
