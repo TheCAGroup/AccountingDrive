@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="js/config.js"></script>
+
+    <link href="metro-bootstrap/css/metro-bootstrap.css" rel="stylesheet">
+    <link href="metro-bootstrap/css/metro-bootstrap-responsive.css" rel="stylesheet">
+    <link href="metro-bootstrap/css/docs.css" rel="stylesheet">
+    <link href="metro-bootstrap/js/prettify/prettify.css" rel="stylesheet">
+
+    <!-- Load JavaScript Libraries -->
+    <script src="metro-bootstrap/js/jquery/jquery.min.js"></script>
+    <script src="metro-bootstrap/js/jquery/jquery.widget.min.js"></script>
+    <script src="metro-bootstrap/js/jquery/jquery.mousewheel.js"></script>
+    <script src="metro-bootstrap/js/jquery/jquery.dataTables.js"></script>
+    <script src="metro-bootstrap/js/prettify/prettify.js"></script>
+    <script src="metro-bootstrap/js/metro/metro-dropdown.js"></script>
+
+    <!-- Metro UI CSS JavaScript plugins -->
+    <script src="metro-bootstrap/js/load-metro.js"></script>
+
+    <!--Local Javascript-->
+    <script src="metro-bootstrap/js/docs.js"></script>
+    <script src="metro-bootstrap/js/github.info.js"></script>
+	
+    <!--Custom JS-->
+    <script src="js/navigation.js"></script>
+    <script type="text/javascript" src="js/dynamic_modal.js"></script>
+<script>
+    function displayUserPermissions(thisobj)
+    {
+        
+        if(($('#cmbcompany').val()!=="") && ($('#cmbuser').val()!==""))
+        {
+            $('#userrights').attr('style', 'display:inline !important');
+            if (thisobj.id==="cmbcompany")
+            {
+                //load cmbuser selectbox with values
+            }
+        }
+        else
+        {
+            $('#userrights').attr('style', 'display:none !important');
+           
+        }
+    }
+    
+</script>
+<title>Change User Permissions</title>
+</head>
+<body class="metro">
+<div class="container">
+<div style="margin:3%">
+<form>
+  <fieldset>
+    <legend>User Permissions</legend>
+      <table style="width:50%">
+       
+        <!--tr>
+          <th class="text-left"> <label>Select Company:</label></th>
+          <td>
+            <div class="input-control select">
+                <select id="cmbcompany" name="cmbcompany" onchange="displayUserPermissions(this);">
+                    <option value="">Select</option>
+                    <option>Arasan Engineering Works</option>
+                </select>
+            </div>
+          </td>    
+            
+        </tr-->
+   
+        <tr>
+          <th class="text-left"> <label>Select User:</label></th>
+          <td>
+            <div class="input-control select">
+                <select id="cmbuser" name="cmbuser" onchange="displayUserPermissions(this);">
+                    <option value="">Select</option>
+                    <option>Usha</option>
+                    <option>Udhayha</option>
+                </select>
+            </div>
+          </td> 
+        </tr>
+      </table><!--Table 1- Selectboxes-->  
+      <br>
+      <div id="userrights" style="display:none;">
+      
+          <table class="table bordered hovered">
+            <tr class="bg-teal fg-white">
+              <th class="text-left">Module</th>
+              <th class="text-left">Create</th>
+              <th class="text-left">Read</th>
+              <th class="text-left">Update</th>
+              <th class="text-left">Delete</th>
+            </tr>
+            <tr>
+              <td><label>Group</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Ledgers</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Voucher Types</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            <tr>
+              <td><label>Inventory Info</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Stock Groups</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Stock Categories</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Stock Items</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Units of Measure</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Voucher Types</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Excise</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Excise for Dealer</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Value Added Tax</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Tax Deducted at Source</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Tax Collected at Source</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Service Tax</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Accounting Vouchers</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Inventory Vouchers</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Order Vouchers</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Import of Data</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Banking</label></td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+              <td>
+                  <div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox" />
+                  <span class="check"></span>    
+                  </label>
+                  </div>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Trial Balance</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Day Book</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Accounts Book</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Statements of Accounts</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Inventory Books</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Statement of Inventory</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Cash/Funds Flow</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Receipts and Payments</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>List of Accounts</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Exception Reports</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Balance Sheet</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Profit & Loss A/c</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><label>Stock Summary</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+
+            <tr>
+              <td><label>Ratio Analysis</label></td>
+              <td>-</td>
+              <td><div class="input-control checkbox" data-role="input-control">
+                  <label class="inline-block">
+                  <input type="checkbox"  />
+                  <span class="check"></span>
+                  </label>
+                  </div></td>
+              <td>-</td>
+              <td>-</td>
+            </tr>
+
+          </table>
+  </fieldset>
+</form>
+</div>
+</div>
+</body>
+</html>

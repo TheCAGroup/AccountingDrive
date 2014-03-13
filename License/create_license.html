@@ -139,16 +139,18 @@ and open the template in the editor.
 
         });
 
+            console.log('before valid');
         if ( $("#licenseform").valid())
         {
+            console.log('valid');
 
             var email = $("#txtemail").val();
             var registerfor = $("input:radio[name='rdtype']:checked").val();
             var price = $("#txtprice").val();
             var number = $("#txtnumber").val();
-            var expirydate = $("#txtexpiry").val();
+            var expirydate = new Date($("#txtexpiry").val());
             
-            sockjs.send(JSON.stringify({"action":"su_createlicense","args": {"email":email,"registerfor":registerfor,"price":price,"number":number,"expireson":expirydate}}));
+            sockjs.send(JSON.stringify({"action":"su_createlicense","msg": {"email":email,"registerfor":registerfor,"price":price,"number":number,"expireson":expirydate}}));
             $('#createLicense').modal('hide');
 
         }

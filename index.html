@@ -1,159 +1,68 @@
 <!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
 <html>
-<head>
-    <title>AccountingDrive</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+    <head>
+        <title>AccountingDrive - Login</title>
+        
 	<!--Root Configuration-->   
-    <script src="js/config.js"></script>
-    
-    <!--link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet"-->
+        <script src="js/config.js"></script>
 
+        <link href="metro-bootstrap/css/metro-bootstrap.css" rel="stylesheet">
+        <link href="metro-bootstrap/css/metro-bootstrap-responsive.css" rel="stylesheet">
+        <link href="metro-bootstrap/css/docs.css" rel="stylesheet">
+        <link href="metro-bootstrap/js/prettify/prettify.css" rel="stylesheet">
 
-    <link href="metro-bootstrap/css/metro-bootstrap.css" rel="stylesheet">
-    <link href="metro-bootstrap/css/metro-bootstrap-responsive.css" rel="stylesheet">
-    <link href="metro-bootstrap/css/docs.css" rel="stylesheet">
-    <link href="metro-bootstrap/js/prettify/prettify.css" rel="stylesheet">
+        <!-- Load JavaScript Libraries -->
+        <script src="metro-bootstrap/js/jquery/jquery.min.js"></script>
+        <script src="metro-bootstrap/js/jquery/jquery.widget.min.js"></script>
+        <script src="metro-bootstrap/js/jquery/jquery.mousewheel.js"></script>
+        <script src="metro-bootstrap/js/jquery/jquery.dataTables.js"></script>
+        <script src="metro-bootstrap/js/prettify/prettify.js"></script>
+        <script src="metro-bootstrap/js/metro/metro-dropdown.js"></script>
+        <script type="text/javascript" src="jquery_validation/dist/jquery.validate.js"></script>
 
-    <!-- Load JavaScript Libraries -->
-    <script src="metro-bootstrap/js/jquery/jquery.min.js"></script>
-    <script src="metro-bootstrap/js/jquery/jquery.widget.min.js"></script>
-    <script src="metro-bootstrap/js/jquery/jquery.mousewheel.js"></script>
-    <script src="metro-bootstrap/js/jquery/jquery.dataTables.js"></script>
-    <script src="metro-bootstrap/js/prettify/prettify.js"></script>
-    <script src="metro-bootstrap/js/metro/metro-dropdown.js"></script>
-    <script type="text/javascript" src="jquery_validation/dist/jquery.validate.js"></script>
+        <!-- Metro UI CSS JavaScript plugins -->
+        <script src="metro-bootstrap/js/load-metro.js"></script>
 
-    <!-- Metro UI CSS JavaScript plugins -->
-    <script src="metro-bootstrap/js/load-metro.js"></script>
+        <!--Local Javascript-->
+        <script src="metro-bootstrap/js/docs.js"></script>
+        <script src="metro-bootstrap/js/github.info.js"></script>
 
-    <!--Local Javascript-->
-    <script src="metro-bootstrap/js/docs.js"></script>
-    <script src="metro-bootstrap/js/github.info.js"></script>
-	
-    <!--Bootstrap Modal-->
-    <script type="text/javascript" src="bootstrap/js/bootstrap-modal.js"></script>
-    <link href="bootstrap/css/bootstrap-modal.css" rel="stylesheet">
-    
-    <!--Custom JS-->
-    <script src="js/navigation.js"></script>
-    <script type="text/javascript" src="js/dynamic_modal.js"></script>
+        <!--Bootstrap Modal-->
+        <script type="text/javascript" src="bootstrap/js/bootstrap-modal.js"></script>
+        <link href="bootstrap/css/bootstrap-modal.css" rel="stylesheet">
 
-    
-
-
-    <!--Socket-->
-    <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
-    <script>
-            var sockjs_url = 'http://122.164.117.111:9999/trial';
-            var sockjs = new SockJS(sockjs_url);
-            sockjs.onopen    = function()  {
-                console.log('[*] open'+sockjs.protocol);
-                //sockjs.send({"TRIAL SEND":"ddd"});
-                $("#maindiv").load("License/license.html");
-            };
-            /*
-            sockjs.onmessage = function(e) {
-                                    var msgob=JSON.parse(e) || {};
-                                    console.log('[.] message', msgob.status);
-
-                                                                            };*/
-            sockjs.onclose   = function()  {
-                console.log('[*] close');
-            };
-    </script>
-   
-</head>
-<body class="metro" style="overflow:hidden">
-    <div class="container" style="height:100%;">
-		<div class="grid fluid" style="height:100%;">
-			<div class="row" style="height:100%;">
-				<div class="span3" style="height:100%; width:20.404252%;">
-					<nav class="sidebar">
-						<ul>
-							<li class="title">Accounting Drive</li><br>
-							<li class="active"><a href="#"><i class="icon-dashboard"></i>Dashboard</a></li>
-							<li>
-								<a class="dropdown-toggle" href="#"><i class="icon-star-4"></i>Masters</a>
-								<ul class="dropdown-menu" data-role="dropdown">
-									<li><a href="#" onclick="gotogroups()">Groups</a></li>
-									<li><a href="#">Ledgers</a></li>
-									<li><a href="#">Voucher Types</a></li>
-									<li><a href="#">Stock Groups</a></li>
-									<li><a href="#">Stock Categories</a></li>
-									<li><a href="#">Stock Items</a></li>
-									<li><a href="#">Units of Measure</a></li>
-									<li><a href="#">Voucher Types</a></li>
-								</ul>
-							</li>
-							<li>
-								<a class="dropdown-toggle" href="#"><i class="icon-cog"></i>Quick Setup</a>
-								<ul class="dropdown-menu" data-role="dropdown">
-									<li><a href="#">Excise for Manufacture</a></li>
-									<li><a href="#">Excise for Dealer</a></li>
-									<li><a href="#">Value Added Tax</a></li>
-									<li><a href="#">Tax Deducted at Source</a></li>
-									<li><a href="#">Tax Collected at Source</a></li>
-									<li><a href="#">Service Tax</a></li>
-								</ul>
-							</li>
-							<li>
-								<a class="dropdown-toggle" href="#"><i class="icon-tab"></i>Transactions</a>
-								<ul class="dropdown-menu" data-role="dropdown">
-									<li><a href="#">Accounting Vouchers</a></li>
-									<li><a href="#">Inventory Vouchers</a></li>
-									<li><a href="#">Order Vouchers</a></li>
-								</ul>
-							</li>
-							<li>
-								<a class="dropdown-toggle" href="#"><i class="icon-tools"></i>Utilities</a>
-								<ul class="dropdown-menu" data-role="dropdown">
-									<li><a href="#">Import of Data</a></li>
-									<li><a href="#">Banking</a></li>
-								</ul>
-							</li>
-							<li>
-								<a class="dropdown-toggle" href="#"><i class="icon-stats-up"></i>Reports</a>
-								<ul class="dropdown-menu" data-role="dropdown">
-									<li><a href="#">Balance Sheet</a></li>
-									<li><a href="#">Profit & Loss A/c</a></li>
-									<li><a href="#">Stock Summary</a></li>
-									<li><a href="#">Ratio Analysis</a></li>
-								</ul>
-							</li>
-							<li>
-								<a class="dropdown-toggle" href="#"><i class="icon-list"></i>Display</a>
-								<ul class="dropdown-menu" data-role="dropdown">
-									<li><a href="#">Trial Balance</a></li>
-									<li><a href="#">Day Book</a></li>
-									<li><a href="#">Accounts Book</a></li>
-									<li><a href="#">Statements of Accounts</a></li>
-									<li><a href="#">Inventory Books</a></li>
-									<li><a href="#">Statement of Inventory</a></li>
-									<li><a href="#">Cash/Funds Flow</a></li>
-									<li><a href="#">Receipts and Payments</a></li>
-									<li><a href="#">List of Accounts</a></li>
-									<li><a href="#">Exception Reports</a></li>
-								</ul>
-							</li>
-						</ul>
-					</nav>
-				</div><!--Span3-->
-				<div id='maindiv' class='span9' style="background-color:white; height:100%">
-					
-				</div><!--span9-->
-				
-			</div><!--Row-->
-		</div><!--Grid fluid-->
-     </div><!--Container-->
-     <script type="text/javascript">
-                    
-			$(document).ready(function() {
-				//$('#maindiv').load('License/license.html');
+        <!--Custom JS-->
+        <script src="js/navigation.js"></script>
+        <script type="text/javascript" src="js/dynamic_modal.js"></script>
+        
+        
+        <!--Socket-->
+        <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+        <script>
+                var sockjs_url = 'http://14.99.41.34:9999/trial';
+                var sockjs = new SockJS(sockjs_url);
+                sockjs.onopen    = function()  {
+                    console.log('[*] open '+sockjs.protocol);
+                    $("#maindiv").load("login.html");
+                };
+                
+                sockjs.onclose   = function()  {
+                    console.log('[*] close');
+                    $("#maindiv").load("login.html");
+                };
+                /*
+                $(document).ready(function() {
+				$('#maindiv').load('login.html');
 			});
-	 </script>
-         
-</body>
+                        */
+         </script>
+    </head>
+    <body class="metro" style="background-color:#2E4552;">
+        <div id="maindiv" style="height:100%;width:100%"></div>
+    </body>
 </html>

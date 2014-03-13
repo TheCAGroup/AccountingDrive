@@ -1,47 +1,18 @@
-<html>
-<head><title>Accounting Drive - Login</title></head>
-    <!--Root Configuration-->   
-    <script src="js/config.js"></script>
 
-    <link href="metro-bootstrap/css/metro-bootstrap.css" rel="stylesheet">
-    <link href="metro-bootstrap/css/metro-bootstrap-responsive.css" rel="stylesheet">
-    <link href="metro-bootstrap/css/docs.css" rel="stylesheet">
-    <link href="metro-bootstrap/js/prettify/prettify.css" rel="stylesheet">
-
-    <!-- Load JavaScript Libraries -->
-    <script src="metro-bootstrap/js/jquery/jquery.min.js"></script>
-    <script src="metro-bootstrap/js/jquery/jquery.widget.min.js"></script>
-    <script src="metro-bootstrap/js/jquery/jquery.mousewheel.js"></script>
-    <script src="metro-bootstrap/js/jquery/jquery.dataTables.js"></script>
-    <script src="metro-bootstrap/js/prettify/prettify.js"></script>
-    <script src="metro-bootstrap/js/metro/metro-dropdown.js"></script>
-
-    <!-- Metro UI CSS JavaScript plugins -->
-    <script src="metro-bootstrap/js/load-metro.js"></script>
-
-    <!--Local Javascript-->
-    <script src="metro-bootstrap/js/docs.js"></script>
-    <script src="metro-bootstrap/js/github.info.js"></script>
-	
-    <!--Custom JS-->
-    <script src="js/navigation.js"></script>
-    <script type="text/javascript" src="js/dynamic_modal.js"></script>
-</head>
-<body class="metro" style="background-color:#2E4552;">
-    <div class="container" align="center">
+<div class="container" align="center">
         <div class="span4" style="padding-top:15%;">
-            <div class="panel" style="box-shadow: 5px 5px 2px #888888;;">
-                <div class="panel-header" style="background-color:#ffgg22;">
+            <div class="panel">
+                <div class="panel-header">
                     Accounting Drive
                 </div>
                 <div class="panel-content" style="background-color:#ffffff;">
-                    <form id="loginform" method="post">
+                    <!--form id="loginform"-->
                         <fieldset>
                             <legend>Login</legend>
                             
-                            <label class="place-left">User name</label>
+                            <label class="place-left">User Email</label>
                             <div class="input-control text" data-role="input-control">
-                                <input id="txtname" name="txtname" type="text" placeholder="type text" autofocus>
+                                <input id="txtemail" name="txtemail" type="text" placeholder="type text" autofocus>
                                 <button class="btn-clear" tabindex="-1"></button>
                             </div>
                             
@@ -61,7 +32,7 @@
                             <button class="primary" onclick="validate();">Login</button>
                             </div>
                         </fieldset>
-                    </form>
+                    <!--/form-->
                 </div>
     
             </div>
@@ -70,15 +41,32 @@
     <script>
         function validate()
         {
-            var name = $('#txtname').val();
+            var email = $('#txtemail').val();
             var pwd = $('#txtpwd').val();
             var ischecked = $('#cbuserid').is(":checked");
 
             //Validate items
 
             //check if username and password are valid
-            
+            sockjs.send(JSON.stringify({"action":"checklogin","msg": {"email":email,"password":pwd}}));
+            sockjs.onmessage = function(e) {      
+                try{
+                    message=JSON.parse(e.data);
+                    console.log("action"+JSON.stringify(message));
+
+                    console.log('data'+JSON.stringify(message.msg));
+                    var details=message.msg;
+                    console.log(details);
+
+                    if(message.status === "success")
+                    {
+                        $('#maindiv').load('mainpage.html');
+                    }
+
+                }
+                catch(e)
+                {
+                }
+            };
         }
     </script>
-</body>
-</html>

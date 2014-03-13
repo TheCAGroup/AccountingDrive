@@ -2986,6 +2986,7 @@ a {
   border: 1px #d9d9d9 solid;
   width: 100%;
   padding: 5px;
+  background-color:white; /*added by yamini*/
 }
 .metro .input-control.select select:focus,
 .metro .input-control.textarea select:focus,

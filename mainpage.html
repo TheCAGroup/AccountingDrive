@@ -1,0 +1,91 @@
+<script src="metro-bootstrap/js/docs.js"></script>
+<div class="container" style="height:100%;overflow: hidden;">
+            <div class="grid fluid" style="height:100%;">
+                    <div class="row" style="height:100%;">
+                            <div style="height: 100%; z-index: 1031; width: 200px;float:left;position: fixed; bottom: 0; overflow: hidden;">
+                                    <nav class="sidebar">
+                                            <ul>
+                                                    <li class="title">Accounting Drive</li><br>
+                                                    <li class="active"><a href="#"><i class="icon-dashboard"></i>Dashboard</a></li>
+                                                    <li>
+                                                            <a class="dropdown-toggle" href="#"><i class="icon-star-4"></i>Masters</a>
+                                                            <ul class="dropdown-menu" data-role="dropdown">
+                                                                    <li><a href="#" onclick="gotogroups()">Groups</a></li>
+                                                                    <li><a href="#">Ledgers</a></li>
+                                                                    <li><a href="#">Voucher Types</a></li>
+                                                                    <li><a href="#">Stock Groups</a></li>
+                                                                    <li><a href="#">Stock Categories</a></li>
+                                                                    <li><a href="#">Stock Items</a></li>
+                                                                    <li><a href="#">Units of Measure</a></li>
+                                                                    <li><a href="#">Voucher Types</a></li>
+                                                            </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="dropdown-toggle" href="#"><i class="icon-cog"></i>Quick Setup</a>
+                                                            <ul class="dropdown-menu" data-role="dropdown">
+                                                                    <li><a href="#">Excise for Manufacture</a></li>
+                                                                    <li><a href="#">Excise for Dealer</a></li>
+                                                                    <li><a href="#">Value Added Tax</a></li>
+                                                                    <li><a href="#">Tax Deducted at Source</a></li>
+                                                                    <li><a href="#">Tax Collected at Source</a></li>
+                                                                    <li><a href="#">Service Tax</a></li>
+                                                            </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="dropdown-toggle" href="#"><i class="icon-tab"></i>Transactions</a>
+                                                            <ul class="dropdown-menu" data-role="dropdown">
+                                                                    <li><a href="#">Accounting Vouchers</a></li>
+                                                                    <li><a href="#">Inventory Vouchers</a></li>
+                                                                    <li><a href="#">Order Vouchers</a></li>
+                                                            </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="dropdown-toggle" href="#"><i class="icon-tools"></i>Utilities</a>
+                                                            <ul class="dropdown-menu" data-role="dropdown">
+                                                                    <li><a href="#">Import of Data</a></li>
+                                                                    <li><a href="#">Banking</a></li>
+                                                            </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="dropdown-toggle" href="#"><i class="icon-stats-up"></i>Reports</a>
+                                                            <ul class="dropdown-menu" data-role="dropdown">
+                                                                    <li><a href="#">Balance Sheet</a></li>
+                                                                    <li><a href="#">Profit & Loss A/c</a></li>
+                                                                    <li><a href="#">Stock Summary</a></li>
+                                                                    <li><a href="#">Ratio Analysis</a></li>
+                                                            </ul>
+                                                    </li>
+                                                    <li>
+                                                            <a class="dropdown-toggle" href="#"><i class="icon-list"></i>Display</a>
+                                                            <ul class="dropdown-menu" data-role="dropdown">
+                                                                    <li><a href="#">Trial Balance</a></li>
+                                                                    <li><a href="#">Day Book</a></li>
+                                                                    <li><a href="#">Accounts Book</a></li>
+                                                                    <li><a href="#">Statements of Accounts</a></li>
+                                                                    <li><a href="#">Inventory Books</a></li>
+                                                                    <li><a href="#">Statement of Inventory</a></li>
+                                                                    <li><a href="#">Cash/Funds Flow</a></li>
+                                                                    <li><a href="#">Receipts and Payments</a></li>
+                                                                    <li><a href="#">List of Accounts</a></li>
+                                                                    <li><a href="#">Exception Reports</a></li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    </nav>
+                            </div><!--Span3-->
+                            <div style="height: 100%;width: 100%;background-color: #FFFFFF;">
+                                <header id="myDiv" class='header' data-load="header.html" style="margin-left: 200px;"></header>
+                                <div id="contentdiv" style="height: 100%;margin-left: 200px; padding-bottom: 50px; overflow: auto">
+                                </div>        
+                            </div><!--span9-->
+
+                    </div><!--Row-->
+            </div><!--Grid fluid-->
+ </div><!--Container-->
+ <script type="text/javascript">
+
+                    $(document).ready(function() {
+                        $('#contentdiv').load('License/license.html');
+                    });
+</script>
+
