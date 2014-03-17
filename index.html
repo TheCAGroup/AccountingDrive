@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Author      : Yamini Sudha
+Created on  : 17-March-2014
+Page Title  : Index
+Description : Contains all JS and CSS files needed.
+              Database connection opened here.
+              Contains an empty div  (ID : 'maindiv')
+            
 -->
 <html>
     <head>
-        <title>AccountingDrive - Login</title>
+        <title>AccountingDrive</title>
         
-	<!--Root Configuration-->   
+        <!--Root Configuration-->   
         <script src="js/config.js"></script>
 
         <link href="metro-bootstrap/css/metro-bootstrap.css" rel="stylesheet">
@@ -23,7 +27,10 @@ and open the template in the editor.
         <script src="metro-bootstrap/js/jquery/jquery.dataTables.js"></script>
         <script src="metro-bootstrap/js/prettify/prettify.js"></script>
         <script src="metro-bootstrap/js/metro/metro-dropdown.js"></script>
+        
+        <!--jquery validation JS and CSS-->
         <script type="text/javascript" src="jquery_validation/dist/jquery.validate.js"></script>
+        <link rel="stylesheet" href="jquery_validation/demo/css/screen.css" />
 
         <!-- Metro UI CSS JavaScript plugins -->
         <script src="metro-bootstrap/js/load-metro.js"></script>
@@ -44,22 +51,22 @@ and open the template in the editor.
         <!--Socket-->
         <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
         <script>
-                var sockjs_url = 'http://115.242.146.186:9999/trial';
+                var sockjs_url = 'http://localhost:9999/trial';
                 var sockjs = new SockJS(sockjs_url);
                 sockjs.onopen    = function()  {
                     console.log('[*] open '+sockjs.protocol);
-                    $("#maindiv").load("login.html");
+                    //$("#maindiv").load("login.html");
                 };
                 
                 sockjs.onclose   = function()  {
                     console.log('[*] close');
-                    $("#maindiv").load("login.html");
+                    //$("#maindiv").load("login.html");
                 };
-                /*
+                
                 $(document).ready(function() {
-				$('#maindiv').load('login.html');
-			});
-                        */
+                    $('#maindiv').load('entrypage.html');
+                });
+                       
          </script>
     </head>
     <body class="metro" style="background-color:#2E4552;">

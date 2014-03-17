@@ -1,8 +1,9 @@
-<!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Author:     Yamini Sudha
+Created on: 17-March-2014
+Page Title: Company Creation
+Desc:       Creates a comapny (Displayed inside Modal)
+Validation: Done
 -->
     
 <div id="createCompany" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
@@ -25,7 +26,7 @@ and open the template in the editor.
                             <label><b>Company Details</b></label>
                         <div class="span4">
                             <div class="input-control text" data-role="input-control">
-                                <input id="txtname" name="txtname" type="text" placeholder="Company Name">
+                                <input id="txtname" name="txtname" type="text" placeholder="Company Name" required>
                                 <button class="btn-clear" tabindex="-1"></button>
                             </div>
                         </div>
@@ -137,20 +138,20 @@ and open the template in the editor.
                                 <label class="span3" style="margin-top: 1.5rem">Show in Millions : </label>
                                 
                                 <div class="span9">
-                                <div class="input-control radio margin10">
-                                    <label>
-                                        <input name="rdshowinmillions" type="radio" value="true"/>
-                                        <span class="check"></span>
-                                        Yes
-                                    </label>
-                                </div>
-                                <div class="input-control radio margin10 ">
-                                    <label>
-                                        <input name="rdshowinmillions" type="radio" value="false" checked />
-                                        <span class="check"></span>
-                                        No
-                                    </label>
-                                </div>
+                                    <div class="input-control radio margin10">
+                                        <label>
+                                            <input name="rdshowinmillions" type="radio" value="true"/>
+                                            <span class="check"></span>
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="input-control radio margin10 ">
+                                        <label>
+                                            <input name="rdshowinmillions" type="radio" value="false" checked />
+                                            <span class="check"></span>
+                                            No
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </fieldset>
@@ -160,7 +161,7 @@ and open the template in the editor.
 
             <!--Modal footer-->
            <div class="modal-footer" id="mfooter"> 
-                <button type="button" class="primary" id="btncreate">Save</button>
+               <button type="button" class="primary" id="btncreate" onclick="formSubmit();">Save</button>
                 <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
 
            </div> 
@@ -176,7 +177,7 @@ $('#createCompany').modal();
 //Datepicker
 $('#datepicker').datepicker();
 
-/*
+
 //Form Validation
 function formSubmit()
 {
@@ -201,8 +202,7 @@ function formSubmit()
 					txtdecplaces:"required",
 					txtdecsymbol:"required",
 					txtdecimalplacesforprint:"required",
-				},
-				errorClass: "help-inline"
+				}
 				
 			});
 			
@@ -212,6 +212,7 @@ function formSubmit()
 			//Check if company already exists before adding
 		}
 }
+/*
 function formtoJSON()
 {
 	var q=JSON.stringify({

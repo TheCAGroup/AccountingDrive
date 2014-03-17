@@ -3656,7 +3656,7 @@ a {
   position: absolute;
   display: none;
   z-index: 1000;
-  background: #ffffff;
+  background: #C5DDF3;/*#EFF7F8 #ffffff changed by yamini*/
   min-width: 220px;
   width: auto;
   border: 1px solid #dcddde;
@@ -5720,7 +5720,7 @@ a {
 .metro .sidebar {
   margin: 0;
   padding: 0;
-  background-color: #11435F; /*#3D3D3D val changed by yamini*/
+  background-color: #D1E1E4;/*#11435F #3D3D3D val changed by yamini*/
   width: 100%;
   height: 100%;
 }
@@ -5754,8 +5754,8 @@ a {
   position: relative;
   padding: 10px 20px;
   text-decoration: none;
-  color: #eeeeee;
-  background-color: #11435F;/*#3D3D3D val changed by yamini*/
+  color: #1E3153;/*#eeeeee val changed by yamini*/
+  background-color: #D1E1E4;/*#11435F #3D3D3D val changed by yamini*/
 }
 .metro .sidebar > ul li a:hover {
   background-color: #262626;
@@ -5820,7 +5820,7 @@ a {
   border: 0;/*1px solid #dcddde val changed by yamini*/
   box-shadow: none;
   position: relative !important;
-  background-color: #112E3D;/*#e5e5e5 val changed by yamini*/
+  background-color: #9ECAE0; /*#112E3D #e5e5e5 val changed by yamini*/
   min-width: 100%;
 }
 .metro .sidebar > ul ul li {
@@ -6074,8 +6074,8 @@ a {
   border: 0;
 }
 .metro .sidebar > ul ul li a {
-  background-color: #112E3D;/*#e5e5e5 val changed by yamini*/
-  color: #ffffff;
+  background-color: #9ECAE0;/*#112E3D #e5e5e5 val changed by yamini*/
+  color: #0A121F; /*#ffffff val changed by yamini*/
 }
 .metro .sidebar > ul ul li.divider {
   background-color: #c2c2c2;

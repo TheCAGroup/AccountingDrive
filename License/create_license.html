@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Author      : Yamini Sudha
+Created on  : 17-March-2014
+Page Title  : License Creation 
+Description : Creates company and user (Displayed inside Modal)
+Validation  : Done (With Error)
+Errors      : Number Field validation error text not displayed correctly
+              Date Validation Not Working
 -->
 <style>
     .modal-table-label{
@@ -16,37 +20,38 @@ and open the template in the editor.
 
 <div id="createLicense" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
     <div class="modal-dialog" style="width: 60%;"> 
-        <div class="modal-content"> 
+        <div class="modal-content" style="padding-left:3%;"> 
            <!--Modal header-->
            <div class="modal-header"> 
-               <button type="button" class="close" data-dismiss="modal" style="font-size: 30px">×</button>
-               <h3 class="modal-title" id="mtitle" style="font-weight: bold">License Creation</h3>
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <h3 class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">License Creation</h3>
            </div>
 
             <!--Modal body-->
-           <div class="modal-body" align="center" id="mbody" style="max-height: 60%;min-height: 1px;overflow: auto">
+           <div class="modal-body" align="center" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 60%;min-height: 1px;overflow: auto">
 
                 <form id="licenseform" class="form-horizontal">
                 <fieldset>
                 
-                <br>
-                <table>
-                    <tr>
-                        <td class="modal-table-label">
-                             <label>User Email Address</label>
-                        </td>
-                        <td class="modal-table-control">
+                    
+                    
+                    <div class="span12">
+                        <div class="span6 text-left">
+                            <label>User Email Address</label>
+                        </div>
+                        <div class="span6">
                             <div class="input-control text" data-role="input-control">
                                 <input id="txtemail" name="txtemail" type="text" placeholder="Email" autofocus>
                                 <button class="btn-clear" tabindex="-1"></button>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="modal-table-label">
-                             <label>Register For</label>
-                        </td>
-                        <td class="modal-table-control">
+                        </div>
+                    </div>
+                    
+                    <div class="span12">
+                        <div class="span6 text-left">
+                            <label>Register For</label>
+                        </div>
+                        <div class="span6">
                             <div class="input-control radio margin10">
                                 <label>
                                     <input name="rdtype" type="radio" value="company" checked />
@@ -61,41 +66,44 @@ and open the template in the editor.
                                     User
                                 </label>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="modal-table-label">
-                             <label>Number</label>
-                        </td>
-                        <td class="modal-table-control">
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="span12">
+                        <div class="span6 text-left">
+                            <label>Number</label>
+                        </div>
+                        <div class="span6">
                             <div class="input-control text" data-role="input-control">
                                 <input type="number" id="txtnumber" name="txtnumber" placeholder="Number" />
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="modal-table-label">
-                             <label>Price</label>
-                        </td>
-                        <td class="modal-table-control">
+                        </div>
+                    </div>
+                             
+                    <div class="span12">
+                        <div class="span6 text-left">
+                            <label>Price</label>
+                        </div>
+                        <div class="span6">
                             <div class="input-control text" data-role="input-control">
                                 <input type="number" id="txtprice" name="txtprice" placeholder="Price" >
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="modal-table-label">
-                             <label>Expires On</label>
-                        </td>
-                        <td class="modal-table-control">
+                        </div>
+                    </div>  
+                             
+                    <div class="span12">
+                        <div class="span6 text-left">
+                            <label>Expires On</label>
+                        </div>
+                        <div class="span6">
                             <div class="input-control text" id="datepicker" data-format="dd-mm-yyyy">
                                 <input type="text" id="txtexpiry" name="txtexpiry" placeholder="Expiry Date">
                                 <button type="button" class="btn-date"></button>
                             </div>
-                        </td>
-                    </tr>
-                </table>
-               
+                        </div>
+                    </div> 
+                   
                 </fieldset>
                 </form>
              </div> 
@@ -133,11 +141,26 @@ and open the template in the editor.
                     },
                     txtexpiry:{
                             required: true,
-                    },
+                    }
             },
-            errorClass: "help-inline"
-
-        });
+            messages: {
+			txtnumber:{
+                            required: "Please enter no. of License",
+                            number: "Please enter a valid Number"
+                        },
+                        txtprice:{
+                                required: "Please enter the Price",
+                                number: "Please enter a valid Number"
+                        },
+                        txtemail:{
+                                required: "Please enter a User E-mail ID",
+                                email: "Please enter a valid E-mail ID"
+                        },
+                        txtexpiry:{
+                                required: "Please select a date"
+                        }
+		}
+	});
 
             console.log('before valid');
         if ( $("#licenseform").valid())

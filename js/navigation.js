@@ -1,4 +1,4 @@
-function openLicenseCreationDialog()
+function openCreateLicenseDialog()
 {
         $("#modaldiv").load(home+"/License/create_license.html");
 }

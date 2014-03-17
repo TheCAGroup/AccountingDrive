@@ -1,13 +1,81 @@
-
-<nav class="navigation-bar white" style="background-color: #D1E1E4;">
+<!DOCTYPE html>
+<!--
+Author      : Yamini Sudha
+Created on  : 17-March-2014
+Page Title  : Header 
+Description : Contains the main header
+        
+-->
+<nav class="navigation-bar white" style="background-color: #11435F; color: #CAEEF1;">
 	<div class="navigation-bar-content">
-		<a href="/" class="element"><span class="icon-grid-view"></span> Company Name <sup>2.0</sup></a>
-		<span class="element-divider"></span>
-
-		<!--a class="pull-menu" href="#"></a-->
-		<ul class="element-menu">
+                
+		<a href="/" class="element">
+                    <span class="icon-grid-view"></span> Accounting Drive 
+                </a>
+                <span class="element-divider"></span>
+                
+		<a class="pull-menu" href="#"></a>
+		
+                <ul class="element-menu">
+                    <li>
+                        <a class="element" href="#" onclick="openSelectCompanyDialog();">
+                            Company Name
+                        </a>
+                    </li>
+                    <li>
+                        <a class="element" href="#" onclick="openCreateCompanyDialog();">
+                            <span class="icon-plus"></span>
+                        </a> 
+                    </li>
+                    <li>
+                        <a class="element" href="#" onclick="openCreateCompanyDialog();">
+                            <input type="image" src="./img/edit.png" height="20" width="20" alt="Edit" title="Edit" onclick="openEditCompanyDialog()">
+                        </a> 
+                    </li>
+                    <li>
+                        <a class="element" href="#">
+                            1-Apr-13 to 30-Mar-14
+                        </a>
+                    </li>
+                    <li class="element place-right" style="padding: 0">
+                      <a class="dropdown-toggle" href="#"><span class="icon-cog"></span></a>
+				<ul class="dropdown-menu place-right" data-role="dropdown">
+					<li><a href="#">Edit Profile</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Logout</a></li>
+                                </ul>
+				<!--a class="dropdown-toggle" href="#">
+					<span class="icon-cog"></span>
+				</a>
+				<ul class="dropdown-menu place-right" data-role="dropdown" style="display: none;">
+					<li><a href="#">Edit Profile</a></li>
+					<li><a href="#">Settings</a></li>
+					<li><a href="#">Logout</a></li>
+				</ul>
+			
+			<span class="element-divider place-right"></span>
+			<button class="element image-button image-left place-right">
+				Username
+				<img src="metro-bootstrap/images/me.jpg">
+			</button-->
+                    </li>
+                    <li class="element place-right" style="padding: 0">
+                        <a class="dropdown-toggle" href="#">Admin Board</a>
+				<ul class="dropdown-menu place-right" data-role="dropdown">
+					<li><a href="#">Add User to Company</a></li>
+                                        <li><a href="#">Edit User Rights</a></li>
+                                        <li><a href="#">Remove User from Company</a></li>
+                                        <li><a href="#">Request New License</a></li>
+                                        <li><a href="#">View User License</a></li>
+                                        <li><a href="#">View Company License</a></li>
+				</ul>
+                    </li>
+                </ul>
+                
+                
+                <!--ul class="element-menu">
 			<li>
-				<a class="dropdown-toggle" href="#">Base CSS</a>
+				<a class="dropdown-toggle" href="#">Company Name</a>
 				<ul class="dropdown-menu " data-role="dropdown">
 					<li><a href="requirements.html">Requirements</a></li>
 					<li>
@@ -41,13 +109,13 @@
 					<li><a href="https://github.com/olton/Metro-UI-CSS/blob/master/LICENSE">License</a></li>
 				</ul>
 			</li>
-		</ul>
+		</ul-->
 
-		<div>
-			<span class="element-divider"></span>
+                <!--div class="element-menu"-->
+			<!--span class="element-divider"></span>
                         <a class="element brand" href="#" onclick="openCreateCompanyDialog();"><span class="icon-plus"></span></a>
 			<a class="element brand" href="#"><span class="icon-printer"></span></a>
-			<span class="element-divider"></span>
+			<span class="element-divider"></span-->
 
 			<!--div class="element input-element">
 				<form>
@@ -58,7 +126,7 @@
 				</form>
 			</div-->
 
-			<div class="element place-right">
+			<!--div class="element place-right">
 				<a class="dropdown-toggle" href="#">
 					<span class="icon-cog"></span>
 				</a>
@@ -73,6 +141,6 @@
 				Username
 				<img src="metro-bootstrap/images/me.jpg">
 			</button>
-		</div>
+		</div-->
 	</div>
 </nav>
