@@ -8,6 +8,22 @@ function gotogroups()
    	$("#contentdiv").load(home+"/Masters/Groups/group.html");
 }
 
+function gotoUserCompanyMapping()
+{
+        $("#maindiv-content").load(home+"/AdminIndex/user_company_mapping.html");
+}
+function gotoUserRights()
+{
+        $("#maindiv-content").load(home+"/AdminIndex/user_rights.html");
+}
+function gotoUserLicense()
+{
+        $("#maindiv-content").load(home+"/AdminIndex/user_license.html");
+}
+function gotoCompanyLicense()
+{
+        $("#maindiv-content").load(home+"/AdminIndex/company_license.html");
+}
 function openCreateGroupDialog()
 {
         $("#modaldiv").load(home+"/Masters/Groups/create_group.html");

@@ -22,8 +22,10 @@ Validation: Done
 		
 		
                     <div class="span12">
-                        <fieldset>
-                            <label><b>Company Details</b></label>
+                        <label style="font-weight: bold">Company Details</label>
+                    </div>
+                    
+                    <div class="span12">   
                         <div class="span4">
                             <div class="input-control text" data-role="input-control">
                                 <input id="txtname" name="txtname" type="text" placeholder="Company Name" required>
@@ -44,23 +46,28 @@ Validation: Done
                                 <button type="button" class="btn-date"></button>
                             </div>
                         </div>
-                        </fieldset>
+                    </div>
                         
-                        <fieldset>
-                        <label><b>Mailing & Contact Details</b></label>
+                    <div class="span12">
+                        <label style="font-weight: bold">Mailing & Contact Details</label>
+                    </div>    
+                        
+                    <div class="span12">
                         <div class="input-control text" data-role="input-control">
                             <input id="txtaddress" name="txtaddress" type="text" placeholder="Street">
                             <button class="btn-clear" tabindex="-1"></button>
                         </div>
-                        
-                        <div class="span3">
+                    </div>
+                    
+                    <div class="span12">
+                        <div class="span4">
                             <div class="input-control text" data-role="input-control">
                                 <input id="txtcity" name="txtcity" type="text" placeholder="City">
                                 <button class="btn-clear" tabindex="-1"></button>
                             </div>
                         </div>
                         
-                        <div class="span3" style="margin-left:2%">
+                        <div class="span4" style="margin-left:2%">
                             <div class="input-control text" data-role="input-control">
                                 <input id="txtpincode" name="txtpincode" type="text" placeholder="Pincode">
                                 <button class="btn-clear" tabindex="-1"></button>
@@ -68,14 +75,16 @@ Validation: Done
                         </div>
                         
                         
-                        <div class="span6" style="margin-left:2%">
+                        <div class="span4" style="margin-left:2%">
                             <div class="input-control text" data-role="input-control">
                                 <input id="txttelephone" name="txttelephone" type="text" placeholder="Telephone">
                                 <button class="btn-clear" tabindex="-1"></button>
                             </div>
                         </div>
+                    </div>
                         
                         
+                    <div class="span12">
                         <div class="span3">
                             <div class="input-control select">
                                 <select id="cmbstate" name="cmbstate" >
@@ -101,61 +110,65 @@ Validation: Done
                                 <button class="btn-clear" tabindex="-1"></button>
                             </div>
                         </div>
-                        </fieldset>
+                    </div>    
                         
-                        <fieldset>
-                            <label><b>Currency Information</b></label>
-                            <div class="span6">
-                                <div class="input-control text" data-role="input-control">
-                                    <input id="txtcurrency" name="txtcurrency" type="text" placeholder="Formal Name">
-                                    <button class="btn-clear" tabindex="-1"></button>
-                                </div>
+                    <div class="span12">
+                        <label style="font-weight: bold">Currency Information</label>
+                    </div>  
+                    
+                    <div class="span12">
+                        <div class="span6">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtcurrency" name="txtcurrency" type="text" placeholder="Formal Name">
+                                <button class="btn-clear" tabindex="-1"></button>
                             </div>
+                        </div>
 
-                            <div class="span6" style="margin-left:2%">
-                                <div class="input-control text" data-role="input-control">
-                                    <input id="txtcurrencysymbol" name="txtcurrencysymbol" type="text" placeholder="Currency Symbol">
-                                    <button class="btn-clear" tabindex="-1"></button>
-                                </div>
+                        <div class="span6" style="margin-left:2%">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtcurrencysymbol" name="txtcurrencysymbol" type="text" placeholder="Currency Symbol">
+                                <button class="btn-clear" tabindex="-1"></button>
                             </div>
-                            
-                            <div class="span6">
-                                <div class="input-control text" data-role="input-control">
-                                    <input id="txtdecplaces" name="txtdecplaces" type="number" placeholder="No. of Decimal Places">
-                                    
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                      
+                    <div class="span12">
+                        <div class="span6">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtdecplaces" name="txtdecplaces" type="number" placeholder="No. of Decimal Places">
 
-                            <div class="span6" style="margin-left:2%">
-                                <div class="input-control text" data-role="input-control">
-                                    <input id="txtdecsymbol" name="txtdecsymbol" type="text" placeholder="Symbol for Decimal Portion">
-                                    <button class="btn-clear" tabindex="-1"></button>
-                                </div>
                             </div>
+                        </div>
+
+                        <div class="span6" style="margin-left:2%">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtdecsymbol" name="txtdecsymbol" type="text" placeholder="Symbol for Decimal Portion">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                    </div>        
                             
-                            <div>
-                                
-                                <label class="span3" style="margin-top: 1.5rem">Show in Millions : </label>
-                                
-                                <div class="span9">
-                                    <div class="input-control radio margin10">
-                                        <label>
-                                            <input name="rdshowinmillions" type="radio" value="true"/>
-                                            <span class="check"></span>
-                                            Yes
-                                        </label>
-                                    </div>
-                                    <div class="input-control radio margin10 ">
-                                        <label>
-                                            <input name="rdshowinmillions" type="radio" value="false" checked />
-                                            <span class="check"></span>
-                                            No
-                                        </label>
-                                    </div>
-                                </div>
+                    <div class="span12">
+                        <label class="span3" style="margin-top: 1.5rem">Show in Millions : </label>
+
+                        <div class="span9">
+                            <div class="input-control radio margin10">
+                                <label>
+                                    <input name="rdshowinmillions" type="radio" value="true"/>
+                                    <span class="check"></span>
+                                    Yes
+                                </label>
                             </div>
-                        </fieldset>
-                    </div>			
+                            <div class="input-control radio margin10 ">
+                                <label>
+                                    <input name="rdshowinmillions" type="radio" value="false" checked />
+                                    <span class="check"></span>
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                    </div>       
+                           	
 		</form>
             </div> 
 

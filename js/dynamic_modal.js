@@ -11,16 +11,17 @@ function makeModalAlert(modalID, modalTitle, modalContent)
     newdiv.className = 'modal';
     newdiv.setAttribute('data-keyboard','false');
     newdiv.setAttribute('data-backdrop','static');
-    newdiv.setAttribute('tabindex','-1')
+    newdiv.setAttribute('tabindex','-1');
     newdiv.innerHTML = '<div class="modal-dialog"> \
                             <div class="modal-content"> \
                                <div class="modal-header"> \
-                                   <h4 class="modal-title" id="mtitle">'+modalTitle+'</h4> \
+                                  <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>\
+                                  <h4 class="modal-title" id="mtitle">'+modalTitle+'</h4> \
                                </div> \
                                <div class="modal-body" id="mbody">'+modalContent + ' \
                                </div> \
                                <div class="modal-footer" id="mfooter"> \
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btn'+modalID+'">Close</button> \
+                                    <button type="button" class="info" data-dismiss="modal" id="btn'+modalID+'">Close</button> \
                                </div> \
                            </div> \
                        </div>';
@@ -34,7 +35,7 @@ function makeModalProgress(modalID, modalTitle)
     newdiv.className = 'modal';
     newdiv.setAttribute('data-keyboard','false');
     newdiv.setAttribute('data-backdrop','static');
-    newdiv.setAttribute('tabindex','-1')
+    newdiv.setAttribute('tabindex','-1');
     newdiv.innerHTML = '<div class="modal-dialog"> \
                             <div class="modal-content"> \
                                <div class="modal-header"> \
@@ -57,17 +58,18 @@ function makeModalConfirm(modalID, modalTitle, modalContent, action)
     newdiv.className = 'modal';
     newdiv.setAttribute('data-keyboard','false');
     newdiv.setAttribute('data-backdrop','static');
-    newdiv.setAttribute('tabindex','-1')
+    newdiv.setAttribute('tabindex','-1');
     newdiv.innerHTML = '<div class="modal-dialog"> \
                             <div class="modal-content"> \
                                <div class="modal-header"> \
+                                   <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>\
                                    <h4 class="modal-title" id="mtitle">'+modalTitle+'</h4> \
                                </div> \
                                <div class="modal-body" id="mbody">'+modalContent + ' \
                                </div> \
                                <div class="modal-footer" id="mfooter"> \
-                                    <button type="button" class="btn btn-primary" id="btn_yes' + modalID +'" onclick="'+action+'">Yes</button> \
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btn_no'+ modalID +'">No</button> \
+                                    <button type="button" class="primary" id="btn_yes' + modalID +'" onclick="'+action+'">Yes</button> \
+                                    <button type="button" class="info" data-dismiss="modal" id="btn_no'+ modalID +'">No</button> \
                                </div> \
                            </div> \
                        </div>';

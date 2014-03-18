@@ -1,0 +1,969 @@
+<!--
+Author      : Yamini Sudha
+Created on  : 18-March-2014
+Page Title  : User Rights
+Description : Allows user to change user permissions
+-->
+<style>
+    .subheader{
+        padding-right:20px; 
+        padding-left: 20px; 
+        padding-top: 10px; 
+        height: 80px; 
+        background-color: #F2F7F8;
+    }
+   .td-module
+   {
+       width:60%;
+   }
+   .td-crud
+   {
+       width:10%;
+   }
+</style>
+<script>
+    function displayUserPermissions(thisobj)
+    {
+        
+        if(($('#cmbcompany').val()!=="") && ($('#cmbuser').val()!==""))
+        {
+            $('#userrights').attr('style', 'display:inline !important;height: 60%;overflow: auto;');
+            if (thisobj.id==="cmbcompany")
+            {
+                //load cmbuser selectbox with values
+            }
+        }
+        else
+        {
+            $('#userrights').attr('style', 'display:none !important');
+           
+        }
+    }
+    
+</script>
+<div style="height: 100%; overflow: auto;">
+<div class="subheader">
+    <div class="place-left"><h3>User Rights</h3></div>
+</div>
+<div style="padding-left: 2%; padding-top: 2%; padding-right: 2%;height: calc(100% - 80px); height: -moz-calc(100% - 80px);height: -webkit-calc(100% - 80px);height: -o-calc(100% - 80px);">
+<form>
+      <table style="width:50%">
+       
+        <tr>
+          <th class="text-left"> <label>Select Company:</label></th>
+          <td>
+            <div class="input-control select">
+                <select id="cmbcompany" name="cmbcompany" onchange="displayUserPermissions(this);">
+                    <option value="">Select</option>
+                    <option>Arasan Engineering Works</option>
+                </select>
+            </div>
+          </td>    
+            
+        </tr>
+   
+        <tr>
+          <th class="text-left"> <label>Select User:</label></th>
+          <td>
+            <div class="input-control select">
+                <select id="cmbuser" name="cmbuser" onchange="displayUserPermissions(this);">
+                    <option value="">Select</option>
+                    <option>Usha</option>
+                    <option>Udhayha</option>
+                </select>
+            </div>
+          </td> 
+        </tr>
+      </table><!--Table 1- Selectboxes-->  
+</form>
+<br>
+
+<div id="userrights" style="display:none;">
+
+    <table class="table" style="margin-bottom:0px;">
+      <tr class="bg-teal fg-white">
+        <th class="text-left td-module">Module</th>
+        <th class="text-left td-crud">Create</th>
+        <th class="text-left td-crud">Read</th>
+        <th class="text-left td-crud">Update</th>
+        <th class="text-left td-crud">Delete</th>
+      </tr>
+    </table>
+    <div style="border-bottom: 1px #eaeaea solid;margin-bottom: 2%;height: 50%;overflow:auto;">
+    <table class="table bordered hovered" style="margin-bottom:0px;">
+      <tr>
+        <td class="td-module"><label>Group</label></td>
+        <td class="td-crud">
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td class="td-crud">
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td class="td-crud">
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td class="td-crud">
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Ledgers</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Voucher Types</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      <tr>
+        <td><label>Inventory Info</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Stock Groups</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Stock Categories</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Stock Items</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Units of Measure</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Voucher Types</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Excise</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Excise for Dealer</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Value Added Tax</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Tax Deducted at Source</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Tax Collected at Source</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Service Tax</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Accounting Vouchers</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Inventory Vouchers</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Order Vouchers</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Import of Data</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Banking</label></td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+        <td>
+            <div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights" />
+            <span class="check"></span>    
+            </label>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Trial Balance</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Day Book</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Accounts Book</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Statements of Accounts</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Inventory Books</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Statement of Inventory</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Cash/Funds Flow</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Receipts and Payments</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>List of Accounts</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Exception Reports</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Balance Sheet</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Profit & Loss A/c</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td><label>Stock Summary</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+
+      <tr>
+        <td><label>Ratio Analysis</label></td>
+        <td>-</td>
+        <td><div class="input-control checkbox" data-role="input-control">
+            <label class="inline-block">
+            <input type="checkbox" name="userrights"  />
+            <span class="check"></span>
+            </label>
+            </div></td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+
+    </table>
+    </div> 
+    <button class="primary" style="float:right;">Save Changes</button>
+</div>
+<!--Dummy div to load modal-->
+<div id="modaldiv"></div>
+</div>

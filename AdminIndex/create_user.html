@@ -1,0 +1,67 @@
+<!--
+Author      : Yamini Sudha
+Created on  : 18-March-2014
+Page Title  : Create User
+Desc        : Gets the mail id of the user and creates a new user under the company
+Validation  : Done
+-->
+    
+<div id="createUser" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 60%; max-height: 80%"> 
+        <div class="modal-content" style="padding-left:3%;"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <label class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Map User to Company</label>
+           </div>
+
+            <!--Modal body-->
+            <div class="modal-body" align="left" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 60%;min-height: 1px;overflow: auto">
+                
+  		<form id="adduser">
+		
+		
+                    <div class="input-control text" data-role="input-control">
+                        <input id="txtemail" name="txtemail" type="text" placeholder="E-mail">
+                        <button class="btn-clear" tabindex="-1"></button>
+                    </div>
+                    
+		</form>
+            </div> 
+
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter"> 
+               <button type="button" class="primary" id="btncreate" onclick="formSubmit();">Map</button>
+               <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
+
+           </div> 
+       </div> 
+   </div>
+
+</div>
+
+<!-- Javascript placed at the end of the file to make the  page load faster -->
+
+<script type="text/javascript">
+$('#createUser').modal();
+
+//Form Validation
+function formSubmit()
+{
+	$("#adduser").validate({
+            rules:{
+                txtemail:{
+                required: true,
+                email: true
+                }
+            }
+        });
+			
+			
+        if ( $("#adduser").valid())
+        {
+                //Check if company already exists before adding
+        }
+}
+</script>
+

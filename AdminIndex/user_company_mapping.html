@@ -1,0 +1,110 @@
+<!--
+Author      : Yamini Sudha
+Created on  : 18-March-2014
+Page Title  : User Company Mapping
+Desc        : Maps a user to a company, removes user from a company, Displays users mapped to a company
+Error       : Confirm remove modal - No and close button not working when clicked 2nd time
+-->
+<style>
+    .subheader{
+        padding-right:20px; 
+        padding-left: 20px; 
+        padding-top: 10px; 
+        height: 80px; 
+        background-color: #F2F7F8;
+    }
+</style>
+<div style="height:100%;overflow: auto">
+<div class="subheader">
+    <div class="place-left"><h3>User - Company Mapping</h3></div>
+</div>
+<div style="padding-top: 2%; padding-left: 3%;height: calc(100% - 80px); height: -moz-calc(100% - 80px);height: -webkit-calc(100% - 80px);height: -o-calc(100% - 80px);">
+    
+    <div class="span12">
+
+        <label class="span3" style="font-weight: bold">Select Company:</label>
+
+        <div class="span3">
+            <div class="input-control select">
+              <select id="cmbcompany" name="cmbcompany" onchange="displayUserList();">
+                  <option value="">Select</option>
+                  <option>Company 1</option>
+              </select>
+          </div>
+        </div>
+        <div class="span3" style="float:right;">
+            <button class="primary" onclick="mapUserToCompany();">Map User to Company</button>
+        </div>
+    </div>
+
+
+    <div id="userlist" style="display:none;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-left">S.No</th>
+                    <th class="text-left">E-mail</th>
+                    <th class="text-left">Date Added</th>
+                    <td></td>
+                </tr>
+            </thead>
+        </table>
+        <div class="span12">
+            <div class="span3" style="float: right;">
+                <button class="primary" onclick="confirmRemove();">Remove From Company</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modaldiv">
+        <!--Dummy div-->
+    </div>  
+</div>
+</div>
+
+<script>
+    makeModalConfirm("confirmRemove", "Confirm Remove", "Are you sure you want to remove the selected user(s) from the company ?", "removeUser()");
+    
+    function displayUserList()
+    {
+        
+        if($('#cmbcompany').val()!=="")
+        {
+            $('#userlist').attr('style', 'display:inline !important');
+            
+        }
+        else
+        {
+            $('#userlist').attr('style', 'display:none !important');
+        }
+        
+    }
+    
+    function mapUserToCompany()
+    {
+        if($('#cmbcompany').val()!=="")
+        {
+            //Show a modal
+            $('#modaldiv').load("AdminIndex/create_user.html");
+        }
+        else
+        {
+            //company not selected
+            makeModalAlert("companyAlert", "Company Not Selected", "Please Select a company to proceed");
+            $('#companyAlert').modal();
+        }
+    }
+    
+    function confirmRemove()
+    {
+        //Confirm Delete
+        $('#confirmRemove').modal();
+    }
+    
+    function removeUser()
+    {
+        console.log("User removed from company");
+        $('#confirmRemove').modal('hide');
+    }
+    
+</script>

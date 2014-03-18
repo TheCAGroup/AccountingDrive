@@ -8,9 +8,15 @@ Description : Contains header and an empty div (ID : maindiv-content)
             
 -->
 <div style="overflow: hidden; height: 100%;">
-    <header id="myDiv" class='header' data-load="header.html"></header>
-    <div id="maindiv-content" style="height: calc(100% - 45px); height: -moz-calc(100% - 45px);height: -webkit-calc(100% - 45px);height: -o-calc(100% - 45px);"></div>
-</div>
+    <div class="container" style="height:100%;">
+        <div class="grid fluid" style="height:100%;">
+            <div class="row" style="height:100%;">
+                <header id="myDiv" class='header' data-load="header.html"></header>
+                <div id="maindiv-content" style=" background-color: #ffffff; height: calc(100% - 45px); height: -moz-calc(100% - 45px);height: -webkit-calc(100% - 45px);height: -o-calc(100% - 45px);"></div>
+                </div>
+            </div><!--Row-->
+        </div><!--Grid fluid-->
+ </div><!--Container-->            
 <script>
     //check if user s linked with a company
     //if so
