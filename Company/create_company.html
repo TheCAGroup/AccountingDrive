@@ -2,7 +2,7 @@
 Author:     Yamini Sudha
 Created on: 17-March-2014
 Page Title: Company Creation
-Desc:       Creates a comapny (Displayed inside Modal)
+Desc:       Creates a company (Displayed inside Modal)
 Validation: Done
 -->
     
@@ -154,14 +154,14 @@ Validation: Done
                         <div class="span9">
                             <div class="input-control radio margin10">
                                 <label>
-                                    <input name="rdshowinmillions" type="radio" value="true"/>
+                                    <input name="rdshowinmillions" type="radio" value="yes"/>
                                     <span class="check"></span>
                                     Yes
                                 </label>
                             </div>
                             <div class="input-control radio margin10 ">
                                 <label>
-                                    <input name="rdshowinmillions" type="radio" value="false" checked />
+                                    <input name="rdshowinmillions" type="radio" value="no" checked />
                                     <span class="check"></span>
                                     No
                                 </label>
@@ -195,59 +195,62 @@ $('#datepicker').datepicker();
 function formSubmit()
 {
 	$("#addcompany").validate({
-				rules:{
-					txtname:{
-      					required: true,
-      					minlength: 3
-    			},
-					txtpincode:{
-						required: true,
-						number: true
-					},
-					txttelephone:{
-						required: true,
-						number: true
-					},
-					txtemail:"email",
-					txtaddress:"required",
-					txtcurrencysymbol:"required",
-					txtcurrency:"required",
-					txtdecplaces:"required",
-					txtdecsymbol:"required",
-					txtdecimalplacesforprint:"required",
-				}
-				
-			});
-			
-			
-		if ( $("#addcompany").valid())
-		{
-			//Check if company already exists before adding
-		}
+                rules:{
+                        txtname:{
+                        required: true,
+                        minlength: 3
+                        },
+                        txtpincode:{
+                                required: true,
+                                number: true
+                        },
+                        txttelephone:{
+                                required: true,
+                                number: true
+                        },
+                        txtemail:"email",
+                        txtaddress:"required",
+                        txtcurrencysymbol:"required",
+                        txtcurrency:"required",
+                        txtdecplaces:"required",
+                        txtdecsymbol:"required",
+                        txtdecimalplacesforprint:"required",
+                }
+
+        });
+
+
+        if ( $("#addcompany").valid())
+        {
+                //Check if company already exists before adding
+
+                //Convert the values into JSON array
+                var formValueString = formtoJSON();
+                console.log(formValueString);
+        }
 }
-/*
+
 function formtoJSON()
 {
-	var q=JSON.stringify({
-		'name':$("input#txtname").val(),
+	var msg=JSON.stringify({
+		'name':$("#txtname").val(),
+                'alias':$("#txtalias").val(),
 		'address':$("#txtaddress").val(),
+                'city':$("#txtcity").val(),
 		'country':$("#cmbcountry").val(),
 		'state':$("#cmbstate").val(),
-		'pincode':$("input#txtpincode").val(),
-		'telephoneno':$("input#txttelephone").val(),
-		'email':$("input#txtemail").val(),
-		'currencysymbol':$("input#txtcurrencysymbol").val(),
-		'financialyear':$("input#txtfinancialyear").val(),
-		'administrator':$("#cmbadministrator").val(),
-		'currencyname':$("input#txtcurrency").val(),
-		'decimalplaces':$("input#txtdecplaces").val(),
-		'symbolfordecimal':$("input#txtdecsymbol").val(),
-		'amountsinmillions':$("input#rdshowinmillioins-0").val(),
-		'spacebtwamountandsymbol':$("input#rdspacebtwamountandsymbol-0").val(),
-		'decimalplacsforprint':$("input#txtdecimalplacesforprint").val()
+		'pincode':$("#txtpincode").val(),
+		'telephoneno':$("#txttelephone").val(),
+		'email':$("#txtemail").val(),
+		'currencysymbol':$("#txtcurrencysymbol").val(),
+		'financialyear':$("#txtfinancialyear").val(),
+		'currencyname':$("#txtcurrency").val(),
+		'decimalplaces':$("#txtdecplaces").val(),
+		'symbolfordecimal':$("#txtdecsymbol").val(),
+		'showinmillions':$("input:radio[name='rdshowinmillions']:checked").val()
 	        });
-	 return q;	
-}*/
+	 return msg;	
+}
 
 </script>
 

@@ -2,7 +2,10 @@ function openCreateLicenseDialog()
 {
         $("#modaldiv").load(home+"/License/create_license.html");
 }
-
+function openSelectPeriodDialog()
+{
+        $("#modaldiv").load(home+"/Company/select_period.html");
+}
 function gotogroups()
 {
    	$("#contentdiv").load(home+"/Masters/Groups/group.html");
@@ -31,21 +34,21 @@ function openCreateGroupDialog()
 
 function openCreateCompanyDialog()
 {
-   	$("#modaldiv").load(home+"/company/create_company.html");
+   	$("#modaldiv").load(home+"/Company/create_company.html");
 }
 
 function gotoselectcompany()
 {
-   	$("#contentdiv").load(home+"/company/select_company.html");
+   	$("#contentdiv").load(home+"/Company/select_company.html");
 }
 
 function gotoupdatecompany(selcomp)
 {
-	$("#contentdiv").load(home+"/company/create_company.html?ID="+selcomp+"&ISEDIT=TRUE");
+	$("#contentdiv").load(home+"/Company/create_company.html?ID="+selcomp+"&ISEDIT=TRUE");
 }
 function gotodisplaycompany(selcomp)
 {
-	$("#contentdiv").load(home+"/company/create_company.html?ID="+selcomp);
+	$("#contentdiv").load(home+"/Company/create_company.html?ID="+selcomp);
 }   
 function gotoHomePage()
 {

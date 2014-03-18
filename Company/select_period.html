@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+Author      : Yamini Sudha
+Created on  : 18-March-2014
+Page Title  : Select Period 
+Description : Allows user to select Start and End date (Displayed inside Modal)
+Validation  : Date validation not working
+Status      : Halfway - Set default start and end date (1-apr, 30 march)
+-->
+
+<div id="selectPeriod" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 60%;"> 
+        <div class="modal-content" style="padding-left:3%;"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <h3 class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Select Period</h3>
+           </div>
+
+            <!--Modal body-->
+           <div class="modal-body" align="center" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 60%;min-height: 1px;overflow: auto">
+
+                <form id="periodSelectionForm" class="form-horizontal">
+                <fieldset>
+                
+                    
+                    
+                    <div class="span12">
+                        <div class="span6 text-left">
+                            <label>Start Date</label>
+                        </div>
+                        <div class="span6">
+                            <div class="input-control text" id="startDatepicker" data-format="dd-mm-yyyy">
+                                <input type="text" id="txtstart" name="txtstart" placeholder="Start Date">
+                                <button type="button" class="btn-date"></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="span12">
+                        <div class="span6 text-left">
+                            <label>End Date</label>
+                        </div>
+                        <div class="span6">
+                            <div class="input-control text" id="endDatepicker" data-format="dd-mm-yyyy">
+                                <input type="text" id="txtend" name="txtend" placeholder="End Date">
+                                <button type="button" class="btn-date"></button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                </form>
+             </div> 
+
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter"> 
+                <button type="button" class="primary" id="btncreate" onclick="validate();">Save</button>
+                <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
+
+           </div> 
+       </div> 
+   </div>
+
+</div>
+        
+<script>
+    $('#selectPeriod').modal();
+    //var startdate=getFullYear(newDate());
+    console.log(startdate);
+    $('#startDatepicker').datepicker();
+    $('#endDatepicker').datepicker();
+
+    function validate()
+    {
+        $("#periodSelectionForm").validate({
+            rules:{
+                    txtstart:{
+                            required: true
+                    },
+                    txtend:{
+                            required: true
+                    }
+            }
+            
+	});
+
+            
+        if ( $("#periodSelectionForm").valid())
+        {
+           
+            var start = $("#txtstart").val();
+            var end = $("#txtend").val();
+
+        }
+
+    }
+
+</script>
+

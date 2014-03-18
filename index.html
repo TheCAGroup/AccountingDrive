@@ -5,7 +5,7 @@ Created on  : 17-March-2014
 Page Title  : Index
 Description : Contains all JS and CSS files needed.
               Database connection opened here.
-              Contains an empty div  (ID : 'maindiv')
+              Contains 2 empty div  (ID : 'maindiv','modaldiv')
             
 -->
 <html>
@@ -70,6 +70,13 @@ Description : Contains all JS and CSS files needed.
          </script>
     </head>
     <body class="metro" style="background-color:#2E4552;">
-        <div id="maindiv" style="height:100%;width:100%"></div>
+      <div class="container" style="height:100%;">
+         <div class="grid fluid" style="height:100%;">
+            <div class="row" style="height:100%;">
+                <div id="maindiv" style="height:100%;width:100%"></div>
+                <div id="modaldiv"></div> <!--Dummy div to load modal-->
+            </div><!--Row-->
+         </div><!--Grid fluid-->
+      </div><!--Container-->      
     </body>
 </html>
