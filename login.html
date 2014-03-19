@@ -2,6 +2,7 @@
 <!--
 Author      : Yamini Sudha
 Created on  : 17-March-2014
+Last Changed: 19-March-2014
 Page Title  : Login 
 Validation  : Not Yet done
 Error       : if Form tag is included page doesn't load content in maindiv
@@ -59,16 +60,27 @@ Error       : if Form tag is included page doesn't load content in maindiv
             sockjs.send(JSON.stringify({"action":"checklogin","msg": {"email":email,"password":pwd}}));
             sockjs.onmessage = function(e) {      
                 try{
-                    message=JSON.parse(e.data);
-                    console.log("action"+JSON.stringify(message));
+                    message = JSON.parse(e.data);
+                    
+                    
 
-                    console.log('data'+JSON.stringify(message.msg));
-                    var details=message.msg;
-                    console.log(details);
+                    //console.log('data'+JSON.stringify(message.msg));
+                    //var details=message.msg;
+                    //console.log(details);
 
                     if(message.status === "success")
                     {
+                        window.hascompanylicense = message.msg.userhascompanylicense; //store boolean value
+                        window.associatedcompanylist = JSON.stringify(message.msg.associatedcompanylist);
+                        
+                        console.log(window.associatedcompanylist);
+                        console.log("action"+JSON.stringify(message));
                         $('#maindiv').load('entrypage.html');
+                    }
+                    else
+                    {
+                        makeModalAlert("loginFailure", "Failed to Login !!!", message.msg);
+                        $('#loginFailure').modal();
                     }
 
                 }

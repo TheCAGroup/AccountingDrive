@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+Author      : Yamini Sudha
+Created on  : 19-March-2014
+Page Title  : Company License
+Description : Displays company license details in a datatable
+Page Status : Halfway - Backend (to be edited)
+-->
+<style>
+    .subheader{
+        padding-right:20px; 
+        padding-left: 20px; 
+        padding-top: 10px; 
+        height: 80px; 
+        background-color: #F2F7F8;
+    }
+    .td-email
+    {
+        max-width: 100px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+
+<!-- Include this for the Dropdown menus to work-->
+<script src="metro-bootstrap/js/load-metro.js"></script>
+
+<div style="height:100%; overflow: auto;">
+<div class="subheader">
+    <div class="place-left"><h3>Company License</h3></div>
+</div>
+
+<div class="example" style="margin:3%;">
+    <table id="companylist" class="table hovered dataTable">
+        <thead>
+            <tr>
+                <th class="text-left">S.No</th>
+                <th class="text-left">Company Name</th>
+                <th class="text-left">Bought On</th>
+                <th class="text-left">Expires On</th>
+                <td></td>
+            </tr>
+        </thead>
+    </table>
+</div>
+</div>
+
+
+
+<!--script>
+sockjs.onmessage = function(e) {
+
+    try{
+    message=JSON.parse(e.data);
+    //console.log("action"+message.action);
+    switch(message.action)
+            {
+            case "resp_getcompanylicense":
+
+                    console.log('data'+JSON.stringify(message.msg));
+                    var details=message.msg;
+                    console.log(details);
+                    var count=0;
+                    for(var i=0;i<details.length;i++)
+                    {
+                        for(var j=0;j<details[i].userlicense.length;j++)
+                        { 
+                            count++;
+                            var boughton=new Date(details[i].userlicense[j].boughton).format('dd-mm-yyyy');
+                            var expireson=new Date(details[i].userlicense[j].expireson).format('dd-mm-yyyy');
+
+
+                            var tbl=$("<tr><td>"+count+"</td>\n\
+                            \n\
+                            <td class='td-email'>"+details[i].email+"</td>\n\
+                            \n\
+                            <td class='td-email'>"+details[i].userlicense[j].useremail+"</td>\n\
+                            \n\
+                            <td>"+details[i].userlicense[j].price+"</td>\n\
+                            \n\
+                            <td>"+boughton+"</td>\n\
+                            \n\
+                            <td>"+expireson+"</td>\n\
+                            \n\
+                            <td>\n\
+                                <div class='button-dropdown'>\n\
+                                    <button class='dropdown-toggle default'><span class='icon-plus'></span></button>\n\
+                                    <ul class='dropdown-menu' data-role='dropdown'>\n\
+                                        <li><a href='#'>Edit</a></li>\n\
+                                        <li><a href='#' onclick='deleteUserLicense(\""+details[i]._id+"\");'>Delete</a></li>\n\
+                                    </ul>\n\
+                                </div>\n\
+                                </td></tr>");
+                            $("#companylist").append(tbl);
+                        }
+                    }
+                    $(".dataTable").dataTable();
+                    break;
+            default:
+                    break;
+            }
+        }
+        catch(e)
+        {
+        }
+    };
+
+    function license()
+    {
+    var userid='53078ed2aa4bb71e304c46b1';
+    sockjs.send(JSON.stringify({"action":"getcompanylicense","msg": {"superuserid":userid}}));
+    }
+
+    license();
+
+</script-->
+
+

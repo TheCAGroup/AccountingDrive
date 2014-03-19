@@ -6,7 +6,7 @@ function openSelectPeriodDialog()
 {
         $("#modaldiv").load(home+"/Company/select_period.html");
 }
-function gotogroups()
+function gotoGroups()
 {
    	$("#contentdiv").load(home+"/Masters/Groups/group.html");
 }
@@ -37,9 +37,14 @@ function openCreateCompanyDialog()
    	$("#modaldiv").load(home+"/Company/create_company.html");
 }
 
-function gotoselectcompany()
+function openEditCompanyDialog()
 {
-   	$("#contentdiv").load(home+"/Company/select_company.html");
+   	$("#modaldiv").load(home+"/Company/edit_company.html");
+}
+
+function openSelectCompanyDialog()
+{
+   	$("#modaldiv").load(home+"/Company/select_company.html");
 }
 
 function gotoupdatecompany(selcomp)

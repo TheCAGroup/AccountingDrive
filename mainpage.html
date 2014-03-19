@@ -2,6 +2,7 @@
 <!--
 Author      : Yamini Sudha
 Created on  : 17-March-2014
+Last Changed: 19-March-2014
 Page Title  : Mainpage 
 Description : Contains sidebar and an empty div (ID : contentdiv)
             
@@ -16,7 +17,7 @@ Description : Contains sidebar and an empty div (ID : contentdiv)
                         <li>
                                 <a class="dropdown-toggle" href="#"><i class="icon-star-4"></i>Masters</a>
                                 <ul class="dropdown-menu" data-role="dropdown">
-                                        <li><a href="#" onclick="gotogroups()">Groups</a></li>
+                                        <li><a href="#" onclick="gotoGroups()">Groups</a></li>
                                         <li><a href="#">Ledgers</a></li>
                                         <li><a href="#">Voucher Types</a></li>
                                         <li><a href="#">Stock Groups</a></li>
@@ -88,8 +89,9 @@ Description : Contains sidebar and an empty div (ID : contentdiv)
 
  <script type="text/javascript">
 
-                    $(document).ready(function() {
-                        $('#contentdiv').load('License/license.html');
-                    });
+    $(document).ready(function() {
+        //$('#contentdiv').load('License/license.html');
+    });
+    
 </script>
 

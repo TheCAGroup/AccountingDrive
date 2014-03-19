@@ -1,178 +1,80 @@
-<html lang="en">
-    <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-            <title>Select Company</title>
-    </head>
-    <body>
-            <div class="container">
-            <div class="row show-grid">
-            <div class="col-lg-8">
-                    <div class="well">
-                    <form class="form-horizontal" method="post" action="#">
-                            <fieldset>
+<!--
+Author      : Yamini Sudha
+Created on  : 19-March-2014
+Page Title  : Company Select
+Description : The companies created by the user and
+              the companies which are assigned to the user
+              are displayed in a select box. (Displayed inside Modal)
+Validation  : Done
+Page Status : Complete
+-->
+    
+<div id="selectCompany" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 60%; max-height: 80%"> 
+        <div class="modal-content" style="padding-left:3%;"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <label class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Select Company</label>
+           </div>
 
-                            <!-- Form Name -->
-                            <legend>Select Company</legend>
-                            <!-- Select Basic -->
-                            <div class="input-append">
-                              <label for="selectbasic">Select Company </label>
-                                    <select id="selectbasic" name="selectbasic" class="form-control" size="5">
-                                </select>
-                              </div>
-                            <br>
+            <!--Modal body-->
+            <div class="modal-body" align="left" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 60%;min-height: 1px;overflow: auto">
+                
+  		<form id="selectCompanyForm">
+                    <div class="span12">
+                        <div class="input-control select">
+                            <select id="cmbcompany" name="cmbcompany" >
+                                <option value="">Select Company</option>
+                            </select>
+                        </div>
+                    </div>  	
+		</form>
+            </div> 
 
-                            <!-- Button -->
-                            <div align="center">
-                                <a href="#" class="btn btn-success btn-small"  onclick="local_selectcompany();">Select</a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="#" class="btn btn-primary btn-small"  onclick="local_gotodisplaycompany();">Info</a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="#" class="btn btn-primary btn-small"  onclick="local_gotoupdatecompany();">Edit</a>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="#" class="btn btn-primary btn-small"  onclick="local_gotodeletecompany();">Delete</a>
-                                    
-                            </div>
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter">
+               <button type="button" class="primary" id="btncreate" onclick="formSubmit();">Save</button>
+                <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
 
-                            </fieldset>
-                    </form>
-            </div>
-            </div>
-            <!--div class="col-lg-4">
-                    <div class="span3 sb-fixed">
-                            <div class="well sidebar-nav">
-                                    <ul class="nav nav-pills nav-stacked">
-                                            <li><a href="#" onclick="gotocreatecompany();">Create Company</a></li>
-                                            <li><a href="#">Shut Company</a></li>
-                                            <li><a href="#">Company Info</a></li>
-                                            <li><a href="#">Features</a></li>
-                                            <li><a href="#">Configure</a></li>
-                                    </ul>   
-                            </div>
-                    </div>
-            </div-->
-            </div>
-            </div>
-            <!-- test yamini -->
-            
-            <script>
-            
-            loadcompany();
-            makeModalAlert("modalalert", "Success", "data received");
-            makeModalProgress("modalprogress", "Loading...");
-            makeModalConfirm("modalconfirmdelete", "Confirm Delete", "Are you sure you want to delete ?", 'test();')
-            
-            
-            $('#modalprogress').modal();
-            
-            function test()
-            {
-                console.log("yes clicked");
-                $('#modalconfirmdelete').modal('hide');
-            }
-            
-                    function loadcompany()
-                    {
-                            $.ajax({
-                                            type: 'GET',
-                                            url: 'http://accountingdrive.zapto.org/company',
-                                            dataType: "jsonp",
-                                            async: true,
-                                            success: function(data){
-                                                $.each(data, function(i, option) {
-                                                    $('#selectbasic').append($('<option/>').attr("value", option._id).text(option.name));
-                                                });
-                                                $('#modalprogress').modal('hide');
-                                                $('#modalconfirmdelete').modal();
-                                                
-                                    
-                                            },
-                                            error: function(jqXHR, textStatus, errorThrown){
+           </div> 
+       </div> 
+   </div>
 
-                                      //              $('#modalgeneralerror').modal();
-                                            }
-                            });
-                    }	
+</div>
+
+<!-- Javascript placed at the end of the file to make the  page load faster -->
+
+<script type="text/javascript">
+$('#selectCompany').modal();
+
+function loadCompanyList()
+{
+    $.each(JSON.parse(window.associatedcompanylist), function(index, item) { // Iterates through a collection
+        $("#cmbcompany").append($("<option></option>").text(item.companyname).val(item.companyid));
+    });
+    
+}
+loadCompanyList();
+//Form Validation
+function formSubmit()
+{
+	$("#selectCompanyForm").validate({
+                rules:{
+                        cmbcompany:{
+                        required: true
+                        }
+                }
+
+        });
 
 
-                    function local_gotoupdatecompany()
-                    {
-                            var selcomp=document.getElementById("selectbasic").value;
+        if ( $("#selectCompanyForm").valid())
+        {
+            $("#selectedCompany").html($("#cmbcompany option:selected").text());
+            window.selectedcompany = $("#cmbcompany option:selected").val();
+            $('#selectCompany').modal('hide');
+        }
+}
 
-                            if(selcomp == "")
-                            {
-                                    //$('#modalupdatecompany').modal();
-                            }
-                            else
-                            {
-                                    gotoupdatecompany(selcomp);
-                            } 
-
-                    }
-                    function local_gotodeletecompany()
-                    {
-                            var selcomp=document.getElementById("selectbasic").value;
-                            if(selcomp == "")
-                            {
-                                    //$('#modaldeletecompany').modal();
-                            }
-                            else
-                            {
-                                    //$('#modaldeleteconfirm').modal();
-                            }
-                    }
-                    function local_gotodisplaycompany()
-                    {
-                            var selcomp=document.getElementById("selectbasic").value;
-                            if(selcomp == "")
-                            {
-                                    //$('#modaldisplaycompany').modal();
-                            }
-                            else
-                            {
-                                    gotodisplaycompany(selcomp);
-                            }
-                    }
-                    function local_selectcompany()
-                    {
-
-                            var e=document.getElementById("selectbasic");
-                            var name=e.options[e.selectedIndex].text;
-                            var id = e.value;
-                            $.ajax({
-                                    type: 'GET',
-                                    url: apiurl+'company.php/selectcompany/'+id+'/'+name,
-                                    dataType: "json",
-                                    success: function(data){
-                                            if(JSON.stringify(data)=='1')
-                                            {
-                                            $("#maindiv").load("entrypage.php");
-                                            }
-                                    },
-                                    error: function(jqXHR, textStatus, errorThrown){
-                                            //$('#modalgeneralerror').modal();
-                                    }
-                            });
-
-                    }
-
-                    function deleteCompany()
-                    {
-                            var id = document.getElementById('selectbasic').value;
-                            $.ajax({
-                                    type: 'DELETE',
-                                    url: apiurl+'company.php/deletecompany/'+id,
-                                    dataType: "json",
-                                    success: function(data){
-                                           // $('#modaldeletesuccess').modal();
-                                             document.getElementById('selectbasic').options.length = 0;
-                                            loadcompany();
-                                    },
-                                    error: function(jqXHR, textStatus, errorThrown){
-
-                                           // $('#modalgeneralerror').modal();
-                                    }
-                            });
-                    }
-            </script>
-    </body>
-</html>
+</script>

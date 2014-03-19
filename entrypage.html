@@ -2,20 +2,40 @@
 <!--
 Author      : Yamini Sudha
 Created on  : 17-March-2014
+Last Changed: 19-March-2014
 Page Title  : Entrypage 
-Description : Contains header and an empty div (ID : maindiv-content)
-            
-            
+Description : Contains header and an empty div (ID : maindiv-content)           
 -->
-<div style="overflow: hidden; height: 100%;">
-    <header id="myDiv" class='header' data-load="header.html"></header>
-    <div id="maindiv-content" style=" background-color: #ffffff; height: calc(100% - 45px); height: -moz-calc(100% - 45px);height: -webkit-calc(100% - 45px);height: -o-calc(100% - 45px);"></div>
-</div>
+
+<!--To load the header as soon as the page is loaded-->
+<script src="metro-bootstrap/js/docs.js"></script>
+
+<div class="container" style="height:100%;overflow: hidden;">
+    <div class="grid fluid" style="height:100%;">
+       <div class="row" style="height:100%;">
+           <header id="myDiv" class='header' data-load="header.html"></header>
+           <div id="maindiv-content" style=" background-color: #ffffff; height: calc(100% - 45px); height: -moz-calc(100% - 45px);height: -webkit-calc(100% - 45px);height: -o-calc(100% - 45px);"></div>
+           <div id="modaldiv"></div> <!--Dummy div to load modal-->
+       </div><!--Row-->
+    </div><!--Grid fluid-->
+</div><!--Container-->      
+
       
 <script>
-    //check if user s linked with a company
+    /*
+    window.onload = function() {
+        //check if user s linked with a company
+        if(window.associatedcompanylist.length === 0)
+        {
+            $('#maindiv-content').load("Company/create_company.html");
+        }
+        else
+        {
+            $('#maindiv-content').load("Company/select_company.html");
+        }
+    };*/
     //if so
-    $('#maindiv-content').load('mainpage.html');
+    //$('#maindiv-content').load('mainpage.html');
     //if not
     //Load Company creation page
 </script>
