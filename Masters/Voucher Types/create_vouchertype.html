@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<!--
+Author      : Theyva k
+Modified by : Yamini Sudha
+Created on  : 9-Apr-2014
+Modified on : 17-Apr-2014
+Page Title  : Voucher type creation 
+Description : Creates a voucher type (Displayed inside Modal)
+Validation  : Not yet done
+Status      : 
+-->
+<style>
+    .select-box{
+        position: absolute;
+        top: 5px;
+        border: 0;
+        right: 4px;
+        height: 24px;
+    }
+</style>
+
+<div id="createVoucher" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 100%;"> 
+        <div class="modal-content" style="padding-left:3%;"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <h3 class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Voucher Type Creation</h3>
+           </div>
+
+            <!--Modal body-->
+           <div class="modal-body" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 60%;min-height: 1px;overflow: auto">
+                <form id="ledgerCreationForm" class="form-horizontal" method="post">
+                    <fieldset>
+
+                        <div class="span12" style="border: 1px solid #d9d9d9;">
+                           <div class="span9" style="padding:15px;">
+                               <div class="span12">
+                                   <div class="span3">
+                                       <label>Name</label>
+                                   </div>
+
+                                   <div class="span6" style="margin-left:2%">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtname" name="txtname" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="span12">
+                                   <div class="span3">
+                                       <label>Alias</label>
+                                   </div>
+                                   <div class="span6" style="margin-left:2%">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtalias" name="txtalias" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>   
+                        </div> 
+                        
+                        <div class="span12" style=" height: 100%;border-bottom: 1px solid #d9d9d9;border-left: 1px solid #d9d9d9;border-right: 1px solid #d9d9d9;">
+                          <div class="span5" style="height:100%;border-right: 1px solid #d9d9d9;  padding:15px;">
+                            <center><label class="span12"><u>General</u></label></center>
+                            <div class="span12">
+                                <div class="span6">
+                                    <label>Type of Voucher:</label>
+                                </div>
+                                <div class="span6" style="margin-left:2%">
+                                   <div class="input-control select">
+                                        <select id="cmbunder" name="cmbunder"  class="span12" >
+                                            <option value="">Select Group</option>
+                                            <option>Automatic</option>
+                                            <option>Manual</option>
+                                            <option>Multi-user Auto</option>
+                                            <option>None</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span12">
+                                <div class="span6">
+                                    <label>Abbr:</label>
+                                </div>
+                                <div class="span6" style="margin-left:2%">
+                                    <div class="input-control text" data-role="input-control">
+                                        <input id="txtalias" name="txtalias" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="span12">
+                                <hr><!--Separator-->
+                            </div>
+                            <div class="span12">
+                                <label class="span6" style="margin-top: 1.5rem">Method of Voucher Numbering:</label>
+                                <div class="span6">
+                                    <div class="input-control radio margin10">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="yes"/>
+                                            <span class="check"></span>
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="input-control radio margin10 ">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="no" checked />
+                                            <span class="check"></span>
+                                            No
+                                        </label>
+                                    </div>
+                                </div>    
+                            </div> 
+
+                            <div class="span12">
+                                <label class="span6" style="margin-top: 1.5rem">Use Advance Configuration:</label>
+                                <div class="span6">
+                                    <div class="input-control radio margin10">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="yes"/>
+                                            <span class="check"></span>
+                                            Yes
+                                        </label>
+                                    </div>
+
+                                    <div class="input-control radio margin10 ">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="no" checked />
+                                            <span class="check"></span>
+                                            No
+                                        </label>
+                                    </div>
+                                </div>    
+                            </div> 
+
+                            <div class="span12">
+                                <hr><!--Separator-->
+                            </div>
+
+                            <div class="span12">
+                                <label class="span6" style="margin-top: 1.5rem">Use Effective Dates for Vouchers</label>
+                                <div class="span6">
+                                    <div class="input-control radio margin10">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="yes"/>
+                                            <span class="check"></span>
+                                            Yes
+                                        </label>
+                                    </div>
+
+                                    <div class="input-control radio margin10 ">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="no" checked />
+                                            <span class="check"></span>
+                                            No
+                                        </label>
+                                    </div>
+                                </div>    
+                            </div> 
+
+                            <div class="span12">
+                                <label class="span6" style="margin-top: 1.5rem">Make 'optional' as default:</label>
+                                <div class="span6">
+                                    <div class="input-control radio margin10">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="yes"/>
+                                            <span class="check"></span>
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="input-control radio margin10 ">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="no" checked />
+                                            <span class="check"></span>
+                                            No
+                                        </label>
+                                    </div>
+                                </div>    
+                            </div> 
+                            <div class="span12">
+                                <label class="span6" style="margin-top: 1.5rem">Use Common Narration:</label>
+                                <div class="span6">
+                                    <div class="input-control radio margin10">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="yes"/>
+                                            <span class="check"></span>
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="input-control radio margin10 ">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="no" checked />
+                                            <span class="check"></span>
+                                            No
+                                        </label>
+                                    </div>
+                                </div>    
+                            </div> 
+                            <div class="span12">
+                                <label class="span6" style="margin-top: 1.5rem">Narrations for Each Entry:</label>
+                                <div class="span6">
+                                    <div class="input-control radio margin10">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="yes"/>
+                                            <span class="check"></span>
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="input-control radio margin10 ">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="no" checked />
+                                            <span class="check"></span>
+                                            No
+                                        </label>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                        <div class="span5" style="height:100%;border-right: 1px solid #d9d9d9;  padding:15px;">
+                            <center><label class="span12"><u>Printing</u></label></center>
+                            <div class="span12">
+                                <label class="span6" style="margin-top: 1.5rem">Print after Saving Voucher:</label>
+                                <div class="span6">
+                                    <div class="input-control radio margin10">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="yes"/>
+                                            <span class="check"></span>
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="input-control radio margin10 ">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="no" checked />
+                                            <span class="check"></span>
+                                            No
+                                        </label>
+                                    </div>
+                                </div>    
+                            </div> 
+                            <div class="span12">
+                                <label class="span6" style="margin-top: 1.5rem">Use for POS Invoicing:</label>
+                                <div class="span6">
+                                    <div class="input-control radio margin10">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="yes"/>
+                                            <span class="check"></span>
+                                            Yes
+                                        </label>
+                                    </div>
+                                    <div class="input-control radio margin10 ">
+                                        <label>
+                                            <input name="rdsubledger" type="radio" value="no" checked />
+                                            <span class="check"></span>
+                                            No
+                                        </label>
+                                    </div>
+                                </div>    
+                            </div> 
+                            <div class="span12">
+                                <label class="span6">Default Print Title:</label>
+                                <div class="span6" style="margin-left:2%">
+                                    <div class="input-control text" data-role="input-control">
+                                        <input id="txtalias" name="txtalias" type="text">
+                                        <button class="btn-clear" tabindex="-1"></button>
+                                    </div>
+                                </div>
+                                  
+                                <label class="span6">Default Jurisdiction:</label>
+                                <div class="span6" style="margin-left:2%">
+                                    <div class="input-control text" data-role="input-control">
+                                        <input id="txtalias" name="txtalias" type="text">
+                                        <button class="btn-clear" tabindex="-1"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="span12"><u>Declarations</u></label>
+                            <div class="span12">
+                                <label>We declare that the goods sold under this invoice are under our registration certificate and the transactions effected by us are accounted for turnover.</label>
+                            </div>
+                        </div>
+                        
+                        <div style="height:100%;padding:5px;">
+                            <center><label><u>Name of Class</u></label></center>
+                        </div> 
+                      </div>   
+                    </fieldset>
+                </form>
+
+           </div> 
+
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter"> 
+                <button type="button" id="btnsave" onclick="validate(this.id);" class="primary">Save</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
+           </div>
+        </div>
+   </div>
+</div>
+<script>
+    $('#createVoucher').modal();
+    $('#txtname').focus();
+    
+    
+</script>
+

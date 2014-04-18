@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!--
+Author      : Yamini Sudha
+Created on  : 18-Apr-2014
+Page Title  : Accounting Features 
+Description : 
+Status      : Page design completed. Element naming not done
+-->
+
+<div id="accFeatures" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 100%;"> 
+        <div class="modal-content" style="padding-left:3%;"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <h3 class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Accounting Features</h3>
+           </div>
+
+            <!--Modal body-->
+           <div class="modal-body" id="mbody" style="max-height: 60%;min-height: 1px;overflow: auto">
+                <form id="accFeaturesForm" class="form-horizontal" method="post">
+                    <fieldset>
+                        <div class="span12" style=" font-size: x-small">
+                            <div class="span6">
+                                    <label class="span12" style="font-weight:bold"><u>General</u></label>
+                                    
+                                    <div class="span12" style="margin-top: 1%;">                                  
+                                        <label class="span9" style="padding-left:2%;">Integrate Accounts and Inventory ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes" selected>Yes</option>
+                                                     <option value="no">No</option>
+                                                 </select>
+                                             </div>
+                                        </div>    
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Income/Expense statement instead of P & L ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>       
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Allow Multi-Currency ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>    
+                                    </div>
+                                    
+                                    <label class="span12" style="font-weight:bold;"><u>Outstandings Management</u></label>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Maintain Bill-wise Details ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes" selected>Yes</option>
+                                                     <option value="no">No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                               
+                                        <label class="span9" style="padding-left:6%;">(for Non-Trading A/Cs also) ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Activate Interest Calculation ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>    
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:6%;">(use advanced parameters) ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <label class="span12" style="font-weight:bold;"><u>Cost/Profit Centres Management</u></label>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Maintain Payroll ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Maintain Cost Centres ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                               
+                                        <label class="span9" style="padding-left:6%;">Use Cost Centre for Job Costing ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                               
+                                        <label class="span9" style="padding-left:6%;">More than ONE Payroll / Cost Category ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                               
+                                        <label class="span9" style="padding-left:6%;">Use Pre-defined Cost Centre Allocations during Entry ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                               
+                                        <label class="span9" style="padding-left:6%;">Show Opening Balance for Revenue Items in Reports ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    
+                                    
+                            </div>
+                            
+                            <div class="span6" style="padding-left:3%;">
+                                    
+                                    <label class="span12" style="font-weight:bold;"><u>Invoicing</u></label>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Allow Invoicing ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes" selected>Yes</option>
+                                                     <option value="no">No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                               
+                                        <label class="span9" style="padding-left:6%;">Enter Purchases in Invoice Format ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes" selected>Yes</option>
+                                                     <option value="no">No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Use Debit/Credit Notes ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes" >Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                               
+                                        <label class="span9" style="padding-left:6%;">Use Invoice Mode for Credit Notes ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes" >Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                               
+                                        <label class="span9" style="padding-left:6%;">Use Invoice Mode for Debit Notes ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes" >Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <label class="span12" style="font-weight:bold;"><u>Budgets & Scenario Management</u></label>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Maintain Budgets and Controls ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Use Reversing Journals & Optional Vouchers ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <label class="span12" style="font-weight:bold;"><u>Banking Features</u></label>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Enable Cheque Printing ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes" selected>Yes</option>
+                                                     <option value="no">No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">
+                                        <label class="span9" style="padding-left:6%;">(Use Banking Configuration in Bank Ledger Master for Cheque Printing Configuration)</label>
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Alter Banking Features ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <label class="span12" style="font-weight:bold;"><u>Other Features</u></label>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Allow Zero Valued Entries in Vouchers ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Maintain Multiple Mailing Details for Company & Ledgers ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:6%;">Set/Alter Company Mailing Details ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                                    <div class="span12">                                  
+                                        <label class="span9" style="padding-left:2%;">Enable Company Logo ?</label>
+                                        <div class="span3 text-right" style="padding-right:3%;">
+                                            <div class="input-control select" style="width:60px;">
+                                                 <select id="cmbunder" name="cmbunder" style="height:18px;padding: 0px;">
+                                                     <option value="yes">Yes</option>
+                                                     <option value="no" selected>No</option>
+                                                 </select>
+                                             </div>
+                                        </div>     
+                                    </div>
+                                    
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+           </div> 
+
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter"> 
+                <button type="button" id="btnsave" onclick="" class="primary">Save</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
+           </div>
+
+   </div>
+   
+
+</div>
+</div>
+<script>
+    $('#accFeatures').modal();
+    $('#txtname').focus();
+
+</script>
+

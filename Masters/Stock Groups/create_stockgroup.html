@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+Author      : Yamini Sudha
+Created on  : 18-Apr-2014
+Page Title  : Stock Group Creation 
+Description : Creates single stock group (Displayed inside Modal)
+Validation  : Done
+-->
+
+<div id="createStockGroup" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 60%;"> 
+        <div class="modal-content" style="padding-left:3%;"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <h3 class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Stock Group Creation</h3>
+           </div>
+
+            <!--Modal body-->
+           <div class="modal-body" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 60%;min-height: 1px;overflow: auto">
+                <form id="stockGroupCreationForm" class="form-horizontal" method="post">
+                    <fieldset>
+
+                    
+                    <div class="span12">
+                        <label class="span4">Name</label>
+                        <div class="span8">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtname" name="txtname" type="text">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span12">
+                        <label class="span4">Alias</label>
+                        <div class="span8">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtalias" name="txtalias" type="text">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span12">
+                        <label class="span4">Under</label>
+                        <div class="span8">
+                            <div class="input-control select">
+                                <select id="cmbunder" name="cmbunder" >
+                                    <option value="">Select Group</option>
+                                    <option>Group1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="span12">
+                        <label class="span8" style="margin-top: 1.5rem">Can Quantities of items be ADDED ?</label>
+                        <div class="span4">
+                            <div class="input-control radio margin10">
+                                <label>
+                                    <input name="rdqtyadd" type="radio" value="yes"/>
+                                    <span class="check"></span>
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="input-control radio margin10 ">
+                                <label>
+                                    <input name="rdqtyadd" type="radio" value="no" checked />
+                                    <span class="check"></span>
+                                    No
+                                </label>
+                            </div>
+                        </div>    
+                    </div>
+
+                    </fieldset>
+                </form>
+
+           </div> 
+
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter"> 
+               <div class="span4" align="left">
+                   <button type="button" id="btnsave" onclick="validate(this.id);" class="primary">Save and Exit</button>
+               </div>
+               <div class="span8">
+                   <button type="button" id="btncreate" onclick="validate(this.id);" class="primary">Save and Create New</button>
+                   <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
+               </div>
+                
+                
+
+           </div> 
+       </div> 
+   </div>
+
+</div>
+
+<script>
+    $('#createStockGroup').modal();
+    $('#txtname').focus();
+
+    function validate(btnID)
+    {
+        var name=$('#txtname').val();
+        var alias=$('#txtalias').val();
+        var under=$('#cmbunder').val();
+        
+        var qty_add=$("input:radio[name='rdqtyadd']:checked").val();
+        
+        
+        $("#stockGroupCreationForm").validate({
+                rules:{
+                        txtname:{
+                        required: true,
+                        minlength: 3
+                        },
+                        cmbunder:{
+                          required:true  
+                        },
+                }
+
+        });
+					
+	if ( $("#stockGroupCreationForm").valid())
+	{
+            //Save form
+            
+            //End Save
+            
+            if(btnID === "btncreate")
+            {
+                //Clear Form & Continue
+                $('#stockGroupCreationForm')[0].reset();
+            }
+            else
+            {
+                //Exit
+                $('#createStockGroup').modal('hide');
+            }
+        }
+    }
+
+</script>
+

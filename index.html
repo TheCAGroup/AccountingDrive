@@ -46,32 +46,35 @@ Description : Contains all JS and CSS files needed.
 
         <!--Custom JS-->
         <script src="js/navigation.js"></script>
+        <script src="js/cookie.js"></script>
         <script type="text/javascript" src="js/dynamic_modal.js"></script>
         
         
         <!--Socket-->
-        <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+        <!--script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script-->
         <script>
+            /*
                 var sockjs_url = 'http://localhost:9999/trial';
                 var sockjs = new SockJS(sockjs_url);
                 sockjs.onopen    = function()  {
                     console.log('[*] open '+sockjs.protocol);
-                    $("#maindiv").load("login.html");
+                    //$("#maindiv").load("login.html");
                 };
                 
                 sockjs.onclose   = function()  {
                     console.log('[*] close');
-                    $("#maindiv").load("login.html");
+                    //$("#maindiv").load("login.html");
                 };
-                
+              */  
                 $(document).ready(function() {
-                    //$('#maindiv').load('entrypage.html');
+                    $('#maindiv').load('entrypage.html');
                 });
                    
                 //Global variables
                 var hascompanylicense = false;
                 var associatedcompanylist = new Array();
                 var selectedcompany = "";
+               
          </script>
     </head>
     <body class="metro" style="background-color:#2E4552;">

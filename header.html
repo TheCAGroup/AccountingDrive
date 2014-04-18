@@ -2,10 +2,10 @@
 <!--
 Author      : Yamini Sudha
 Created on  : 17-March-2014
-Last Changed: 19-March-2014
+Modified on : 7-Apr-2014
 Page Title  : Header 
 Description : Contains the main header
-        
+Last change : id="selectedPeriod" added to div        
 -->
 <script>
     
@@ -47,15 +47,17 @@ else
                     </li>
                     <li>
                         <a class="element" href="#" onclick="openSelectPeriodDialog();">
-                            1-Apr-13 to 30-Mar-14
+                            <div id="selectedPeriod">1-Apr-13 to 30-Mar-14</div>
                         </a>
                     </li>
                     <li class="element place-right" style="padding: 0">
                       <a class="dropdown-toggle" href="#"><span class="icon-cog"></span></a>
 				<ul class="dropdown-menu place-right" data-role="dropdown">
-					<li><a href="#">Edit Profile</a></li>
-					<li><a href="#">Settings</a></li>
-					<li><a href="#">Logout</a></li>
+                                    <li><a href="#" onclick="openAccountingFeaturesDialog()">Accounting Features</a></li>
+                                    <li><a href="#" onclick="openMasterConfigurationDialog()">Master Configuration</a></li>
+                                    <li><a href="#">Edit Profile</a></li>
+                                    <li><a href="#">Settings</a></li>
+                                    <li><a href="#">Logout</a></li>
                                 </ul>
 				<!--a class="dropdown-toggle" href="#">
 					<span class="icon-cog"></span>

@@ -11,6 +11,26 @@ function gotoGroups()
    	$("#contentdiv").load(home+"/Masters/Groups/group.html");
 }
 
+function gotoLedgers()
+{
+   	$("#contentdiv").load(home+"/Masters/Ledger/ledger.html");
+}
+
+function gotoVoucherTypes()
+{
+   	$("#contentdiv").load(home+"/Masters/Voucher%20Types/vouchertype.html");
+}
+
+function gotoStockGroups()
+{
+   	$("#contentdiv").load(home+"/Masters/Stock%20Groups/stockgroup.html");
+}
+
+function gotoStockCategories()
+{
+   	$("#contentdiv").load(home+"/Masters/Stock%20Categories/stockcategory.html");
+}
+
 function gotoUserCompanyMapping()
 {
         $("#maindiv-content").load(home+"/AdminIndex/user_company_mapping.html");
@@ -31,6 +51,39 @@ function openCreateGroupDialog()
 {
         $("#modaldiv").load(home+"/Masters/Groups/create_group.html");
 }
+
+function openCreateLedgerDialog()
+{
+        $("#modaldiv").load(home+"/Masters/Ledger/create_ledger.html");
+}
+
+function openCreateVoucherTypeDialog()
+{
+        $("#modaldiv").load(home+"/Masters/Voucher%20Types/create_vouchertype.html");
+}
+
+function openCreateStockGroupDialog()
+{
+        $("#modaldiv").load(home+"/Masters/Stock%20Groups/create_stockgroup.html");
+}
+
+
+
+function openCreateStockCategoryDialog()
+{
+        $("#modaldiv").load(home+"/Masters/Stock%20Categories/create_stockcategory.html");
+}
+
+function openAccountingFeaturesDialog()
+{
+        $("#modaldiv").load(home+"/Masters/accounting_features.html");
+}
+
+function openMasterConfigurationDialog()
+{
+        $("#modaldiv").load(home+"/Masters/master_configuration.html");
+}
+
 
 function openCreateCompanyDialog()
 {

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!--
+Author      : Yamini Sudha
+Created on  : 8-Apr-2014
+Page Title  : Ledger Creation 
+Description : Creates single ledger in advanced mode (Displayed inside Modal)
+Validation  : Not completed
+Status      : halfway - Name of controls shud be changed
+-->
+<style>
+    .select-box{
+        position: absolute;
+        top: 5px;
+        border: 0;
+        right: 4px;
+        height: 24px;
+    }
+</style>
+
+<div id="createLedger" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 100%;"> 
+        <div class="modal-content" style="padding-left:3%;"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <h3 class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Ledger Creation</h3>
+           </div>
+
+            <!--Modal body-->
+           <div class="modal-body" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 60%;min-height: 1px;overflow: auto">
+                <form id="ledgerCreationForm" class="form-horizontal" method="post">
+                    <fieldset>
+
+                        <div class="span12" style="border: 1px solid #d9d9d9;">
+                           <div class="span9" style="height:150px;border-right: 1px solid #d9d9d9; padding:15px;">
+                               <div class="span12">
+                                   <div class="span3">
+                                       <label>Name</label>
+                                   </div>
+
+                                   <div class="span6" style="margin-left:2%">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtname" name="txtname" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="span12" style="margin-top:10px;">
+                                   <div class="span3">
+                                       <label>Alias</label>
+                                   </div>
+                                   <div class="span6" style="margin-left:2%">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtalias" name="txtalias" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                            <div class="span3" style="height:150px; padding-left: 10px;padding-right: 10px;">
+                               <center><label class="span12"><u>Total Op Balance</u></label></center>
+                               <label id="val1" class="span12 text-right">100000</label>
+                               <label id="val2" class="span12 text-right"></label>
+                               <center><label class="span12" style="border-bottom:1px solid black;"><i>Difference</i></label></center>
+                               <label id="diff" class="span12 text-right"></label>
+                           </div>
+                        </div>
+                        <div class="span12" style="border-bottom: 1px solid #d9d9d9;border-left: 1px solid #d9d9d9;border-right: 1px solid #d9d9d9;">
+                            <div class="span6" style="padding: 15px;">
+                                <div class="span12">
+                                    <div class="span4">
+                                        <label>Under</label>
+                                    </div>
+                                    <div class="span8" style="margin-left:2%">
+                                        <div class="input-control select">
+                                            <select id="cmbunder" name="cmbunder" onchange="additionalDetails()">
+                                                <option>Capital Account</option>
+                                                <option>Indirect Expenses</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="span12">
+                                    <div class="span4">
+                                        <label>Op. bal. on date:</label>
+                                    </div>
+                                    <div class="span8" style="margin-left: 2%;">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input type="text" id="opbal" name="opbal" onkeypress="return onlyNos(event,this);" onKeyup="calcBalance()"> 
+                                           <select id="cmbdrcr" name="cmbdrcr" class="select-box" tabindex="-1" >
+                                                <option value="cr">Cr</option>
+                                                <option value="dr">Dr</option>
+                                            </select>
+                                        
+                                       </div>  
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="additionalDetails" class="span6" style="border-left: 1px solid #d9d9d9; padding-left: 10px;">
+                                <center><label class="span12"><u>Mailing Details</u></label></center>
+                                <div class="span12">
+                                    <label class="span6">
+                                        Name
+                                    </label>
+                                    <div class="span6">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtmailingname" name="txtmailingname" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="span12">
+                                    <label class="span6">
+                                        Address
+                                    </label>
+                                    <div class="span6">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtmailingname" name="txtmailingname" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="span12">
+                                    <label class="span6">
+                                        State
+                                    </label>
+                                    <div class="span6">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtmailingname" name="txtmailingname" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="span12">
+                                    <label class="span6">
+                                        PIN Code
+                                    </label>
+                                    <div class="span6">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtmailingname" name="txtmailingname" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="span12">
+                                    <label class="span6">
+                                        Provide Bank Details
+                                    </label>
+                                    <div class="span6">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtmailingname" name="txtmailingname" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                    </div>
+                                </div>
+                            
+                            
+                            
+                            <center><label class="span12"><u>Tax Information</u></label></center>
+                                <div class="span12">
+                                    <label class="span6">
+                                        PAN / IT No.
+                                    </label>
+                                    <div class="span6">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtmailingname" name="txtmailingname" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="span12">
+                                    <label class="span6">
+                                        Sales Tax No.
+                                    </label>
+                                    <div class="span6">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtmailingname" name="txtmailingname" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="span12">
+                                    <label class="span6">
+                                        CST No.
+                                    </label>
+                                    <div class="span6">
+                                       <div class="input-control text" data-role="input-control">
+                                           <input id="txtmailingname" name="txtmailingname" type="text">
+                                           <button class="btn-clear" tabindex="-1"></button>
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+
+           </div> 
+
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter"> 
+                <button type="button" id="btnsave" onclick="validate(this.id);" class="primary">Save</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
+           </div>
+        </div>
+   </div>
+</div>
+    
+<script>
+    $('#createLedger').modal();
+    $('#txtname').focus();
+    
+    function additionalDetails()
+    {
+        if($('#cmbunder').val()==="Capital Account")
+        {
+            $('#additionalDetails').attr('style', 'border-left: 1px solid #d9d9d9; padding-left: 10px;display:inline !important');
+            
+        }
+        else
+        {
+            $('#additionalDetails').attr('style', 'display:none !important');
+        }
+    }
+
+    function validate(btnID)
+    {
+        var name=$('#txtname').val();
+        var alias=$('#txtalias').val();
+        var under=$('#cmbunder').val();
+        
+        $("#ledgerCreationForm").validate({
+                rules:{
+                        txtname:{
+                        required: true,
+                        minlength: 3
+                        },
+                        cmbunder:{
+                          required:true  
+                        },
+                }
+
+        });
+					
+	if ( $("#ledgerCreationForm").valid())
+	{
+            //Save form
+            
+            //End Save
+            
+            $('#createLedger').modal('hide');
+            
+        }
+    }
+    
+    
+    //calc total opening balance
+    function calcBalance()
+    {
+        $('#val2').html($('#opbal').val());
+        $('#diff').html((parseInt($('#val1').html())-parseInt($('#val2').html())));
+    }
+
+    //accept only numbers
+    function onlyNos(e, t) 
+    {
+        try {
+            if (window.event) {
+                var charCode = window.event.keyCode;
+            }
+            else if (e) {
+                var charCode = e.which;
+            }
+            else { return true; }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+        catch (err) {
+            alert(err.Description);
+        }
+    }
+
+</script>
+

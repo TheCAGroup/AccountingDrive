@@ -188,13 +188,15 @@ Page Status : Database connection completed. Not yet checked.
 <!-- Javascript placed at the end of the file to make the  page load faster -->
 
 <script type="text/javascript">
-  /*  
+  /*
     //check if user has unused company license
     $( document ).ready(function() {
  
     sockjs.send(JSON.stringify({"action":"hasunusedcompanylicense"}));
     sockjs.onmessage = function(e) {
         message=JSON.parse(e.data);
+        console.log(message);
+        /*
         if(message.status === "yes")
         {
             $('#createCompany').modal();
@@ -204,12 +206,12 @@ Page Status : Database connection completed. Not yet checked.
         {
             makeModalAlert("noLicenseError", "Cannot Create Company", "Your don't have license to create a new Company. Please contact your vendor");
             $('#noLicenseError').modal();
-        }
-    };
+        }*/
+/*    };
  
     });
-
 */
+
  $('#createCompany').modal();
  $('#datepicker').datepicker();//Datepicker
 
