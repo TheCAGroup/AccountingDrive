@@ -31,6 +31,11 @@ function gotoStockCategories()
    	$("#contentdiv").load(home+"/Masters/Stock%20Categories/stockcategory.html");
 }
 
+function gotoUnitsOfMeasure()
+{
+   	$("#contentdiv").load(home+"/Masters/Units%20of%20Measurement/units.html");
+}
+
 function gotoUserCompanyMapping()
 {
         $("#maindiv-content").load(home+"/AdminIndex/user_company_mapping.html");
@@ -67,11 +72,19 @@ function openCreateStockGroupDialog()
         $("#modaldiv").load(home+"/Masters/Stock%20Groups/create_stockgroup.html");
 }
 
-
-
 function openCreateStockCategoryDialog()
 {
         $("#modaldiv").load(home+"/Masters/Stock%20Categories/create_stockcategory.html");
+}
+
+function openCreateUnitDialog()
+{
+        $("#modaldiv").load(home+"/Masters/Units%20of%20Measurement/create_unit.html");
+}
+
+function openCreateGodownDialog()
+{
+        $("#modaldiv").load(home+"/Masters/Godown/create_godown.html");
 }
 
 function openAccountingFeaturesDialog()

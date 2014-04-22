@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!--
+Author      : Yamini Sudha
+Created on  : 22-Apr-2014
+Page Title  : Units Of Measure Creation 
+Description : Creates simple and compound unit (Displayed inside Modal)
+Validation  : Done
+-->
+
+<div id="createUnit" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 60%;"> 
+        <div class="modal-content" style="padding-left:3%;"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <h3 class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Unit Creation</h3>
+           </div>
+
+            <!--Modal body-->
+           <div class="modal-body" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 50%;min-height: 1px;overflow: auto">
+                <form id="unitCreationForm" class="form-horizontal" method="post">
+                    <fieldset>
+
+                        <div class="span12">
+                            <label class="span4">Type :</label>
+                            <div class="span8">
+                                <div class="input-control select">
+                                    <select id="cmbtype" name="cmbtype" onchange="switchtype();">
+                                        <option value="s">Simple</option>
+                                        <option value="c">Compound</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="simple">    
+                            <div class="span12">
+                                <label class="span4">Symbol :</label>
+                                <div class="span8">
+                                    <div class="input-control text" data-role="input-control">
+                                        <input id="txtsymbol" name="txtsymbol" type="text">
+                                        <button class="btn-clear" tabindex="-1"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span12">
+                                <label class="span4">Formal Name :</label>
+                                <div class="span8">
+                                    <div class="input-control text" data-role="input-control">
+                                        <input id="txtname" name="txtname" type="text">
+                                        <button class="btn-clear" tabindex="-1"></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="span12">
+                                <label class="span4">Number of Decimal Places :</label>
+                                <div class="span8">
+                                    <div class="input-control text" data-role="input-control">
+                                        <input id="txtdec" name="txtdec" type="text">
+                                        <button class="btn-clear" tabindex="-1"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="compound" style="display: none">
+                            <center><label class="span12" style="font-weight: bold; margin-top: 2%;"><u>Units with Multiplier Factors</u></label></center>
+                            <center><label class="span12" style="font-style: italic">(example: Kgs of 1000 gms)</label></center>
+                            
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <i>First Unit</i>
+                                    </td>
+                                    <td></td>
+                                    <td>
+                                        <i>Conversion</i>
+                                    </td>
+                                    <td>
+                                        <i>Second Unit</i>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>
+                                        <div class="input-control select">
+                                            <select id="cmbunit1" name="cmbunit1" >
+                                                <option>unit</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>of</td>
+                                    <td>
+                                        <div class="input-control text" data-role="input-control">
+                                            <input id="txtconversion" name="txtconversion" type="text">
+                                            <button class="btn-clear" tabindex="-1"></button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-control select">
+                                            <select id="cmbunit2" name="cmbunit2" >
+                                                <option>unit</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                   
+                    </fieldset>
+                </form>
+
+           </div> 
+
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter"> 
+                <button type="button" id="btnsave" onclick="validate();" class="primary">Save</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
+           </div> 
+       </div> 
+   </div>
+
+</div>
+
+<script>
+    $('#createUnit').modal();
+    
+    
+    function switchtype()
+    {
+        if($('#cmbtype').val()==="c") //c-compound
+        {
+            $('#simple').attr('style', 'display:none !important');
+            $('#compound').attr('style', 'display:inline !important');
+            
+        }
+        else
+        {
+            $('#simple').attr('style', 'display:inline !important');
+            $('#compound').attr('style', 'display:none !important');
+        }
+    }
+
+    function validate()
+    {
+        var type=$('#cmbtype').val();
+        
+        if (type === 's') //s - simple
+        {
+            var fname=$('#txtname').val();
+            var symbol=$('#txtsymbol').val();
+            
+            $("#unitCreationForm").validate({
+                rules:{
+                        txtname:{
+                        required: true,
+                        minlength: 3
+                        },
+                        txtsymbol:{
+                          required:true  
+                        },
+                }
+
+            });
+            
+            
+        }
+        else
+        {
+            var unit1=$('#cmbunit1').val();
+            var unit2=$('#cmbunit2').val();
+            var conversion=$('#txtconversion').val();
+            
+            $("#unitCreationForm").validate({
+                rules:{
+                        cmbunit1:{
+                        required: true
+                        },
+                        cmbunit2:{
+                          required:true  
+                        },
+                        txtconversion:{
+                          required:true  
+                        },
+                }
+
+            });
+        }
+					
+	if ( $("#unitCreationForm").valid())
+	{
+            //Save form
+            if (type === 's') //s - simple
+            {
+                
+            }
+            else
+            {
+                
+            }
+            
+            //Exit
+            $('#createUnit').modal('hide');
+            
+        }
+    }
+
+</script>
+

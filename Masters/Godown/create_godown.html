@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--
+Author      : Yamini Sudha
+Created on  : 22-Apr-2014
+Page Title  : Godown Creation 
+Description : Creates a godown/location (Displayed inside Modal)
+Validation  : halfway
+-->
+
+<div id="createGodown" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog" style="width: 60%;"> 
+        <div class="modal-content" style="padding-left:3%;"> 
+           <!--Modal header-->
+           <div class="modal-header"> 
+               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
+               <h3 class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Godown Creation</h3>
+           </div>
+
+            <!--Modal body-->
+           <div class="modal-body" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 50%;min-height: 1px;overflow: auto">
+                <form id="godownCreationForm" class="form-horizontal" method="post">
+                    <fieldset>
+
+                        <div class="span12">
+                            <label class="span4">Name</label>
+                            <div class="span8">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtname" name="txtname" type="text">
+                                    <button class="btn-clear" tabindex="-1"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="span12">
+                            <label class="span4" style="font-style: italic">(alias)</label>
+                            <div class="span8">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtalias" name="txtalias" type="text">
+                                    <button class="btn-clear" tabindex="-1"></button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="address" style="display: none">
+                            <div class="span12">
+                                <label class="span4">Address</label>
+                                <div class="span8">
+                                    <div class="input-control textarea">
+                                        <textarea id="taaddress" name="taaddress" rows="3">...</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="span12">
+                            <label class="span4">Under</label>
+                            <div class="span8">
+                                <div class="input-control select">
+                                    <select id="cmbunder" name="cmbunder" >
+                                        <option value="">Select Godown/Location</option>
+                                        <option>Godown1</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="span12">
+                            <hr>
+                        </div>
+                        
+                        <div id="storage" style="display:none;">
+                            <div class="span12">
+                                <label class="span8" style="margin-top: 1.5rem">Allow Storage of Materials ?</label>
+                                <div class="span4">
+                                    <div class="input-control select">
+                                        <select id="cmballowstorage" name="cmballowstorage" >
+                                            <option value="yes" selected>Yes</option>
+                                            <option value="no">No</option>
+                                        </select>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                        
+                        <label class="span12" style="font-weight: bold"><u>Use for:</u></label>
+                        <div class="span12">
+                            <label class="span8" style="margin-top: 1.5rem">Our Stock with Third Party ?</label>
+                            <div class="span4">
+                                <div class="input-control select">
+                                    <select id="cmbwiththird" name="cmbwiththird" >
+                                        <option value="yes">Yes</option>
+                                        <option value="no" selected>No</option>
+                                    </select>
+                                </div>
+                            </div>    
+                        </div>
+                        
+                        <div class="span12">
+                            <label class="span8" style="margin-top: 1.5rem">Third Party Stock with us ?</label>
+                            <div class="span4">
+                                <div class="input-control select">
+                                    <select id="cmbwithus" name="cmbwithus" >
+                                        <option value="yes">Yes</option>
+                                        <option value="no" selected>No</option>
+                                    </select>
+                                </div>
+                            </div>    
+                        </div>
+                   
+                    </fieldset>
+                </form>
+
+           </div> 
+
+            <!--Modal footer-->
+           <div class="modal-footer" id="mfooter"> 
+                <button type="button" id="btnsave" onclick="validate();" class="primary">Save</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
+           </div> 
+       </div> 
+   </div>
+
+</div>
+
+<script>
+    $('#createGodown').modal();
+    
+    
+   // $('#address').attr('style', 'display:inline !important');
+   // $('#storage').attr('style', 'display:inline !important');
+    
+    function validate()
+    {
+        var name=$('#txtname').val();
+        var alias=$('#txtalias').val();
+        var withthirdparty=$('#cmbwiththird').val();
+        var withus=$('#cmbwithus').val();
+        
+        //get these values only when the resp divs are enabled
+        var address=$('#txtaddress').val();
+        var allowstorage=$('#cmballowstorage').val();
+
+        $("#godownCreationForm").validate({
+            rules:{
+                    txtname:{
+                    required: true,
+                    minlength: 3
+                    },
+                    txtalias:{
+                      required:true  
+                    },
+            }
+
+        });
+         
+        
+					
+	if ( $("#godownCreationForm").valid())
+	{
+            //Save form
+           
+            //Exit
+            $('#createGodown').modal('hide');
+            
+        }
+    }
+
+</script>
+
