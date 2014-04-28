@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!--
+Modified by : Yamini Sudha
+Created on  : 22-Apr-2014
+Modified on : 28-Apr-2014
+Page Title  : Stock Item creation 
+Description : Creates a stock item in simple and advanced mode (Displayed inside Modal)
+Validation  : Not yet done
+Status      : halfway
+-->
+<div style="height: 100%;background: #E7FFEF;border:1px solid #cccccc;">
+    <div id="ddheader" style="height:10%;">
+        <button type="button" onclick="closeDiv('dropdowndiv')" class="close" style="font-size: 2.5rem">×</button>
+        <h3 id="title" style="font-weight: bold;font-size: 2rem">Voucher Type Creation</h3>
+    </div>
+    <div id="ddcontent" style="height: 80%; max-height: 80%; overflow: auto">
+     <form id="stockItemCreationForm" class="form-horizontal" method="post">
+         <fieldset>
+
+             <div class="span12" style="border: 1px solid #447755;padding:15px;">
+                 <div id="name-alias" class="span8">
+                    <div class="span12">
+                        <div class="span3">
+                            <label>Name :</label>
+                        </div>
+
+                        <div class="span6">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtname" name="txtname" type="text">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span12">
+                        <div class="span3">
+                            <label style="font-style: italic">(alias) :</label>
+                        </div>
+                        <div class="span6">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtalias" name="txtalias" type="text">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                 
+                 <div id="partno">
+                    <div class="span4" style="padding:15px;">
+                        <div class="span6">
+                            <label class="text-right">Part No.</label>
+                        </div>
+
+                        <div class="span6">
+                            <div class="input-control text" data-role="input-control">
+                                <input id="txtpartno" name="txtpartno" type="text">
+                                <button class="btn-clear" tabindex="-1"></button>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+
+             <div id="desc-rem-defledger">
+                <div class="span12" style="border-left: 1px solid #447755;border-right: 1px solid #447755;border-bottom: 1px solid #447755;">
+                   <div class="span8" style="padding:15px;">
+                       <div id="desc">
+                        <div class="span12">
+                            <div class="span3">
+                                <label>Description :</label>
+                            </div>
+
+                            <div class="span6">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtdesc" name="txtdesc" type="text">
+                                    <button class="btn-clear" tabindex="-1"></button>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                       
+                       <div id="remarks">
+                        <div class="span12">
+                            <div class="span3">
+                                <label>Remarks :</label>
+                            </div>
+                            <div class="span6">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtremarks" name="txtremarks" type="text">
+                                    <button class="btn-clear" tabindex="-1"></button>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                       
+                       <div id="setdefledger">
+                        <div class="span12">
+                             <div class="span10">
+                                 <label>Set/Modify Default Ledgers for Invoicing ?</label>
+                             </div>
+                             <div class="span2">
+                                <div class="input-control select">
+                                     <select id="cmbdefaultledger" name="cmbdefaultledger">
+                                         <option value="yes">Yes</option>
+                                         <option value="no">No</option>
+                                     </select>
+                                 </div>
+                             </div>
+                         </div>
+                       </div>
+                   </div> 
+                </div>
+             </div>
+             
+             <div class="span12" style="border-bottom: 1px solid #447755;border-left: 1px solid #447755;border-right: 1px solid #447755;">
+                <div id="div1" class="span4" style="border-right: 1px solid #447755;">
+                   <div style="padding:15px;">
+                       <div class="span12">
+                            <label class="span6">Under :</label>
+                            <div class="span6">
+                               <div class="input-control select">
+                                    <select id="cmbunder" name="cmbunder">
+                                        <option value="">Primary</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                       
+                       <div id="category">
+                            <div class="span12">
+                                 <label class="span6">Category :</label>
+                                 <div class="span6">
+                                    <div class="input-control select">
+                                         <select id="cmbcategory" name="cmbcategory">
+                                             <option value="">Not Applicable</option>
+                                         </select>
+                                     </div>
+                                 </div>
+                             </div>
+                       </div>
+                       
+                       <div class="span12">
+                            <label class="span6">Units :</label>
+                            <div class="span6">
+                               <div class="input-control select">
+                                    <select id="cmbunit" name="cmbunit">
+                                        <option value="">Not Applicable</option>
+                                        <option>Nos</option>
+                                    </select>
+                                </div>
+                            </div>
+                       </div>
+                       
+                       <div id="altunit">
+                            <div class="span12">
+                                 <label class="span6">Alternate Units :</label>
+                                 <div class="span6">
+                                    <div class="input-control select">
+                                         <select id="cmbaltunit" name="cmbaltunit" onchange="displayWhere()">
+                                             <option value="">Not Applicable</option>
+                                             <option>Kgs</option>
+                                         </select>
+                                     </div>
+                                 </div>
+                            </div>
+                       </div>
+                       
+                       <div id="altunitwhere" style="display:none">
+                           <div class="span12">
+                               <label class="span4" style="padding-left: 5%;">where :</label>
+                               <div class="span8">
+                                   
+                                   <div style="display:inline-block"><label>1</label></div>
+                                   <div style="display:inline-block"><label id="unit1"> </label></div>
+                                   <div style="display:inline-block"><label> = </label></div>
+                                   <div style="display:inline-block;width: 50px; height: 20px;">
+                                       <div class="input-control text place-right" data-role="input-control">
+                                           <input id="txtaltunitval" name="txtaltunitval" type="text">
+                                       </div>
+                                   </div>
+                                   <div style="display:inline-block"><label id="unit2"> </label></div>
+                                   
+                               </div>
+                           </div>
+                       </div>
+                       
+                       <div id="maintainbatch">
+                        <div class="span12" style="margin-top: 5%;">
+                          <div class="span8">
+                              <label>Maintain in Batches ?</label>
+                          </div>
+                          <div class="span4">
+                             <div class="input-control select">
+                                  <select id="cmbbatch" name="cmbbatch" onchange="displayTrackMfg()">
+                                      <option value="yes">Yes</option>
+                                      <option value="no" selected>No</option>
+                                  </select>
+                              </div>
+                          </div>
+                        </div>
+                       </div>
+                       
+                       <div id="trackmfg" style="display:none">
+                        <div class="span12">
+                            <div class="span8">
+                                <label style="padding-left: 5%;">Track date of Mfg ?</label>
+                            </div>
+                            <div class="span4">
+                               <div class="input-control select">
+                                    <select id="cmbtrackdom" name="cmbtrackdom">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                       
+                       <div id="expdate">
+                        <div class="span12">
+                            <div class="span8">
+                                <label style="padding-left: 5%;">Use Expiry Dates ?</label>
+                            </div>
+                            <div class="span4">
+                               <div class="input-control select">
+                                    <select id="cmbexpdate" name="cmbexpdate" onchange="displayExpBatches()">
+                                        <option value="yes">Yes</option>
+                                        <option value="no" selected>No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div> 
+                       </div>
+                       
+                       
+                       <div id="setcomp">
+                        <div class="span12">
+                            <div class="span8">
+                                <label>Set Components (BoM) ?</label>
+                            </div>
+                            <div class="span4">
+                               <div class="input-control select">
+                                    <select id="cmbsetcomp" name="cmbsetcomp">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                       
+                       <div id="stdrate">
+                        <div class="span12">
+                            <div class="span8">
+                                <label>Set Standard Rates ?</label>
+                            </div>
+                            <div class="span4">
+                               <div class="input-control select">
+                                    <select id="cmbstdrate" name="cmbstdrate">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                </div>
+                <div id="div2" class="span4">
+                   <div style="padding:15px;">
+                       <center><label class="span12"><u>Tax Information</u></label></center>
+                       <div class="span12">
+                            <label class="span6">Tariff Classification :</label>
+                            <div class="span6">
+                               <div class="input-control select">
+                                    <select id="cmbtariff" name="cmbtariff">
+                                        <option value="">Not Applicable</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                       <div id="rateofduty">
+                        <div class="span12">
+                             <label class="span6">Rate of Duty (eg.5) :</label>
+                             <div class="span6">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtduty" name="txtduty" type="text">
+                                    <button class="btn-clear" tabindex="-1"></button>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                       
+                       <div id="vatdetails">
+                        <center><label class="span12"><u>VAT Details</u></label></center>
+                        <div class="span12">
+                             <label class="span6">Commodity :</label>
+                             <div class="span6">
+                                <div class="input-control select">
+                                     <select id="cmbcommodity" name="cmbcommodity">
+                                         <option value="">Not Applicable</option>
+                                     </select>
+                                 </div>
+                             </div>
+                         </div>
+
+                        <div class="span12">
+                             <label class="span6">Rate of VAT (%) :</label>
+                             <div class="span6">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtvat" name="txtvat" type="text">
+                                    <button class="btn-clear" tabindex="-1"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="span12">
+                             <label class="span6">MRP / Marginal :</label>
+                             <div class="span6">
+                                <div class="input-control text" data-role="input-control">
+                                    <input id="txtmrp" name="txtmrp" type="text">
+                                    <button class="btn-clear" tabindex="-1"></button>
+                                </div>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                </div>
+
+
+               <div  id="div3">     
+                   <div class="span4" style="border-left: 1px solid #447755; padding:15px;">
+                        <center><label class="span12"><u>Behaviour</u></label></center>
+                        <div class="span12">
+                            <label class="span6">Costing Method :</label>
+                            <div class="span6">
+                               <div class="input-control select">
+                                    <select id="cmbcostmethod" name="cmbcostmethod">
+                                        <option>At Zero Cost</option>
+                                        <option>Avg. Cost</option>
+                                        <option>FIFO</option>
+                                        <option>FIFO Perpetual</option>
+                                        <option>Last Purchase Cost</option>
+                                        <option>LIFO Annual</option>
+                                        <option>LIFO Perpetual</option>
+                                        <option>Monthly Avg. Cost</option>
+                                        <option>Std. Cost</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="span12">
+                            <label class="span6">Market Valuation Method :</label>
+                            <div class="span6">
+                               <div class="input-control select">
+                                    <select id="cmbmarketval" name="cmbmarketval">
+                                        <option>At Zero Price</option>
+                                        <option>Avg. Price</option>
+                                        <option>Last Sale Price</option>
+                                        <option>Std. Price</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="span12">
+                            <label class="span9">Ignore Diff. due to Physical Counting ?</label>
+                            <div class="span3">
+                               <div class="input-control select">
+                                    <select id="cmbignorediff" name="cmbignorediff">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="span12">
+                            <label class="span9">Ignore Negative Balances ?</label>
+                            <div class="span3">
+                               <div class="input-control select">
+                                    <select id="cmbignorenegbal" name="cmbignorenegbal">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="span12">
+                            <label class="span9">Treat all Sales as New Manufacture ?</label>
+                            <div class="span3">
+                               <div class="input-control select">
+                                    <select id="cmbnewmanuf" name="cmbnewmanuf">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="span12">
+                            <label class="span9">Treat all Purchases as Consumed ?</label>
+                            <div class="span3">
+                               <div class="input-control select">
+                                    <select id="cmbpurconsume" name="cmbpurconsume">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="span12">
+                            <label class="span9">Treat all Rejections Inward as Scrap ?</label>
+                            <div class="span3">
+                               <div class="input-control select">
+                                    <select id="cmbrej" name="cmbrej">
+                                        <option value="yes">Yes</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="expbatches" style="display:none">
+                           <div class="span12">
+                               <label class="span9">Allow use of Expired Batches ?</label>
+                               <div class="span3">
+                                  <div class="input-control select">
+                                       <select id="cmbexpbatch" name="cmbexpbatch">
+                                           <option value="yes">Yes</option>
+                                           <option value="no">No</option>
+                                       </select>
+                                   </div>
+                               </div>
+                           </div>
+                        </div>
+                    </div> 
+               </div>
+           </div>   
+         </fieldset>
+     </form>
+    </div>
+    <div id="ddfooter" class="place-right" style="height: 10%; padding: 15px;">
+        <button type="button" id="btnsave" onclick="validate();" class="primary">Save</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="info" id="btncancel" onclick="closeDiv('dropdowndiv')">Cancel</button>    
+    </div>
+</div>
+
+<script>
+    /*
+    //when 'Allow Advanced Entries in Masters' is set to 'No'
+    $('#div3').attr('style', 'display:none !important');
+    $('#div1').attr('class', 'span6'); //4- if yes
+    $('#div2').attr('class', 'span6'); //4- if yes
+    
+    // whwen 'Use Part Number for stock items' is set to 'No'
+    $('#partno').attr('style', 'display:none !important');
+    $('#name-alias').attr('class', 'span12'); //8- if yes
+    
+    //when 'Use Description for Stock Items' is set to 'No'
+    $('#desc').attr('style', 'display:none !important');
+    
+    //when 'Use Remarks for Stock Items' is set to 'No'
+    $('#remarks').attr('style', 'display:none !important');
+    
+    //when 'Specify Default Ledger Allocation for Invoicing' is set to 'No'
+    $('#setdefledger').attr('style', 'display:none !important');
+    
+    //when above 3 fields are not visible
+    $('#desc-rem-defledger').attr('style', 'display:none !important');
+    
+    //when 'Maintain Stock Categories' is set to 'No'
+    $('#category').attr('style', 'display:none !important');
+    
+    //when 'Use Alternate Units for Stock Item' is set to 'No'
+    $('#altunit').attr('style', 'display:none !important');
+    
+    //when 'Maintain Batch wise Details' is set to 'No'
+    $('#maintainbatch').attr('style', 'display:none !important');
+    
+    //when 'Set Expiry Dates for Batches under Maintain Batch Wise Details' is set to 'No'
+    $('#expdate').attr('style', 'display:none !important');
+    
+    //when 'Allow Component List Details (Bills of Material)' is set to 'No'
+    $('#setcomp').attr('style', 'display:none !important');
+    
+    //when 'Allow Std. Rates for Stock Items' is set to 'No'
+    $('#stdrate').attr('style', 'display:none !important');
+    
+    //when 'Allow Invoicing' is set to 'No'
+    $('#rateofduty').attr('style', 'display:none !important');
+    
+    //when '' is set to 'No'
+    $('#vatdetails').attr('style', 'display:none !important');
+   */
+    
+    function displayWhere()
+    {
+        if ($('#cmbaltunit').val() !== "")
+        {
+            //find out the greater unit and display it first (check tally first)
+            $('#unit2').html($('#cmbunit').val());
+            $('#unit1').html($('#cmbaltunit').val());
+            $('#altunitwhere').attr('style', 'display:inline !important');
+        }
+        else
+        {
+            $('#altunitwhere').attr('style', 'display:none !important');
+        }
+    }
+    
+    
+    function displayTrackMfg()
+    {
+        if ($('#cmbbatch').val() === "yes")
+        {
+            $('#trackmfg').attr('style', 'display:inline !important');
+        }
+        else
+        {
+            $('#trackmfg').attr('style', 'display:none !important');
+        }
+    }
+    
+    
+    function displayExpBatches()
+    {
+        if ($('#cmbexpdate').val() === "yes")
+        {
+            $('#expbatches').attr('style', 'display:inline !important');
+        }
+        else
+        {
+            $('#expbatches').attr('style', 'display:none !important');
+        }
+    }
+    
+</script>
+
+                

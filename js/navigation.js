@@ -31,6 +31,11 @@ function gotoStockCategories()
    	$("#contentdiv").load(home+"/Masters/Stock%20Categories/stockcategory.html");
 }
 
+function gotoStockItems()
+{
+   	$("#contentdiv").load(home+"/Masters/Stock%20Items/stockitem.html");
+}
+
 function gotoUnitsOfMeasure()
 {
    	$("#contentdiv").load(home+"/Masters/Units%20of%20Measurement/units.html");
@@ -75,6 +80,11 @@ function openCreateStockGroupDialog()
 function openCreateStockCategoryDialog()
 {
         $("#modaldiv").load(home+"/Masters/Stock%20Categories/create_stockcategory.html");
+}
+
+function openCreateStockItemDialog()
+{
+        $("#modaldiv").load(home+"/Masters/Stock%20Items/create_stockitem.html");
 }
 
 function openCreateUnitDialog()
