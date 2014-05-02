@@ -20,20 +20,7 @@ Last Change : Dropdown div moved to entrypage
     <div class="subheader">
         <div class="place-left"><h3>Stock Item</h3></div>
         <div class="place-right" style=" padding-top: 15px;">
-            <button type="button" id="btncreatenew" onclick="slideDownDiv()" class="primary">Create New</button>
+            <button type="button" id="btncreatenew" onclick="slideDownStockItemCreation()" class="primary">Create New</button>
         </div>
     </div>
 </div>
-
-
-
-<script>
-        function slideDownDiv() {
-            $("#dropdowndiv").load(home+"/Masters/Stock%20Items/create_stockitem.html");
-            $("#dropdowndiv").slideDown(1000);
-        }
-
-        function closeDiv(divId) {
-            document.getElementById(divId).style.display = 'none';    
-        }
-</script>

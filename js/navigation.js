@@ -67,11 +67,6 @@ function openCreateLedgerDialog()
         $("#modaldiv").load(home+"/Masters/Ledger/create_ledger.html");
 }
 
-function openCreateVoucherTypeDialog()
-{
-        $("#modaldiv").load(home+"/Masters/Voucher%20Types/create_vouchertype.html");
-}
-
 function openCreateStockGroupDialog()
 {
         $("#modaldiv").load(home+"/Masters/Stock%20Groups/create_stockgroup.html");
@@ -121,6 +116,23 @@ function openEditCompanyDialog()
 function openSelectCompanyDialog()
 {
    	$("#modaldiv").load(home+"/Company/select_company.html");
+}
+
+function slideDownStockItemCreation() 
+{
+        $("#dropdowndiv").load(home+"/Masters/Stock%20Items/create_stockitem.html");
+        $("#dropdowndiv").slideDown(1000);
+}
+
+function slideDownVoucherTypeCreation() 
+{
+        $("#dropdowndiv").load(home+"/Masters/Voucher%20Types/create_vouchertype.html");
+        $("#dropdowndiv").slideDown(1000);
+}
+
+function closeDiv(divId) 
+{
+        document.getElementById(divId).style.display = 'none';    
 }
 
 function gotoupdatecompany(selcomp)

@@ -3,24 +3,19 @@
 Author      : Theyva k
 Modified by : Yamini Sudha
 Created on  : 9-Apr-2014
-Modified on : 17-Apr-2014
+Modified on : 2-May-2014
 Page Title  : Voucher type creation 
-Description : Creates a voucher type (Displayed inside Modal)
+Description : Creates a voucher type (Displayed in a slide down div)
 Validation  : Not yet done
 Status      : 
 -->
 
-<div id="createVoucher" class="modal" data-keyboard="false" data-backdrop="static" tabindex="-1">
-    <div class="modal-dialog" style="width: 100%;"> 
-        <div class="modal-content" style="padding-left:3%;"> 
-           <!--Modal header-->
-           <div class="modal-header"> 
-               <button type="button" class="close" data-dismiss="modal" style="font-size: 2.5rem">×</button>
-               <h3 class="modal-title" id="mtitle" style="font-weight: bold;font-size: 2rem">Voucher Type Creation</h3>
-           </div>
-
-            <!--Modal body-->
-           <div class="modal-body" id="mbody" style="margin-left:1%;margin-right:3%;max-height: 60%;min-height: 1px;overflow: auto">
+<div style="height: 100%;background: #E7FFEF;border:1px solid #cccccc;padding: 15px;">
+    <div id="ddheader" style="height:10%;">
+        <button type="button" onclick="closeDiv('dropdowndiv')" class="close" style="font-size: 2.5rem">×</button>
+        <h3 id="title" style="font-weight: bold;font-size: 2rem">Voucher Type Creation</h3>
+    </div>
+    <div id="ddcontent" style="height: 80%; max-height: 80%; overflow: auto">
                 <form id="ledgerCreationForm" class="form-horizontal" method="post">
                     <fieldset>
 
@@ -281,17 +276,16 @@ Status      :
 
            </div> 
 
-            <!--Modal footer-->
-           <div class="modal-footer" id="mfooter"> 
+            <!--footer-->
+           <div id="ddfooter" class="place-right" style="height: 10%; padding: 15px;">
                 <button type="button" id="btnsave" onclick="validate(this.id);" class="primary">Save</button>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="info" data-dismiss="modal" id="btncancel">Cancel</button> 
+                <button type="button" class="info" id="btncancel" onclick="closeDiv('dropdowndiv')">Cancel</button>   
            </div>
         </div>
-   </div>
-</div>
 <script>
-    $('#createVoucher').modal();
+    
+    
     $('#txtname').focus();
     
     

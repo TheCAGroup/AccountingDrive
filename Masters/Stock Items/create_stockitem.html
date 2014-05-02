@@ -2,22 +2,23 @@
 <!--
 Modified by : Yamini Sudha
 Created on  : 22-Apr-2014
-Modified on : 28-Apr-2014
+Modified on : 2-May-2014
 Page Title  : Stock Item creation 
 Description : Creates a stock item in simple and advanced mode (Displayed inside Modal)
 Validation  : Not yet done
 Status      : halfway
+Last change : bg color changed
 -->
-<div style="height: 100%;background: #E7FFEF;border:1px solid #cccccc;">
-    <div id="ddheader" style="height:10%;">
+<div style="height: 100%;background: #FFEBFF;border:1px solid #EEAFF2;">
+    <div id="ddheader" style="height:10%; padding: 1%">
         <button type="button" onclick="closeDiv('dropdowndiv')" class="close" style="font-size: 2.5rem">×</button>
-        <h3 id="title" style="font-weight: bold;font-size: 2rem">Voucher Type Creation</h3>
+        <h3 id="title" style="font-weight: bold;font-size: 2rem">Stock Item Creation</h3>
     </div>
     <div id="ddcontent" style="height: 80%; max-height: 80%; overflow: auto">
      <form id="stockItemCreationForm" class="form-horizontal" method="post">
          <fieldset>
 
-             <div class="span12" style="border: 1px solid #447755;padding:15px;">
+             <div class="span12" style="border: 1px solid #EEAFF2;padding:15px;">
                  <div id="name-alias" class="span8">
                     <div class="span12">
                         <div class="span3">
@@ -61,7 +62,7 @@ Status      : halfway
              </div>
 
              <div id="desc-rem-defledger">
-                <div class="span12" style="border-left: 1px solid #447755;border-right: 1px solid #447755;border-bottom: 1px solid #447755;">
+                <div class="span12" style="border-left: 1px solid #EEAFF2;border-right: 1px solid #EEAFF2;border-bottom: 1px solid #EEAFF2;">
                    <div class="span8" style="padding:15px;">
                        <div id="desc">
                         <div class="span12">
@@ -111,8 +112,8 @@ Status      : halfway
                 </div>
              </div>
              
-             <div class="span12" style="border-bottom: 1px solid #447755;border-left: 1px solid #447755;border-right: 1px solid #447755;">
-                <div id="div1" class="span4" style="border-right: 1px solid #447755;">
+             <div class="span12" style="border-bottom: 1px solid #EEAFF2;border-left: 1px solid #EEAFF2;border-right: 1px solid #EEAFF2;">
+                <div id="div1" class="span4" style="border-right: 1px solid #EEAFF2;">
                    <div style="padding:15px;">
                        <div class="span12">
                             <label class="span6">Under :</label>
@@ -265,6 +266,7 @@ Status      : halfway
                        </div>
                    </div>
                 </div>
+                
                 <div id="div2" class="span4">
                    <div style="padding:15px;">
                        <center><label class="span12"><u>Tax Information</u></label></center>
@@ -328,7 +330,7 @@ Status      : halfway
 
 
                <div  id="div3">     
-                   <div class="span4" style="border-left: 1px solid #447755; padding:15px;">
+                   <div class="span4" style="border-left: 1px solid #EEAFF2; padding:15px;">
                         <center><label class="span12"><u>Behaviour</u></label></center>
                         <div class="span12">
                             <label class="span6">Costing Method :</label>
@@ -442,7 +444,7 @@ Status      : halfway
          </fieldset>
      </form>
     </div>
-    <div id="ddfooter" class="place-right" style="height: 10%; padding: 15px;">
+    <div id="ddfooter" class="place-right" style="height: 10%; padding: 1%;">
         <button type="button" id="btnsave" onclick="validate();" class="primary">Save</button>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" class="info" id="btncancel" onclick="closeDiv('dropdowndiv')">Cancel</button>    
